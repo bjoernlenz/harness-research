@@ -1,0 +1,6 @@
+id: repository-as-memory
+name: Repository As Memory
+kind: concept
+summary: "Files and repo state act as the durable surface where context and learning residue live."
+related_harnesses:
+  - aider

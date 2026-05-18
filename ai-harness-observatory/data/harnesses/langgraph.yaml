@@ -1,0 +1,117 @@
+id: langgraph
+name: LangGraph
+category:
+  - agent-framework
+  - graph-orchestration
+primary_language:
+  - python
+  - typescript
+origin:
+  organization: LangChain
+  repo: https://github.com/langchain-ai/langgraph
+  docs: https://langchain-ai.github.io/langgraph/
+status:
+  maturity: production
+  activity: active
+
+architectural_core:
+  - graph-based orchestration
+  - stateful agent workflows
+  - controllable loops
+
+complexity_focus:
+  - graph structure
+  - state management
+  - persistence
+  - observability
+
+primary_substrate:
+  - graph
+  - state
+  - checkpoints
+  - transitions
+
+trust_model:
+  - explicit-control-flow
+  - inspectable-state
+  - checkpointed-execution
+
+worldview:
+  short: "Agents are stateful graphs whose control flow should be explicit, durable, and inspectable."
+  notes:
+    - "Reliability comes from making transitions visible instead of burying them in prompts."
+    - "State and checkpoints matter as much as model calls."
+
+memory_model:
+  type:
+    - state
+    - persistence
+    - checkpointing
+  notes:
+    - "Memory appears mainly through graph state and resumable execution."
+
+human_role:
+  - engineer-as-orchestrator
+  - human-in-the-loop-possible
+
+tool_model:
+  - function tools
+  - external integrations
+
+autonomy_level: medium
+determinism_level: hybrid
+
+playfulness:
+  summary: "The playful move is turning agent behavior into a graph that can pause, resume, branch, and persist."
+  surprising_moves:
+    - "Agent loops become visible architecture."
+    - "Control flow becomes something you can inspect rather than infer."
+
+strengths:
+  - "Explicit control flow"
+  - "Durable state"
+  - "Production orientation"
+
+risks_or_limits:
+  - "Graph complexity can become its own burden."
+  - "Fluid exploratory behavior may feel constrained by structure."
+
+failure_modes:
+  - "Graph sprawl"
+  - "State-shape brittleness"
+  - "Overengineering control flow"
+
+representative_for:
+  - "graph orchestration runtime"
+  - "explicit stateful agent workflow"
+
+related_concepts:
+  - graph-orchestration
+  - stateful-agents
+  - durable-execution
+  - human-in-the-loop
+
+metaphor:
+  animal: null
+  transport: railway-switching yard
+  rationale: "It routes movement across explicit tracks, branches, checkpoints, and resumable paths."
+
+what_it_refuses:
+  - "Hidden control flow"
+  - "Pure prompt-only orchestration"
+  - "Stateless long-running agency"
+
+core_tension: "The same explicit graph structure that creates reliability can also turn into a maintenance burden when workflows become intricate."
+
+relationships:
+  similar_to:
+    - semantic-kernel
+  contrasts_with:
+    - aider
+    - gptme
+  influenced_by: []
+  influences: []
+
+source_quality:
+  confidence: medium
+  last_reviewed: "2026-05-18"

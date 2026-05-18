@@ -1,0 +1,6 @@
+id: durable-execution
+name: Durable Execution
+kind: concept
+summary: "Workflows can pause, resume, recover, and continue without losing operational state."
+related_harnesses:
+  - langgraph

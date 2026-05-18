@@ -1,0 +1,6 @@
+id: agentic-rag
+name: Agentic RAG
+kind: concept
+summary: "Retrieval-augmented generation grows into a more agentic system with tools, workflows, and task structure over data."
+related_harnesses:
+  - llamaindex

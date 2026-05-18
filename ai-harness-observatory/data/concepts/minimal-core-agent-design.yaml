@@ -1,0 +1,6 @@
+id: minimal-core-agent-design
+name: Minimal-Core Agent Design
+kind: concept
+summary: "The product keeps the base runtime intentionally narrow and avoids bundling every workflow abstraction."
+related_harnesses:
+  - pi

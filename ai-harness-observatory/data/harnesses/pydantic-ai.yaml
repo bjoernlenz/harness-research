@@ -1,0 +1,117 @@
+id: pydantic-ai
+name: PydanticAI
+category:
+  - agent-framework
+  - typed-runtime
+primary_language:
+  - python
+origin:
+  organization: Pydantic
+  repo: https://github.com/pydantic/pydantic-ai
+  docs: https://ai.pydantic.dev/
+status:
+  maturity: emerging
+  activity: active
+
+architectural_core:
+  - typed agent runtime
+  - model and tool abstractions
+  - validation-centered workflows
+
+complexity_focus:
+  - schemas
+  - type boundaries
+  - tool contracts
+  - retries and validation
+
+primary_substrate:
+  - typed-python-interfaces
+  - schemas
+  - validation
+  - tool-contracts
+
+trust_model:
+  - schema-validation
+  - typed-interfaces
+  - explicit-tool-contracts
+
+worldview:
+  short: "Reliable agent systems come from strong typing, validated I/O, and explicit contracts around model behavior."
+  notes:
+    - "Structured data is treated as the stabilizing core of the runtime."
+    - "Type systems are part of the orchestration strategy, not just developer ergonomics."
+
+memory_model:
+  type:
+    - conversational
+    - typed-state
+  notes:
+    - "Memory is secondary to validated interaction boundaries in the first impression."
+
+human_role:
+  - engineer-as-runtime-designer
+  - evaluator
+
+tool_model:
+  - function tools
+  - typed dependencies
+  - model adapters
+
+autonomy_level: medium
+determinism_level: hybrid
+
+playfulness:
+  summary: "The clever move is treating schemas and validation as first-class rails around stochastic model behavior."
+  surprising_moves:
+    - "Type safety becomes an agent design principle."
+    - "Pydantic-style validation is extended into the cognitive runtime."
+
+strengths:
+  - "Strong typed interfaces"
+  - "Validation-first design"
+  - "Good fit for production Python systems"
+
+risks_or_limits:
+  - "The abstraction may feel narrower for open-ended agent experimentation."
+  - "Type discipline can shift complexity into schema design."
+
+failure_modes:
+  - "Schema rigidity"
+  - "Validation churn"
+  - "Type-layer complexity overshadowing task flow"
+
+representative_for:
+  - "type-first agent runtime"
+  - "validation-centered orchestration"
+
+related_concepts:
+  - typed-prompts
+  - validation-rails
+  - tool-contracts
+  - structured-output
+
+metaphor:
+  animal: null
+  transport: tram
+  rationale: "It moves reliably along clearly defined rails, with structure doing much of the safety work."
+
+what_it_refuses:
+  - "Loose untyped interaction boundaries"
+  - "Treating validation as optional polish"
+  - "Purely fuzzy agent design"
+
+core_tension: "The type discipline that makes the runtime legible and safe can also shift creative flexibility into schema work and validation design."
+
+relationships:
+  similar_to:
+    - openai-agents-sdk
+  contrasts_with:
+    - autogpt
+    - babyagi
+  influenced_by:
+    - pydantic
+  influences: []
+
+source_quality:
+  confidence: medium
+  last_reviewed: "2026-05-18"

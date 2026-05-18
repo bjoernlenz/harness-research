@@ -1,0 +1,122 @@
+id: semantic-kernel
+name: Semantic Kernel
+category:
+  - agent-framework
+  - plugin-runtime
+primary_language:
+  - csharp
+  - python
+  - java
+origin:
+  organization: Microsoft
+  repo: https://github.com/microsoft/semantic-kernel
+  docs: https://learn.microsoft.com/en-us/semantic-kernel/
+status:
+  maturity: production
+  activity: active
+
+architectural_core:
+  - kernel-centric orchestration
+  - plugin and connector abstraction
+  - agent support over shared runtime services
+
+complexity_focus:
+  - plugin design
+  - service connectors
+  - kernel composition
+  - cross-language integration
+
+primary_substrate:
+  - kernel
+  - plugins
+  - connectors
+  - services
+
+trust_model:
+  - kernel-mediated-capabilities
+  - connector-abstraction
+  - runtime-composition
+
+worldview:
+  short: "AI applications become manageable when models, plugins, and services are routed through a shared kernel that standardizes how capabilities are composed."
+  notes:
+    - "Microsoft’s docs present the kernel as the center that holds services and plugins necessary to run agents."
+    - "The framework feels closer to a programmable middleware layer than to a single visible agent loop."
+
+memory_model:
+  type:
+    - service-context
+    - plugin-state
+    - external-memory
+  notes:
+    - "The strongest visible signal is capability composition through the kernel, with memory appearing as one concern among many connected services."
+
+human_role:
+  - runtime-designer
+  - application-engineer
+  - integrator
+
+tool_model:
+  - plugins
+  - connectors
+  - AI services
+  - agent abstractions
+
+autonomy_level: medium
+determinism_level: hybrid
+
+playfulness:
+  summary: "The elegant move is making the kernel itself the durable center of gravity, so agents are not floating abstractions but clients of a shared capability spine."
+  surprising_moves:
+    - "Plugins and connectors feel more central than agent theater."
+    - "The architecture reads like middleware for cognition rather than a chat-first harness."
+
+strengths:
+  - "Strong integration story"
+  - "Clear capability-composition center"
+  - "Cross-language reach"
+
+risks_or_limits:
+  - "The kernel abstraction can feel indirect if you want a visible agent loop first."
+  - "Complexity may migrate into plugin and connector ecosystems."
+
+failure_modes:
+  - "Connector sprawl"
+  - "Plugin indirection"
+  - "Middleware heaviness"
+
+representative_for:
+  - "kernel-centric agent middleware"
+  - "plugin-and-connector capability spine"
+
+related_concepts:
+  - kernel-as-cognitive-spine
+  - plugins-as-capabilities
+  - connector-abstraction
+  - middleware-for-agency
+
+metaphor:
+  animal: spider
+  transport: null
+  rationale: "It sits at a central hub, sensing and coordinating many connected strands of capability."
+
+what_it_refuses:
+  - "Treating agent behavior as only prompt choreography"
+  - "Direct ad hoc integration with every service surface"
+  - "Separating capability composition from runtime architecture"
+
+core_tension: "Its strength is giving the system a central programmable spine for capabilities. Its tradeoff is that this middleware-centric shape can feel more infrastructural than immediately agentic."
+
+relationships:
+  similar_to:
+    - openai-agents-sdk
+    - pydantic-ai
+  contrasts_with:
+    - aider
+    - cursor
+  influenced_by: []
+  influences: []
+
+source_quality:
+  confidence: medium
+  last_reviewed: "2026-05-18"

@@ -1,0 +1,682 @@
+#!/usr/bin/env python3
+
+from __future__ import annotations
+
+from html import escape
+from pathlib import Path
+
+import yaml
+
+
+ROOT = Path(__file__).resolve().parent.parent
+HARNESS_DIR = ROOT / "data" / "harnesses"
+CONCEPT_DIR = ROOT / "data" / "concepts"
+RELATIONSHIPS_PATH = ROOT / "data" / "relationships.yaml"
+OUTPUT_PATH = ROOT / "site" / "index.html"
+CONCEPT_OUTPUT_DIR = ROOT / "site" / "concepts"
+MISSING_METAPHOR_PICTURES: set[str] = set()
+
+
+def load_records() -> list[dict]:
+    records = []
+    for path in sorted(HARNESS_DIR.glob("*.yaml")):
+        if path.name.startswith("_"):
+            continue
+        with path.open("r", encoding="utf-8") as handle:
+            data = yaml.safe_load(handle) or {}
+        if isinstance(data, dict):
+            records.append(data)
+    return records
+
+
+def load_concepts() -> dict[str, dict]:
+    concepts: dict[str, dict] = {}
+    for path in sorted(CONCEPT_DIR.glob("*.yaml")):
+        if path.name.startswith("_") or path.name == ".gitkeep":
+            continue
+        with path.open("r", encoding="utf-8") as handle:
+            data = yaml.safe_load(handle) or {}
+        if isinstance(data, dict) and "id" in data:
+            concepts[str(data["id"])] = data
+    return concepts
+
+
+def load_relationships() -> list[dict]:
+    with RELATIONSHIPS_PATH.open("r", encoding="utf-8") as handle:
+        data = yaml.safe_load(handle) or {}
+    relationships = data.get("relationships", [])
+    return [item for item in relationships if isinstance(item, dict)]
+
+
+def slug_to_label(value: str) -> str:
+    return value.replace("-", " ").title()
+
+
+def concept_href(concept_id: str) -> str:
+    return f"concepts/{escape(concept_id)}.html"
+
+
+def render_concept_links(values: list[str], concepts: dict[str, dict]) -> str:
+    items = []
+    for value in values:
+        concept_id = str(value)
+        concept = concepts.get(concept_id, {})
+        label = escape(str(concept.get("name", slug_to_label(concept_id))))
+        items.append(
+            f'<li><a class="pill" href="{concept_href(concept_id)}">{label}</a></li>'
+        )
+    return f"<ul class=\"pill-list\">{''.join(items)}</ul>"
+
+
+def render_list(values: list[str]) -> str:
+    items = "".join(f"<li>{escape(str(value))}</li>" for value in values)
+    return f"<ul>{items}</ul>"
+
+
+def render_metaphor_picture(label: str) -> str:
+    key = label.strip().lower()
+    if key == "sheepdog":
+        return """
+<svg viewBox="0 0 96 96" aria-hidden="true">
+  <circle cx="48" cy="48" r="42" fill="#f8efe1"/>
+  <circle cx="34" cy="35" r="12" fill="#6f4f34"/>
+  <circle cx="62" cy="35" r="12" fill="#6f4f34"/>
+  <circle cx="48" cy="50" r="24" fill="#ddc2a1"/>
+  <circle cx="39" cy="47" r="4" fill="#1f1d1a"/>
+  <circle cx="57" cy="47" r="4" fill="#1f1d1a"/>
+  <ellipse cx="48" cy="59" rx="10" ry="7" fill="#f8efe1"/>
+  <circle cx="48" cy="57" r="3.5" fill="#1f1d1a"/>
+  <path d="M41 65c4 4 10 4 14 0" fill="none" stroke="#1f1d1a" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
+""".strip()
+    if key == "cargo bike":
+        return """
+<svg viewBox="0 0 96 96" aria-hidden="true">
+  <circle cx="28" cy="66" r="13" fill="none" stroke="#1f1d1a" stroke-width="4"/>
+  <circle cx="70" cy="66" r="13" fill="none" stroke="#1f1d1a" stroke-width="4"/>
+  <path d="M28 66l15-20h17l10 20H53l-10-20" fill="none" stroke="#1f1d1a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M43 46h-14l-8 12" fill="none" stroke="#1f1d1a" stroke-width="4" stroke-linecap="round"/>
+  <rect x="15" y="32" width="26" height="14" rx="3" fill="#c87745" stroke="#1f1d1a" stroke-width="3"/>
+  <path d="M57 36h9" fill="none" stroke="#1f1d1a" stroke-width="4" stroke-linecap="round"/>
+</svg>
+""".strip()
+    if key == "tram":
+        return """
+<svg viewBox="0 0 96 96" aria-hidden="true">
+  <rect x="18" y="22" width="60" height="42" rx="8" fill="#f0b25d" stroke="#1f1d1a" stroke-width="4"/>
+  <path d="M32 16h32l-8 6H40z" fill="#1f1d1a"/>
+  <rect x="27" y="31" width="14" height="12" rx="2" fill="#fffdf8"/>
+  <rect x="45" y="31" width="14" height="12" rx="2" fill="#fffdf8"/>
+  <rect x="63" y="31" width="6" height="12" rx="2" fill="#fffdf8"/>
+  <circle cx="34" cy="71" r="5" fill="#1f1d1a"/>
+  <circle cx="62" cy="71" r="5" fill="#1f1d1a"/>
+  <path d="M28 78h40" fill="none" stroke="#1f1d1a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M20 84h56" fill="none" stroke="#8b8177" stroke-width="2" stroke-linecap="round"/>
+  <path d="M20 88h56" fill="none" stroke="#8b8177" stroke-width="2" stroke-linecap="round"/>
+</svg>
+""".strip()
+    if key == "railway-switching yard":
+        return """
+<svg viewBox="0 0 96 96" aria-hidden="true">
+  <path d="M22 12v72M74 12v72" fill="none" stroke="#1f1d1a" stroke-width="4" stroke-linecap="round"/>
+  <path d="M22 18l52 20M22 42l52 0M22 66l52-20" fill="none" stroke="#c87745" stroke-width="4" stroke-linecap="round"/>
+  <path d="M22 24h-8M22 48h-8M22 72h-8M74 24h8M74 48h8M74 72h8" fill="none" stroke="#8b8177" stroke-width="3" stroke-linecap="round"/>
+</svg>
+""".strip()
+    if key == "owl":
+        return """
+<svg viewBox="0 0 96 96" aria-hidden="true">
+  <ellipse cx="48" cy="50" rx="26" ry="30" fill="#8c6546"/>
+  <path d="M29 29l7-12 8 12M59 29l8-12 7 12" fill="#8c6546"/>
+  <circle cx="39" cy="46" r="10" fill="#fffdf8"/>
+  <circle cx="57" cy="46" r="10" fill="#fffdf8"/>
+  <circle cx="39" cy="46" r="4" fill="#1f1d1a"/>
+  <circle cx="57" cy="46" r="4" fill="#1f1d1a"/>
+  <path d="M48 50l-6 8h12z" fill="#d58b3f"/>
+  <path d="M38 67c6 4 14 4 20 0" fill="none" stroke="#fffdf8" stroke-width="3" stroke-linecap="round"/>
+</svg>
+""".strip()
+    if key == "flock-of-starlings":
+        return """
+<svg viewBox="0 0 96 96" aria-hidden="true">
+  <path d="M18 36c6-5 12-6 18-2M29 32c5-6 11-8 17-5M43 30c7-5 13-5 18 0M57 33c6-5 12-5 17 0" fill="none" stroke="#1f1d1a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M22 52c5-4 10-4 15 0M35 58c6-5 12-5 18-1M51 55c5-4 10-4 15 0M65 49c5-4 9-4 13-1" fill="none" stroke="#4d5a67" stroke-width="3" stroke-linecap="round"/>
+  <path d="M26 70c6-5 12-5 18 0M43 72c7-5 13-5 19 0M61 69c5-4 10-4 14 0" fill="none" stroke="#c87745" stroke-width="3" stroke-linecap="round"/>
+</svg>
+""".strip()
+    if key == "border-collie":
+        return """
+<svg viewBox="0 0 96 96" aria-hidden="true">
+  <circle cx="32" cy="34" r="13" fill="#1f1d1a"/>
+  <circle cx="64" cy="34" r="13" fill="#1f1d1a"/>
+  <path d="M48 20c16 0 26 12 26 28S64 78 48 78 22 64 22 48s10-28 26-28z" fill="#fffdf8" stroke="#1f1d1a" stroke-width="3"/>
+  <path d="M48 21c8 0 15 7 15 19 0 8-4 18-15 18S33 48 33 40c0-12 7-19 15-19z" fill="#1f1d1a"/>
+  <circle cx="39" cy="47" r="4" fill="#fffdf8"/>
+  <circle cx="57" cy="47" r="4" fill="#fffdf8"/>
+  <circle cx="39" cy="47" r="1.8" fill="#1f1d1a"/>
+  <circle cx="57" cy="47" r="1.8" fill="#1f1d1a"/>
+  <path d="M48 54l-7 9h14z" fill="#c87745"/>
+  <path d="M41 67c4 3 10 3 14 0" fill="none" stroke="#1f1d1a" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
+""".strip()
+    if key == "seaplane":
+        return """
+<svg viewBox="0 0 96 96" aria-hidden="true">
+  <path d="M18 64h60l-14-10H44l-8-10H24z" fill="#75a8b8" stroke="#1f1d1a" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M44 54l10-24 18 6-8 18z" fill="#f0b25d" stroke="#1f1d1a" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M40 41l-11-5" fill="none" stroke="#1f1d1a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M25 71h18M54 71h18" fill="none" stroke="#1f1d1a" stroke-width="4" stroke-linecap="round"/>
+  <path d="M12 78c10-3 18-3 28 0 10 3 18 3 28 0 10-3 18-3 28 0" fill="none" stroke="#8bb7c6" stroke-width="3" stroke-linecap="round"/>
+</svg>
+""".strip()
+    if key == "airport-hub":
+        return """
+<svg viewBox="0 0 96 96" aria-hidden="true">
+  <circle cx="48" cy="48" r="8" fill="#c87745"/>
+  <path d="M48 14v20M48 62v20M14 48h20M62 48h20" fill="none" stroke="#1f1d1a" stroke-width="4" stroke-linecap="round"/>
+  <path d="M27 27l14 14M55 55l14 14M69 27L55 41M41 55L27 69" fill="none" stroke="#1f1d1a" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="48" cy="48" r="30" fill="none" stroke="#d8cbb8" stroke-width="4"/>
+</svg>
+""".strip()
+    if key == "octopus":
+        return """
+<svg viewBox="0 0 96 96" aria-hidden="true">
+  <path d="M48 18c16 0 26 12 26 26 0 10-5 18-12 22v12c0 3-4 4-6 1l-4-6-4 7c-2 3-6 2-6-1v-6l-5 7c-2 3-6 2-6-2V66c-7-4-11-12-11-22 0-14 12-26 28-26z" fill="#c87745" stroke="#1f1d1a" stroke-width="3"/>
+  <circle cx="39" cy="42" r="5" fill="#fffdf8"/>
+  <circle cx="57" cy="42" r="5" fill="#fffdf8"/>
+  <circle cx="39" cy="42" r="2" fill="#1f1d1a"/>
+  <circle cx="57" cy="42" r="2" fill="#1f1d1a"/>
+  <path d="M41 54c4 3 10 3 14 0" fill="none" stroke="#1f1d1a" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M24 70c4 6 8 8 12 8M72 70c-4 6-8 8-12 8" fill="none" stroke="#1f1d1a" stroke-width="3" stroke-linecap="round"/>
+</svg>
+""".strip()
+    if key == "spider":
+        return """
+<svg viewBox="0 0 96 96" aria-hidden="true">
+  <circle cx="48" cy="52" r="14" fill="#1f1d1a"/>
+  <circle cx="48" cy="33" r="10" fill="#2f2d2a"/>
+  <circle cx="43" cy="31" r="2" fill="#fffdf8"/>
+  <circle cx="53" cy="31" r="2" fill="#fffdf8"/>
+  <path d="M38 44 22 30M58 44 74 30M36 52 18 46M60 52 78 46M37 60 22 70M59 60 74 70" fill="none" stroke="#1f1d1a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M42 18 48 12 54 18" fill="none" stroke="#8b8177" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M48 18v10" fill="none" stroke="#8b8177" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
+""".strip()
+    if key == "beaver":
+        return """
+<svg viewBox="0 0 96 96" aria-hidden="true">
+  <ellipse cx="48" cy="51" rx="24" ry="22" fill="#8c6546"/>
+  <circle cx="37" cy="45" r="4" fill="#1f1d1a"/>
+  <circle cx="59" cy="45" r="4" fill="#1f1d1a"/>
+  <ellipse cx="48" cy="58" rx="10" ry="8" fill="#d9b38c"/>
+  <rect x="43" y="58" width="4" height="10" rx="1" fill="#fff5dc" stroke="#1f1d1a" stroke-width="1.5"/>
+  <rect x="49" y="58" width="4" height="10" rx="1" fill="#fff5dc" stroke="#1f1d1a" stroke-width="1.5"/>
+  <path d="M28 66c-8 3-11 8-9 14 6-1 11-2 16-6" fill="#6f4f34" stroke="#1f1d1a" stroke-width="2.5" stroke-linejoin="round"/>
+  <path d="M38 69c6 3 14 3 20 0" fill="none" stroke="#1f1d1a" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
+""".strip()
+    if label.strip():
+        MISSING_METAPHOR_PICTURES.add(label.strip())
+    return """
+<svg viewBox="0 0 96 96" aria-hidden="true">
+  <circle cx="48" cy="48" r="32" fill="#f0e2cc" stroke="#1f1d1a" stroke-width="4"/>
+  <path d="M34 57c8-6 20-6 28 0" fill="none" stroke="#c87745" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="39" cy="39" r="4" fill="#1f1d1a"/>
+  <circle cx="57" cy="39" r="4" fill="#1f1d1a"/>
+</svg>
+""".strip()
+
+
+def metaphor_label(metaphor: dict) -> str:
+    animal = metaphor.get("animal")
+    transport = metaphor.get("transport")
+    if animal:
+        return str(animal)
+    if transport:
+        return str(transport)
+    return ""
+
+
+def render_relationships(harness_id: str, relationships: list[dict], concepts: dict[str, dict]) -> str:
+    items = []
+    for relation in relationships:
+        if str(relation.get("from", "")) != harness_id:
+            continue
+        relation_name = escape(str(relation.get("relation", "")))
+        target = str(relation.get("to", ""))
+        target_concept = concepts.get(target)
+        if target_concept:
+            target_label = escape(str(target_concept.get("name", slug_to_label(target))))
+            target_html = f'<a href="{concept_href(target)}">{target_label}</a>'
+        else:
+            target_html = escape(slug_to_label(target))
+        note = escape(str(relation.get("note", "")))
+        items.append(
+            f"<li><strong>{relation_name}</strong> → {target_html}<br><span class=\"relation-note\">{note}</span></li>"
+        )
+    if not items:
+        return ""
+    return f"""
+      <section>
+        <h3>Relationships</h3>
+        <ul class="relationship-list">{''.join(items)}</ul>
+      </section>
+    """.rstrip()
+
+
+def render_card(record: dict, concepts: dict[str, dict], relationships: list[dict]) -> str:
+    harness_id = str(record.get("id", ""))
+    name = escape(str(record.get("name", "Unknown")))
+    worldview = escape(str(record.get("worldview", {}).get("short", "")))
+    category = render_list(record.get("category", []))
+    architectural_core = render_list(record.get("architectural_core", []))
+    complexity_focus = render_list(record.get("complexity_focus", []))
+    primary_substrate = render_list(record.get("primary_substrate", []))
+    trust_model = render_list(record.get("trust_model", []))
+    failure_modes = render_list(record.get("failure_modes", []))
+    representative_for = render_list(record.get("representative_for", []))
+    related_concepts = render_concept_links(record.get("related_concepts", []), concepts)
+    playfulness = escape(str(record.get("playfulness", {}).get("summary", "")))
+    metaphor = record.get("metaphor", {})
+    metaphor_name = escape(metaphor_label(metaphor))
+    metaphor_rationale = escape(str(metaphor.get("rationale", "")))
+    metaphor_picture = render_metaphor_picture(metaphor_label(metaphor))
+    what_it_refuses = render_list(record.get("what_it_refuses", []))
+    core_tension = escape(str(record.get("core_tension", "")))
+    relationships_html = render_relationships(harness_id, relationships, concepts)
+    metaphor_html = ""
+    if metaphor_name:
+        metaphor_html = f"""
+      <section>
+        <h3>Animal or Transport</h3>
+        <p><strong>{metaphor_name}</strong></p>
+        <p>{metaphor_rationale}</p>
+      </section>
+        """.rstrip()
+
+    return f"""
+    <article class="card">
+      <div class="metaphor-picture" title="{metaphor_name}">
+        {metaphor_picture}
+      </div>
+      <h2>{name}</h2>
+      <section>
+        <h3>Category</h3>
+        {category}
+      </section>
+      <section>
+        <h3>Architectural Core</h3>
+        {architectural_core}
+      </section>
+      <section>
+        <h3>Worldview</h3>
+        <p>{worldview}</p>
+      </section>
+      <section>
+        <h3>Complexity Focus</h3>
+        {complexity_focus}
+      </section>
+      <section>
+        <h3>Primary Substrate</h3>
+        {primary_substrate}
+      </section>
+      <section>
+        <h3>Trust Model</h3>
+        {trust_model}
+      </section>
+      <section>
+        <h3>Playfulness</h3>
+        <p>{playfulness}</p>
+      </section>
+      <section>
+        <h3>Failure Modes</h3>
+        {failure_modes}
+      </section>
+      <section>
+        <h3>What It Refuses</h3>
+        {what_it_refuses}
+      </section>
+      <section>
+        <h3>Core Tension</h3>
+        <p>{core_tension}</p>
+      </section>
+      <section>
+        <h3>Representative For</h3>
+        {representative_for}
+      </section>
+      {metaphor_html}
+      <section>
+        <h3>Related Concepts</h3>
+        {related_concepts}
+      </section>
+      {relationships_html}
+    </article>
+    """.strip()
+
+
+def render_page(records: list[dict], concepts: dict[str, dict], relationships: list[dict]) -> str:
+    cards = "\n".join(render_card(record, concepts, relationships) for record in records)
+    return f"""<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AI Harness Observatory</title>
+    <style>
+      :root {{
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }}
+
+      * {{
+        box-sizing: border-box;
+      }}
+
+      body {{
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }}
+
+      main {{
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 48px 20px 64px;
+      }}
+
+      header {{
+        margin-bottom: 32px;
+      }}
+
+      h1 {{
+        margin: 0 0 12px;
+        font-size: clamp(2.4rem, 5vw, 4rem);
+        line-height: 0.95;
+        letter-spacing: -0.03em;
+      }}
+
+      .deck {{
+        margin: 0;
+        max-width: 62ch;
+        color: var(--muted);
+        font-size: 1.05rem;
+        line-height: 1.6;
+      }}
+
+      .grid {{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 18px;
+      }}
+
+      .card {{
+        padding: 20px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }}
+
+      .metaphor-picture {{
+        width: 82px;
+        height: 82px;
+        margin: 0 0 14px;
+        display: grid;
+        place-items: center;
+        border-radius: 20px;
+        background:
+          radial-gradient(circle at top, rgba(200, 119, 69, 0.22), transparent 52%),
+          linear-gradient(180deg, #fff9ef 0%, #f2e5d1 100%);
+        border: 1px solid var(--border);
+      }}
+
+      .metaphor-picture svg {{
+        width: 64px;
+        height: 64px;
+        overflow: visible;
+      }}
+
+      .card h2 {{
+        margin: 0 0 12px;
+        font-size: 1.5rem;
+      }}
+
+      .card h3 {{
+        margin: 16px 0 8px;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+      }}
+
+      .card p,
+      .card ul {{
+        margin: 0;
+        line-height: 1.55;
+      }}
+
+      .card ul {{
+        padding-left: 18px;
+      }}
+
+      .pill-list,
+      .relationship-list {{
+        list-style: none;
+        padding-left: 0;
+      }}
+
+      .pill-list {{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }}
+
+      .pill {{
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #efe2cf;
+        color: var(--ink);
+        text-decoration: none;
+        border: 1px solid var(--border);
+        font-size: 0.95rem;
+      }}
+
+      .pill:hover {{
+        background: #e6d2b4;
+      }}
+
+      .relationship-list li {{
+        padding: 10px 0;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }}
+
+      .relationship-list li:first-child {{
+        border-top: 0;
+        padding-top: 0;
+      }}
+
+      .relation-note {{
+        color: var(--muted);
+      }}
+    </style>
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>AI Harness Observatory</h1>
+        <p class="deck">
+          A first-pass atlas generated from typed harness records. This view is intentionally simple:
+          it shows the current worldview, architectural core, complexity center, and playful move of
+          each sampled harness.
+        </p>
+      </header>
+      <section class="grid">
+        {cards}
+      </section>
+    </main>
+  </body>
+</html>
+"""
+
+
+def render_concept_page(concept: dict, relationships: list[dict]) -> str:
+    concept_id = str(concept.get("id", ""))
+    name = escape(str(concept.get("name", slug_to_label(concept_id))))
+    summary = escape(str(concept.get("summary", "")))
+    related_harnesses = render_list(concept.get("related_harnesses", []))
+    inbound = []
+    for relation in relationships:
+        if str(relation.get("to", "")) != concept_id:
+            continue
+        source = escape(slug_to_label(str(relation.get("from", ""))))
+        relation_name = escape(str(relation.get("relation", "")))
+        note = escape(str(relation.get("note", "")))
+        inbound.append(
+            f"<li><strong>{source}</strong> <span class=\"relation-name\">{relation_name}</span><br><span class=\"relation-note\">{note}</span></li>"
+        )
+    inbound_html = (
+        f"<ul class=\"relationship-list\">{''.join(inbound)}</ul>"
+        if inbound
+        else "<p class=\"empty-state\">No explicit relationships yet.</p>"
+    )
+    return f"""<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{name} · AI Harness Observatory</title>
+    <style>
+      :root {{
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }}
+
+      * {{
+        box-sizing: border-box;
+      }}
+
+      body {{
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }}
+
+      main {{
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 48px 20px 64px;
+      }}
+
+      .back {{
+        color: var(--accent);
+        text-decoration: none;
+      }}
+
+      .panel {{
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }}
+
+      h1 {{
+        margin: 10px 0 12px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 0.98;
+      }}
+
+      h2 {{
+        margin: 22px 0 10px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }}
+
+      p, ul {{
+        line-height: 1.6;
+      }}
+
+      .relationship-list {{
+        list-style: none;
+        padding-left: 0;
+      }}
+
+      .relationship-list li {{
+        padding: 10px 0;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }}
+
+      .relationship-list li:first-child {{
+        border-top: 0;
+        padding-top: 0;
+      }}
+
+      .relation-name {{
+        color: var(--accent);
+      }}
+
+      .relation-note, .empty-state {{
+        color: var(--muted);
+      }}
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../index.html">← Back to atlas</a>
+      <div class="panel">
+        <h1>{name}</h1>
+        <p>{summary}</p>
+
+        <h2>Related Harnesses</h2>
+        {related_harnesses}
+
+        <h2>Incoming Relationships</h2>
+        {inbound_html}
+      </div>
+    </main>
+  </body>
+</html>
+"""
+
+
+def main() -> int:
+    MISSING_METAPHOR_PICTURES.clear()
+    records = load_records()
+    concepts = load_concepts()
+    relationships = load_relationships()
+    OUTPUT_PATH.write_text(render_page(records, concepts, relationships), encoding="utf-8")
+    CONCEPT_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    for concept_id, concept in concepts.items():
+        concept_path = CONCEPT_OUTPUT_DIR / f"{concept_id}.html"
+        concept_path.write_text(
+            render_concept_page(concept, relationships), encoding="utf-8"
+        )
+    print(f"Wrote {OUTPUT_PATH}")
+    if MISSING_METAPHOR_PICTURES:
+        missing = ", ".join(sorted(MISSING_METAPHOR_PICTURES))
+        print(f"Reminder: add dedicated metaphor pictures for: {missing}")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

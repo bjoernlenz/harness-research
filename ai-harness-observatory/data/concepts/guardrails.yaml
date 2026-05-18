@@ -1,0 +1,6 @@
+id: guardrails
+name: Guardrails
+kind: concept
+summary: "Validation and safety checks are treated as named constraints around agent behavior."
+related_harnesses:
+  - openai-agents-sdk

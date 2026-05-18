@@ -1,0 +1,6 @@
+id: termination-conditions
+name: Termination Conditions
+kind: concept
+summary: "Agent or team behavior stops according to explicit conditions instead of vague completion intuitions."
+related_harnesses:
+  - autogen

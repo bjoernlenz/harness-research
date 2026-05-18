@@ -1,0 +1,121 @@
+id: cursor
+name: Cursor
+category:
+  - coding-agent
+  - ide-agent
+primary_language:
+  - typescript
+origin:
+  organization: Cursor
+  repo: ""
+  docs: https://docs.cursor.com/agent
+status:
+  maturity: production
+  activity: active
+
+architectural_core:
+  - mode-based coding agent
+  - IDE-native multi-file editing
+  - optional remote background agents
+
+complexity_focus:
+  - mode selection
+  - codebase exploration
+  - remote environment setup
+  - permission and auto-run boundaries
+
+primary_substrate:
+  - ide-context
+  - repository
+  - modes
+  - remote-agent-environment
+
+trust_model:
+  - mode-boundaries
+  - review-before-merge
+  - environment-separation
+
+worldview:
+  short: "Coding agency should adapt its capabilities to the task through explicit modes, while allowing heavier asynchronous work to move into a remote agent environment."
+  notes:
+    - "The official docs split the interaction into Agent, Ask, Manual, and Custom modes with different tool surfaces."
+    - "Background agents extend the system into isolated remote machines that can clone repos, run commands, and push branches asynchronously."
+
+memory_model:
+  type:
+    - ide-context
+    - session-history
+    - remote-workspace-state
+  notes:
+    - "The visible system leans more on contextual access and remote workspace continuity than on a distinct typed memory substrate."
+
+human_role:
+  - operator
+  - mode-selector
+  - remote-reviewer
+
+tool_model:
+  - IDE editing
+  - search tools
+  - commands
+  - background agents
+
+autonomy_level: high
+determinism_level: hybrid
+
+playfulness:
+  summary: "The interesting move is splitting coding agency into modes instead of forcing one fixed personality, then extending it with asynchronous background agents when the task wants more distance and runtime."
+  surprising_moves:
+    - "Ask, Agent, Manual, and Custom make capability boundaries part of the UI."
+    - "Background agents turn the IDE into a front-end for remote coding labor."
+
+strengths:
+  - "Clear task-shaped modes"
+  - "Strong IDE integration"
+  - "Asynchronous background execution path"
+
+risks_or_limits:
+  - "The split between foreground and background agency introduces more environment and trust complexity."
+  - "Mode choice can become another layer users must reason about."
+
+failure_modes:
+  - "Mode confusion"
+  - "Remote-environment drift"
+  - "Trust gaps between foreground and background work"
+
+representative_for:
+  - "mode-gated IDE agent"
+  - "remote background coding agent"
+
+related_concepts:
+  - mode-gated-agency
+  - background-agents
+  - remote-coding-labor
+  - ide-as-agent-body
+
+metaphor:
+  animal: null
+  transport: seaplane
+  rationale: "It can stay close and maneuver locally, but it can also lift off into a separate environment when the work needs more range."
+
+what_it_refuses:
+  - "A single fixed interaction mode for every task"
+  - "Keeping all coding agency only in the local foreground session"
+  - "Forcing either full autonomy or full manual control with no middle ground"
+
+core_tension: "Its strength is matching capability surface to task shape, from read-only Ask mode to remote background agents. Its tradeoff is that more modes and environments mean more boundaries for the user to understand and trust."
+
+relationships:
+  similar_to:
+    - claude-code
+    - openhands
+    - pi
+  contrasts_with:
+    - langgraph
+    - pydantic-ai
+  influenced_by: []
+  influences: []
+
+source_quality:
+  confidence: medium
+  last_reviewed: "2026-05-18"

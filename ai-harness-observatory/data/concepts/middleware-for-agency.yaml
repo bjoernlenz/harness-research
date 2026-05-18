@@ -1,0 +1,6 @@
+id: middleware-for-agency
+name: Middleware For Agency
+kind: concept
+summary: "The agent framework behaves more like a middleware layer for cognition than like a single visible assistant loop."
+related_harnesses:
+  - semantic-kernel

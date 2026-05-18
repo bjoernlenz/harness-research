@@ -1,0 +1,6 @@
+id: ide-as-agent-body
+name: IDE As Agent Body
+kind: concept
+summary: "The integrated development environment becomes the main body through which the agent sees, edits, and navigates code."
+related_harnesses:
+  - cursor

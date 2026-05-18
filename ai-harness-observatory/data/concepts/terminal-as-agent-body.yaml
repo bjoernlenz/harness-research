@@ -1,0 +1,7 @@
+id: terminal-as-agent-body
+name: Terminal As Agent Body
+kind: concept
+summary: "The terminal is not just an interface; it is the practical body through which the agent acts."
+related_harnesses:
+  - claude-code
+  - pi

@@ -1,0 +1,6 @@
+id: unix-composability
+name: Unix Composability
+kind: concept
+summary: "Agent behavior composes with shell commands, pipes, scripts, and existing developer tooling rather than replacing them."
+related_harnesses:
+  - claude-code

@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Remote Coding Labor · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+
+      main {
+        max-width: 860px;
+        margin: 0 auto;
+        padding: 48px 20px 64px;
+      }
+
+      .back {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      .panel {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+
+      h1 {
+        margin: 10px 0 12px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 0.98;
+      }
+
+      h2 {
+        margin: 22px 0 10px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      p, ul {
+        line-height: 1.6;
+      }
+
+      .relationship-list {
+        list-style: none;
+        padding-left: 0;
+      }
+
+      .relationship-list li {
+        padding: 10px 0;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+
+      .relationship-list li:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+
+      .relation-name {
+        color: var(--accent);
+      }
+
+      .relation-note, .empty-state {
+        color: var(--muted);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../index.html">← Back to atlas</a>
+      <div class="panel">
+        <h1>Remote Coding Labor</h1>
+        <p>The actual coding work can be delegated to a separate machine that clones the repo, runs commands, and pushes changes back.</p>
+
+        <h2>Related Harnesses</h2>
+        <ul><li>cursor</li></ul>
+
+        <h2>Incoming Relationships</h2>
+        <p class="empty-state">No explicit relationships yet.</p>
+      </div>
+    </main>
+  </body>
+</html>

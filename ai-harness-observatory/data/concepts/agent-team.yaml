@@ -1,0 +1,6 @@
+id: agent-team
+name: Agent Team
+kind: concept
+summary: "Agency is distributed across a coordinated set of roles rather than concentrated in one assistant."
+related_harnesses:
+  - autogen

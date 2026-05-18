@@ -1,0 +1,6 @@
+id: diff-as-interface
+name: Diff As Interface
+kind: concept
+summary: "The diff is not just an output artifact; it becomes the main human-agent interface for inspecting and negotiating change."
+related_harnesses:
+  - aider

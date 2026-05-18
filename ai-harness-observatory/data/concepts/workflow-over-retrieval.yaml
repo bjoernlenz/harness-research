@@ -1,0 +1,6 @@
+id: workflow-over-retrieval
+name: Workflow Over Retrieval
+kind: concept
+summary: "Workflow structure is layered directly on top of retrieval operations so data access and orchestration evolve together."
+related_harnesses:
+  - llamaindex

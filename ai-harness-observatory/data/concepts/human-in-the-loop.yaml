@@ -1,0 +1,7 @@
+id: human-in-the-loop
+name: Human In The Loop
+kind: concept
+summary: "Human approval, supervision, or collaboration is treated as a first-class runtime element."
+related_harnesses:
+  - langgraph
+  - aider

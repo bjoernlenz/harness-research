@@ -1,0 +1,6 @@
+id: extension-driven-runtime
+name: Extension-Driven Runtime
+kind: concept
+summary: "The core stays deliberately small while workflow power is pushed into extensions and packages."
+related_harnesses:
+  - pi

@@ -1,0 +1,7 @@
+id: coding-agents
+name: Coding Agents
+kind: concept
+summary: "AI systems whose main body of action is code editing, code understanding, and developer collaboration."
+related_harnesses:
+  - aider
+  - pi

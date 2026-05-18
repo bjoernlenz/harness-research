@@ -1,0 +1,6 @@
+id: git-as-cognition
+name: Git As Cognition
+kind: concept
+summary: "Git history, diffs, and commits become part of the agent's working memory and decision loop."
+related_harnesses:
+  - aider

@@ -1,0 +1,6 @@
+id: stateful-agents
+name: Stateful Agents
+kind: concept
+summary: "Agent behavior is grounded in explicit mutable state that persists across steps."
+related_harnesses:
+  - langgraph

@@ -1,0 +1,6 @@
+id: sandboxed-agency
+name: Sandboxed Agency
+kind: concept
+summary: "Agent action is embodied inside a bounded execution environment that shapes both capability and safety."
+related_harnesses:
+  - openhands

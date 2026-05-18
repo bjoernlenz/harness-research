@@ -1,0 +1,6 @@
+id: developer-tool-embodiment
+name: Developer Tool Embodiment
+kind: concept
+summary: "The agent gains capability by inhabiting the same tools and environments human developers already use."
+related_harnesses:
+  - openhands

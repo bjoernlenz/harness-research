@@ -1,0 +1,6 @@
+id: explicit-state
+name: Explicit State
+kind: concept
+summary: "State is represented as a visible architectural object rather than being left implicit in prompt context."
+related_harnesses:
+  - langgraph

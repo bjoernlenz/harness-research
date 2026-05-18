@@ -1,0 +1,6 @@
+id: team-conversation
+name: Team Conversation
+kind: concept
+summary: "Conversation among multiple participants is treated as a working substrate for coordination rather than mere UI."
+related_harnesses:
+  - autogen

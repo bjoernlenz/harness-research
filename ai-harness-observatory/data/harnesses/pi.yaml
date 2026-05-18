@@ -1,0 +1,120 @@
+id: pi
+name: Pi
+category:
+  - coding-agent
+  - terminal-harness
+primary_language:
+  - typescript
+origin:
+  organization: Earendil Works
+  repo: https://github.com/earendil-works/pi
+  docs: https://pi.dev/docs/latest
+status:
+  maturity: production
+  activity: active
+
+architectural_core:
+  - minimal terminal coding harness
+  - extension-driven runtime
+  - local-first interactive CLI
+
+complexity_focus:
+  - extension boundaries
+  - provider integration
+  - context loading
+  - terminal interaction model
+
+primary_substrate:
+  - terminal
+  - repository
+  - extensions
+  - context-files
+
+trust_model:
+  - minimal-core-transparency
+  - local-context
+  - extension-choice
+
+worldview:
+  short: "A coding agent should stay small at the core and push workflow-specific behavior into extensions, skills, prompts, and packages."
+  notes:
+    - "The official docs explicitly frame Pi as a minimal terminal coding harness."
+    - "The design favors a lean core with customization layered in through extensions rather than a batteries-included agent OS."
+
+memory_model:
+  type:
+    - session-history
+    - context-files
+    - extension-defined
+  notes:
+    - "Core memory is light; project context and richer behavior are expected to come from context files, packages, and extensions."
+
+human_role:
+  - operator
+  - extension-composer
+  - terminal-user
+
+tool_model:
+  - CLI commands
+  - extensions
+  - prompt templates
+  - packages
+
+autonomy_level: medium
+determinism_level: hybrid
+
+playfulness:
+  summary: "The playful move is refusing to bloat the core and instead treating extensibility itself as the main architectural surface."
+  surprising_moves:
+    - "Pi intentionally leaves out things many agent harnesses bundle by default, such as built-in MCP, sub-agents, and plan mode."
+    - "Packages and extensions are treated as the place where the ecosystem becomes larger than the core."
+
+strengths:
+  - "Clear minimal-core philosophy"
+  - "Strong extensibility story"
+  - "Terminal-native workflow"
+
+risks_or_limits:
+  - "Important workflow features may depend on extensions rather than being universally available."
+  - "Minimalism can shift complexity outward into package selection and composition."
+
+failure_modes:
+  - "Extension fragmentation"
+  - "Capability ambiguity"
+  - "Outsourced complexity through packages"
+
+representative_for:
+  - "minimal-core coding harness"
+  - "extension-driven terminal agent"
+
+related_concepts:
+  - local-first-terminal-agents
+  - extension-driven-runtime
+  - context-files
+  - minimal-core-agent-design
+
+metaphor:
+  animal: null
+  transport: cargo bike
+  rationale: "It stays light, practical, and close to the rider, while letting add-ons and carried gear determine how much work it can take on."
+
+what_it_refuses:
+  - "A bloated batteries-included core"
+  - "Bundling every workflow abstraction by default"
+  - "Hiding extensibility behind a monolith"
+
+core_tension: "Its elegance comes from restraint, but that same restraint pushes meaningful complexity outward into extension choice and composition."
+
+relationships:
+  similar_to:
+    - aider
+    - claude-code
+  contrasts_with:
+    - langgraph
+    - autogpt
+  influenced_by: []
+  influences: []
+
+source_quality:
+  confidence: medium
+  last_reviewed: "2026-05-18"

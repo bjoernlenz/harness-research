@@ -1,0 +1,6 @@
+id: data-as-cognitive-substrate
+name: Data As Cognitive Substrate
+kind: concept
+summary: "Knowledge indexes, retrieval layers, and data connectors form the real material the agent thinks over."
+related_harnesses:
+  - llamaindex

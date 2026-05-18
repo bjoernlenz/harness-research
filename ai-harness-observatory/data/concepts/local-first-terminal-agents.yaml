@@ -1,0 +1,6 @@
+id: local-first-terminal-agents
+name: Local-First Terminal Agents
+kind: concept
+summary: "The terminal and local project directory are treated as the primary environment for agent action."
+related_harnesses:
+  - pi

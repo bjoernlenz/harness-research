@@ -1,0 +1,6 @@
+id: permissioned-agency
+name: Permissioned Agency
+kind: concept
+summary: "Agent action is gated by explicit approval boundaries rather than assumed to be safe by default."
+related_harnesses:
+  - claude-code

@@ -1,0 +1,6 @@
+id: traces-as-residue
+name: Traces As Residue
+kind: concept
+summary: "Execution traces become durable residue of what the agent actually did, not just debugging exhaust."
+related_harnesses:
+  - openai-agents-sdk

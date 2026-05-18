@@ -1,0 +1,120 @@
+id: openai-agents-sdk
+name: OpenAI Agents SDK
+category:
+  - agent-framework
+  - typed-runtime
+primary_language:
+  - python
+  - typescript
+origin:
+  organization: OpenAI
+  repo: ""
+  docs: https://platform.openai.com/docs/guides/agents-sdk/
+status:
+  maturity: production
+  activity: active
+
+architectural_core:
+  - agent objects with built-in tools
+  - handoffs between specialized agents
+  - tracing and observability
+
+complexity_focus:
+  - tool integration
+  - handoff design
+  - guardrails
+  - tracing
+
+primary_substrate:
+  - agent-objects
+  - tools
+  - handoffs
+  - traces
+
+trust_model:
+  - explicit-handoffs
+  - trace-visibility
+  - guardrails
+
+worldview:
+  short: "Agentic applications should be built from configurable agents, tools, handoffs, and traces rather than from opaque prompt loops."
+  notes:
+    - "The official docs emphasize specialized agents, tool use, and keeping a full trace of what happened."
+    - "The SDK treats orchestration as code-level composition instead of a hidden runtime."
+
+memory_model:
+  type:
+    - conversation-state
+    - external-context
+    - trace-history
+  notes:
+    - "The first visible emphasis is on execution traces and tool-augmented workflows rather than a deep native memory substrate."
+
+human_role:
+  - framework-developer
+  - orchestrator
+  - evaluator
+
+tool_model:
+  - built-in tools
+  - function tools
+  - handoffs
+  - guardrails
+
+autonomy_level: medium
+determinism_level: hybrid
+
+playfulness:
+  summary: "The lively move is making agent handoffs explicit and traceable instead of treating multi-agent behavior as mystical emergence."
+  surprising_moves:
+    - "Handoffs are a named first-class primitive."
+    - "Observability is positioned as part of agent architecture, not just ops glue."
+
+strengths:
+  - "Clear orchestration primitives"
+  - "Strong observability story"
+  - "Good bridge between single-agent and multi-agent workflows"
+
+risks_or_limits:
+  - "Important design choices still accumulate in tool and handoff architecture."
+  - "Memory appears more delegated than central in the first pass."
+
+failure_modes:
+  - "Handoff mismatch"
+  - "Tool-routing confusion"
+  - "Guardrail gaps"
+
+representative_for:
+  - "handoff-centric agent runtime"
+  - "trace-first orchestration SDK"
+
+related_concepts:
+  - handoffs
+  - guardrails
+  - traces-as-residue
+  - tool-augmented-agents
+
+metaphor:
+  animal: null
+  transport: airport-hub
+  rationale: "It coordinates departures, arrivals, transfers, and routing between specialized actors while keeping movement visible."
+
+what_it_refuses:
+  - "Single giant undifferentiated agent prompts"
+  - "Unobservable multi-agent behavior"
+  - "Treating orchestration as hidden magic"
+
+core_tension: "Its strength is modular orchestration with explicit traces and handoffs. Its tradeoff is that the modularity can move complexity into system design and coordination boundaries."
+
+relationships:
+  similar_to:
+    - pydantic-ai
+    - autogen
+  contrasts_with:
+    - aider
+  influenced_by: []
+  influences: []
+
+source_quality:
+  confidence: medium
+  last_reviewed: "2026-05-18"

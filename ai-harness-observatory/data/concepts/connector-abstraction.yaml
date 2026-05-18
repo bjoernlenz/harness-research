@@ -1,0 +1,6 @@
+id: connector-abstraction
+name: Connector Abstraction
+kind: concept
+summary: "Different model and service providers are normalized through connector layers so orchestration does not bind to one raw surface."
+related_harnesses:
+  - semantic-kernel

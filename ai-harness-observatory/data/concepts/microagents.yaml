@@ -1,0 +1,6 @@
+id: microagents
+name: Microagents
+kind: concept
+summary: "Specialized prompts or small role units locally extend the agent with domain-specific behavior."
+related_harnesses:
+  - openhands

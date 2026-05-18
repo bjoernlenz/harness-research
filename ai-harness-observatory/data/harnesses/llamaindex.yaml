@@ -1,0 +1,121 @@
+id: llamaindex
+name: LlamaIndex
+category:
+  - agent-framework
+  - data-agent-runtime
+primary_language:
+  - python
+  - typescript
+origin:
+  organization: LlamaIndex
+  repo: ""
+  docs: https://docs.llamaindex.ai/
+status:
+  maturity: production
+  activity: active
+
+architectural_core:
+  - agents over data
+  - event-driven workflows
+  - retrieval and tool composition
+
+complexity_focus:
+  - data connectors
+  - retrieval architecture
+  - workflow design
+  - multi-agent over knowledge sources
+
+primary_substrate:
+  - data
+  - indexes
+  - workflows
+  - tools
+
+trust_model:
+  - data-grounding
+  - retrieval-relevance
+  - workflow-structure
+
+worldview:
+  short: "Agent systems become powerful when they are built directly over data, retrieval pipelines, and event-driven workflows rather than only over generic tool loops."
+  notes:
+    - "The official docs frame LlamaIndex as a framework for building agents over your data with agents and workflows."
+    - "Workflows are explicitly event-driven and are described as a way to combine RAG data sources and multiple agents."
+
+memory_model:
+  type:
+    - indexes
+    - retrieval-context
+    - workflow-state
+  notes:
+    - "Memory here looks much closer to data access and retrieval substrate than to conversational continuity alone."
+
+human_role:
+  - data-architect
+  - workflow-designer
+  - agent-builder
+
+tool_model:
+  - data connectors
+  - retrieval tools
+  - agents
+  - workflows
+
+autonomy_level: high
+determinism_level: hybrid
+
+playfulness:
+  summary: "The lively move is refusing to separate agents from data architecture. Retrieval, workflows, and agents are treated as one continuous design surface."
+  surprising_moves:
+    - "Workflows let event-driven software and agentic RAG touch directly."
+    - "The framework keeps circling back to data as the true center of gravity."
+
+strengths:
+  - "Strong data-centered worldview"
+  - "Good bridge between RAG and agents"
+  - "Flexible workflow layer"
+
+risks_or_limits:
+  - "Retrieval and connector complexity can dominate everything else."
+  - "The architecture can sprawl across data, workflows, and agents at once."
+
+failure_modes:
+  - "Retrieval miss"
+  - "Connector sprawl"
+  - "Workflow complexity overwhelming insight"
+
+representative_for:
+  - "data-centered agent runtime"
+  - "agentic RAG framework"
+
+related_concepts:
+  - data-as-cognitive-substrate
+  - agentic-rag
+  - workflow-over-retrieval
+  - event-driven-agency
+
+metaphor:
+  animal: beaver
+  transport: null
+  rationale: "It works through structuring the environment itself, building channels and flow through material gathered from the surrounding data landscape."
+
+what_it_refuses:
+  - "Treating data access as a secondary attachment to generic agents"
+  - "Separating retrieval architecture from agent architecture"
+  - "Pure chat-first abstractions without grounding in knowledge surfaces"
+
+core_tension: "Its strength is making data and retrieval central to agent design. Its tradeoff is that retrieval architecture can become the dominant complexity center and overshadow everything else."
+
+relationships:
+  similar_to:
+    - autogen
+    - langgraph
+  contrasts_with:
+    - aider
+    - claude-code
+  influenced_by: []
+  influences: []
+
+source_quality:
+  confidence: medium
+  last_reviewed: "2026-05-18"

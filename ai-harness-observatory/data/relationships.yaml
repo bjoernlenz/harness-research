@@ -1,0 +1,153 @@
+relationships:
+  - from: aider
+    relation: contrasts_with
+    to: langgraph
+    note: "Aider keeps agency close to the repository and human collaboration, while LangGraph externalizes agency into explicit graph control flow."
+  - from: pi
+    relation: contrasts_with
+    to: langgraph
+    note: "Pi favors a minimal terminal core with extensions, while LangGraph invests directly in explicit orchestration structure."
+  - from: pydantic-ai
+    relation: different_complexity_center_than
+    to: aider
+    note: "PydanticAI pushes burden into schemas and validation contracts; Aider pushes it into repo context and editing flow."
+  - from: langgraph
+    relation: embodies_concept
+    to: graph-orchestration
+    note: "Its runtime is explicitly organized around graph transitions and stateful control flow."
+  - from: aider
+    relation: playful_parallel_to
+    to: git-as-cognition
+    note: "Git becomes more than storage; it participates in the agent's practical loop of understanding and change."
+  - from: aider
+    relation: trusts_through
+    to: diff-as-interface
+    note: "Aider earns trust by keeping change visible in concrete diffs that a human can inspect and negotiate."
+  - from: pi
+    relation: embodies_concept
+    to: extension-driven-runtime
+    note: "Pi keeps the core narrow and treats packages and extensions as the main place where power accumulates."
+  - from: pi
+    relation: externalizes_through
+    to: extension-driven-runtime
+    note: "Pi pushes capability outward into extensions and packages rather than loading more behavior into the core."
+  - from: pydantic-ai
+    relation: embodies_concept
+    to: validation-rails
+    note: "Validation and explicit structure are central rails around otherwise stochastic model behavior."
+  - from: pydantic-ai
+    relation: trusts_through
+    to: validation-rails
+    note: "PydanticAI asks to be trusted through typed boundaries, validation, and explicit contracts."
+  - from: openai-agents-sdk
+    relation: embodies_concept
+    to: handoffs
+    note: "The SDK makes transfers between specialized agents an explicit orchestration primitive."
+  - from: openai-agents-sdk
+    relation: embodies_concept
+    to: traces-as-residue
+    note: "Execution traces are part of the architecture's visible residue and observability story."
+  - from: openai-agents-sdk
+    relation: trusts_through
+    to: traces-as-residue
+    note: "The SDK makes behavior trustworthy by leaving a visible trace of routing, tools, and handoffs."
+  - from: autogen
+    relation: embodies_concept
+    to: multi-agent-theater
+    note: "Teams, swarms, and group chats are explicit runtime patterns rather than loose metaphor."
+  - from: autogen
+    relation: externalizes_through
+    to: agent-team
+    note: "AutoGen moves cognition outward into teams and coordinated agent roles rather than keeping it inside one actor."
+  - from: autogen
+    relation: different_complexity_center_than
+    to: openai-agents-sdk
+    note: "AutoGen pushes harder into team coordination and runtime layering, while the OpenAI Agents SDK concentrates on agents, tools, handoffs, and traces."
+  - from: openhands
+    relation: embodies_concept
+    to: sandbox-as-agent-body
+    note: "The sandbox is part of the agent's working body rather than just a passive guardrail."
+  - from: openhands
+    relation: externalizes_through
+    to: sandboxed-agency
+    note: "OpenHands externalizes capability into a configurable sandboxed environment that becomes part of the agent body."
+  - from: openhands
+    relation: surprisingly_like
+    to: developer-tool-embodiment
+    note: "OpenHands feels strongest when the agent inhabits the same practical surfaces a human developer would use."
+  - from: claude-code
+    relation: embodies_concept
+    to: unix-composability
+    note: "The tool is built to cooperate with shell workflows instead of replacing them."
+  - from: claude-code
+    relation: embodies_concept
+    to: permissioned-agency
+    note: "Permission requests are part of the architecture's trust model, not an accidental UI add-on."
+  - from: claude-code
+    relation: trusts_through
+    to: permissioned-agency
+    note: "Claude Code builds trust by making risky actions conditional on visible permission boundaries."
+  - from: cursor
+    relation: embodies_concept
+    to: mode-gated-agency
+    note: "Ask, Agent, Manual, and Custom modes make capability boundaries a visible part of the workflow."
+  - from: cursor
+    relation: embodies_concept
+    to: background-agents
+    note: "Cursor can offload coding work into remote asynchronous agents that continue outside the immediate foreground session."
+  - from: cursor
+    relation: externalizes_through
+    to: background-agents
+    note: "Cursor externalizes heavier work into remote agents rather than forcing everything through one foreground session."
+  - from: cursor
+    relation: different_complexity_center_than
+    to: claude-code
+    note: "Cursor pushes more complexity into mode design and remote-agent environment setup, while Claude Code leans harder on terminal composability and permissioned local workflows."
+  - from: semantic-kernel
+    relation: embodies_concept
+    to: kernel-as-cognitive-spine
+    note: "The kernel is the shared structural center through which services and plugins are coordinated."
+  - from: semantic-kernel
+    relation: externalizes_through
+    to: plugins-as-capabilities
+    note: "Semantic Kernel pushes capability outward into plugins and connectors instead of hardwiring every skill into one agent loop."
+  - from: semantic-kernel
+    relation: different_complexity_center_than
+    to: openai-agents-sdk
+    note: "Semantic Kernel concentrates complexity into the kernel, plugins, and connectors, while the OpenAI Agents SDK emphasizes agents, tools, handoffs, and traces."
+  - from: semantic-kernel
+    relation: contrasts_with
+    to: aider
+    note: "Semantic Kernel is infrastructural middleware for capability composition, while Aider stays close to the repository and concrete edit loop."
+  - from: llamaindex
+    relation: embodies_concept
+    to: data-as-cognitive-substrate
+    note: "LlamaIndex treats indexes, retrieval, and data connectors as the real terrain over which agent behavior operates."
+  - from: llamaindex
+    relation: embodies_concept
+    to: agentic-rag
+    note: "The framework explicitly ties agents and workflows to retrieval over knowledge sources."
+  - from: llamaindex
+    relation: externalizes_through
+    to: data-as-cognitive-substrate
+    note: "LlamaIndex externalizes cognition into indexes, retrieval layers, and the surrounding knowledge substrate."
+  - from: llamaindex
+    relation: different_complexity_center_than
+    to: langgraph
+    note: "LlamaIndex pushes complexity harder into retrieval and data substrate, while LangGraph pushes it into explicit control flow and state structure."
+  - from: llamaindex
+    relation: contrasts_with
+    to: claude-code
+    note: "LlamaIndex centers data and retrieval as the substrate of agency, while Claude Code centers terminal-native collaboration over codebases."
+  - from: langgraph
+    relation: trusts_through
+    to: explicit-state
+    note: "LangGraph asks to be trusted through explicit state, visible transitions, and checkpointed control flow."
+  - from: langgraph
+    relation: externalizes_through
+    to: explicit-state
+    note: "LangGraph externalizes agent memory and control into state and transition structure rather than keeping them latent in prompts."
+  - from: openai-agents-sdk
+    relation: externalizes_through
+    to: tool-routing
+    note: "The SDK externalizes capability into tools, handoffs, and routing primitives rather than relying on one monolithic agent loop."

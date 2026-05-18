@@ -1,0 +1,95 @@
+id: example-harness
+name: Example Harness
+category:
+  - agent-framework
+primary_language:
+  - python
+origin:
+  organization: Example Org
+  repo: https://github.com/example/example-harness
+  docs: https://example.com/docs
+status:
+  maturity: experimental
+  activity: active
+
+architectural_core:
+  - explicit orchestration
+  - tool-using workflows
+
+complexity_focus:
+  - orchestration code
+  - state management
+
+primary_substrate:
+  - source-code
+  - chat
+  - state
+
+trust_model:
+  - visible-edits
+  - human-review
+
+worldview:
+  short: "Agents are structured workflows with explicit state and tool boundaries."
+  notes:
+    - "The system favors inspectable orchestration over unconstrained autonomy."
+
+memory_model:
+  type:
+    - conversational
+    - external-state
+  notes:
+    - "Memory is mostly operational state rather than a deep learning substrate."
+
+human_role:
+  - engineer-as-orchestrator
+  - reviewer
+
+tool_model:
+  - function tools
+  - APIs
+
+autonomy_level: medium
+determinism_level: hybrid
+
+playfulness:
+  summary: "The interesting move is making orchestration visible enough to inspect and steer."
+  surprising_moves:
+    - "The runtime treats tool boundaries as part of the cognitive design."
+
+strengths:
+  - "Inspectable architecture"
+
+risks_or_limits:
+  - "Explicit structure can become heavy."
+
+failure_modes:
+  - "Context drift"
+  - "Abstraction overload"
+
+representative_for:
+  - "explicit orchestration harness"
+
+related_concepts:
+  - explicit-orchestration
+  - human-in-the-loop
+
+metaphor:
+  animal: owl
+  transport: null
+  rationale: "It feels like a perched guide that watches, responds calmly, and stays oriented toward the human."
+
+what_it_refuses:
+  - "Unbounded autonomy without visible structure"
+
+core_tension: "The more explicit the architecture becomes, the easier it is to inspect and the easier it is to overbuild."
+
+relationships:
+  similar_to: []
+  contrasts_with: []
+  influenced_by: []
+  influences: []
+
+source_quality:
+  confidence: low
+  last_reviewed: "2026-05-18"

@@ -1,0 +1,122 @@
+id: openhands
+name: OpenHands
+category:
+  - coding-agent
+  - agent-platform
+primary_language:
+  - python
+  - typescript
+origin:
+  organization: All Hands AI
+  repo: https://github.com/All-Hands-AI/OpenHands
+  docs: https://docs.all-hands.dev/
+status:
+  maturity: production
+  activity: active
+
+architectural_core:
+  - all-batteries-included coding agent
+  - sandboxed execution environment
+  - GUI, CLI, cloud, and headless entrypoints
+
+complexity_focus:
+  - sandbox setup
+  - repository integration
+  - agent customization
+  - tooling breadth
+
+primary_substrate:
+  - sandbox
+  - repository
+  - tools
+  - agent-skills
+
+trust_model:
+  - environment-control
+  - supervision
+  - sandbox-boundaries
+
+worldview:
+  short: "A coding agent should have the same practical affordances as a human developer: code, shell, browser, APIs, repos, and a configurable sandbox to act inside."
+  notes:
+    - "The docs emphasize that OpenHands can modify code, run commands, browse the web, call APIs, and work across GUI, CLI, and headless modes."
+    - "Customization surfaces such as MCP, microagents, setup scripts, and custom sandboxes are treated as part of the normal workflow."
+
+memory_model:
+  type:
+    - repository-state
+    - session-history
+    - config-and-skill-context
+  notes:
+    - "The main residue seems to live in repo state, sandbox setup, and customization files rather than a strongly typed memory core."
+
+human_role:
+  - operator
+  - supervisor
+  - environment-designer
+
+tool_model:
+  - shell commands
+  - browser
+  - APIs
+  - MCP
+  - custom sandbox
+
+autonomy_level: high
+determinism_level: hybrid
+
+playfulness:
+  summary: "The sideways move is giving the agent a broad practical body and then letting users tune the environment around it rather than narrowing the task shape too early."
+  surprising_moves:
+    - "Microagents and setup scripts let the repo teach the agent how to behave."
+    - "The same system spans cloud, GUI, CLI, and headless use without abandoning the coding-agent identity."
+
+strengths:
+  - "Wide practical action surface"
+  - "Strong customization story"
+  - "Embodied developer-tool worldview"
+
+risks_or_limits:
+  - "Breadth can turn into system heaviness."
+  - "A large action surface increases configuration and safety complexity."
+
+failure_modes:
+  - "Sandbox complexity"
+  - "Tool-surface overload"
+  - "Configuration drift"
+
+representative_for:
+  - "fully embodied coding agent"
+  - "sandbox-centered agent platform"
+
+related_concepts:
+  - sandbox-as-agent-body
+  - microagents
+  - developer-tool-embodiment
+  - mcp-as-tool-fabric
+
+metaphor:
+  animal: octopus
+  transport: null
+  rationale: "It has many active limbs, works across a broad environment, and adapts by extending reach through tools and surroundings."
+
+what_it_refuses:
+  - "A narrow single-interface agent body"
+  - "Restricting coding agency to chat-only abstraction"
+  - "Separating the agent from the practical tooling of development work"
+
+core_tension: "Its strength is giving the agent a full practical body. Its tradeoff is that the richer the body becomes, the harder it is to keep behavior simple, predictable, and lightweight."
+
+relationships:
+  similar_to:
+    - claude-code
+    - aider
+  contrasts_with:
+    - pydantic-ai
+    - pi
+  influenced_by: []
+  influences: []
+
+source_quality:
+  confidence: medium
+  last_reviewed: "2026-05-18"

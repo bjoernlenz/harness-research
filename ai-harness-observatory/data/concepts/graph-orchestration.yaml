@@ -1,0 +1,6 @@
+id: graph-orchestration
+name: Graph Orchestration
+kind: concept
+summary: "Agency is represented as explicit nodes, edges, transitions, and stateful paths."
+related_harnesses:
+  - langgraph

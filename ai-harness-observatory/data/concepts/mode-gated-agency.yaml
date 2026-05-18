@@ -1,0 +1,6 @@
+id: mode-gated-agency
+name: Mode-Gated Agency
+kind: concept
+summary: "The harness changes what the agent is allowed to do by placing it in explicit task-shaped modes."
+related_harnesses:
+  - cursor

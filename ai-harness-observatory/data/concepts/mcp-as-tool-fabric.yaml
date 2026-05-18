@@ -1,0 +1,7 @@
+id: mcp-as-tool-fabric
+name: MCP As Tool Fabric
+kind: concept
+summary: "MCP becomes connective tissue that lets the agent bind external tools into a larger working body."
+related_harnesses:
+  - openhands
+  - claude-code

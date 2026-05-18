@@ -1,0 +1,6 @@
+id: plugins-as-capabilities
+name: Plugins As Capabilities
+kind: concept
+summary: "Capabilities are packaged as plugins that the runtime can compose rather than as ad hoc one-off integrations."
+related_harnesses:
+  - semantic-kernel

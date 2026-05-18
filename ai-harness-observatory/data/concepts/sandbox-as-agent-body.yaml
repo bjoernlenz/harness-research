@@ -1,0 +1,6 @@
+id: sandbox-as-agent-body
+name: Sandbox As Agent Body
+kind: concept
+summary: "The sandbox is the place where the agent actually lives and acts, not just a safety wrapper around commands."
+related_harnesses:
+  - openhands

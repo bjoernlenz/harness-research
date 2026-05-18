@@ -1,0 +1,6 @@
+id: structured-output
+name: Structured Output
+kind: concept
+summary: "Model output is expected to conform to defined structures rather than loose free-form text alone."
+related_harnesses:
+  - pydantic-ai

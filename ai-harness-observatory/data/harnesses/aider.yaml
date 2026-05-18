@@ -1,0 +1,120 @@
+id: aider
+name: Aider
+category:
+  - coding-agent
+  - repo-companion
+primary_language:
+  - python
+origin:
+  organization: Aider
+  repo: https://github.com/Aider-AI/aider
+  docs: https://aider.chat/
+status:
+  maturity: production
+  activity: active
+
+architectural_core:
+  - chat-driven code editing
+  - repo-aware context management
+  - git-centered workflow
+
+complexity_focus:
+  - context engineering
+  - code diffing
+  - repo state
+  - human approval
+
+primary_substrate:
+  - repository
+  - git
+  - chat
+  - diff
+
+trust_model:
+  - repository-closeness
+  - diff-review
+  - human-approval
+
+worldview:
+  short: "A coding agent should live close to the repository and collaborate through concrete edits rather than abstract plans."
+  notes:
+    - "The repo and git workflow act as the durable substrate for cognition."
+    - "Tight human collaboration is a feature, not a temporary compromise."
+
+memory_model:
+  type:
+    - chat-history
+    - repository-state
+    - git-history
+  notes:
+    - "Memory is mostly carried by files, diffs, and commit history instead of a separate memory system."
+
+human_role:
+  - collaborator
+  - approver
+  - prompt-author
+
+tool_model:
+  - CLI commands
+  - git operations
+  - code editing
+
+autonomy_level: medium
+determinism_level: hybrid
+
+playfulness:
+  summary: "The fun move is treating the repository itself as the agent's working body and memory surface."
+  surprising_moves:
+    - "Git becomes part of the cognitive loop."
+    - "Chat stays close to concrete diffs instead of drifting into agent theater."
+
+strengths:
+  - "Strong repo grounding"
+  - "Practical human collaboration"
+  - "Fast path from prompt to edit"
+
+risks_or_limits:
+  - "Less suited to broad multi-agent orchestration."
+  - "Heavy reliance on the repository can limit abstraction."
+
+failure_modes:
+  - "Context drift in large repos"
+  - "Patch misalignment"
+  - "Repo-local optimization at the expense of broader planning"
+
+representative_for:
+  - "repo-close coding agent"
+  - "diff-mediated collaboration"
+
+related_concepts:
+  - git-as-cognition
+  - repository-as-memory
+  - human-in-the-loop
+  - coding-agents
+  - diff-as-interface
+  - agent-as-collaborator
+
+metaphor:
+  animal: sheepdog
+  transport: null
+  rationale: "It stays close to the working terrain, responds to guidance, and helps move concrete changes where they need to go."
+
+what_it_refuses:
+  - "Elaborate agent theater"
+  - "Heavy orchestration abstractions"
+  - "Separation from the actual codebase"
+
+core_tension: "Its strength is staying close to the repo. Its limitation is that repo-closeness can make broader autonomous planning feel secondary."
+
+relationships:
+  similar_to:
+    - claude-code
+    - opencode
+  contrasts_with:
+    - langgraph
+  influenced_by: []
+  influences: []
+
+source_quality:
+  confidence: medium
+  last_reviewed: "2026-05-18"

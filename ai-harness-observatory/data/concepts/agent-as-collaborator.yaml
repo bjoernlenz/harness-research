@@ -1,0 +1,6 @@
+id: agent-as-collaborator
+name: Agent As Collaborator
+kind: concept
+summary: "The system assumes the agent works best as a partner in an ongoing human loop rather than as a sealed autonomous actor."
+related_harnesses:
+  - aider

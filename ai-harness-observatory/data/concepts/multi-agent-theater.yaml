@@ -1,0 +1,6 @@
+id: multi-agent-theater
+name: Multi-Agent Theater
+kind: concept
+summary: "Roles, teams, and agent interactions become the main stage on which capability is organized."
+related_harnesses:
+  - autogen

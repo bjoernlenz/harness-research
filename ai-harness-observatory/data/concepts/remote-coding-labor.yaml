@@ -1,0 +1,6 @@
+id: remote-coding-labor
+name: Remote Coding Labor
+kind: concept
+summary: "The actual coding work can be delegated to a separate machine that clones the repo, runs commands, and pushes changes back."
+related_harnesses:
+  - cursor

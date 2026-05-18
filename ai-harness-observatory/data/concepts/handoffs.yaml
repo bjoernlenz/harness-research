@@ -1,0 +1,6 @@
+id: handoffs
+name: Handoffs
+kind: concept
+summary: "Control is explicitly transferred between specialized agents rather than remaining inside one undifferentiated loop."
+related_harnesses:
+  - openai-agents-sdk

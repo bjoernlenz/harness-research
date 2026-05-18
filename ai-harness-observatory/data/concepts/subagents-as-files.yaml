@@ -1,0 +1,6 @@
+id: subagents-as-files
+name: Subagents As Files
+kind: concept
+summary: "Specialized assistants are defined as ordinary files, making coordination structure legible and shareable."
+related_harnesses:
+  - claude-code

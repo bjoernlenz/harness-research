@@ -1,0 +1,8 @@
+id: memory-as-residue
+name: Memory As Residue
+kind: concept
+summary: "Memory is created through durable artifacts, traces, files, and state surfaces rather than only through conversational recall."
+related_harnesses:
+  - aider
+  - openai-agents-sdk
+  - langgraph

@@ -1,0 +1,6 @@
+id: tool-contracts
+name: Tool Contracts
+kind: concept
+summary: "Tools are defined by explicit interfaces, validated inputs, and predictable output expectations."
+related_harnesses:
+  - pydantic-ai

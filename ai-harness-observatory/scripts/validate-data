@@ -1,0 +1,95 @@
+#!/usr/bin/env python3
+
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+import yaml
+
+
+ROOT = Path(__file__).resolve().parent.parent
+HARNESS_DIR = ROOT / "data" / "harnesses"
+REQUIRED_FIELDS = [
+    "id",
+    "name",
+    "architectural_core",
+    "complexity_focus",
+    "primary_substrate",
+    "trust_model",
+    "failure_modes",
+    "representative_for",
+    "related_concepts",
+]
+
+
+def load_yaml(path: Path) -> dict:
+    with path.open("r", encoding="utf-8") as handle:
+        data = yaml.safe_load(handle) or {}
+    if not isinstance(data, dict):
+        raise ValueError("top-level YAML value must be a mapping")
+    return data
+
+
+def has_nested(mapping: dict, dotted_key: str) -> bool:
+    current = mapping
+    for part in dotted_key.split("."):
+        if not isinstance(current, dict) or part not in current:
+            return False
+        current = current[part]
+    if current is None:
+        return False
+    if isinstance(current, str):
+        return current.strip() != ""
+    if isinstance(current, list):
+        return len(current) > 0
+    return True
+
+
+def validate_file(path: Path) -> list[str]:
+    errors: list[str] = []
+    data = load_yaml(path)
+    for key in REQUIRED_FIELDS:
+        if not has_nested(data, key):
+            errors.append(f"missing required field: {key}")
+    for key in (
+        "worldview.short",
+        "playfulness.summary",
+        "core_tension",
+        "metaphor.rationale",
+    ):
+        if not has_nested(data, key):
+            errors.append(f"missing required field: {key}")
+    return errors
+
+
+def main() -> int:
+    yaml_files = sorted(
+        path for path in HARNESS_DIR.glob("*.yaml") if not path.name.startswith("_")
+    )
+    if not yaml_files:
+        print("No harness YAML files found.", file=sys.stderr)
+        return 1
+
+    failed = False
+    for path in yaml_files:
+        try:
+            errors = validate_file(path)
+        except Exception as exc:  # pragma: no cover - first-pass script
+            failed = True
+            print(f"[FAIL] {path.name}: {exc}")
+            continue
+
+        if errors:
+            failed = True
+            print(f"[FAIL] {path.name}")
+            for error in errors:
+                print(f"  - {error}")
+        else:
+            print(f"[OK]   {path.name}")
+
+    return 1 if failed else 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

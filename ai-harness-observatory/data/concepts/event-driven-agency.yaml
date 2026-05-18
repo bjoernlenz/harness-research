@@ -1,0 +1,6 @@
+id: event-driven-agency
+name: Event-Driven Agency
+kind: concept
+summary: "Agent behavior is organized through events, handlers, and runtimes rather than only through prompt loops."
+related_harnesses:
+  - autogen

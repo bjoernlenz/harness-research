@@ -1,0 +1,6 @@
+id: typed-prompts
+name: Typed Prompts
+kind: concept
+summary: "Prompting is constrained or shaped by explicit structured types and contracts."
+related_harnesses:
+  - pydantic-ai

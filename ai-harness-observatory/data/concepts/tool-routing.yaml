@@ -1,0 +1,6 @@
+id: tool-routing
+name: Tool Routing
+kind: concept
+summary: "The main architectural question becomes which tool or specialist should be invoked, and how control should move between them."
+related_harnesses:
+  - openai-agents-sdk

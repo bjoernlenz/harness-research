@@ -1,0 +1,6 @@
+id: kernel-as-cognitive-spine
+name: Kernel As Cognitive Spine
+kind: concept
+summary: "A central kernel coordinates services and capabilities, acting as the structural spine of the system."
+related_harnesses:
+  - semantic-kernel

@@ -1,0 +1,120 @@
+id: autogen
+name: AutoGen
+category:
+  - agent-framework
+  - multi-agent-system
+primary_language:
+  - python
+origin:
+  organization: Microsoft
+  repo: https://github.com/microsoft/autogen
+  docs: https://microsoft.github.io/autogen/stable/
+status:
+  maturity: production
+  activity: active
+
+architectural_core:
+  - conversational agents and teams
+  - event-driven multi-agent core
+  - extensions for runtimes, tools, and models
+
+complexity_focus:
+  - team topology
+  - message routing
+  - termination conditions
+  - extensions and runtimes
+
+primary_substrate:
+  - conversation
+  - teams
+  - events
+  - extensions
+
+trust_model:
+  - team-structure
+  - explicit-termination
+  - runtime-layering
+
+worldview:
+  short: "Useful agent systems emerge from coordinated agents, teams, and event-driven runtimes rather than from one monolithic assistant."
+  notes:
+    - "The stable docs split the world into AgentChat, Core, Extensions, and Studio."
+    - "Conversation and team structure remain central even as the framework offers deeper event-driven machinery underneath."
+
+memory_model:
+  type:
+    - conversation-history
+    - team-state
+    - pluggable-memory
+  notes:
+    - "Memory exists, but the stronger architectural signal is coordination through messages, teams, and runtime state."
+
+human_role:
+  - team-designer
+  - orchestrator
+  - researcher
+
+tool_model:
+  - tools
+  - code executors
+  - MCP
+  - extensions
+
+autonomy_level: high
+determinism_level: hybrid
+
+playfulness:
+  summary: "The fun move is how unapologetically social the architecture is: teams, group chats, swarms, and orchestrators become practical runtime elements."
+  surprising_moves:
+    - "The framework exposes both conversational and event-driven layers instead of forcing only one mental model."
+    - "Extensions make the ecosystem feel more like a kit for agent societies than a single harness."
+
+strengths:
+  - "Rich multi-agent design space"
+  - "Clear layering from prototyping to deeper systems"
+  - "Strong extension surface"
+
+risks_or_limits:
+  - "The design space can sprawl quickly."
+  - "Multi-agent coordination can accumulate complexity faster than capability."
+
+failure_modes:
+  - "Agent-team sprawl"
+  - "Message-loop confusion"
+  - "Termination ambiguity"
+
+representative_for:
+  - "team-based agent framework"
+  - "multi-agent coordination runtime"
+
+related_concepts:
+  - multi-agent-theater
+  - team-conversation
+  - event-driven-agency
+  - termination-conditions
+
+metaphor:
+  animal: flock-of-starlings
+  transport: null
+  rationale: "Its intelligence comes from many moving participants coordinating patterns rather than from a single heavy vehicle."
+
+what_it_refuses:
+  - "A single-agent-only worldview"
+  - "One-layer orchestration models"
+  - "Keeping coordination implicit"
+
+core_tension: "Its expressive power comes from team coordination and layered runtimes, but those same layers can make the system feel intricate before it feels stable."
+
+relationships:
+  similar_to:
+    - openai-agents-sdk
+    - langgraph
+  contrasts_with:
+    - aider
+    - pi
+  influenced_by: []
+  influences: []
+
+source_quality:
+  confidence: medium
+  last_reviewed: "2026-05-18"

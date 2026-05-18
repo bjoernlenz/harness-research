@@ -1,0 +1,7 @@
+id: shell-as-agent-body
+name: Shell As Agent Body
+kind: concept
+summary: "The shell is the practical body through which the agent senses, acts, and composes work."
+related_harnesses:
+  - claude-code
+  - pi

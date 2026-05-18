@@ -1,0 +1,120 @@
+id: claude-code
+name: Claude Code
+category:
+  - coding-agent
+  - terminal-harness
+primary_language:
+  - typescript
+origin:
+  organization: Anthropic
+  repo: ""
+  docs: https://docs.anthropic.com/en/docs/claude-code/overview
+status:
+  maturity: production
+  activity: active
+
+architectural_core:
+  - terminal-native coding agent
+  - composable unix-style workflows
+  - permissioned tool use
+
+complexity_focus:
+  - context management
+  - permissions and safety
+  - terminal workflow composition
+  - subagent and MCP customization
+
+primary_substrate:
+  - terminal
+  - repository
+  - context
+  - permissions
+
+trust_model:
+  - permissioned-agency
+  - terminal-transparency
+  - human-approval
+
+worldview:
+  short: "Coding agency should live directly in the terminal, compose with existing developer tools, and ask for permission when actions cross risk boundaries."
+  notes:
+    - "Anthropic’s docs explicitly frame Claude Code as agentic coding that lives in the terminal."
+    - "The overview and security docs emphasize composability, scriptability, MCP, and explicit permissions for actions like editing files and running commands."
+
+memory_model:
+  type:
+    - session-history
+    - repository-context
+    - config-and-subagents
+  notes:
+    - "The visible architecture emphasizes context, configuration, and reusable subagents more than a separate memory store."
+
+human_role:
+  - operator
+  - approver
+  - subagent-designer
+
+tool_model:
+  - shell commands
+  - MCP
+  - subagents
+  - hierarchical settings
+
+autonomy_level: medium
+determinism_level: hybrid
+
+playfulness:
+  summary: "The elegant move is importing unix composability into coding agency instead of building a sealed bespoke environment."
+  surprising_moves:
+    - "Pipes and scripts are treated as a native way to compose agency."
+    - "Subagents are configured as markdown files with YAML frontmatter, which keeps specialization tangible."
+
+strengths:
+  - "Strong terminal ergonomics"
+  - "Clear permission model"
+  - "Composable with existing tooling"
+
+risks_or_limits:
+  - "The terminal-native style can be less legible to users who want visible orchestration structure."
+  - "Context and permission design still require discipline."
+
+failure_modes:
+  - "Context overreach"
+  - "Permission fatigue"
+  - "Sparse high-level orchestration visibility"
+
+representative_for:
+  - "terminal-native collaborator"
+  - "permissioned coding agent"
+
+related_concepts:
+  - unix-composability
+  - permissioned-agency
+  - subagents-as-files
+  - terminal-as-agent-body
+
+metaphor:
+  animal: border-collie
+  transport: null
+  rationale: "It is agile, attentive, responsive to commands, and strongest when working in close collaboration with a human operator."
+
+what_it_refuses:
+  - "A sealed GUI-only agent world"
+  - "Unbounded action without permission checks"
+  - "Ignoring existing developer toolchains"
+
+core_tension: "Its strength is terminal intimacy and composability. Its tradeoff is that staying close to raw developer workflows can make higher-level orchestration feel intentionally sparse."
+
+relationships:
+  similar_to:
+    - aider
+    - pi
+    - openhands
+  contrasts_with:
+    - langgraph
+  influenced_by: []
+  influences: []
+
+source_quality:
+  confidence: medium
+  last_reviewed: "2026-05-18"

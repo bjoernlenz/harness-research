@@ -1,0 +1,7 @@
+id: tool-augmented-agents
+name: Tool-Augmented Agents
+kind: concept
+summary: "Agents are defined by their access to tools and external capabilities rather than by text generation alone."
+related_harnesses:
+  - openai-agents-sdk
+  - openhands

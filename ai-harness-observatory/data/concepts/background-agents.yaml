@@ -1,0 +1,6 @@
+id: background-agents
+name: Background Agents
+kind: concept
+summary: "Agent work runs asynchronously in a remote environment while the user supervises or follows up from the main interface."
+related_harnesses:
+  - cursor
