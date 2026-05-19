@@ -40,14 +40,14 @@ The current repo still contains duplicated harness material in:
 - `data/harnesses/*.yaml`
 - `notes/harnesses/*.md`
 
-This should be treated as a transitional state, not a permanent design.
+This should be treated as a resolved transitional issue, not a permanent design.
 
 Target direction:
 
 - harness YAML remains canonical
-- harness Markdown either:
-  - becomes a thin human wrapper generated from YAML, or
-  - is retired and replaced by richer HTML browse surfaces
+- harness Markdown remains a thin human wrapper
+- richer interpretation belongs in `notes/explorations/harnesses/*.md`
+- primary browsing belongs in generated `site/harnesses/*.html`
 
 Markdown should remain strongest where it adds real value:
 
@@ -112,15 +112,15 @@ This means new ontology fields should usually trigger one of:
 
 These are the tasks that should be treated as active until resolved:
 
-### 1. Remove harness duplication
+### 1. Keep harness wrappers thin
 
-Decide and implement one of:
+Do not let `notes/harnesses/*.md` regrow into parallel full records.
 
-- generated harness Markdown from YAML
-- thin wrapper harness Markdown
-- no harness Markdown, HTML only
+They should remain small bridge notes pointing to:
 
-Do not keep large duplicated descriptive bodies in both places indefinitely.
+- canonical YAML
+- generated harness pages
+- harness human-story notes
 
 ### 2. Deepen generated surfaces
 
@@ -170,7 +170,7 @@ One concept, many links.
 
 The clean next implementation pass is:
 
-1. reduce or remove duplicated harness Markdown once HTML browse surfaces are sufficient
-2. selectively deepen only the concept clusters that still feel cold
-3. make relationship, concept, and comparison navigation denser from the site itself
+1. selectively deepen only the concept clusters that still feel cold
+2. make relationship, concept, and comparison navigation denser from the site itself
+3. keep harness wrappers thin if future edits touch them
 4. keep link checking in the loop with `./scripts/check-site-links`

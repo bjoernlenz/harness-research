@@ -56,10 +56,9 @@ Useful local checks:
 
 These are the current tasks before further expansion:
 
-1. Remove duplicated content between harness YAML and harness Markdown so YAML clearly leads.
-2. Decide whether harness Markdown remains as a thin human wrapper or is retired in favor of generated HTML views.
-3. Selectively deepen only the concept clusters that still feel cold, instead of expanding every node equally.
-4. Make concept, comparison, relationship, and exploration navigation complete enough that no important field is stranded outside the atlas.
-5. Add more generated browse surfaces where repeated reading pressure appears, instead of solving it with prose duplication.
-6. Keep strengthening comparative links so the atlas feels argumentative, not merely catalog-like.
-7. Keep adding comparative links only after the one-source-of-truth direction is explicit in code and docs.
+1. Keep harness Markdown thin and non-duplicative so YAML and generated HTML continue to lead.
+2. Selectively deepen only the concept clusters that still feel cold, instead of expanding every node equally.
+3. Make concept, comparison, relationship, and exploration navigation complete enough that no important field is stranded outside the atlas.
+4. Add more generated browse surfaces where repeated reading pressure appears, instead of solving it with prose duplication.
+5. Keep strengthening comparative links so the atlas feels argumentative, not merely catalog-like.
+6. Keep adding comparative links only after the one-source-of-truth direction is explicit in code and docs.
