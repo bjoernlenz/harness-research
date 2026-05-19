@@ -102,6 +102,7 @@ related_concepts:
   - permissioned-agency
   - subagents-as-files
   - terminal-as-agent-body
+  - mcp-as-tool-fabric
 
 metaphor:
   animal: border-collie
@@ -127,4 +128,4 @@ relationships:
 
 source_quality:
   confidence: medium
-  last_reviewed: "2026-05-18"
+  last_reviewed: "2026-05-19"

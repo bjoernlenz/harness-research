@@ -1,0 +1,239 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Failure Modes · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 920px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      h1 { margin: 10px 0 12px; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 0.98; }
+      p { line-height: 1.6; color: var(--muted); max-width: 60ch; }
+      .panel {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+      }
+      .browse-list { list-style: none; padding-left: 0; margin: 0; }
+      .browse-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 18px;
+        padding: 12px 0;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+      .browse-list li:first-child { border-top: 0; padding-top: 0; }
+      a { color: var(--ink); }
+      .count {
+        color: var(--accent);
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+      .more-stuff {
+        margin-top: 30px;
+        padding: 22px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+      }
+      .more-stuff-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }
+      .more-stuff-group ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../../index.html">← Back to atlas</a>
+      <h1>Failure Modes</h1>
+      <p>Generated from canonical YAML records and sorted by how many harnesses currently express each entry.</p>
+      <div class="panel">
+        <ul class="browse-list">
+          
+        <li>
+          <a href="connector-sprawl.html">Connector sprawl</a>
+          <span class="count">2</span>
+        </li>
+        <li>
+          <a href="agent-team-sprawl.html">Agent-team sprawl</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="capability-ambiguity.html">Capability ambiguity</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="configuration-drift.html">Configuration drift</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="context-drift-in-large-repos.html">Context drift in large repos</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="context-overreach.html">Context overreach</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="extension-fragmentation.html">Extension fragmentation</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="graph-sprawl.html">Graph sprawl</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="guardrail-gaps.html">Guardrail gaps</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="handoff-mismatch.html">Handoff mismatch</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="message-loop-confusion.html">Message-loop confusion</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="middleware-heaviness.html">Middleware heaviness</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="mode-confusion.html">Mode confusion</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="outsourced-complexity-through-packages.html">Outsourced complexity through packages</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="overengineering-control-flow.html">Overengineering control flow</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="patch-misalignment.html">Patch misalignment</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="permission-fatigue.html">Permission fatigue</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="plugin-indirection.html">Plugin indirection</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="remote-environment-drift.html">Remote-environment drift</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="repo-local-optimization-at-the-expense-of-broader-planning.html">Repo-local optimization at the expense of broader planning</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="retrieval-miss.html">Retrieval miss</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="sandbox-complexity.html">Sandbox complexity</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="schema-rigidity.html">Schema rigidity</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="sparse-high-level-orchestration-visibility.html">Sparse high-level orchestration visibility</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="state-shape-brittleness.html">State-shape brittleness</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="termination-ambiguity.html">Termination ambiguity</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="tool-routing-confusion.html">Tool-routing confusion</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="tool-surface-overload.html">Tool-surface overload</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="trust-gaps-between-foreground-and-background-work.html">Trust gaps between foreground and background work</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="type-layer-complexity-overshadowing-task-flow.html">Type-layer complexity overshadowing task flow</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="validation-churn.html">Validation churn</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="workflow-complexity-overwhelming-insight.html">Workflow complexity overwhelming insight</a>
+          <span class="count">1</span>
+        </li>
+        </ul>
+      </div>
+      
+      <footer class="more-stuff">
+        <h2>More Stuff</h2>
+        <p class="subtle">Generated views are the atlas surface. These notes carry synthesis, comparison, and review context.</p>
+        <div class="more-stuff-grid">
+          
+        <section class="more-stuff-group">
+          <h3>Index</h3>
+          <ul><li><a href="../../index.html">Back to index</a></li></ul>
+        </section>
+        <section class="more-stuff-group">
+          <h3>Explorations</h3>
+          <ul><li><a href="../../../notes/explorations/concepts/context-as-substrate.html">context-as-substrate</a></li><li><a href="../../../notes/explorations/concepts/teams-as-agency.html">teams-as-agency</a></li><li><a href="../../../notes/explorations/concepts/sandbox-as-agent-body.html">sandbox-as-agent-body</a></li><li><a href="../../../notes/explorations/tensions/closeness-vs-orchestration.html">closeness-vs-orchestration</a></li><li><a href="../../../notes/explorations/tensions/minimal-core-vs-batteries-included.html">minimal-core-vs-batteries-included</a></li><li><a href="../../../notes/explorations/historical/the-rise-of-terminal-coding-agents.html">the-rise-of-terminal-coding-agents</a></li></ul>
+        </section>
+        <section class="more-stuff-group">
+          <h3>Syntheses</h3>
+          <ul><li><a href="../../../notes/syntheses/001-first-patterns.html">001-first-patterns</a></li><li><a href="../../../notes/syntheses/002-complexity-centers.html">002-complexity-centers</a></li><li><a href="../../../notes/syntheses/003-human-role-and-permission-patterns.html">003-human-role-and-permission-patterns</a></li><li><a href="../../../notes/syntheses/004-primary-substrates.html">004-primary-substrates</a></li><li><a href="../../../notes/syntheses/005-trust-models.html">005-trust-models</a></li><li><a href="../../../notes/syntheses/006-failure-modes.html">006-failure-modes</a></li></ul>
+        </section>
+        <section class="more-stuff-group">
+          <h3>Comparisons</h3>
+          <ul><li><a href="../../../notes/comparisons/repo-vs-graph-agency.html">repo-vs-graph-agency</a></li><li><a href="../../../notes/comparisons/trust-through-closeness-vs-structure.html">trust-through-closeness-vs-structure</a></li><li><a href="../../../notes/comparisons/shell-vs-runtime-worldviews.html">shell-vs-runtime-worldviews</a></li><li><a href="../../../notes/comparisons/environment-close-vs-orchestration-close-vs-data-close.html">environment-close-vs-orchestration-close-vs-data-close</a></li></ul>
+        </section>
+        <section class="more-stuff-group">
+          <h3>Review Packets</h3>
+          <ul><li><a href="../../../notes/review-packets/001-stabilization-review.html">001-stabilization-review</a></li><li><a href="../../../notes/review-packets/002-emergence-review.html">002-emergence-review</a></li><li><a href="../../../notes/review-packets/README-for-serael.html">README-for-serael</a></li></ul>
+        </section>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>

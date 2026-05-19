@@ -2,8 +2,10 @@
 
 from __future__ import annotations
 
+import re
 from html import escape
 from pathlib import Path
+from urllib.parse import quote
 
 import yaml
 
@@ -11,9 +13,12 @@ import yaml
 ROOT = Path(__file__).resolve().parent.parent
 HARNESS_DIR = ROOT / "data" / "harnesses"
 CONCEPT_DIR = ROOT / "data" / "concepts"
+NOTES_DIR = ROOT / "notes"
 RELATIONSHIPS_PATH = ROOT / "data" / "relationships.yaml"
 OUTPUT_PATH = ROOT / "site" / "index.html"
 CONCEPT_OUTPUT_DIR = ROOT / "site" / "concepts"
+BROWSE_OUTPUT_DIR = ROOT / "site" / "browse"
+NOTES_OUTPUT_DIR = ROOT / "site" / "notes"
 MISSING_METAPHOR_PICTURES: set[str] = set()
 SUBSTRATE_CLUSTERS = {
     "Repo / Git / Diff": {"repository", "git", "diff"},
@@ -25,6 +30,133 @@ SUBSTRATE_CLUSTERS = {
     "Data / Indexes / Workflows": {"data", "indexes", "workflows"},
     "Sandbox / Tools": {"sandbox", "agent-skills"},
 }
+BROWSE_FIELDS = {
+    "hidden_bet": {
+        "label": "Hidden Bets",
+        "slug": "hidden-bets",
+        "kind": "summary",
+    },
+    "primary_substrate": {
+        "label": "Primary Substrates",
+        "slug": "primary-substrates",
+        "kind": "list",
+    },
+    "trust_model": {
+        "label": "Trust Models",
+        "slug": "trust-models",
+        "kind": "list",
+    },
+    "failure_modes": {
+        "label": "Failure Modes",
+        "slug": "failure-modes",
+        "kind": "list",
+    },
+    "cognitive_style": {
+        "label": "Cognitive Styles",
+        "slug": "cognitive-styles",
+        "kind": "list",
+    },
+    "representative_for": {
+        "label": "Representative For",
+        "slug": "representative-for",
+        "kind": "list",
+    },
+}
+MORE_STUFF = {
+    "Explorations": [
+        "notes/explorations/concepts/context-as-substrate.md",
+        "notes/explorations/concepts/teams-as-agency.md",
+        "notes/explorations/concepts/sandbox-as-agent-body.md",
+        "notes/explorations/tensions/closeness-vs-orchestration.md",
+        "notes/explorations/tensions/minimal-core-vs-batteries-included.md",
+        "notes/explorations/historical/the-rise-of-terminal-coding-agents.md",
+    ],
+    "Syntheses": [
+        "notes/syntheses/001-first-patterns.md",
+        "notes/syntheses/002-complexity-centers.md",
+        "notes/syntheses/003-human-role-and-permission-patterns.md",
+        "notes/syntheses/004-primary-substrates.md",
+        "notes/syntheses/005-trust-models.md",
+        "notes/syntheses/006-failure-modes.md",
+    ],
+    "Comparisons": [
+        "notes/comparisons/repo-vs-graph-agency.md",
+        "notes/comparisons/trust-through-closeness-vs-structure.md",
+        "notes/comparisons/shell-vs-runtime-worldviews.md",
+        "notes/comparisons/environment-close-vs-orchestration-close-vs-data-close.md",
+    ],
+    "Review Packets": [
+        "notes/review-packets/001-stabilization-review.md",
+        "notes/review-packets/002-emergence-review.md",
+        "notes/review-packets/README-for-serael.md",
+    ],
+}
+
+
+def note_output_href(note_path: str) -> str:
+    path = Path(note_path).relative_to("notes")
+    return str(Path("notes") / path.with_suffix(".html"))
+
+
+def load_markdown_note(note_path: str) -> dict:
+    source_path = ROOT / note_path
+    raw_text = source_path.read_text(encoding="utf-8")
+    metadata: dict = {}
+    body = raw_text
+    if raw_text.startswith("---\n"):
+        parts = raw_text.split("\n---\n", 1)
+        if len(parts) == 2:
+            _, remainder = parts
+            frontmatter_raw = parts[0][4:]
+            loaded = yaml.safe_load(frontmatter_raw) or {}
+            if isinstance(loaded, dict):
+                metadata = loaded
+            body = remainder
+    first_heading = re.search(r"^#\s+(.+)$", body, flags=re.MULTILINE)
+    title = str(metadata.get("title", "")).strip() or source_path.stem
+    if first_heading:
+        title = first_heading.group(1).strip()
+    return {
+        "path": note_path,
+        "source_path": source_path,
+        "output_href": note_output_href(note_path),
+        "metadata": metadata,
+        "body": body,
+        "title": title,
+        "section": "/".join(source_path.relative_to(NOTES_DIR).parts[:-1]),
+    }
+
+
+def strip_first_heading(markdown_text: str) -> str:
+    return re.sub(r"^#\s+.+\n+", "", markdown_text, count=1, flags=re.MULTILINE)
+
+
+def extract_wikilinks(markdown_text: str) -> list[str]:
+    return re.findall(r"\[\[([^\]]+)\]\]", markdown_text)
+
+
+def exploration_kind_label(exploration: dict) -> str:
+    kind = str(exploration.get("metadata", {}).get("kind", "")).strip()
+    return {
+        "concept": "Explorations",
+        "historical": "Historical Notes",
+        "tension": "Tensions",
+    }.get(kind, "Explorations")
+
+
+def load_explorations() -> list[dict]:
+    explorations = []
+    exploration_root = NOTES_DIR / "explorations"
+    if not exploration_root.exists():
+        return explorations
+    for path in sorted(exploration_root.rglob("*.md")):
+        relative = path.relative_to(ROOT)
+        if ".gitkeep" in relative.parts:
+            continue
+        note = load_markdown_note(str(relative))
+        note["concept_links"] = extract_wikilinks(note["body"])
+        explorations.append(note)
+    return explorations
 
 
 def load_records() -> list[dict]:
@@ -66,6 +198,158 @@ def concept_href(concept_id: str) -> str:
     return f"concepts/{escape(concept_id)}.html"
 
 
+def harness_anchor(record: dict) -> str:
+    return escape(str(record.get("id", "")))
+
+
+def harness_href(record: dict) -> str:
+    return f"index.html#{harness_anchor(record)}"
+
+
+def browse_index_href(field_key: str) -> str:
+    return f"browse/{BROWSE_FIELDS[field_key]['slug']}/index.html"
+
+
+def slugify(value: str) -> str:
+    slug = re.sub(r"[^a-z0-9]+", "-", value.lower()).strip("-")
+    return slug or "item"
+
+
+def render_harness_links(records: list[dict], prefix: str = "") -> str:
+    if not records:
+        return "<p class=\"empty-state\">None yet.</p>"
+    items = []
+    for record in records:
+        name = escape(str(record.get("name", "Unknown")))
+        href = f"{prefix}index.html#{quote(str(record.get('id', '')))}"
+        items.append(f'<li><a href="{href}">{name}</a></li>')
+    return f"<ul>{''.join(items)}</ul>"
+
+
+def render_link_list(items: list[tuple[str, str]]) -> str:
+    if not items:
+        return "<p class=\"empty-state\">None yet.</p>"
+    rendered = "".join(
+        f'<li><a href="{href}">{escape(label)}</a></li>' for label, href in items
+    )
+    return f"<ul>{rendered}</ul>"
+
+
+def top_related_harnesses(
+    current: dict, records: list[dict], field_name: str, limit: int = 4
+) -> list[dict]:
+    current_values = set(str(value) for value in current.get(field_name, []))
+    matches: list[tuple[int, str, dict]] = []
+    for record in records:
+        if record.get("id") == current.get("id"):
+            continue
+        other_values = set(str(value) for value in record.get(field_name, []))
+        overlap = len(current_values & other_values)
+        if overlap:
+            matches.append((overlap, str(record.get("name", "")), record))
+    matches.sort(key=lambda item: (-item[0], item[1].lower()))
+    return [record for _, _, record in matches[:limit]]
+
+
+def explicit_harness_relations(
+    harness_id: str, relationships: list[dict], record_by_id: dict[str, dict]
+) -> list[dict]:
+    relevant = []
+    for relation in relationships:
+        if str(relation.get("from", "")) != harness_id:
+            continue
+        target = str(relation.get("to", ""))
+        if target not in record_by_id:
+            continue
+        relevant.append(relation)
+    return relevant
+
+
+def related_explorations_for_harness(record: dict, explorations: list[dict]) -> list[dict]:
+    harness_id = str(record.get("id", ""))
+    concept_ids = set(str(value) for value in record.get("related_concepts", []))
+    matches = []
+    for exploration in explorations:
+        meta = exploration.get("metadata", {})
+        related_harnesses = set(str(value) for value in meta.get("related_harnesses", []))
+        related_concepts = set(str(value) for value in meta.get("related_concepts", []))
+        if harness_id in related_harnesses or concept_ids & related_concepts:
+            matches.append(exploration)
+    return matches
+
+
+def related_explorations_for_concept(concept_id: str, explorations: list[dict]) -> list[dict]:
+    matches = []
+    for exploration in explorations:
+        meta = exploration.get("metadata", {})
+        related_concepts = set(str(value) for value in meta.get("related_concepts", []))
+        if concept_id in related_concepts:
+            matches.append(exploration)
+    return matches
+
+
+def build_browse_catalog(records: list[dict]) -> dict[str, list[dict]]:
+    catalog: dict[str, list[dict]] = {}
+    for field_key, config in BROWSE_FIELDS.items():
+        entries_by_label: dict[str, dict] = {}
+        for record in records:
+            if config["kind"] == "summary":
+                hidden_bet = record.get("hidden_bet", {})
+                label = str(hidden_bet.get("summary", "")).strip()
+                if not label:
+                    continue
+                entry = entries_by_label.setdefault(
+                    label,
+                    {
+                        "label": label,
+                        "notes": [],
+                        "harnesses": [],
+                    },
+                )
+                for note in hidden_bet.get("notes", []):
+                    note_value = str(note).strip()
+                    if note_value and note_value not in entry["notes"]:
+                        entry["notes"].append(note_value)
+                entry["harnesses"].append(record)
+            else:
+                for value in record.get(field_key, []):
+                    label = str(value).strip()
+                    if not label:
+                        continue
+                    entry = entries_by_label.setdefault(
+                        label,
+                        {
+                            "label": label,
+                            "notes": [],
+                            "harnesses": [],
+                        },
+                    )
+                    entry["harnesses"].append(record)
+
+        used_slugs: set[str] = set()
+        entries: list[dict] = []
+        for label, entry in entries_by_label.items():
+            base_slug = slugify(label)
+            slug = base_slug
+            counter = 2
+            while slug in used_slugs:
+                slug = f"{base_slug}-{counter}"
+                counter += 1
+            used_slugs.add(slug)
+            entry["slug"] = slug
+            entries.append(entry)
+        entries.sort(key=lambda item: (-len(item["harnesses"]), item["label"].lower()))
+        catalog[field_key] = entries
+    return catalog
+
+
+def browse_detail_href(field_key: str, label: str, catalog: dict[str, list[dict]]) -> str:
+    for entry in catalog[field_key]:
+        if entry["label"] == label:
+            return f"browse/{BROWSE_FIELDS[field_key]['slug']}/{entry['slug']}.html"
+    return browse_index_href(field_key)
+
+
 def render_concept_links(values: list[str], concepts: dict[str, dict]) -> str:
     items = []
     for value in values:
@@ -81,6 +365,17 @@ def render_concept_links(values: list[str], concepts: dict[str, dict]) -> str:
 def render_list(values: list[str]) -> str:
     items = "".join(f"<li>{escape(str(value))}</li>" for value in values)
     return f"<ul>{items}</ul>"
+
+
+def render_browseable_list(
+    values: list[str], field_key: str, catalog: dict[str, list[dict]]
+) -> str:
+    items = []
+    for value in values:
+        label = str(value)
+        href = browse_detail_href(field_key, label, catalog)
+        items.append(f'<li><a href="{href}">{escape(label)}</a></li>')
+    return f"<ul>{''.join(items)}</ul>"
 
 
 def render_metaphor_picture(label: str) -> str:
@@ -247,7 +542,316 @@ def metaphor_label(metaphor: dict) -> str:
     return ""
 
 
-def render_relationships(harness_id: str, relationships: list[dict], concepts: dict[str, dict]) -> str:
+def render_section_heading(label: str, field_key: str | None = None) -> str:
+    if field_key is None:
+        return f"<h3>{escape(label)}</h3>"
+    return (
+        f'<h3><a class="section-link" href="{browse_index_href(field_key)}">'
+        f"{escape(label)}</a></h3>"
+    )
+
+
+def render_more_stuff(index_href: str, repo_prefix: str) -> str:
+    sections = []
+    sections.append(
+        f"""
+        <section class="more-stuff-group">
+          <h3>Index</h3>
+          <ul><li><a href="{escape(index_href)}">Back to index</a></li></ul>
+        </section>
+        """.rstrip()
+    )
+    for heading, paths in MORE_STUFF.items():
+        items = []
+        for path in paths:
+            label = path.split("/")[-1].removesuffix(".md")
+            items.append(
+                f'<li><a href="{repo_prefix}{escape(note_output_href(path))}">{escape(label)}</a></li>'
+            )
+        sections.append(
+            f"""
+        <section class="more-stuff-group">
+          <h3>{escape(heading)}</h3>
+          <ul>{''.join(items)}</ul>
+        </section>
+            """.rstrip()
+        )
+    return f"""
+      <footer class="more-stuff">
+        <h2>More Stuff</h2>
+        <p class="subtle">Generated views are the atlas surface. These notes carry synthesis, comparison, and review context.</p>
+        <div class="more-stuff-grid">
+          {''.join(sections)}
+        </div>
+      </footer>
+    """.rstrip()
+
+
+def render_inline_markdown(text: str) -> str:
+    escaped = escape(text)
+    escaped = re.sub(r"\[\[([^\]]+)\]\]", lambda m: slug_to_label(m.group(1)), escaped)
+    escaped = re.sub(r"`([^`]+)`", r"<code>\1</code>", escaped)
+    escaped = re.sub(r"\*\*([^*]+)\*\*", r"<strong>\1</strong>", escaped)
+    escaped = re.sub(r"\*([^*]+)\*", r"<em>\1</em>", escaped)
+    return escaped
+
+
+def render_markdown_body(markdown_text: str) -> str:
+    lines = markdown_text.splitlines()
+    html_parts: list[str] = []
+    in_list = False
+    in_blockquote = False
+    paragraph_lines: list[str] = []
+
+    def flush_paragraph() -> None:
+        nonlocal paragraph_lines
+        if paragraph_lines:
+            content = " ".join(line.strip() for line in paragraph_lines).strip()
+            if content:
+                html_parts.append(f"<p>{render_inline_markdown(content)}</p>")
+            paragraph_lines = []
+
+    def close_list() -> None:
+        nonlocal in_list
+        if in_list:
+            html_parts.append("</ul>")
+            in_list = False
+
+    def close_blockquote() -> None:
+        nonlocal in_blockquote
+        if in_blockquote:
+            flush_paragraph()
+            close_list()
+            html_parts.append("</blockquote>")
+            in_blockquote = False
+
+    for raw_line in lines:
+        line = raw_line.rstrip()
+        stripped = line.strip()
+
+        if not stripped:
+            flush_paragraph()
+            close_list()
+            close_blockquote()
+            continue
+
+        if stripped.startswith("> "):
+            flush_paragraph()
+            close_list()
+            if not in_blockquote:
+                html_parts.append("<blockquote>")
+                in_blockquote = True
+            paragraph_lines.append(stripped[2:])
+            continue
+        else:
+            close_blockquote()
+
+        heading_match = re.match(r"^(#{1,6})\s+(.*)$", stripped)
+        if heading_match:
+            flush_paragraph()
+            close_list()
+            level = len(heading_match.group(1))
+            content = render_inline_markdown(heading_match.group(2).strip())
+            html_parts.append(f"<h{level}>{content}</h{level}>")
+            continue
+
+        if stripped.startswith("- "):
+            flush_paragraph()
+            if not in_list:
+                html_parts.append("<ul>")
+                in_list = True
+            html_parts.append(f"<li>{render_inline_markdown(stripped[2:].strip())}</li>")
+            continue
+
+        numbered_match = re.match(r"^\d+\.\s+(.*)$", stripped)
+        if numbered_match:
+            flush_paragraph()
+            if not in_list:
+                html_parts.append("<ul>")
+                in_list = True
+            html_parts.append(
+                f"<li>{render_inline_markdown(numbered_match.group(1).strip())}</li>"
+            )
+            continue
+
+        paragraph_lines.append(stripped)
+
+    flush_paragraph()
+    close_list()
+    close_blockquote()
+    return "\n".join(html_parts)
+
+
+def render_note_page(
+    note_path: str,
+    concepts: dict[str, dict],
+    record_by_id: dict[str, dict],
+    explorations: list[dict],
+) -> str:
+    note = load_markdown_note(note_path)
+    title = note["title"]
+    body_html = render_markdown_body(note["body"])
+    section = note["section"].replace("/", " / ").replace("-", " ").title()
+    depth = len(Path(note["output_href"]).parts) - 1
+    site_root_prefix = "../" * (depth - 1)
+    back_href = site_root_prefix + "index.html"
+    metadata = note.get("metadata", {})
+    threads_html = ""
+    if str(metadata.get("kind", "")).strip():
+        harness_links = [
+            (
+                str(record_by_id[h_id].get("name", slug_to_label(h_id))),
+                f"{site_root_prefix}index.html#{quote(h_id)}",
+            )
+            for h_id in metadata.get("related_harnesses", [])
+            if h_id in record_by_id
+        ]
+        concept_links = [
+            (
+                str(concepts[c_id].get("name", slug_to_label(c_id))),
+                f"{site_root_prefix}{concept_href(c_id)}",
+            )
+            for c_id in metadata.get("related_concepts", [])
+            if c_id in concepts
+        ]
+        exploration_lookup = {
+            Path(exploration["path"]).stem: exploration for exploration in explorations
+        }
+        tension_links = [
+            (
+                exploration_lookup[key]["title"],
+                f"{site_root_prefix}{exploration_lookup[key]['output_href']}",
+            )
+            for key in metadata.get("related_tensions", [])
+            if key in exploration_lookup
+        ]
+        history_links = [
+            (
+                exploration_lookup[key]["title"],
+                f"{site_root_prefix}{exploration_lookup[key]['output_href']}",
+            )
+            for key in metadata.get("related_histories", [])
+            if key in exploration_lookup
+        ]
+        comparison_lookup = {
+            Path(path).stem: path for path in MORE_STUFF.get("Comparisons", [])
+        }
+        comparison_links = [
+            (
+                key,
+                f"{site_root_prefix}{note_output_href(comparison_lookup[key])}",
+            )
+            for key in metadata.get("related_comparisons", [])
+            if key in comparison_lookup
+        ]
+        threads_html = f"""
+        <div class="threads">
+          <h2>Further Threads</h2>
+          <h3>Related Harnesses</h3>
+          {render_link_list(harness_links)}
+          <h3>Related Concepts</h3>
+          {render_link_list(concept_links)}
+          <h3>Tensions</h3>
+          {render_link_list(tension_links)}
+          <h3>Historical Notes</h3>
+          {render_link_list(history_links)}
+          <h3>Comparisons</h3>
+          {render_link_list(comparison_links)}
+        </div>
+        """.rstrip()
+    return f"""<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{escape(title)} · AI Harness Observatory</title>
+    <style>
+      :root {{
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }}
+      * {{ box-sizing: border-box; }}
+      body {{
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }}
+      main {{ max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }}
+      .back {{ color: var(--accent); text-decoration: none; }}
+      .panel {{
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }}
+      .eyebrow {{
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }}
+      h1 {{
+        margin: 0 0 18px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 0.98;
+      }}
+      h2, h3, h4, h5, h6 {{
+        margin: 24px 0 10px;
+        color: var(--accent);
+      }}
+      p, ul, blockquote {{
+        line-height: 1.7;
+      }}
+      blockquote {{
+        margin: 18px 0;
+        padding-left: 16px;
+        border-left: 3px solid var(--border);
+        color: var(--muted);
+      }}
+      code {{
+        padding: 1px 5px;
+        border-radius: 6px;
+        background: #efe2cf;
+        font-size: 0.95em;
+      }}
+      .threads {{
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }}
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="{back_href}">← Back to atlas</a>
+      <div class="panel">
+        <p class="eyebrow">{escape(section)}</p>
+        {body_html}
+        {threads_html}
+      </div>
+    </main>
+  </body>
+</html>
+"""
+
+
+def render_relationships(
+    harness_id: str,
+    relationships: list[dict],
+    concepts: dict[str, dict],
+    record_by_id: dict[str, dict],
+) -> str:
     items = []
     for relation in relationships:
         if str(relation.get("from", "")) != harness_id:
@@ -258,6 +862,9 @@ def render_relationships(harness_id: str, relationships: list[dict], concepts: d
         if target_concept:
             target_label = escape(str(target_concept.get("name", slug_to_label(target))))
             target_html = f'<a href="{concept_href(target)}">{target_label}</a>'
+        elif target in record_by_id:
+            target_label = escape(str(record_by_id[target].get("name", slug_to_label(target))))
+            target_html = f'<a href="index.html#{quote(target)}">{target_label}</a>'
         else:
             target_html = escape(slug_to_label(target))
         note = escape(str(relation.get("note", "")))
@@ -268,24 +875,42 @@ def render_relationships(harness_id: str, relationships: list[dict], concepts: d
         return ""
     return f"""
       <section>
-        <h3>Relationships</h3>
+        {render_section_heading("Relationships")}
         <ul class="relationship-list">{''.join(items)}</ul>
       </section>
     """.rstrip()
 
 
-def render_card(record: dict, concepts: dict[str, dict], relationships: list[dict]) -> str:
+def render_card(
+    record: dict,
+    records: list[dict],
+    concepts: dict[str, dict],
+    relationships: list[dict],
+    catalog: dict[str, list[dict]],
+    record_by_id: dict[str, dict],
+    explorations: list[dict],
+) -> str:
     harness_id = str(record.get("id", ""))
     name = escape(str(record.get("name", "Unknown")))
     worldview = escape(str(record.get("worldview", {}).get("short", "")))
     category = render_list(record.get("category", []))
     architectural_core = render_list(record.get("architectural_core", []))
     complexity_focus = render_list(record.get("complexity_focus", []))
-    primary_substrate = render_list(record.get("primary_substrate", []))
-    cognitive_style = render_list(record.get("cognitive_style", []))
-    trust_model = render_list(record.get("trust_model", []))
-    failure_modes = render_list(record.get("failure_modes", []))
-    representative_for = render_list(record.get("representative_for", []))
+    primary_substrate = render_browseable_list(
+        record.get("primary_substrate", []), "primary_substrate", catalog
+    )
+    cognitive_style = render_browseable_list(
+        record.get("cognitive_style", []), "cognitive_style", catalog
+    )
+    trust_model = render_browseable_list(
+        record.get("trust_model", []), "trust_model", catalog
+    )
+    failure_modes = render_browseable_list(
+        record.get("failure_modes", []), "failure_modes", catalog
+    )
+    representative_for = render_browseable_list(
+        record.get("representative_for", []), "representative_for", catalog
+    )
     related_concepts = render_concept_links(record.get("related_concepts", []), concepts)
     playfulness = escape(str(record.get("playfulness", {}).get("summary", "")))
     metaphor = record.get("metaphor", {})
@@ -296,88 +921,167 @@ def render_card(record: dict, concepts: dict[str, dict], relationships: list[dic
     core_tension = escape(str(record.get("core_tension", "")))
     hidden_bet = record.get("hidden_bet", {})
     hidden_bet_summary = escape(str(hidden_bet.get("summary", "")))
-    relationships_html = render_relationships(harness_id, relationships, concepts)
+    hidden_bet_href = browse_detail_href(
+        "hidden_bet", str(hidden_bet.get("summary", "")), catalog
+    )
+    relationships_html = render_relationships(
+        harness_id, relationships, concepts, record_by_id
+    )
+    shared_substrate = render_harness_links(
+        top_related_harnesses(record, records, "primary_substrate"), prefix=""
+    )
+    shared_trust = render_harness_links(
+        top_related_harnesses(record, records, "trust_model"), prefix=""
+    )
+    shared_style = render_harness_links(
+        top_related_harnesses(record, records, "cognitive_style"), prefix=""
+    )
+    contrast_items = []
+    for relation in explicit_harness_relations(harness_id, relationships, record_by_id):
+        if str(relation.get("relation", "")) not in {
+            "contrasts_with",
+            "different_complexity_center_than",
+            "contrasts_cognitive_style_with",
+            "opposes_hidden_bet_of",
+            "competes_for_same_use_case_as",
+        }:
+            continue
+        target = str(relation.get("to", ""))
+        target_record = record_by_id.get(target)
+        if target_record:
+            contrast_items.append(
+                (str(target_record.get("name", slug_to_label(target))), f"index.html#{quote(target)}")
+            )
+    related_explorations = related_explorations_for_harness(record, explorations)
+    grouped_explorations: dict[str, list[tuple[str, str]]] = {}
+    for exploration in related_explorations:
+        group = exploration_kind_label(exploration)
+        grouped_explorations.setdefault(group, []).append(
+            (exploration["title"], exploration["output_href"])
+        )
     metaphor_html = ""
     if metaphor_name:
         metaphor_html = f"""
       <section>
-        <h3>Animal or Transport</h3>
+        {render_section_heading("Animal or Transport")}
         <p><strong>{metaphor_name}</strong></p>
         <p>{metaphor_rationale}</p>
       </section>
         """.rstrip()
 
     return f"""
-    <article class="card">
+    <article class="card" id="{escape(harness_id)}">
       <div class="metaphor-picture" title="{metaphor_name}">
         {metaphor_picture}
       </div>
       <h2>{name}</h2>
       <section>
-        <h3>Category</h3>
+        {render_section_heading("Category")}
         {category}
       </section>
       <section>
-        <h3>Architectural Core</h3>
+        {render_section_heading("Architectural Core")}
         {architectural_core}
       </section>
       <section>
-        <h3>Worldview</h3>
+        {render_section_heading("Worldview")}
         <p>{worldview}</p>
       </section>
       <section>
-        <h3>Complexity Focus</h3>
+        {render_section_heading("Complexity Focus")}
         {complexity_focus}
       </section>
       <section>
-        <h3>Primary Substrate</h3>
+        {render_section_heading("Primary Substrate", "primary_substrate")}
         {primary_substrate}
       </section>
       <section>
-        <h3>Cognitive Style</h3>
+        {render_section_heading("Cognitive Style", "cognitive_style")}
         {cognitive_style}
       </section>
       <section>
-        <h3>Trust Model</h3>
+        {render_section_heading("Trust Model", "trust_model")}
         {trust_model}
       </section>
       <section>
-        <h3>Hidden Bet</h3>
-        <p>{hidden_bet_summary}</p>
+        {render_section_heading("Hidden Bet", "hidden_bet")}
+        <p><a href="{hidden_bet_href}">{hidden_bet_summary}</a></p>
       </section>
       <section>
-        <h3>Playfulness</h3>
+        {render_section_heading("Playfulness")}
         <p>{playfulness}</p>
       </section>
       <section>
-        <h3>Failure Modes</h3>
+        {render_section_heading("Failure Modes", "failure_modes")}
         {failure_modes}
       </section>
       <section>
-        <h3>What It Refuses</h3>
+        {render_section_heading("What It Refuses")}
         {what_it_refuses}
       </section>
       <section>
-        <h3>Core Tension</h3>
+        {render_section_heading("Core Tension")}
         <p>{core_tension}</p>
       </section>
       <section>
-        <h3>Representative For</h3>
+        {render_section_heading("Representative For", "representative_for")}
         {representative_for}
       </section>
       {metaphor_html}
       <section>
-        <h3>Related Concepts</h3>
+        {render_section_heading("Related Concepts")}
         {related_concepts}
       </section>
       {relationships_html}
+      <section>
+        {render_section_heading("More To Explore")}
+        <h4>Shares Primary Substrate</h4>
+        {shared_substrate}
+        <h4>Shares Trust Model</h4>
+        {shared_trust}
+        <h4>Shares Cognitive Style</h4>
+        {shared_style}
+        <h4>Contrasts With</h4>
+        {render_link_list(contrast_items)}
+        {''.join(f'<h4>{escape(group)}</h4>{render_link_list(items)}' for group, items in grouped_explorations.items())}
+      </section>
     </article>
     """.strip()
 
 
-def render_page(records: list[dict], concepts: dict[str, dict], relationships: list[dict]) -> str:
-    cards = "\n".join(render_card(record, concepts, relationships) for record in records)
+def render_browse_nav() -> str:
+    items = []
+    for field_key, config in BROWSE_FIELDS.items():
+        items.append(
+            f'<li><a class="pill" href="{browse_index_href(field_key)}">{escape(config["label"])}</a></li>'
+        )
+    items.append('<li><a class="pill" href="browse/index.html">Browse Hub</a></li>')
+    return f"<ul class=\"pill-list\">{''.join(items)}</ul>"
+
+
+def render_page(
+    records: list[dict],
+    concepts: dict[str, dict],
+    relationships: list[dict],
+    catalog: dict[str, list[dict]],
+    record_by_id: dict[str, dict],
+    explorations: list[dict],
+) -> str:
+    cards = "\n".join(
+        render_card(
+            record,
+            records,
+            concepts,
+            relationships,
+            catalog,
+            record_by_id,
+            explorations,
+        )
+        for record in records
+    )
     substrate_clusters = render_substrate_clusters(records)
+    browse_nav = render_browse_nav()
+    more_stuff = render_more_stuff("index.html", "../")
     return f"""<!doctype html>
 <html lang="en">
   <head>
@@ -536,6 +1240,15 @@ def render_page(records: list[dict], concepts: dict[str, dict], relationships: l
         background: #e6d2b4;
       }}
 
+      .section-link {{
+        color: inherit;
+        text-decoration: none;
+      }}
+
+      .section-link:hover {{
+        text-decoration: underline;
+      }}
+
       .subtle {{
         color: var(--muted);
       }}
@@ -550,7 +1263,34 @@ def render_page(records: list[dict], concepts: dict[str, dict], relationships: l
         padding-top: 0;
       }}
 
+      .more-stuff {{
+        margin-top: 42px;
+        padding: 22px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: rgba(255, 253, 248, 0.84);
+      }}
+
+      .more-stuff-grid {{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }}
+
+      .more-stuff-group h3 {{
+        margin: 0 0 8px;
+      }}
+
+      .more-stuff-group ul {{
+        margin: 0;
+        padding-left: 18px;
+      }}
+
       .relation-note {{
+        color: var(--muted);
+      }}
+
+      .empty-state {{
         color: var(--muted);
       }}
     </style>
@@ -560,11 +1300,14 @@ def render_page(records: list[dict], concepts: dict[str, dict], relationships: l
       <header>
         <h1>AI Harness Observatory</h1>
         <p class="deck">
-          A first-pass atlas generated from typed harness records. This view is intentionally simple:
-          it shows the current worldview, architectural core, complexity center, and playful move of
-          each sampled harness.
+          A generated atlas from canonical YAML records. The site is the main exploration surface:
+          the point is not only to read cards, but to move through the ontology by click.
         </p>
       </header>
+      <section>
+        <h2 class="subtle">Browse The Ontology</h2>
+        {browse_nav}
+      </section>
       <section>
         <h2 class="subtle">Primary Substrate Clusters</h2>
         <div class="cluster-grid">
@@ -574,6 +1317,7 @@ def render_page(records: list[dict], concepts: dict[str, dict], relationships: l
       <section class="grid">
         {cards}
       </section>
+      {more_stuff}
     </main>
   </body>
 </html>
@@ -584,31 +1328,57 @@ def render_substrate_clusters(records: list[dict]) -> str:
     clusters: dict[str, list[str]] = {name: [] for name in SUBSTRATE_CLUSTERS}
     for record in records:
         name = escape(str(record.get("name", "Unknown")))
+        href = harness_href(record)
         substrates = set(record.get("primary_substrate", []))
         for cluster_name, members in SUBSTRATE_CLUSTERS.items():
             if substrates & members:
-                clusters[cluster_name].append(name)
+                clusters[cluster_name].append(f'<a href="{href}">{name}</a>')
     parts = []
     for cluster_name, names in clusters.items():
         if not names:
             continue
         names_html = "".join(f"<li>{name}</li>" for name in names)
         parts.append(
-            f'<article class="cluster"><h2>{escape(cluster_name)}</h2><ul>{names_html}</ul></article>'
+            f'<article class="cluster"><h2><a class="section-link" href="{browse_index_href("primary_substrate")}">{escape(cluster_name)}</a></h2><ul>{names_html}</ul></article>'
         )
     return "".join(parts)
 
 
-def render_concept_page(concept: dict, relationships: list[dict]) -> str:
+def render_concept_page(
+    concept: dict,
+    concepts: dict[str, dict],
+    relationships: list[dict],
+    record_by_id: dict[str, dict],
+    explorations: list[dict],
+) -> str:
     concept_id = str(concept.get("id", ""))
     name = escape(str(concept.get("name", slug_to_label(concept_id))))
     summary = escape(str(concept.get("summary", "")))
-    related_harnesses = render_list(concept.get("related_harnesses", []))
+    note_path = NOTES_DIR / "concepts" / f"{concept_id}.md"
+    concept_note_html = ""
+    concept_links: list[str] = []
+    if note_path.exists():
+        note = load_markdown_note(str(note_path.relative_to(ROOT)))
+        concept_links = extract_wikilinks(note["body"])
+        note_body = strip_first_heading(note["body"]).strip()
+        if note_body:
+            concept_note_html = render_markdown_body(note_body)
+    related_records = [
+        record_by_id[harness_id]
+        for harness_id in concept.get("related_harnesses", [])
+        if harness_id in record_by_id
+    ]
+    related_harnesses = render_harness_links(related_records, prefix="../")
     inbound = []
     for relation in relationships:
         if str(relation.get("to", "")) != concept_id:
             continue
-        source = escape(slug_to_label(str(relation.get("from", ""))))
+        source_id = str(relation.get("from", ""))
+        if source_id in record_by_id:
+            source_name = escape(str(record_by_id[source_id].get("name", slug_to_label(source_id))))
+            source = f'<a href="../index.html#{quote(source_id)}">{source_name}</a>'
+        else:
+            source = escape(slug_to_label(source_id))
         relation_name = escape(str(relation.get("relation", "")))
         note = escape(str(relation.get("note", "")))
         inbound.append(
@@ -619,6 +1389,23 @@ def render_concept_page(concept: dict, relationships: list[dict]) -> str:
         if inbound
         else "<p class=\"empty-state\">No explicit relationships yet.</p>"
     )
+    linked_concepts = []
+    seen_related: set[str] = set()
+    for linked in concept_links:
+        if linked == concept_id or linked in seen_related or linked not in concepts:
+            continue
+        seen_related.add(linked)
+        linked_concepts.append(
+            (str(concepts[linked].get("name", slug_to_label(linked))), concept_href(linked))
+        )
+    exploration_matches = related_explorations_for_concept(concept_id, explorations)
+    grouped_explorations: dict[str, list[tuple[str, str]]] = {}
+    for exploration in exploration_matches:
+        group = exploration_kind_label(exploration)
+        grouped_explorations.setdefault(group, []).append(
+            (exploration["title"], f"../{exploration['output_href']}")
+        )
+    more_stuff = render_more_stuff("../index.html", "../../")
     return f"""<!doctype html>
 <html lang="en">
   <head>
@@ -706,6 +1493,27 @@ def render_concept_page(concept: dict, relationships: list[dict]) -> str:
         color: var(--accent);
       }}
 
+      .more-stuff {{
+        margin-top: 22px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }}
+
+      .more-stuff-grid {{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }}
+
+      .more-stuff-group h3 {{
+        margin: 0 0 8px;
+      }}
+
+      .more-stuff-group ul {{
+        margin: 0;
+        padding-left: 18px;
+      }}
+
       .relation-note, .empty-state {{
         color: var(--muted);
       }}
@@ -717,12 +1525,289 @@ def render_concept_page(concept: dict, relationships: list[dict]) -> str:
       <div class="panel">
         <h1>{name}</h1>
         <p>{summary}</p>
+        {'<h2>Concept Note</h2>' + concept_note_html if concept_note_html else ''}
 
         <h2>Related Harnesses</h2>
         {related_harnesses}
 
         <h2>Incoming Relationships</h2>
         {inbound_html}
+        <h2>Explore This Concept</h2>
+        <h3>Related Concepts</h3>
+        {render_link_list(linked_concepts)}
+        {''.join(f'<h3>{escape(group)}</h3>{render_link_list(items)}' for group, items in grouped_explorations.items())}
+        {more_stuff}
+      </div>
+    </main>
+  </body>
+</html>
+"""
+
+
+def render_browse_hub(catalog: dict[str, list[dict]]) -> str:
+    cards = []
+    for field_key, config in BROWSE_FIELDS.items():
+        href = f"{config['slug']}/index.html"
+        cards.append(
+            f"""
+      <article class="panel">
+        <h2><a class="back" href="{href}">{escape(config["label"])}</a></h2>
+        <p>{len(catalog[field_key])} generated entries available for browsing.</p>
+      </article>
+            """.rstrip()
+        )
+    more_stuff = render_more_stuff("../index.html", "../../")
+    return f"""<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Browse Hub · AI Harness Observatory</title>
+    <style>
+      :root {{
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }}
+      * {{ box-sizing: border-box; }}
+      body {{
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }}
+      main {{ max-width: 960px; margin: 0 auto; padding: 48px 20px 64px; }}
+      .grid {{ display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }}
+      .panel {{
+        padding: 20px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+      }}
+      .back {{ color: var(--accent); text-decoration: none; }}
+      h1 {{ margin: 10px 0 12px; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 0.98; }}
+      p {{ line-height: 1.6; color: var(--muted); }}
+      h2 {{ margin: 0 0 8px; font-size: 1.1rem; }}
+      .more-stuff {{
+        margin-top: 30px;
+        padding: 22px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+      }}
+      .more-stuff-grid {{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }}
+      .more-stuff-group ul {{
+        margin: 0;
+        padding-left: 18px;
+      }}
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../index.html">← Back to atlas</a>
+      <h1>Browse Hub</h1>
+      <p>Generated browse layers for the current ontology. Everything here is derived from canonical YAML records.</p>
+      <section class="grid">
+        {''.join(cards)}
+      </section>
+      {more_stuff}
+    </main>
+  </body>
+</html>
+"""
+
+
+def render_browse_index_page(field_key: str, entries: list[dict]) -> str:
+    config = BROWSE_FIELDS[field_key]
+    items = []
+    for entry in entries:
+        href = f"{entry['slug']}.html"
+        count = len(entry["harnesses"])
+        items.append(
+            f"""
+        <li>
+          <a href="{href}">{escape(entry["label"])}</a>
+          <span class="count">{count}</span>
+        </li>
+            """.rstrip()
+        )
+    more_stuff = render_more_stuff("../../index.html", "../../../")
+    return f"""<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{escape(config["label"])} · AI Harness Observatory</title>
+    <style>
+      :root {{
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }}
+      * {{ box-sizing: border-box; }}
+      body {{
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }}
+      main {{ max-width: 920px; margin: 0 auto; padding: 48px 20px 64px; }}
+      .back {{ color: var(--accent); text-decoration: none; }}
+      h1 {{ margin: 10px 0 12px; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 0.98; }}
+      p {{ line-height: 1.6; color: var(--muted); max-width: 60ch; }}
+      .panel {{
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+      }}
+      .browse-list {{ list-style: none; padding-left: 0; margin: 0; }}
+      .browse-list li {{
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 18px;
+        padding: 12px 0;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }}
+      .browse-list li:first-child {{ border-top: 0; padding-top: 0; }}
+      a {{ color: var(--ink); }}
+      .count {{
+        color: var(--accent);
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }}
+      .more-stuff {{
+        margin-top: 30px;
+        padding: 22px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+      }}
+      .more-stuff-grid {{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }}
+      .more-stuff-group ul {{
+        margin: 0;
+        padding-left: 18px;
+      }}
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../../index.html">← Back to atlas</a>
+      <h1>{escape(config["label"])}</h1>
+      <p>Generated from canonical YAML records and sorted by how many harnesses currently express each entry.</p>
+      <div class="panel">
+        <ul class="browse-list">
+          {''.join(items)}
+        </ul>
+      </div>
+      {more_stuff}
+    </main>
+  </body>
+</html>
+"""
+
+
+def render_browse_detail_page(field_key: str, entry: dict) -> str:
+    config = BROWSE_FIELDS[field_key]
+    notes_html = ""
+    if entry["notes"]:
+        notes_html = f"""
+      <h2>Why This Matters</h2>
+      <ul>{''.join(f"<li>{escape(note)}</li>" for note in entry["notes"])}</ul>
+        """.rstrip()
+    harnesses_html = render_harness_links(entry["harnesses"], prefix="../../")
+    more_stuff = render_more_stuff("../../index.html", "../../../")
+    return f"""<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{escape(entry["label"])} · {escape(config["label"])}</title>
+    <style>
+      :root {{
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }}
+      * {{ box-sizing: border-box; }}
+      body {{
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }}
+      main {{ max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }}
+      .back {{ color: var(--accent); text-decoration: none; }}
+      .panel {{
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+      }}
+      h1 {{ margin: 10px 0 12px; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 0.98; }}
+      h2 {{
+        margin: 22px 0 10px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }}
+      p, ul {{ line-height: 1.6; }}
+      .more-stuff {{
+        margin-top: 22px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }}
+      .more-stuff-grid {{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }}
+      .more-stuff-group ul {{
+        margin: 0;
+        padding-left: 18px;
+      }}
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="index.html">← Back to {escape(config["label"]).lower()}</a>
+      <div class="panel">
+        <h1>{escape(entry["label"])}</h1>
+        <p>{len(entry["harnesses"])} harnesses currently express this entry.</p>
+        {notes_html}
+        <h2>Harnesses</h2>
+        {harnesses_html}
+        {more_stuff}
       </div>
     </main>
   </body>
@@ -733,15 +1818,50 @@ def render_concept_page(concept: dict, relationships: list[dict]) -> str:
 def main() -> int:
     MISSING_METAPHOR_PICTURES.clear()
     records = load_records()
+    record_by_id = {str(record.get("id", "")): record for record in records}
     concepts = load_concepts()
     relationships = load_relationships()
-    OUTPUT_PATH.write_text(render_page(records, concepts, relationships), encoding="utf-8")
+    explorations = load_explorations()
+    catalog = build_browse_catalog(records)
+    OUTPUT_PATH.write_text(
+        render_page(
+            records, concepts, relationships, catalog, record_by_id, explorations
+        ),
+        encoding="utf-8",
+    )
     CONCEPT_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     for concept_id, concept in concepts.items():
         concept_path = CONCEPT_OUTPUT_DIR / f"{concept_id}.html"
         concept_path.write_text(
-            render_concept_page(concept, relationships), encoding="utf-8"
+            render_concept_page(
+                concept, concepts, relationships, record_by_id, explorations
+            ),
+            encoding="utf-8",
         )
+    BROWSE_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    NOTES_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    (BROWSE_OUTPUT_DIR / "index.html").write_text(
+        render_browse_hub(catalog), encoding="utf-8"
+    )
+    for field_key, entries in catalog.items():
+        field_dir = BROWSE_OUTPUT_DIR / BROWSE_FIELDS[field_key]["slug"]
+        field_dir.mkdir(parents=True, exist_ok=True)
+        (field_dir / "index.html").write_text(
+            render_browse_index_page(field_key, entries), encoding="utf-8"
+        )
+        for entry in entries:
+            (field_dir / f"{entry['slug']}.html").write_text(
+                render_browse_detail_page(field_key, entry), encoding="utf-8"
+            )
+    for section_paths in MORE_STUFF.values():
+        for note_path in section_paths:
+            output_path = NOTES_OUTPUT_DIR / Path(note_path).relative_to("notes")
+            output_path = output_path.with_suffix(".html")
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+            output_path.write_text(
+                render_note_page(note_path, concepts, record_by_id, explorations),
+                encoding="utf-8",
+            )
     print(f"Wrote {OUTPUT_PATH}")
     if MISSING_METAPHOR_PICTURES:
         missing = ", ".join(sorted(MISSING_METAPHOR_PICTURES))

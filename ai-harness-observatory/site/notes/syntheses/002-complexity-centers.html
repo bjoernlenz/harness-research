@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>002 Complexity Centers · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .panel {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 0.98;
+      }
+      h2, h3, h4, h5, h6 {
+        margin: 24px 0 10px;
+        color: var(--accent);
+      }
+      p, ul, blockquote {
+        line-height: 1.7;
+      }
+      blockquote {
+        margin: 18px 0;
+        padding-left: 16px;
+        border-left: 3px solid var(--border);
+        color: var(--muted);
+      }
+      code {
+        padding: 1px 5px;
+        border-radius: 6px;
+        background: #efe2cf;
+        font-size: 0.95em;
+      }
+      .threads {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../index.html">← Back to atlas</a>
+      <div class="panel">
+        <p class="eyebrow">Syntheses</p>
+        <h1>002 Complexity Centers</h1>
+<p>This synthesis focuses on one question from the charter:</p>
+<blockquote>
+<p>Where does complexity accumulate?</p>
+</blockquote>
+<p>The current corpus suggests that modern AI harnesses are less differentiated by headline capability than by <strong>where they choose to pay complexity costs</strong>.</p>
+<h2>1. Five Complexity Centers Are Already Visible</h2>
+<h3>1.1 Environment complexity</h3>
+<p>Examples:</p>
+<ul>
+<li>Aider</li>
+<li>Claude Code</li>
+<li>Cursor</li>
+<li>OpenHands</li>
+<li>Pi</li>
+</ul>
+<p>Complexity accumulates in:</p>
+<ul>
+<li>repo context</li>
+<li>commands</li>
+<li>permissions</li>
+<li>IDE tooling</li>
+<li>remote environments</li>
+<li>sandbox setup</li>
+<li>extensions</li>
+</ul>
+<p>These systems often look simple from the top because they borrow a lot from the developer environment. The cost is that the environment itself becomes part of the architecture.</p>
+<h3>1.2 Control-flow complexity</h3>
+<p>Example:</p>
+<ul>
+<li>LangGraph</li>
+</ul>
+<p>Complexity accumulates in:</p>
+<ul>
+<li>graph design</li>
+<li>state shape</li>
+<li>transitions</li>
+<li>checkpoints</li>
+<li>observability</li>
+</ul>
+<p>This buys visibility and resumability, but it can turn orchestration into structural maintenance work.</p>
+<h3>1.3 Coordination complexity</h3>
+<p>Examples:</p>
+<ul>
+<li>OpenAI Agents SDK</li>
+<li>AutoGen</li>
+</ul>
+<p>Complexity accumulates in:</p>
+<ul>
+<li>handoff boundaries</li>
+<li>team topology</li>
+<li>message routing</li>
+<li>termination conditions</li>
+<li>traces</li>
+</ul>
+<p>This is the family where the question is not “can the model do it?” but “who should do what, when, and how do we know the transfer worked?”</p>
+<h3>1.4 Type / contract complexity</h3>
+<p>Examples:</p>
+<ul>
+<li>PydanticAI</li>
+<li>Semantic Kernel</li>
+</ul>
+<p>Complexity accumulates in:</p>
+<ul>
+<li>schemas</li>
+<li>validation</li>
+<li>plugins</li>
+<li>connectors</li>
+<li>normalized service surfaces</li>
+</ul>
+<p>This family prefers strong interfaces over soft improvisation. The gain is legibility. The tax is abstraction and contract design.</p>
+<h3>1.5 Data / retrieval complexity</h3>
+<p>Example:</p>
+<ul>
+<li>LlamaIndex</li>
+</ul>
+<p>Complexity accumulates in:</p>
+<ul>
+<li>indexes</li>
+<li>retrieval design</li>
+<li>connectors</li>
+<li>workflows over data</li>
+</ul>
+<p>Here the hard part is not agent roleplay or graph edges. It is how the system sees and works over knowledge.</p>
+<h2>2. The Central Tradeoff Is Not Autonomy</h2>
+<p>A useful early correction:</p>
+<p>The main differentiator across these systems is <strong>not simply how autonomous they are</strong>.</p>
+<p>The deeper differentiator is:</p>
+<blockquote>
+<p>Which layer do they stabilize, and which layer do they let become complicated?</p>
+</blockquote>
+<p>Examples:</p>
+<ul>
+<li>Aider stabilizes the workflow by staying close to repo and diff, but lets context engineering remain hard.</li>
+<li>LangGraph stabilizes loops through graph structure, but lets graph design become hard.</li>
+<li>PydanticAI stabilizes interfaces through types, but lets schema work become hard.</li>
+<li>Cursor stabilizes task shape through modes, but lets cross-mode trust boundaries become hard.</li>
+<li>OpenHands stabilizes practical capability through broad embodiment, but lets system heaviness become hard.</li>
+<li>LlamaIndex stabilizes data-grounded behavior through retrieval structure, but lets data architecture become hard.</li>
+</ul>
+<h2>3. Current Relationship Graph Bias</h2>
+<p>The current relationship graph is still dominated by <code>embodies_concept</code>.</p>
+<p>Counts in the current dataset:</p>
+<ul>
+<li><code>embodies_concept</code>: 14</li>
+<li><code>different_complexity_center_than</code>: 5</li>
+<li><code>contrasts_with</code>: 4</li>
+</ul>
+<p>This is revealing.</p>
+<p>It means the observatory already knows how to say:</p>
+<ul>
+<li>“this system expresses concept X”</li>
+</ul>
+<p>But it is still learning how to say:</p>
+<ul>
+<li>“this system pays its price in a fundamentally different place”</li>
+</ul>
+<p>Recommendation:</p>
+<p>The next relationship growth should emphasize:</p>
+<ul>
+<li><code>different_complexity_center_than</code></li>
+<li><code>contrasts_with</code></li>
+<li><code>opposes_assumption_of</code></li>
+</ul>
+<p>Because those relations are what make the atlas feel comparative rather than catalog-like.</p>
+<h2>4. Emerging Comparison Questions</h2>
+<p>The current corpus now supports sharper comparison prompts such as:</p>
+<ul>
+<li>Repo body vs graph body: Aider vs LangGraph</li>
+<li>Handoffs vs team conversation: OpenAI Agents SDK vs AutoGen</li>
+<li>Terminal composability vs IDE mode gating: Claude Code vs Cursor</li>
+<li>Minimal core vs full embodied tool surface: Pi vs OpenHands</li>
+<li>Type rails vs data substrate: PydanticAI vs LlamaIndex</li>
+<li>Middleware spine vs explicit agent runtime: Semantic Kernel vs OpenAI Agents SDK</li>
+</ul>
+<p>These are better synthesis axes than general questions like “which framework is best?”</p>
+<h2>5. Working Hypothesis</h2>
+<p>The atlas may eventually want a first-class visualization for:</p>
+<blockquote>
+<p>Complexity lives here</p>
+</blockquote>
+<p>Not as a single label, but as a weighted map:</p>
+<ul>
+<li>environment</li>
+<li>control flow</li>
+<li>coordination</li>
+<li>contracts</li>
+<li>retrieval / data</li>
+</ul>
+<p>That feels like one of the strongest synthesis outputs already latent in the substrate.</p>
+        
+      </div>
+    </main>
+  </body>
+</html>

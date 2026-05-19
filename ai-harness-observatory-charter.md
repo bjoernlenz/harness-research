@@ -338,26 +338,30 @@ The first goal is 10–20 systems with high-quality notes.
 
 # 5. Knowledge Architecture
 
-The project should use a typed Zettelkasten-like structure.
+The project should use a typed, YAML-led knowledge substrate with generated views.
 
 That means:
 
-* atomic notes
 * stable IDs
 * typed relationships
 * source references
-* generated indexes
-* human-editable Markdown
-* machine-readable data
-* eventual generated HTML atlas
+* human-editable canonical data
+* generated indexes and browser views
+* interpretation layers for synthesis and comparison
+* an HTML atlas that exposes the structure through clicks
 
-The notes should be readable by humans and processable by code.
+The current operating decision is:
+
+* YAML is the source of truth
+* HTML is the primary exploration surface
+* Markdown should add interpretation, not duplicate harness facts already present in YAML
 
 ## 5.1 Suggested Folder Structure
 
 ```text
 ai-harness-observatory/
   README.md
+  codex-onboarding.md
   project-charter.md
   data/
     harnesses/
@@ -370,42 +374,46 @@ ai-harness-observatory/
       human-in-the-loop.yaml
     relationships.yaml
   notes/
-    harnesses/
-      langgraph.md
-      pydantic-ai.md
-      autogen.md
     concepts/
       graph-orchestration.md
       memory-as-residue.md
-      playful-surprises.md
+      human-in-the-loop.md
+    comparisons/
+      repo-vs-graph-agency.md
+      shell-vs-runtime-worldviews.md
     syntheses/
       001-first-patterns.md
-      002-complexity-centers.md
+      006-failure-modes.md
+    review-packets/
+      001-stabilization-review.md
+      002-emergence-review.md
   sources/
     raw/
     snapshots/
   site/
     index.html
+    concepts/
     assets/
   scripts/
     validate-data
     generate-site
-    generate-indexes
 ```
 
 ## 5.2 Principle
 
-Markdown is the thinking surface.
 Typed data is the durable substrate.
 HTML is the exploratory lens.
+Markdown is the interpretation layer.
+
+Practical rule:
+
+> What is not reachable by clicks from `site/index.html` does not yet exist for exploration purposes.
 
 ---
 
 # 6. Canonical Harness Record
 
-Each harness should have a machine-readable record.
-
-Initial schema can be YAML or JSON.
+Each harness should have a machine-readable YAML record.
 
 Example shape:
 
@@ -425,25 +433,24 @@ origin:
 status:
   maturity: production
   activity: active
-
+primary_substrate:
+  - graph
+  - state
+  - checkpoints
 architectural_core:
-  - graph-based orchestration
-  - stateful agent workflows
-  - controllable loops
-
+  - explicit graph orchestration
+  - resumable stateful execution
 complexity_focus:
   - graph structure
   - state management
   - control flow
   - persistence
   - observability
-
 worldview:
   short: "Agents are stateful graphs with controllable transitions."
   notes:
     - "Agency becomes more reliable when represented as explicit graph structure."
     - "Control flow matters more than unconstrained autonomy."
-
 memory_model:
   type:
     - state
@@ -451,122 +458,84 @@ memory_model:
     - checkpointing
   notes:
     - "Memory appears primarily through graph state and persistence, not as an independent cognitive substrate."
-
 human_role:
   - engineer-as-orchestrator
   - human-in-the-loop-possible
-
 tool_model:
   - function tools
   - external integrations
-
 autonomy_level: medium
-
 determinism_level: hybrid
-
+trust_model:
+  summary: "Trust comes from explicit control flow, persistence, and inspectable transitions."
+  notes:
+    - "The system assumes explicit state is more governable than opaque loops."
+failure_modes:
+  - graph sprawl
+  - orchestration overhead
+  - false confidence from explicit structure
+cognitive_style:
+  - explicit
+  - stateful
+  - inspectable
+hidden_bet:
+  summary: "Explicit state graphs outperform opaque autonomous loops."
+  notes:
+    - "Reliability is expected to come from structured orchestration rather than unconstrained improvisation."
 playfulness:
   summary: "The playful move is treating agent behavior as a graph that can loop, pause, resume, branch, and persist."
   surprising_moves:
     - "Agent loops become visible architecture."
     - "Control flow becomes something inspectable rather than hidden inside prompts."
-
 strengths:
   - "Explicit control flow"
   - "Durable state"
   - "Production orientation"
-
 risks_or_limits:
   - "Graph complexity can become its own burden."
   - "Cognitive fluidity may be constrained by architecture."
-
+representative_for:
+  - graph-orchestrated agency
+  - explicit-state runtimes
+what_it_refuses:
+  - hidden control flow
+  - fully implicit agent loops
+core_tension: "The structure that makes the system inspectable can also make it heavier than simpler harnesses."
+metaphor:
+  animal: spider
+  transport: null
+  rationale: "It spins explicit paths and connection points, and strength comes from the structure it lays down."
 related_concepts:
   - graph-orchestration
-  - stateful-agents
+  - explicit-state
   - human-in-the-loop
   - durable-execution
-
-relationships:
-  similar_to:
-    - semantic-kernel
-  contrasts_with:
-    - aider
-    - gptme
-  influenced_by: []
-  influences: []
-
 source_quality:
   confidence: medium
   last_reviewed: "YYYY-MM-DD"
 ```
 
-This schema is expected to evolve.
-
-Do not over-perfect it before the first extraction pass.
+The schema should stay compact, human-editable, and oriented toward comparison rather than false precision.
 
 ---
 
-# 7. Canonical Markdown Note Format
+# 7. Markdown Interpretation Layers
 
-Each harness should also have a human-readable Markdown note.
+Markdown remains useful, but it is no longer the canonical harness fact layer.
 
-Suggested format:
+Current strong uses for Markdown:
 
-```markdown
-# LangGraph
+* concept notes
+* comparison notes
+* synthesis reports
+* review packets
+* temporary harness notes only where they add interpretation not yet captured in the generated atlas
 
-## Essence
+Harness Markdown should not indefinitely duplicate YAML.
+The long-term direction is either:
 
-One-paragraph distillation of what this system is really doing.
-
-## Architectural Worldview
-
-What does this system believe about agents, workflows, tools, memory, and control?
-
-## Center of Gravity
-
-Where does the project place its attention?
-
-## Complexity Lives In
-
-- ...
-
-## Memory Model
-
-How memory/state/context are represented.
-
-## Human Role
-
-How the human participates.
-
-## Playfulness / Surprise
-
-Where the project does something clever, sideways, alive, or unexpected.
-
-## What It Makes Easy
-
-- ...
-
-## What It Makes Awkward
-
-- ...
-
-## Archetype
-
-Example: The Graph Weaver / The Workflow Engine / The Agent OS / The Cognitive Shell
-
-## Related Concepts
-
-- [[graph-orchestration]]
-- [[stateful-agents]]
-
-## Open Questions
-
-- ...
-
-## Sources
-
-- ...
-```
+* generated thin wrapper harness notes, or
+* retirement of harness notes in favor of richer generated HTML views
 
 ---
 
@@ -574,19 +543,25 @@ Example: The Graph Weaver / The Workflow Engine / The Agent OS / The Cognitive S
 
 Connections are first-class.
 
-Suggested relationship types:
+Current useful relationship types include:
 
 ## Similarity
 
 * `similar_to`
 * `shares_pattern_with`
 * `same_archetype_as`
+* `shares_hidden_bet_with`
+* `shares_cognitive_style_with`
+* `shares_primary_substrate_with`
+* `competes_for_same_use_case_as`
 
 ## Contrast
 
 * `contrasts_with`
 * `opposes_assumption_of`
 * `different_complexity_center_than`
+* `opposes_hidden_bet_of`
+* `contrasts_cognitive_style_with`
 
 ## Lineage
 
@@ -602,6 +577,10 @@ Suggested relationship types:
 * `reveals_problem`
 * `solves_for`
 * `ignores_dimension`
+* `trusts_through`
+* `fails_through`
+* `externalizes_through`
+* `refuses`
 
 ## Playful Resonance
 
@@ -655,37 +634,33 @@ They should emerge through observation.
 
 # 10. Delivery Outputs
 
-This project should generate multiple forms from the same substrate.
+This project should generate multiple views from the same substrate.
 
 ## 10.1 Typed Dataset
 
 The foundation.
 
-Contains structured records for harnesses, concepts, relationships, archetypes, and sources.
+Contains structured records for harnesses, concepts, relationships, and sources.
 
-## 10.2 Zettelkasten Notes
+## 10.2 Interactive HTML Atlas
 
-Human-readable Markdown notes.
+The primary exploration surface.
 
-Good for Obsidian, reading, editing, reflection, and synthesis.
-
-## 10.3 Interactive HTML Atlas
-
-Generated from the dataset and notes.
-
-Possible features:
+Current and near-term features should include:
 
 * harness cards
-* filters by archetype/language/memory model/autonomy level
+* substrate clusters
 * concept pages
-* relationship graph
+* generated browse pages for important fields
 * comparison views
-* playful surprises section
-* “complexity lives here” map
+* hidden-bet indexes
+* trust-model and failure-mode surfaces
 * source links
-* generated summaries
+* relationship visibility
 
-## 10.4 Synthesis Reports
+HTML is not the data layer, but it should expose the data layer as completely as practical.
+
+## 10.3 Interpretation Layers
 
 Periodic reflections, for example:
 
@@ -694,209 +669,111 @@ Periodic reflections, for example:
 * “Memory models across modern AI harnesses”
 * “The playful inventions hiding in coding agents”
 * “Agent OS vs workflow engine vs cognitive shell”
+* “Repo-close versus graph-close agency”
+
+These live primarily in:
+
+* `notes/syntheses/`
+* `notes/comparisons/`
+* `notes/review-packets/`
 
 ---
 
 # 11. Data Curation Workflow
 
-## Step 1 — Codex creates structure
+## Step 1 — Update canonical YAML
 
-Codex creates the repo skeleton:
+Codex or Björn updates:
 
-* folders
-* schemas
-* sample records
-* validation script
-* generation script placeholder
-* this charter
+* `data/harnesses/*.yaml`
+* `data/concepts/*.yaml`
+* `data/relationships.yaml`
 
-## Step 2 — First-wave extraction
+Prefer compact, comparable fields over long prose.
 
-Codex researches 10–20 selected systems and creates initial records.
+## Step 2 — Validate and regenerate
 
-For each system:
+Run:
 
-* read official docs
-* read repo README
-* inspect examples
-* inspect architecture docs if available
-* inspect code structure lightly
-* avoid relying only on marketing pages
+* `scripts/validate-data`
+* `scripts/generate-site`
 
-Codex outputs:
+The atlas should stay in sync with the data layer.
 
-* `data/harnesses/<id>.yaml`
-* `notes/harnesses/<id>.md`
+## Step 3 — Review through HTML first
 
-## Step 3 — Serael synthesizes
+Assume the generated atlas is the main exploration surface.
 
-Björn brings selected records/notes back to Serael.
+If a field matters but cannot be reached or browsed from the site, that is a tooling gap to fix.
 
-Serael reviews for:
+## Step 4 — Use Markdown for interpretation
 
-* taxonomy quality
-* hidden patterns
-* weak fields
-* missing dimensions
-* possible archetypes
-* relationship suggestions
-* philosophical clarity
-* playful/surprising dimensions
+Express what the data is revealing in:
 
-## Step 4 — Björn decides
+* synthesis notes
+* comparison notes
+* review packets
+* concept notes
 
-Björn adjusts direction:
+Do not solve repeated explanation problems by duplicating harness prose.
 
-* what to deepen
-* what to ignore
-* what feels alive
-* what should become part of his own architecture
+## Step 5 — Refine ontology before scaling
 
-## Step 5 — Codex implements refinements
+When new patterns emerge:
 
-Codex updates schemas, records, relationships, and generated outputs.
+* normalize useful fields
+* add sharper relationship types
+* improve browse surfaces
+* reduce accidental duplication
 
-This loop repeats.
+Scale the corpus only after the current ontology still feels alive.
 
 ---
 
-# 12. First Codex Task
+# 12. Current Operating Direction
 
-Codex should begin with the following.
+The initial scaffold now exists.
+The current work is not repo creation.
+It is ontology refinement, de-duplication, and view-layer completion.
 
-## Task: Create the initial AI Harness Observatory repository structure
+Current priorities:
 
-Create a new project folder:
+* keep YAML as the only canonical harness input
+* stop allowing harness Markdown to drift into a second fact layer
+* ensure every important ontology field becomes reachable from `site/index.html`
+* prefer generated browse surfaces over repeated prose
+* let concepts, comparisons, and syntheses carry shared meaning
 
-```text
-ai-harness-observatory/
-```
+Examples of current desirable browse surfaces:
 
-Inside it, create:
-
-```text
-README.md
-project-charter.md
-data/
-  harnesses/
-  concepts/
-  archetypes/
-  relationships.yaml
-notes/
-  harnesses/
-  concepts/
-  syntheses/
-sources/
-  raw/
-  snapshots/
-site/
-  assets/
-scripts/
-```
-
-Add this document as `project-charter.md`.
-
-Create an initial `README.md` that says:
-
-```markdown
-# AI Harness Observatory
-
-A typed Zettelkasten and interactive atlas for mapping current AI harness architectures.
-
-This project studies agent frameworks, orchestration systems, coding agents, workflow engines, memory systems, and AI operating environments through the lens of architectural worldview, complexity focus, memory model, human role, and playful invention.
-```
-
-Then create the first schema draft in whichever format is simplest for immediate use.
-
-Prefer YAML for hand-editability.
-
-Create:
-
-```text
-data/harnesses/_template.yaml
-notes/harnesses/_template.md
-```
-
-Use the canonical harness record and Markdown note format from this charter.
-
-Then create 3 sample records, not perfect, only enough to test structure:
-
-```text
-data/harnesses/langgraph.yaml
-notes/harnesses/langgraph.md
-
-data/harnesses/aider.yaml
-notes/harnesses/aider.md
-
-data/harnesses/pydantic-ai.yaml
-notes/harnesses/pydantic-ai.md
-```
-
-The first pass should be light.
-Do not over-research yet.
-The point is to validate the shape.
-
-Also create a minimal validation script that checks:
-
-* every harness has an `id`
-* every harness has a `name`
-* every harness has `architectural_core`
-* every harness has `complexity_focus`
-* every harness has `worldview.short`
-* every harness has `playfulness.summary`
-* every harness has `related_concepts`
-
-Language for the validation script can be chosen pragmatically.
-Python is acceptable for speed.
-Haskell may be used later if desired.
-
-Finally, create a very simple HTML generator that reads the YAML harness records and produces:
-
-```text
-site/index.html
-```
-
-The first HTML page should show:
-
-* harness name
-* category
-* architectural core
-* worldview short
-* complexity focus
-* playfulness summary
-* related concepts
-
-Keep design simple.
-The purpose is to prove the pipeline:
-
-```text
-YAML typed records → generated HTML atlas
-```
-
-Do not optimize aesthetics yet.
-Do not build a full app yet.
-Do not add external dependencies unless useful.
+* hidden bets grouped by number of harnesses implementing them
+* primary substrate clusters
+* trust model groupings
+* failure mode groupings
+* cognitive style groupings
+* relationship-driven comparative views
 
 ---
 
-# 13. First Review Loop
+# 13. Current Review Loop
 
-After Codex completes the initial structure, Björn should bring back:
+Useful review surfaces now include:
 
-* the folder structure
-* `_template.yaml`
-* one sample harness YAML
-* one sample harness Markdown note
-* generated `site/index.html` screenshot or HTML
+* `site/index.html`
+* current concept pages
+* comparison notes
+* synthesis notes
+* review packets
+* canonical templates
 
-Then Serael will review:
+Björn and Serael should review:
 
-* whether the schema captures the right things
-* whether the notes feel alive
-* whether the playful/surprise field works
-* whether relationship types are sufficient
-* whether the HTML atlas direction feels correct
-* what to adjust before scaling to 20+ systems
+* whether the ontology is earning its complexity
+* whether the view layer exposes the important fields cleanly
+* whether repeated ideas have become shared concepts instead of duplicated text
+* whether relationships are comparative enough
+* whether new fields are producing signal or noise
+* whether corpus expansion should resume or wait for another refinement pass
 
 ---
 

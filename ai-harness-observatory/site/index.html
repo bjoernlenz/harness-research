@@ -156,6 +156,15 @@
         background: #e6d2b4;
       }
 
+      .section-link {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .section-link:hover {
+        text-decoration: underline;
+      }
+
       .subtle {
         color: var(--muted);
       }
@@ -170,7 +179,34 @@
         padding-top: 0;
       }
 
+      .more-stuff {
+        margin-top: 42px;
+        padding: 22px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: rgba(255, 253, 248, 0.84);
+      }
+
+      .more-stuff-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }
+
+      .more-stuff-group h3 {
+        margin: 0 0 8px;
+      }
+
+      .more-stuff-group ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+
       .relation-note {
+        color: var(--muted);
+      }
+
+      .empty-state {
         color: var(--muted);
       }
     </style>
@@ -180,19 +216,22 @@
       <header>
         <h1>AI Harness Observatory</h1>
         <p class="deck">
-          A first-pass atlas generated from typed harness records. This view is intentionally simple:
-          it shows the current worldview, architectural core, complexity center, and playful move of
-          each sampled harness.
+          A generated atlas from canonical YAML records. The site is the main exploration surface:
+          the point is not only to read cards, but to move through the ontology by click.
         </p>
       </header>
       <section>
+        <h2 class="subtle">Browse The Ontology</h2>
+        <ul class="pill-list"><li><a class="pill" href="browse/hidden-bets/index.html">Hidden Bets</a></li><li><a class="pill" href="browse/primary-substrates/index.html">Primary Substrates</a></li><li><a class="pill" href="browse/trust-models/index.html">Trust Models</a></li><li><a class="pill" href="browse/failure-modes/index.html">Failure Modes</a></li><li><a class="pill" href="browse/cognitive-styles/index.html">Cognitive Styles</a></li><li><a class="pill" href="browse/representative-for/index.html">Representative For</a></li><li><a class="pill" href="browse/index.html">Browse Hub</a></li></ul>
+      </section>
+      <section>
         <h2 class="subtle">Primary Substrate Clusters</h2>
         <div class="cluster-grid">
-          <article class="cluster"><h2>Repo / Git / Diff</h2><ul><li>Aider</li><li>Claude Code</li><li>Cursor</li><li>OpenHands</li><li>Pi</li></ul></article><article class="cluster"><h2>Terminal / Shell</h2><ul><li>Claude Code</li><li>Pi</li></ul></article><article class="cluster"><h2>IDE / Remote Environment</h2><ul><li>Cursor</li></ul></article><article class="cluster"><h2>Graph / State / Checkpoints</h2><ul><li>LangGraph</li></ul></article><article class="cluster"><h2>Agents / Handoffs / Traces</h2><ul><li>OpenAI Agents SDK</li></ul></article><article class="cluster"><h2>Kernel / Plugins / Connectors</h2><ul><li>Semantic Kernel</li></ul></article><article class="cluster"><h2>Data / Indexes / Workflows</h2><ul><li>LlamaIndex</li></ul></article><article class="cluster"><h2>Sandbox / Tools</h2><ul><li>OpenHands</li></ul></article>
+          <article class="cluster"><h2><a class="section-link" href="browse/primary-substrates/index.html">Repo / Git / Diff</a></h2><ul><li><a href="index.html#aider">Aider</a></li><li><a href="index.html#claude-code">Claude Code</a></li><li><a href="index.html#cursor">Cursor</a></li><li><a href="index.html#openhands">OpenHands</a></li><li><a href="index.html#pi">Pi</a></li></ul></article><article class="cluster"><h2><a class="section-link" href="browse/primary-substrates/index.html">Terminal / Shell</a></h2><ul><li><a href="index.html#claude-code">Claude Code</a></li><li><a href="index.html#pi">Pi</a></li></ul></article><article class="cluster"><h2><a class="section-link" href="browse/primary-substrates/index.html">IDE / Remote Environment</a></h2><ul><li><a href="index.html#cursor">Cursor</a></li></ul></article><article class="cluster"><h2><a class="section-link" href="browse/primary-substrates/index.html">Graph / State / Checkpoints</a></h2><ul><li><a href="index.html#langgraph">LangGraph</a></li></ul></article><article class="cluster"><h2><a class="section-link" href="browse/primary-substrates/index.html">Agents / Handoffs / Traces</a></h2><ul><li><a href="index.html#openai-agents-sdk">OpenAI Agents SDK</a></li></ul></article><article class="cluster"><h2><a class="section-link" href="browse/primary-substrates/index.html">Kernel / Plugins / Connectors</a></h2><ul><li><a href="index.html#semantic-kernel">Semantic Kernel</a></li></ul></article><article class="cluster"><h2><a class="section-link" href="browse/primary-substrates/index.html">Data / Indexes / Workflows</a></h2><ul><li><a href="index.html#llamaindex">LlamaIndex</a></li></ul></article><article class="cluster"><h2><a class="section-link" href="browse/primary-substrates/index.html">Sandbox / Tools</a></h2><ul><li><a href="index.html#openhands">OpenHands</a></li></ul></article>
         </div>
       </section>
       <section class="grid">
-        <article class="card">
+        <article class="card" id="aider">
       <div class="metaphor-picture" title="sheepdog">
         <svg viewBox="0 0 96 96" aria-hidden="true">
   <circle cx="48" cy="48" r="42" fill="#f8efe1"/>
@@ -224,28 +263,28 @@
         <ul><li>context engineering</li><li>code diffing</li><li>repo state</li><li>human approval</li></ul>
       </section>
       <section>
-        <h3>Primary Substrate</h3>
-        <ul><li>repository</li><li>git</li><li>chat</li><li>diff</li></ul>
+        <h3><a class="section-link" href="browse/primary-substrates/index.html">Primary Substrate</a></h3>
+        <ul><li><a href="browse/primary-substrates/repository.html">repository</a></li><li><a href="browse/primary-substrates/git.html">git</a></li><li><a href="browse/primary-substrates/chat.html">chat</a></li><li><a href="browse/primary-substrates/diff.html">diff</a></li></ul>
       </section>
       <section>
-        <h3>Cognitive Style</h3>
-        <ul><li>grounded</li><li>collaborative</li><li>concrete</li></ul>
+        <h3><a class="section-link" href="browse/cognitive-styles/index.html">Cognitive Style</a></h3>
+        <ul><li><a href="browse/cognitive-styles/grounded.html">grounded</a></li><li><a href="browse/cognitive-styles/collaborative.html">collaborative</a></li><li><a href="browse/cognitive-styles/concrete.html">concrete</a></li></ul>
       </section>
       <section>
-        <h3>Trust Model</h3>
-        <ul><li>repository-closeness</li><li>diff-review</li><li>human-approval</li></ul>
+        <h3><a class="section-link" href="browse/trust-models/index.html">Trust Model</a></h3>
+        <ul><li><a href="browse/trust-models/repository-closeness.html">repository-closeness</a></li><li><a href="browse/trust-models/diff-review.html">diff-review</a></li><li><a href="browse/trust-models/human-approval.html">human-approval</a></li></ul>
       </section>
       <section>
-        <h3>Hidden Bet</h3>
-        <p>Repo proximity matters more than orchestration sophistication.</p>
+        <h3><a class="section-link" href="browse/hidden-bets/index.html">Hidden Bet</a></h3>
+        <p><a href="browse/hidden-bets/repo-proximity-matters-more-than-orchestration-sophistication.html">Repo proximity matters more than orchestration sophistication.</a></p>
       </section>
       <section>
         <h3>Playfulness</h3>
         <p>The fun move is treating the repository itself as the agent&#x27;s working body and memory surface.</p>
       </section>
       <section>
-        <h3>Failure Modes</h3>
-        <ul><li>Context drift in large repos</li><li>Patch misalignment</li><li>Repo-local optimization at the expense of broader planning</li></ul>
+        <h3><a class="section-link" href="browse/failure-modes/index.html">Failure Modes</a></h3>
+        <ul><li><a href="browse/failure-modes/context-drift-in-large-repos.html">Context drift in large repos</a></li><li><a href="browse/failure-modes/patch-misalignment.html">Patch misalignment</a></li><li><a href="browse/failure-modes/repo-local-optimization-at-the-expense-of-broader-planning.html">Repo-local optimization at the expense of broader planning</a></li></ul>
       </section>
       <section>
         <h3>What It Refuses</h3>
@@ -256,8 +295,8 @@
         <p>Its strength is staying close to the repo. Its limitation is that repo-closeness can make broader autonomous planning feel secondary.</p>
       </section>
       <section>
-        <h3>Representative For</h3>
-        <ul><li>repo-close coding agent</li><li>diff-mediated collaboration</li></ul>
+        <h3><a class="section-link" href="browse/representative-for/index.html">Representative For</a></h3>
+        <ul><li><a href="browse/representative-for/repo-close-coding-agent.html">repo-close coding agent</a></li><li><a href="browse/representative-for/diff-mediated-collaboration.html">diff-mediated collaboration</a></li></ul>
       </section>
       
       <section>
@@ -272,10 +311,22 @@
       
       <section>
         <h3>Relationships</h3>
-        <ul class="relationship-list"><li><strong>contrasts_with</strong> → Langgraph<br><span class="relation-note">Aider keeps agency close to the repository and human collaboration, while LangGraph externalizes agency into explicit graph control flow.</span></li><li><strong>playful_parallel_to</strong> → <a href="concepts/git-as-cognition.html">Git As Cognition</a><br><span class="relation-note">Git becomes more than storage; it participates in the agent&#x27;s practical loop of understanding and change.</span></li><li><strong>trusts_through</strong> → <a href="concepts/diff-as-interface.html">Diff As Interface</a><br><span class="relation-note">Aider earns trust by keeping change visible in concrete diffs that a human can inspect and negotiate.</span></li><li><strong>shares_hidden_bet_with</strong> → Claude Code<br><span class="relation-note">Both assume close contact with the real working code surface matters more than abstract orchestration sophistication.</span></li></ul>
+        <ul class="relationship-list"><li><strong>contrasts_with</strong> → <a href="index.html#langgraph">LangGraph</a><br><span class="relation-note">Aider keeps agency close to the repository and human collaboration, while LangGraph externalizes agency into explicit graph control flow.</span></li><li><strong>playful_parallel_to</strong> → <a href="concepts/git-as-cognition.html">Git As Cognition</a><br><span class="relation-note">Git becomes more than storage; it participates in the agent&#x27;s practical loop of understanding and change.</span></li><li><strong>trusts_through</strong> → <a href="concepts/diff-as-interface.html">Diff As Interface</a><br><span class="relation-note">Aider earns trust by keeping change visible in concrete diffs that a human can inspect and negotiate.</span></li><li><strong>shares_hidden_bet_with</strong> → <a href="index.html#claude-code">Claude Code</a><br><span class="relation-note">Both assume close contact with the real working code surface matters more than abstract orchestration sophistication.</span></li></ul>
+      </section>
+      <section>
+        <h3>More To Explore</h3>
+        <h4>Shares Primary Substrate</h4>
+        <ul><li><a href="index.html#claude-code">Claude Code</a></li><li><a href="index.html#cursor">Cursor</a></li><li><a href="index.html#openhands">OpenHands</a></li><li><a href="index.html#pi">Pi</a></li></ul>
+        <h4>Shares Trust Model</h4>
+        <ul><li><a href="index.html#claude-code">Claude Code</a></li></ul>
+        <h4>Shares Cognitive Style</h4>
+        <ul><li><a href="index.html#claude-code">Claude Code</a></li><li><a href="index.html#cursor">Cursor</a></li><li><a href="index.html#openhands">OpenHands</a></li><li><a href="index.html#pi">Pi</a></li></ul>
+        <h4>Contrasts With</h4>
+        <ul><li><a href="index.html#langgraph">LangGraph</a></li></ul>
+        <h4>Historical Notes</h4><ul><li><a href="notes/explorations/historical/the-rise-of-terminal-coding-agents.html">The Rise Of Terminal Coding Agents</a></li></ul><h4>Tensions</h4><ul><li><a href="notes/explorations/tensions/closeness-vs-orchestration.html">Closeness Vs Orchestration</a></li></ul>
       </section>
     </article>
-<article class="card">
+<article class="card" id="autogen">
       <div class="metaphor-picture" title="flock-of-starlings">
         <svg viewBox="0 0 96 96" aria-hidden="true">
   <path d="M18 36c6-5 12-6 18-2M29 32c5-6 11-8 17-5M43 30c7-5 13-5 18 0M57 33c6-5 12-5 17 0" fill="none" stroke="#1f1d1a" stroke-width="3" stroke-linecap="round"/>
@@ -301,28 +352,28 @@
         <ul><li>team topology</li><li>message routing</li><li>termination conditions</li><li>extensions and runtimes</li></ul>
       </section>
       <section>
-        <h3>Primary Substrate</h3>
-        <ul><li>conversation</li><li>teams</li><li>events</li><li>extensions</li></ul>
+        <h3><a class="section-link" href="browse/primary-substrates/index.html">Primary Substrate</a></h3>
+        <ul><li><a href="browse/primary-substrates/conversation.html">conversation</a></li><li><a href="browse/primary-substrates/teams.html">teams</a></li><li><a href="browse/primary-substrates/events.html">events</a></li><li><a href="browse/primary-substrates/extensions.html">extensions</a></li></ul>
       </section>
       <section>
-        <h3>Cognitive Style</h3>
-        <ul><li>social</li><li>role-distributed</li><li>conversational</li></ul>
+        <h3><a class="section-link" href="browse/cognitive-styles/index.html">Cognitive Style</a></h3>
+        <ul><li><a href="browse/cognitive-styles/social.html">social</a></li><li><a href="browse/cognitive-styles/role-distributed.html">role-distributed</a></li><li><a href="browse/cognitive-styles/conversational.html">conversational</a></li></ul>
       </section>
       <section>
-        <h3>Trust Model</h3>
-        <ul><li>team-structure</li><li>explicit-termination</li><li>runtime-layering</li></ul>
+        <h3><a class="section-link" href="browse/trust-models/index.html">Trust Model</a></h3>
+        <ul><li><a href="browse/trust-models/team-structure.html">team-structure</a></li><li><a href="browse/trust-models/explicit-termination.html">explicit-termination</a></li><li><a href="browse/trust-models/runtime-layering.html">runtime-layering</a></li></ul>
       </section>
       <section>
-        <h3>Hidden Bet</h3>
-        <p>Coordinated teams outperform a single monolithic agent.</p>
+        <h3><a class="section-link" href="browse/hidden-bets/index.html">Hidden Bet</a></h3>
+        <p><a href="browse/hidden-bets/coordinated-teams-outperform-a-single-monolithic-agent.html">Coordinated teams outperform a single monolithic agent.</a></p>
       </section>
       <section>
         <h3>Playfulness</h3>
         <p>The fun move is how unapologetically social the architecture is: teams, group chats, swarms, and orchestrators become practical runtime elements.</p>
       </section>
       <section>
-        <h3>Failure Modes</h3>
-        <ul><li>Agent-team sprawl</li><li>Message-loop confusion</li><li>Termination ambiguity</li></ul>
+        <h3><a class="section-link" href="browse/failure-modes/index.html">Failure Modes</a></h3>
+        <ul><li><a href="browse/failure-modes/agent-team-sprawl.html">Agent-team sprawl</a></li><li><a href="browse/failure-modes/message-loop-confusion.html">Message-loop confusion</a></li><li><a href="browse/failure-modes/termination-ambiguity.html">Termination ambiguity</a></li></ul>
       </section>
       <section>
         <h3>What It Refuses</h3>
@@ -333,8 +384,8 @@
         <p>Its expressive power comes from team coordination and layered runtimes, but those same layers can make the system feel intricate before it feels stable.</p>
       </section>
       <section>
-        <h3>Representative For</h3>
-        <ul><li>team-based agent framework</li><li>multi-agent coordination runtime</li></ul>
+        <h3><a class="section-link" href="browse/representative-for/index.html">Representative For</a></h3>
+        <ul><li><a href="browse/representative-for/team-based-agent-framework.html">team-based agent framework</a></li><li><a href="browse/representative-for/multi-agent-coordination-runtime.html">multi-agent coordination runtime</a></li></ul>
       </section>
       
       <section>
@@ -349,10 +400,22 @@
       
       <section>
         <h3>Relationships</h3>
-        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/multi-agent-theater.html">Multi-Agent Theater</a><br><span class="relation-note">Teams, swarms, and group chats are explicit runtime patterns rather than loose metaphor.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/agent-team.html">Agent Team</a><br><span class="relation-note">AutoGen moves cognition outward into teams and coordinated agent roles rather than keeping it inside one actor.</span></li><li><strong>shares_cognitive_style_with</strong> → Openai Agents Sdk<br><span class="relation-note">Both favor explicit orchestration and composable runtime structure, even though AutoGen is more social in shape.</span></li><li><strong>different_complexity_center_than</strong> → Openai Agents Sdk<br><span class="relation-note">AutoGen pushes harder into team coordination and runtime layering, while the OpenAI Agents SDK concentrates on agents, tools, handoffs, and traces.</span></li></ul>
+        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/multi-agent-theater.html">Multi-Agent Theater</a><br><span class="relation-note">Teams, swarms, and group chats are explicit runtime patterns rather than loose metaphor.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/agent-team.html">Agent Team</a><br><span class="relation-note">AutoGen moves cognition outward into teams and coordinated agent roles rather than keeping it inside one actor.</span></li><li><strong>shares_cognitive_style_with</strong> → <a href="index.html#openai-agents-sdk">OpenAI Agents SDK</a><br><span class="relation-note">Both favor explicit orchestration and composable runtime structure, even though AutoGen is more social in shape.</span></li><li><strong>different_complexity_center_than</strong> → <a href="index.html#openai-agents-sdk">OpenAI Agents SDK</a><br><span class="relation-note">AutoGen pushes harder into team coordination and runtime layering, while the OpenAI Agents SDK concentrates on agents, tools, handoffs, and traces.</span></li></ul>
+      </section>
+      <section>
+        <h3>More To Explore</h3>
+        <h4>Shares Primary Substrate</h4>
+        <ul><li><a href="index.html#pi">Pi</a></li></ul>
+        <h4>Shares Trust Model</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Shares Cognitive Style</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Contrasts With</h4>
+        <ul><li><a href="index.html#openai-agents-sdk">OpenAI Agents SDK</a></li></ul>
+        <h4>Explorations</h4><ul><li><a href="notes/explorations/concepts/teams-as-agency.html">Teams As Agency</a></li></ul><h4>Tensions</h4><ul><li><a href="notes/explorations/tensions/closeness-vs-orchestration.html">Closeness Vs Orchestration</a></li></ul>
       </section>
     </article>
-<article class="card">
+<article class="card" id="claude-code">
       <div class="metaphor-picture" title="border-collie">
         <svg viewBox="0 0 96 96" aria-hidden="true">
   <circle cx="32" cy="34" r="13" fill="#1f1d1a"/>
@@ -385,28 +448,28 @@
         <ul><li>context management</li><li>permissions and safety</li><li>terminal workflow composition</li><li>subagent and MCP customization</li></ul>
       </section>
       <section>
-        <h3>Primary Substrate</h3>
-        <ul><li>terminal</li><li>repository</li><li>context</li><li>permissions</li></ul>
+        <h3><a class="section-link" href="browse/primary-substrates/index.html">Primary Substrate</a></h3>
+        <ul><li><a href="browse/primary-substrates/terminal.html">terminal</a></li><li><a href="browse/primary-substrates/repository.html">repository</a></li><li><a href="browse/primary-substrates/context.html">context</a></li><li><a href="browse/primary-substrates/permissions.html">permissions</a></li></ul>
       </section>
       <section>
-        <h3>Cognitive Style</h3>
-        <ul><li>grounded</li><li>composable</li><li>collaborative</li></ul>
+        <h3><a class="section-link" href="browse/cognitive-styles/index.html">Cognitive Style</a></h3>
+        <ul><li><a href="browse/cognitive-styles/grounded.html">grounded</a></li><li><a href="browse/cognitive-styles/composable.html">composable</a></li><li><a href="browse/cognitive-styles/collaborative.html">collaborative</a></li></ul>
       </section>
       <section>
-        <h3>Trust Model</h3>
-        <ul><li>permissioned-agency</li><li>terminal-transparency</li><li>human-approval</li></ul>
+        <h3><a class="section-link" href="browse/trust-models/index.html">Trust Model</a></h3>
+        <ul><li><a href="browse/trust-models/permissioned-agency.html">permissioned-agency</a></li><li><a href="browse/trust-models/terminal-transparency.html">terminal-transparency</a></li><li><a href="browse/trust-models/human-approval.html">human-approval</a></li></ul>
       </section>
       <section>
-        <h3>Hidden Bet</h3>
-        <p>Terminal composability plus permission boundaries create trustworthy coding agency.</p>
+        <h3><a class="section-link" href="browse/hidden-bets/index.html">Hidden Bet</a></h3>
+        <p><a href="browse/hidden-bets/terminal-composability-plus-permission-boundaries-create-trustworthy-coding-agency.html">Terminal composability plus permission boundaries create trustworthy coding agency.</a></p>
       </section>
       <section>
         <h3>Playfulness</h3>
         <p>The elegant move is importing unix composability into coding agency instead of building a sealed bespoke environment.</p>
       </section>
       <section>
-        <h3>Failure Modes</h3>
-        <ul><li>Context overreach</li><li>Permission fatigue</li><li>Sparse high-level orchestration visibility</li></ul>
+        <h3><a class="section-link" href="browse/failure-modes/index.html">Failure Modes</a></h3>
+        <ul><li><a href="browse/failure-modes/context-overreach.html">Context overreach</a></li><li><a href="browse/failure-modes/permission-fatigue.html">Permission fatigue</a></li><li><a href="browse/failure-modes/sparse-high-level-orchestration-visibility.html">Sparse high-level orchestration visibility</a></li></ul>
       </section>
       <section>
         <h3>What It Refuses</h3>
@@ -417,8 +480,8 @@
         <p>Its strength is terminal intimacy and composability. Its tradeoff is that staying close to raw developer workflows can make higher-level orchestration feel intentionally sparse.</p>
       </section>
       <section>
-        <h3>Representative For</h3>
-        <ul><li>terminal-native collaborator</li><li>permissioned coding agent</li></ul>
+        <h3><a class="section-link" href="browse/representative-for/index.html">Representative For</a></h3>
+        <ul><li><a href="browse/representative-for/terminal-native-collaborator.html">terminal-native collaborator</a></li><li><a href="browse/representative-for/permissioned-coding-agent.html">permissioned coding agent</a></li></ul>
       </section>
       
       <section>
@@ -428,15 +491,27 @@
       </section>
       <section>
         <h3>Related Concepts</h3>
-        <ul class="pill-list"><li><a class="pill" href="concepts/unix-composability.html">Unix Composability</a></li><li><a class="pill" href="concepts/permissioned-agency.html">Permissioned Agency</a></li><li><a class="pill" href="concepts/subagents-as-files.html">Subagents As Files</a></li><li><a class="pill" href="concepts/terminal-as-agent-body.html">Terminal As Agent Body</a></li></ul>
+        <ul class="pill-list"><li><a class="pill" href="concepts/unix-composability.html">Unix Composability</a></li><li><a class="pill" href="concepts/permissioned-agency.html">Permissioned Agency</a></li><li><a class="pill" href="concepts/subagents-as-files.html">Subagents As Files</a></li><li><a class="pill" href="concepts/terminal-as-agent-body.html">Terminal As Agent Body</a></li><li><a class="pill" href="concepts/mcp-as-tool-fabric.html">MCP As Tool Fabric</a></li></ul>
       </section>
       
       <section>
         <h3>Relationships</h3>
-        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/unix-composability.html">Unix Composability</a><br><span class="relation-note">The tool is built to cooperate with shell workflows instead of replacing them.</span></li><li><strong>embodies_concept</strong> → <a href="concepts/permissioned-agency.html">Permissioned Agency</a><br><span class="relation-note">Permission requests are part of the architecture&#x27;s trust model, not an accidental UI add-on.</span></li><li><strong>trusts_through</strong> → <a href="concepts/permissioned-agency.html">Permissioned Agency</a><br><span class="relation-note">Claude Code builds trust by making risky actions conditional on visible permission boundaries.</span></li><li><strong>shares_primary_substrate_with</strong> → Pi<br><span class="relation-note">Both are terminal-close systems that treat the shell and local repo as important working terrain.</span></li></ul>
+        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/unix-composability.html">Unix Composability</a><br><span class="relation-note">The tool is built to cooperate with shell workflows instead of replacing them.</span></li><li><strong>embodies_concept</strong> → <a href="concepts/permissioned-agency.html">Permissioned Agency</a><br><span class="relation-note">Permission requests are part of the architecture&#x27;s trust model, not an accidental UI add-on.</span></li><li><strong>trusts_through</strong> → <a href="concepts/permissioned-agency.html">Permissioned Agency</a><br><span class="relation-note">Claude Code builds trust by making risky actions conditional on visible permission boundaries.</span></li><li><strong>shares_primary_substrate_with</strong> → <a href="index.html#pi">Pi</a><br><span class="relation-note">Both are terminal-close systems that treat the shell and local repo as important working terrain.</span></li></ul>
+      </section>
+      <section>
+        <h3>More To Explore</h3>
+        <h4>Shares Primary Substrate</h4>
+        <ul><li><a href="index.html#pi">Pi</a></li><li><a href="index.html#aider">Aider</a></li><li><a href="index.html#cursor">Cursor</a></li><li><a href="index.html#openhands">OpenHands</a></li></ul>
+        <h4>Shares Trust Model</h4>
+        <ul><li><a href="index.html#aider">Aider</a></li></ul>
+        <h4>Shares Cognitive Style</h4>
+        <ul><li><a href="index.html#aider">Aider</a></li><li><a href="index.html#pi">Pi</a></li><li><a href="index.html#llamaindex">LlamaIndex</a></li><li><a href="index.html#openai-agents-sdk">OpenAI Agents SDK</a></li></ul>
+        <h4>Contrasts With</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Explorations</h4><ul><li><a href="notes/explorations/concepts/context-as-substrate.html">Context As Substrate</a></li></ul><h4>Historical Notes</h4><ul><li><a href="notes/explorations/historical/the-rise-of-terminal-coding-agents.html">The Rise Of Terminal Coding Agents</a></li></ul><h4>Tensions</h4><ul><li><a href="notes/explorations/tensions/closeness-vs-orchestration.html">Closeness Vs Orchestration</a></li><li><a href="notes/explorations/tensions/minimal-core-vs-batteries-included.html">Minimal Core Vs Batteries Included</a></li></ul>
       </section>
     </article>
-<article class="card">
+<article class="card" id="cursor">
       <div class="metaphor-picture" title="seaplane">
         <svg viewBox="0 0 96 96" aria-hidden="true">
   <path d="M18 64h60l-14-10H44l-8-10H24z" fill="#75a8b8" stroke="#1f1d1a" stroke-width="3" stroke-linejoin="round"/>
@@ -464,28 +539,28 @@
         <ul><li>mode selection</li><li>codebase exploration</li><li>remote environment setup</li><li>permission and auto-run boundaries</li></ul>
       </section>
       <section>
-        <h3>Primary Substrate</h3>
-        <ul><li>ide-context</li><li>repository</li><li>modes</li><li>remote-agent-environment</li></ul>
+        <h3><a class="section-link" href="browse/primary-substrates/index.html">Primary Substrate</a></h3>
+        <ul><li><a href="browse/primary-substrates/ide-context.html">ide-context</a></li><li><a href="browse/primary-substrates/repository.html">repository</a></li><li><a href="browse/primary-substrates/modes.html">modes</a></li><li><a href="browse/primary-substrates/remote-agent-environment.html">remote-agent-environment</a></li></ul>
       </section>
       <section>
-        <h3>Cognitive Style</h3>
-        <ul><li>concrete</li><li>inspectable</li><li>sandboxed</li></ul>
+        <h3><a class="section-link" href="browse/cognitive-styles/index.html">Cognitive Style</a></h3>
+        <ul><li><a href="browse/cognitive-styles/concrete.html">concrete</a></li><li><a href="browse/cognitive-styles/inspectable.html">inspectable</a></li><li><a href="browse/cognitive-styles/sandboxed.html">sandboxed</a></li></ul>
       </section>
       <section>
-        <h3>Trust Model</h3>
-        <ul><li>mode-boundaries</li><li>review-before-merge</li><li>environment-separation</li></ul>
+        <h3><a class="section-link" href="browse/trust-models/index.html">Trust Model</a></h3>
+        <ul><li><a href="browse/trust-models/mode-boundaries.html">mode-boundaries</a></li><li><a href="browse/trust-models/review-before-merge.html">review-before-merge</a></li><li><a href="browse/trust-models/environment-separation.html">environment-separation</a></li></ul>
       </section>
       <section>
-        <h3>Hidden Bet</h3>
-        <p>Different coding tasks want different agent modes, and heavier work belongs in background environments.</p>
+        <h3><a class="section-link" href="browse/hidden-bets/index.html">Hidden Bet</a></h3>
+        <p><a href="browse/hidden-bets/different-coding-tasks-want-different-agent-modes-and-heavier-work-belongs-in-background-environments.html">Different coding tasks want different agent modes, and heavier work belongs in background environments.</a></p>
       </section>
       <section>
         <h3>Playfulness</h3>
         <p>The interesting move is splitting coding agency into modes instead of forcing one fixed personality, then extending it with asynchronous background agents when the task wants more distance and runtime.</p>
       </section>
       <section>
-        <h3>Failure Modes</h3>
-        <ul><li>Mode confusion</li><li>Remote-environment drift</li><li>Trust gaps between foreground and background work</li></ul>
+        <h3><a class="section-link" href="browse/failure-modes/index.html">Failure Modes</a></h3>
+        <ul><li><a href="browse/failure-modes/mode-confusion.html">Mode confusion</a></li><li><a href="browse/failure-modes/remote-environment-drift.html">Remote-environment drift</a></li><li><a href="browse/failure-modes/trust-gaps-between-foreground-and-background-work.html">Trust gaps between foreground and background work</a></li></ul>
       </section>
       <section>
         <h3>What It Refuses</h3>
@@ -496,8 +571,8 @@
         <p>Its strength is matching capability surface to task shape, from read-only Ask mode to remote background agents. Its tradeoff is that more modes and environments mean more boundaries for the user to understand and trust.</p>
       </section>
       <section>
-        <h3>Representative For</h3>
-        <ul><li>mode-gated IDE agent</li><li>remote background coding agent</li></ul>
+        <h3><a class="section-link" href="browse/representative-for/index.html">Representative For</a></h3>
+        <ul><li><a href="browse/representative-for/mode-gated-ide-agent.html">mode-gated IDE agent</a></li><li><a href="browse/representative-for/remote-background-coding-agent.html">remote background coding agent</a></li></ul>
       </section>
       
       <section>
@@ -512,10 +587,22 @@
       
       <section>
         <h3>Relationships</h3>
-        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/mode-gated-agency.html">Mode-Gated Agency</a><br><span class="relation-note">Ask, Agent, Manual, and Custom modes make capability boundaries a visible part of the workflow.</span></li><li><strong>embodies_concept</strong> → <a href="concepts/background-agents.html">Background Agents</a><br><span class="relation-note">Cursor can offload coding work into remote asynchronous agents that continue outside the immediate foreground session.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/background-agents.html">Background Agents</a><br><span class="relation-note">Cursor externalizes heavier work into remote agents rather than forcing everything through one foreground session.</span></li><li><strong>different_complexity_center_than</strong> → Claude Code<br><span class="relation-note">Cursor pushes more complexity into mode design and remote-agent environment setup, while Claude Code leans harder on terminal composability and permissioned local workflows.</span></li><li><strong>competes_for_same_use_case_as</strong> → Claude Code<br><span class="relation-note">Both target day-to-day coding agency for working developers, but offer different bodies and trust surfaces.</span></li></ul>
+        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/mode-gated-agency.html">Mode-Gated Agency</a><br><span class="relation-note">Ask, Agent, Manual, and Custom modes make capability boundaries a visible part of the workflow.</span></li><li><strong>embodies_concept</strong> → <a href="concepts/background-agents.html">Background Agents</a><br><span class="relation-note">Cursor can offload coding work into remote asynchronous agents that continue outside the immediate foreground session.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/background-agents.html">Background Agents</a><br><span class="relation-note">Cursor externalizes heavier work into remote agents rather than forcing everything through one foreground session.</span></li><li><strong>different_complexity_center_than</strong> → <a href="index.html#claude-code">Claude Code</a><br><span class="relation-note">Cursor pushes more complexity into mode design and remote-agent environment setup, while Claude Code leans harder on terminal composability and permissioned local workflows.</span></li><li><strong>competes_for_same_use_case_as</strong> → <a href="index.html#claude-code">Claude Code</a><br><span class="relation-note">Both target day-to-day coding agency for working developers, but offer different bodies and trust surfaces.</span></li></ul>
+      </section>
+      <section>
+        <h3>More To Explore</h3>
+        <h4>Shares Primary Substrate</h4>
+        <ul><li><a href="index.html#aider">Aider</a></li><li><a href="index.html#claude-code">Claude Code</a></li><li><a href="index.html#openhands">OpenHands</a></li><li><a href="index.html#pi">Pi</a></li></ul>
+        <h4>Shares Trust Model</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Shares Cognitive Style</h4>
+        <ul><li><a href="index.html#openhands">OpenHands</a></li><li><a href="index.html#aider">Aider</a></li><li><a href="index.html#langgraph">LangGraph</a></li><li><a href="index.html#openai-agents-sdk">OpenAI Agents SDK</a></li></ul>
+        <h4>Contrasts With</h4>
+        <ul><li><a href="index.html#claude-code">Claude Code</a></li><li><a href="index.html#claude-code">Claude Code</a></li></ul>
+        <h4>Explorations</h4><ul><li><a href="notes/explorations/concepts/context-as-substrate.html">Context As Substrate</a></li><li><a href="notes/explorations/concepts/sandbox-as-agent-body.html">Sandbox As Agent Body</a></li></ul>
       </section>
     </article>
-<article class="card">
+<article class="card" id="langgraph">
       <div class="metaphor-picture" title="railway-switching yard">
         <svg viewBox="0 0 96 96" aria-hidden="true">
   <path d="M22 12v72M74 12v72" fill="none" stroke="#1f1d1a" stroke-width="4" stroke-linecap="round"/>
@@ -541,28 +628,28 @@
         <ul><li>graph structure</li><li>state management</li><li>persistence</li><li>observability</li></ul>
       </section>
       <section>
-        <h3>Primary Substrate</h3>
-        <ul><li>graph</li><li>state</li><li>checkpoints</li><li>transitions</li></ul>
+        <h3><a class="section-link" href="browse/primary-substrates/index.html">Primary Substrate</a></h3>
+        <ul><li><a href="browse/primary-substrates/graph.html">graph</a></li><li><a href="browse/primary-substrates/state.html">state</a></li><li><a href="browse/primary-substrates/checkpoints.html">checkpoints</a></li><li><a href="browse/primary-substrates/transitions.html">transitions</a></li></ul>
       </section>
       <section>
-        <h3>Cognitive Style</h3>
-        <ul><li>explicit</li><li>stateful</li><li>inspectable</li></ul>
+        <h3><a class="section-link" href="browse/cognitive-styles/index.html">Cognitive Style</a></h3>
+        <ul><li><a href="browse/cognitive-styles/explicit.html">explicit</a></li><li><a href="browse/cognitive-styles/stateful.html">stateful</a></li><li><a href="browse/cognitive-styles/inspectable.html">inspectable</a></li></ul>
       </section>
       <section>
-        <h3>Trust Model</h3>
-        <ul><li>explicit-control-flow</li><li>inspectable-state</li><li>checkpointed-execution</li></ul>
+        <h3><a class="section-link" href="browse/trust-models/index.html">Trust Model</a></h3>
+        <ul><li><a href="browse/trust-models/explicit-control-flow.html">explicit-control-flow</a></li><li><a href="browse/trust-models/inspectable-state.html">inspectable-state</a></li><li><a href="browse/trust-models/checkpointed-execution.html">checkpointed-execution</a></li></ul>
       </section>
       <section>
-        <h3>Hidden Bet</h3>
-        <p>Explicit state graphs outperform opaque autonomous loops.</p>
+        <h3><a class="section-link" href="browse/hidden-bets/index.html">Hidden Bet</a></h3>
+        <p><a href="browse/hidden-bets/explicit-state-graphs-outperform-opaque-autonomous-loops.html">Explicit state graphs outperform opaque autonomous loops.</a></p>
       </section>
       <section>
         <h3>Playfulness</h3>
         <p>The playful move is turning agent behavior into a graph that can pause, resume, branch, and persist.</p>
       </section>
       <section>
-        <h3>Failure Modes</h3>
-        <ul><li>Graph sprawl</li><li>State-shape brittleness</li><li>Overengineering control flow</li></ul>
+        <h3><a class="section-link" href="browse/failure-modes/index.html">Failure Modes</a></h3>
+        <ul><li><a href="browse/failure-modes/graph-sprawl.html">Graph sprawl</a></li><li><a href="browse/failure-modes/state-shape-brittleness.html">State-shape brittleness</a></li><li><a href="browse/failure-modes/overengineering-control-flow.html">Overengineering control flow</a></li></ul>
       </section>
       <section>
         <h3>What It Refuses</h3>
@@ -573,8 +660,8 @@
         <p>The same explicit graph structure that creates reliability can also turn into a maintenance burden when workflows become intricate.</p>
       </section>
       <section>
-        <h3>Representative For</h3>
-        <ul><li>graph orchestration runtime</li><li>explicit stateful agent workflow</li></ul>
+        <h3><a class="section-link" href="browse/representative-for/index.html">Representative For</a></h3>
+        <ul><li><a href="browse/representative-for/graph-orchestration-runtime.html">graph orchestration runtime</a></li><li><a href="browse/representative-for/explicit-stateful-agent-workflow.html">explicit stateful agent workflow</a></li></ul>
       </section>
       
       <section>
@@ -589,10 +676,22 @@
       
       <section>
         <h3>Relationships</h3>
-        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/graph-orchestration.html">Graph Orchestration</a><br><span class="relation-note">Its runtime is explicitly organized around graph transitions and stateful control flow.</span></li><li><strong>trusts_through</strong> → <a href="concepts/explicit-state.html">Explicit State</a><br><span class="relation-note">LangGraph asks to be trusted through explicit state, visible transitions, and checkpointed control flow.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/explicit-state.html">Explicit State</a><br><span class="relation-note">LangGraph externalizes agent memory and control into state and transition structure rather than keeping them latent in prompts.</span></li><li><strong>contrasts_cognitive_style_with</strong> → Aider<br><span class="relation-note">LangGraph is explicit, stateful, and architected; Aider is grounded, collaborative, and concrete.</span></li></ul>
+        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/graph-orchestration.html">Graph Orchestration</a><br><span class="relation-note">Its runtime is explicitly organized around graph transitions and stateful control flow.</span></li><li><strong>trusts_through</strong> → <a href="concepts/explicit-state.html">Explicit State</a><br><span class="relation-note">LangGraph asks to be trusted through explicit state, visible transitions, and checkpointed control flow.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/explicit-state.html">Explicit State</a><br><span class="relation-note">LangGraph externalizes agent memory and control into state and transition structure rather than keeping them latent in prompts.</span></li><li><strong>contrasts_cognitive_style_with</strong> → <a href="index.html#aider">Aider</a><br><span class="relation-note">LangGraph is explicit, stateful, and architected; Aider is grounded, collaborative, and concrete.</span></li></ul>
+      </section>
+      <section>
+        <h3>More To Explore</h3>
+        <h4>Shares Primary Substrate</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Shares Trust Model</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Shares Cognitive Style</h4>
+        <ul><li><a href="index.html#openai-agents-sdk">OpenAI Agents SDK</a></li><li><a href="index.html#pydantic-ai">PydanticAI</a></li><li><a href="index.html#cursor">Cursor</a></li><li><a href="index.html#llamaindex">LlamaIndex</a></li></ul>
+        <h4>Contrasts With</h4>
+        <ul><li><a href="index.html#aider">Aider</a></li></ul>
+        <h4>Tensions</h4><ul><li><a href="notes/explorations/tensions/closeness-vs-orchestration.html">Closeness Vs Orchestration</a></li></ul>
       </section>
     </article>
-<article class="card">
+<article class="card" id="llamaindex">
       <div class="metaphor-picture" title="beaver">
         <svg viewBox="0 0 96 96" aria-hidden="true">
   <ellipse cx="48" cy="51" rx="24" ry="22" fill="#8c6546"/>
@@ -623,28 +722,28 @@
         <ul><li>data connectors</li><li>retrieval architecture</li><li>workflow design</li><li>multi-agent over knowledge sources</li></ul>
       </section>
       <section>
-        <h3>Primary Substrate</h3>
-        <ul><li>data</li><li>indexes</li><li>workflows</li><li>tools</li></ul>
+        <h3><a class="section-link" href="browse/primary-substrates/index.html">Primary Substrate</a></h3>
+        <ul><li><a href="browse/primary-substrates/data.html">data</a></li><li><a href="browse/primary-substrates/indexes.html">indexes</a></li><li><a href="browse/primary-substrates/workflows.html">workflows</a></li><li><a href="browse/primary-substrates/tools.html">tools</a></li></ul>
       </section>
       <section>
-        <h3>Cognitive Style</h3>
-        <ul><li>data-grounded</li><li>composable</li><li>explicit</li></ul>
+        <h3><a class="section-link" href="browse/cognitive-styles/index.html">Cognitive Style</a></h3>
+        <ul><li><a href="browse/cognitive-styles/data-grounded.html">data-grounded</a></li><li><a href="browse/cognitive-styles/composable.html">composable</a></li><li><a href="browse/cognitive-styles/explicit.html">explicit</a></li></ul>
       </section>
       <section>
-        <h3>Trust Model</h3>
-        <ul><li>data-grounding</li><li>retrieval-relevance</li><li>workflow-structure</li></ul>
+        <h3><a class="section-link" href="browse/trust-models/index.html">Trust Model</a></h3>
+        <ul><li><a href="browse/trust-models/data-grounding.html">data-grounding</a></li><li><a href="browse/trust-models/retrieval-relevance.html">retrieval-relevance</a></li><li><a href="browse/trust-models/workflow-structure.html">workflow-structure</a></li></ul>
       </section>
       <section>
-        <h3>Hidden Bet</h3>
-        <p>Data grounding is the true center of useful agency.</p>
+        <h3><a class="section-link" href="browse/hidden-bets/index.html">Hidden Bet</a></h3>
+        <p><a href="browse/hidden-bets/data-grounding-is-the-true-center-of-useful-agency.html">Data grounding is the true center of useful agency.</a></p>
       </section>
       <section>
         <h3>Playfulness</h3>
         <p>The lively move is refusing to separate agents from data architecture. Retrieval, workflows, and agents are treated as one continuous design surface.</p>
       </section>
       <section>
-        <h3>Failure Modes</h3>
-        <ul><li>Retrieval miss</li><li>Connector sprawl</li><li>Workflow complexity overwhelming insight</li></ul>
+        <h3><a class="section-link" href="browse/failure-modes/index.html">Failure Modes</a></h3>
+        <ul><li><a href="browse/failure-modes/retrieval-miss.html">Retrieval miss</a></li><li><a href="browse/failure-modes/connector-sprawl.html">Connector sprawl</a></li><li><a href="browse/failure-modes/workflow-complexity-overwhelming-insight.html">Workflow complexity overwhelming insight</a></li></ul>
       </section>
       <section>
         <h3>What It Refuses</h3>
@@ -655,8 +754,8 @@
         <p>Its strength is making data and retrieval central to agent design. Its tradeoff is that retrieval architecture can become the dominant complexity center and overshadow everything else.</p>
       </section>
       <section>
-        <h3>Representative For</h3>
-        <ul><li>data-centered agent runtime</li><li>agentic RAG framework</li></ul>
+        <h3><a class="section-link" href="browse/representative-for/index.html">Representative For</a></h3>
+        <ul><li><a href="browse/representative-for/data-centered-agent-runtime.html">data-centered agent runtime</a></li><li><a href="browse/representative-for/agentic-rag-framework.html">agentic RAG framework</a></li></ul>
       </section>
       
       <section>
@@ -671,10 +770,22 @@
       
       <section>
         <h3>Relationships</h3>
-        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/data-as-cognitive-substrate.html">Data As Cognitive Substrate</a><br><span class="relation-note">LlamaIndex treats indexes, retrieval, and data connectors as the real terrain over which agent behavior operates.</span></li><li><strong>embodies_concept</strong> → <a href="concepts/agentic-rag.html">Agentic RAG</a><br><span class="relation-note">The framework explicitly ties agents and workflows to retrieval over knowledge sources.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/data-as-cognitive-substrate.html">Data As Cognitive Substrate</a><br><span class="relation-note">LlamaIndex externalizes cognition into indexes, retrieval layers, and the surrounding knowledge substrate.</span></li><li><strong>different_complexity_center_than</strong> → Langgraph<br><span class="relation-note">LlamaIndex pushes complexity harder into retrieval and data substrate, while LangGraph pushes it into explicit control flow and state structure.</span></li><li><strong>contrasts_with</strong> → Claude Code<br><span class="relation-note">LlamaIndex centers data and retrieval as the substrate of agency, while Claude Code centers terminal-native collaboration over codebases.</span></li></ul>
+        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/data-as-cognitive-substrate.html">Data As Cognitive Substrate</a><br><span class="relation-note">LlamaIndex treats indexes, retrieval, and data connectors as the real terrain over which agent behavior operates.</span></li><li><strong>embodies_concept</strong> → <a href="concepts/agentic-rag.html">Agentic RAG</a><br><span class="relation-note">The framework explicitly ties agents and workflows to retrieval over knowledge sources.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/data-as-cognitive-substrate.html">Data As Cognitive Substrate</a><br><span class="relation-note">LlamaIndex externalizes cognition into indexes, retrieval layers, and the surrounding knowledge substrate.</span></li><li><strong>different_complexity_center_than</strong> → <a href="index.html#langgraph">LangGraph</a><br><span class="relation-note">LlamaIndex pushes complexity harder into retrieval and data substrate, while LangGraph pushes it into explicit control flow and state structure.</span></li><li><strong>contrasts_with</strong> → <a href="index.html#claude-code">Claude Code</a><br><span class="relation-note">LlamaIndex centers data and retrieval as the substrate of agency, while Claude Code centers terminal-native collaboration over codebases.</span></li></ul>
+      </section>
+      <section>
+        <h3>More To Explore</h3>
+        <h4>Shares Primary Substrate</h4>
+        <ul><li><a href="index.html#openai-agents-sdk">OpenAI Agents SDK</a></li><li><a href="index.html#openhands">OpenHands</a></li></ul>
+        <h4>Shares Trust Model</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Shares Cognitive Style</h4>
+        <ul><li><a href="index.html#openai-agents-sdk">OpenAI Agents SDK</a></li><li><a href="index.html#semantic-kernel">Semantic Kernel</a></li><li><a href="index.html#claude-code">Claude Code</a></li><li><a href="index.html#langgraph">LangGraph</a></li></ul>
+        <h4>Contrasts With</h4>
+        <ul><li><a href="index.html#langgraph">LangGraph</a></li><li><a href="index.html#claude-code">Claude Code</a></li></ul>
+        <h4>Explorations</h4><ul><li><a href="notes/explorations/concepts/teams-as-agency.html">Teams As Agency</a></li></ul>
       </section>
     </article>
-<article class="card">
+<article class="card" id="openai-agents-sdk">
       <div class="metaphor-picture" title="airport-hub">
         <svg viewBox="0 0 96 96" aria-hidden="true">
   <circle cx="48" cy="48" r="8" fill="#c87745"/>
@@ -701,28 +812,28 @@
         <ul><li>tool integration</li><li>handoff design</li><li>guardrails</li><li>tracing</li></ul>
       </section>
       <section>
-        <h3>Primary Substrate</h3>
-        <ul><li>agent-objects</li><li>tools</li><li>handoffs</li><li>traces</li></ul>
+        <h3><a class="section-link" href="browse/primary-substrates/index.html">Primary Substrate</a></h3>
+        <ul><li><a href="browse/primary-substrates/agent-objects.html">agent-objects</a></li><li><a href="browse/primary-substrates/tools.html">tools</a></li><li><a href="browse/primary-substrates/handoffs.html">handoffs</a></li><li><a href="browse/primary-substrates/traces.html">traces</a></li></ul>
       </section>
       <section>
-        <h3>Cognitive Style</h3>
-        <ul><li>explicit</li><li>composable</li><li>inspectable</li></ul>
+        <h3><a class="section-link" href="browse/cognitive-styles/index.html">Cognitive Style</a></h3>
+        <ul><li><a href="browse/cognitive-styles/explicit.html">explicit</a></li><li><a href="browse/cognitive-styles/composable.html">composable</a></li><li><a href="browse/cognitive-styles/inspectable.html">inspectable</a></li></ul>
       </section>
       <section>
-        <h3>Trust Model</h3>
-        <ul><li>explicit-handoffs</li><li>trace-visibility</li><li>guardrails</li></ul>
+        <h3><a class="section-link" href="browse/trust-models/index.html">Trust Model</a></h3>
+        <ul><li><a href="browse/trust-models/explicit-handoffs.html">explicit-handoffs</a></li><li><a href="browse/trust-models/trace-visibility.html">trace-visibility</a></li><li><a href="browse/trust-models/guardrails.html">guardrails</a></li></ul>
       </section>
       <section>
-        <h3>Hidden Bet</h3>
-        <p>Tracing and handoffs make multi-agent systems operationally manageable.</p>
+        <h3><a class="section-link" href="browse/hidden-bets/index.html">Hidden Bet</a></h3>
+        <p><a href="browse/hidden-bets/tracing-and-handoffs-make-multi-agent-systems-operationally-manageable.html">Tracing and handoffs make multi-agent systems operationally manageable.</a></p>
       </section>
       <section>
         <h3>Playfulness</h3>
         <p>The lively move is making agent handoffs explicit and traceable instead of treating multi-agent behavior as mystical emergence.</p>
       </section>
       <section>
-        <h3>Failure Modes</h3>
-        <ul><li>Handoff mismatch</li><li>Tool-routing confusion</li><li>Guardrail gaps</li></ul>
+        <h3><a class="section-link" href="browse/failure-modes/index.html">Failure Modes</a></h3>
+        <ul><li><a href="browse/failure-modes/handoff-mismatch.html">Handoff mismatch</a></li><li><a href="browse/failure-modes/tool-routing-confusion.html">Tool-routing confusion</a></li><li><a href="browse/failure-modes/guardrail-gaps.html">Guardrail gaps</a></li></ul>
       </section>
       <section>
         <h3>What It Refuses</h3>
@@ -733,8 +844,8 @@
         <p>Its strength is modular orchestration with explicit traces and handoffs. Its tradeoff is that the modularity can move complexity into system design and coordination boundaries.</p>
       </section>
       <section>
-        <h3>Representative For</h3>
-        <ul><li>handoff-centric agent runtime</li><li>trace-first orchestration SDK</li></ul>
+        <h3><a class="section-link" href="browse/representative-for/index.html">Representative For</a></h3>
+        <ul><li><a href="browse/representative-for/handoff-centric-agent-runtime.html">handoff-centric agent runtime</a></li><li><a href="browse/representative-for/trace-first-orchestration-sdk.html">trace-first orchestration SDK</a></li></ul>
       </section>
       
       <section>
@@ -751,8 +862,20 @@
         <h3>Relationships</h3>
         <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/handoffs.html">Handoffs</a><br><span class="relation-note">The SDK makes transfers between specialized agents an explicit orchestration primitive.</span></li><li><strong>embodies_concept</strong> → <a href="concepts/traces-as-residue.html">Traces As Residue</a><br><span class="relation-note">Execution traces are part of the architecture&#x27;s visible residue and observability story.</span></li><li><strong>trusts_through</strong> → <a href="concepts/traces-as-residue.html">Traces As Residue</a><br><span class="relation-note">The SDK makes behavior trustworthy by leaving a visible trace of routing, tools, and handoffs.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/tool-routing.html">Tool Routing</a><br><span class="relation-note">The SDK externalizes capability into tools, handoffs, and routing primitives rather than relying on one monolithic agent loop.</span></li></ul>
       </section>
+      <section>
+        <h3>More To Explore</h3>
+        <h4>Shares Primary Substrate</h4>
+        <ul><li><a href="index.html#llamaindex">LlamaIndex</a></li><li><a href="index.html#openhands">OpenHands</a></li></ul>
+        <h4>Shares Trust Model</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Shares Cognitive Style</h4>
+        <ul><li><a href="index.html#langgraph">LangGraph</a></li><li><a href="index.html#llamaindex">LlamaIndex</a></li><li><a href="index.html#pydantic-ai">PydanticAI</a></li><li><a href="index.html#semantic-kernel">Semantic Kernel</a></li></ul>
+        <h4>Contrasts With</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Explorations</h4><ul><li><a href="notes/explorations/concepts/teams-as-agency.html">Teams As Agency</a></li></ul><h4>Tensions</h4><ul><li><a href="notes/explorations/tensions/closeness-vs-orchestration.html">Closeness Vs Orchestration</a></li></ul>
+      </section>
     </article>
-<article class="card">
+<article class="card" id="openhands">
       <div class="metaphor-picture" title="octopus">
         <svg viewBox="0 0 96 96" aria-hidden="true">
   <path d="M48 18c16 0 26 12 26 26 0 10-5 18-12 22v12c0 3-4 4-6 1l-4-6-4 7c-2 3-6 2-6-1v-6l-5 7c-2 3-6 2-6-2V66c-7-4-11-12-11-22 0-14 12-26 28-26z" fill="#c87745" stroke="#1f1d1a" stroke-width="3"/>
@@ -782,28 +905,28 @@
         <ul><li>sandbox setup</li><li>repository integration</li><li>agent customization</li><li>tooling breadth</li></ul>
       </section>
       <section>
-        <h3>Primary Substrate</h3>
-        <ul><li>sandbox</li><li>repository</li><li>tools</li><li>agent-skills</li></ul>
+        <h3><a class="section-link" href="browse/primary-substrates/index.html">Primary Substrate</a></h3>
+        <ul><li><a href="browse/primary-substrates/sandbox.html">sandbox</a></li><li><a href="browse/primary-substrates/repository.html">repository</a></li><li><a href="browse/primary-substrates/tools.html">tools</a></li><li><a href="browse/primary-substrates/agent-skills.html">agent-skills</a></li></ul>
       </section>
       <section>
-        <h3>Cognitive Style</h3>
-        <ul><li>sandboxed</li><li>concrete</li><li>composable</li></ul>
+        <h3><a class="section-link" href="browse/cognitive-styles/index.html">Cognitive Style</a></h3>
+        <ul><li><a href="browse/cognitive-styles/sandboxed.html">sandboxed</a></li><li><a href="browse/cognitive-styles/concrete.html">concrete</a></li><li><a href="browse/cognitive-styles/composable.html">composable</a></li></ul>
       </section>
       <section>
-        <h3>Trust Model</h3>
-        <ul><li>environment-control</li><li>supervision</li><li>sandbox-boundaries</li></ul>
+        <h3><a class="section-link" href="browse/trust-models/index.html">Trust Model</a></h3>
+        <ul><li><a href="browse/trust-models/environment-control.html">environment-control</a></li><li><a href="browse/trust-models/supervision.html">supervision</a></li><li><a href="browse/trust-models/sandbox-boundaries.html">sandbox-boundaries</a></li></ul>
       </section>
       <section>
-        <h3>Hidden Bet</h3>
-        <p>A coding agent becomes powerful when it gets a full practical environment, not just a better prompt.</p>
+        <h3><a class="section-link" href="browse/hidden-bets/index.html">Hidden Bet</a></h3>
+        <p><a href="browse/hidden-bets/a-coding-agent-becomes-powerful-when-it-gets-a-full-practical-environment-not-just-a-better-prompt.html">A coding agent becomes powerful when it gets a full practical environment, not just a better prompt.</a></p>
       </section>
       <section>
         <h3>Playfulness</h3>
         <p>The sideways move is giving the agent a broad practical body and then letting users tune the environment around it rather than narrowing the task shape too early.</p>
       </section>
       <section>
-        <h3>Failure Modes</h3>
-        <ul><li>Sandbox complexity</li><li>Tool-surface overload</li><li>Configuration drift</li></ul>
+        <h3><a class="section-link" href="browse/failure-modes/index.html">Failure Modes</a></h3>
+        <ul><li><a href="browse/failure-modes/sandbox-complexity.html">Sandbox complexity</a></li><li><a href="browse/failure-modes/tool-surface-overload.html">Tool-surface overload</a></li><li><a href="browse/failure-modes/configuration-drift.html">Configuration drift</a></li></ul>
       </section>
       <section>
         <h3>What It Refuses</h3>
@@ -814,8 +937,8 @@
         <p>Its strength is giving the agent a full practical body. Its tradeoff is that the richer the body becomes, the harder it is to keep behavior simple, predictable, and lightweight.</p>
       </section>
       <section>
-        <h3>Representative For</h3>
-        <ul><li>fully embodied coding agent</li><li>sandbox-centered agent platform</li></ul>
+        <h3><a class="section-link" href="browse/representative-for/index.html">Representative For</a></h3>
+        <ul><li><a href="browse/representative-for/fully-embodied-coding-agent.html">fully embodied coding agent</a></li><li><a href="browse/representative-for/sandbox-centered-agent-platform.html">sandbox-centered agent platform</a></li></ul>
       </section>
       
       <section>
@@ -825,15 +948,27 @@
       </section>
       <section>
         <h3>Related Concepts</h3>
-        <ul class="pill-list"><li><a class="pill" href="concepts/sandbox-as-agent-body.html">Sandbox As Agent Body</a></li><li><a class="pill" href="concepts/microagents.html">Microagents</a></li><li><a class="pill" href="concepts/developer-tool-embodiment.html">Developer Tool Embodiment</a></li><li><a class="pill" href="concepts/mcp-as-tool-fabric.html">MCP As Tool Fabric</a></li></ul>
+        <ul class="pill-list"><li><a class="pill" href="concepts/sandbox-as-agent-body.html">Sandbox As Agent Body</a></li><li><a class="pill" href="concepts/sandboxed-agency.html">Sandboxed Agency</a></li><li><a class="pill" href="concepts/microagents.html">Microagents</a></li><li><a class="pill" href="concepts/developer-tool-embodiment.html">Developer Tool Embodiment</a></li><li><a class="pill" href="concepts/mcp-as-tool-fabric.html">MCP As Tool Fabric</a></li></ul>
       </section>
       
       <section>
         <h3>Relationships</h3>
         <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/sandbox-as-agent-body.html">Sandbox As Agent Body</a><br><span class="relation-note">The sandbox is part of the agent&#x27;s working body rather than just a passive guardrail.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/sandboxed-agency.html">Sandboxed Agency</a><br><span class="relation-note">OpenHands externalizes capability into a configurable sandboxed environment that becomes part of the agent body.</span></li><li><strong>surprisingly_like</strong> → <a href="concepts/developer-tool-embodiment.html">Developer Tool Embodiment</a><br><span class="relation-note">OpenHands feels strongest when the agent inhabits the same practical surfaces a human developer would use.</span></li></ul>
       </section>
+      <section>
+        <h3>More To Explore</h3>
+        <h4>Shares Primary Substrate</h4>
+        <ul><li><a href="index.html#aider">Aider</a></li><li><a href="index.html#claude-code">Claude Code</a></li><li><a href="index.html#cursor">Cursor</a></li><li><a href="index.html#llamaindex">LlamaIndex</a></li></ul>
+        <h4>Shares Trust Model</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Shares Cognitive Style</h4>
+        <ul><li><a href="index.html#cursor">Cursor</a></li><li><a href="index.html#aider">Aider</a></li><li><a href="index.html#claude-code">Claude Code</a></li><li><a href="index.html#llamaindex">LlamaIndex</a></li></ul>
+        <h4>Contrasts With</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Explorations</h4><ul><li><a href="notes/explorations/concepts/sandbox-as-agent-body.html">Sandbox As Agent Body</a></li></ul><h4>Tensions</h4><ul><li><a href="notes/explorations/tensions/minimal-core-vs-batteries-included.html">Minimal Core Vs Batteries Included</a></li></ul>
+      </section>
     </article>
-<article class="card">
+<article class="card" id="pi">
       <div class="metaphor-picture" title="cargo bike">
         <svg viewBox="0 0 96 96" aria-hidden="true">
   <circle cx="28" cy="66" r="13" fill="none" stroke="#1f1d1a" stroke-width="4"/>
@@ -862,28 +997,28 @@
         <ul><li>extension boundaries</li><li>provider integration</li><li>context loading</li><li>terminal interaction model</li></ul>
       </section>
       <section>
-        <h3>Primary Substrate</h3>
-        <ul><li>terminal</li><li>repository</li><li>extensions</li><li>context-files</li></ul>
+        <h3><a class="section-link" href="browse/primary-substrates/index.html">Primary Substrate</a></h3>
+        <ul><li><a href="browse/primary-substrates/terminal.html">terminal</a></li><li><a href="browse/primary-substrates/repository.html">repository</a></li><li><a href="browse/primary-substrates/extensions.html">extensions</a></li><li><a href="browse/primary-substrates/context-files.html">context-files</a></li></ul>
       </section>
       <section>
-        <h3>Cognitive Style</h3>
-        <ul><li>restrained</li><li>grounded</li><li>composable</li></ul>
+        <h3><a class="section-link" href="browse/cognitive-styles/index.html">Cognitive Style</a></h3>
+        <ul><li><a href="browse/cognitive-styles/restrained.html">restrained</a></li><li><a href="browse/cognitive-styles/grounded.html">grounded</a></li><li><a href="browse/cognitive-styles/composable.html">composable</a></li></ul>
       </section>
       <section>
-        <h3>Trust Model</h3>
-        <ul><li>minimal-core-transparency</li><li>local-context</li><li>extension-choice</li></ul>
+        <h3><a class="section-link" href="browse/trust-models/index.html">Trust Model</a></h3>
+        <ul><li><a href="browse/trust-models/minimal-core-transparency.html">minimal-core-transparency</a></li><li><a href="browse/trust-models/local-context.html">local-context</a></li><li><a href="browse/trust-models/extension-choice.html">extension-choice</a></li></ul>
       </section>
       <section>
-        <h3>Hidden Bet</h3>
-        <p>A small extensible core outcompetes giant integrated runtimes.</p>
+        <h3><a class="section-link" href="browse/hidden-bets/index.html">Hidden Bet</a></h3>
+        <p><a href="browse/hidden-bets/a-small-extensible-core-outcompetes-giant-integrated-runtimes.html">A small extensible core outcompetes giant integrated runtimes.</a></p>
       </section>
       <section>
         <h3>Playfulness</h3>
         <p>The playful move is refusing to bloat the core and instead treating extensibility itself as the main architectural surface.</p>
       </section>
       <section>
-        <h3>Failure Modes</h3>
-        <ul><li>Extension fragmentation</li><li>Capability ambiguity</li><li>Outsourced complexity through packages</li></ul>
+        <h3><a class="section-link" href="browse/failure-modes/index.html">Failure Modes</a></h3>
+        <ul><li><a href="browse/failure-modes/extension-fragmentation.html">Extension fragmentation</a></li><li><a href="browse/failure-modes/capability-ambiguity.html">Capability ambiguity</a></li><li><a href="browse/failure-modes/outsourced-complexity-through-packages.html">Outsourced complexity through packages</a></li></ul>
       </section>
       <section>
         <h3>What It Refuses</h3>
@@ -894,8 +1029,8 @@
         <p>Its elegance comes from restraint, but that same restraint pushes meaningful complexity outward into extension choice and composition.</p>
       </section>
       <section>
-        <h3>Representative For</h3>
-        <ul><li>minimal-core coding harness</li><li>extension-driven terminal agent</li></ul>
+        <h3><a class="section-link" href="browse/representative-for/index.html">Representative For</a></h3>
+        <ul><li><a href="browse/representative-for/minimal-core-coding-harness.html">minimal-core coding harness</a></li><li><a href="browse/representative-for/extension-driven-terminal-agent.html">extension-driven terminal agent</a></li></ul>
       </section>
       
       <section>
@@ -910,10 +1045,22 @@
       
       <section>
         <h3>Relationships</h3>
-        <ul class="relationship-list"><li><strong>contrasts_with</strong> → Langgraph<br><span class="relation-note">Pi favors a minimal terminal core with extensions, while LangGraph invests directly in explicit orchestration structure.</span></li><li><strong>embodies_concept</strong> → <a href="concepts/extension-driven-runtime.html">Extension-Driven Runtime</a><br><span class="relation-note">Pi keeps the core narrow and treats packages and extensions as the main place where power accumulates.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/extension-driven-runtime.html">Extension-Driven Runtime</a><br><span class="relation-note">Pi pushes capability outward into extensions and packages rather than loading more behavior into the core.</span></li><li><strong>opposes_hidden_bet_of</strong> → Openhands<br><span class="relation-note">Pi bets on a minimal extensible core, while OpenHands bets that a broad embodied tool surface is what creates useful power.</span></li></ul>
+        <ul class="relationship-list"><li><strong>contrasts_with</strong> → <a href="index.html#langgraph">LangGraph</a><br><span class="relation-note">Pi favors a minimal terminal core with extensions, while LangGraph invests directly in explicit orchestration structure.</span></li><li><strong>embodies_concept</strong> → <a href="concepts/extension-driven-runtime.html">Extension-Driven Runtime</a><br><span class="relation-note">Pi keeps the core narrow and treats packages and extensions as the main place where power accumulates.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/extension-driven-runtime.html">Extension-Driven Runtime</a><br><span class="relation-note">Pi pushes capability outward into extensions and packages rather than loading more behavior into the core.</span></li><li><strong>opposes_hidden_bet_of</strong> → <a href="index.html#openhands">OpenHands</a><br><span class="relation-note">Pi bets on a minimal extensible core, while OpenHands bets that a broad embodied tool surface is what creates useful power.</span></li></ul>
+      </section>
+      <section>
+        <h3>More To Explore</h3>
+        <h4>Shares Primary Substrate</h4>
+        <ul><li><a href="index.html#claude-code">Claude Code</a></li><li><a href="index.html#aider">Aider</a></li><li><a href="index.html#autogen">AutoGen</a></li><li><a href="index.html#cursor">Cursor</a></li></ul>
+        <h4>Shares Trust Model</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Shares Cognitive Style</h4>
+        <ul><li><a href="index.html#claude-code">Claude Code</a></li><li><a href="index.html#aider">Aider</a></li><li><a href="index.html#llamaindex">LlamaIndex</a></li><li><a href="index.html#openai-agents-sdk">OpenAI Agents SDK</a></li></ul>
+        <h4>Contrasts With</h4>
+        <ul><li><a href="index.html#langgraph">LangGraph</a></li><li><a href="index.html#openhands">OpenHands</a></li></ul>
+        <h4>Explorations</h4><ul><li><a href="notes/explorations/concepts/context-as-substrate.html">Context As Substrate</a></li></ul><h4>Historical Notes</h4><ul><li><a href="notes/explorations/historical/the-rise-of-terminal-coding-agents.html">The Rise Of Terminal Coding Agents</a></li></ul><h4>Tensions</h4><ul><li><a href="notes/explorations/tensions/closeness-vs-orchestration.html">Closeness Vs Orchestration</a></li><li><a href="notes/explorations/tensions/minimal-core-vs-batteries-included.html">Minimal Core Vs Batteries Included</a></li></ul>
       </section>
     </article>
-<article class="card">
+<article class="card" id="pydantic-ai">
       <div class="metaphor-picture" title="tram">
         <svg viewBox="0 0 96 96" aria-hidden="true">
   <rect x="18" y="22" width="60" height="42" rx="8" fill="#f0b25d" stroke="#1f1d1a" stroke-width="4"/>
@@ -946,28 +1093,28 @@
         <ul><li>schemas</li><li>type boundaries</li><li>tool contracts</li><li>retries and validation</li></ul>
       </section>
       <section>
-        <h3>Primary Substrate</h3>
-        <ul><li>typed-python-interfaces</li><li>schemas</li><li>validation</li><li>tool-contracts</li></ul>
+        <h3><a class="section-link" href="browse/primary-substrates/index.html">Primary Substrate</a></h3>
+        <ul><li><a href="browse/primary-substrates/typed-python-interfaces.html">typed-python-interfaces</a></li><li><a href="browse/primary-substrates/schemas.html">schemas</a></li><li><a href="browse/primary-substrates/validation.html">validation</a></li><li><a href="browse/primary-substrates/tool-contracts.html">tool-contracts</a></li></ul>
       </section>
       <section>
-        <h3>Cognitive Style</h3>
-        <ul><li>explicit</li><li>inspectable</li><li>enterprise-oriented</li></ul>
+        <h3><a class="section-link" href="browse/cognitive-styles/index.html">Cognitive Style</a></h3>
+        <ul><li><a href="browse/cognitive-styles/explicit.html">explicit</a></li><li><a href="browse/cognitive-styles/inspectable.html">inspectable</a></li><li><a href="browse/cognitive-styles/enterprise-oriented.html">enterprise-oriented</a></li></ul>
       </section>
       <section>
-        <h3>Trust Model</h3>
-        <ul><li>schema-validation</li><li>typed-interfaces</li><li>explicit-tool-contracts</li></ul>
+        <h3><a class="section-link" href="browse/trust-models/index.html">Trust Model</a></h3>
+        <ul><li><a href="browse/trust-models/schema-validation.html">schema-validation</a></li><li><a href="browse/trust-models/typed-interfaces.html">typed-interfaces</a></li><li><a href="browse/trust-models/explicit-tool-contracts.html">explicit-tool-contracts</a></li></ul>
       </section>
       <section>
-        <h3>Hidden Bet</h3>
-        <p>Strong types and validation matter more than fuzzy autonomy.</p>
+        <h3><a class="section-link" href="browse/hidden-bets/index.html">Hidden Bet</a></h3>
+        <p><a href="browse/hidden-bets/strong-types-and-validation-matter-more-than-fuzzy-autonomy.html">Strong types and validation matter more than fuzzy autonomy.</a></p>
       </section>
       <section>
         <h3>Playfulness</h3>
         <p>The clever move is treating schemas and validation as first-class rails around stochastic model behavior.</p>
       </section>
       <section>
-        <h3>Failure Modes</h3>
-        <ul><li>Schema rigidity</li><li>Validation churn</li><li>Type-layer complexity overshadowing task flow</li></ul>
+        <h3><a class="section-link" href="browse/failure-modes/index.html">Failure Modes</a></h3>
+        <ul><li><a href="browse/failure-modes/schema-rigidity.html">Schema rigidity</a></li><li><a href="browse/failure-modes/validation-churn.html">Validation churn</a></li><li><a href="browse/failure-modes/type-layer-complexity-overshadowing-task-flow.html">Type-layer complexity overshadowing task flow</a></li></ul>
       </section>
       <section>
         <h3>What It Refuses</h3>
@@ -978,8 +1125,8 @@
         <p>The type discipline that makes the runtime legible and safe can also shift creative flexibility into schema work and validation design.</p>
       </section>
       <section>
-        <h3>Representative For</h3>
-        <ul><li>type-first agent runtime</li><li>validation-centered orchestration</li></ul>
+        <h3><a class="section-link" href="browse/representative-for/index.html">Representative For</a></h3>
+        <ul><li><a href="browse/representative-for/type-first-agent-runtime.html">type-first agent runtime</a></li><li><a href="browse/representative-for/validation-centered-orchestration.html">validation-centered orchestration</a></li></ul>
       </section>
       
       <section>
@@ -994,10 +1141,22 @@
       
       <section>
         <h3>Relationships</h3>
-        <ul class="relationship-list"><li><strong>different_complexity_center_than</strong> → Aider<br><span class="relation-note">PydanticAI pushes burden into schemas and validation contracts; Aider pushes it into repo context and editing flow.</span></li><li><strong>embodies_concept</strong> → <a href="concepts/validation-rails.html">Validation Rails</a><br><span class="relation-note">Validation and explicit structure are central rails around otherwise stochastic model behavior.</span></li><li><strong>trusts_through</strong> → <a href="concepts/validation-rails.html">Validation Rails</a><br><span class="relation-note">PydanticAI asks to be trusted through typed boundaries, validation, and explicit contracts.</span></li><li><strong>shares_cognitive_style_with</strong> → Semantic Kernel<br><span class="relation-note">Both have an explicit, enterprise-oriented, contract-heavy temperament even though their substrates differ.</span></li></ul>
+        <ul class="relationship-list"><li><strong>different_complexity_center_than</strong> → <a href="index.html#aider">Aider</a><br><span class="relation-note">PydanticAI pushes burden into schemas and validation contracts; Aider pushes it into repo context and editing flow.</span></li><li><strong>embodies_concept</strong> → <a href="concepts/validation-rails.html">Validation Rails</a><br><span class="relation-note">Validation and explicit structure are central rails around otherwise stochastic model behavior.</span></li><li><strong>trusts_through</strong> → <a href="concepts/validation-rails.html">Validation Rails</a><br><span class="relation-note">PydanticAI asks to be trusted through typed boundaries, validation, and explicit contracts.</span></li><li><strong>shares_cognitive_style_with</strong> → <a href="index.html#semantic-kernel">Semantic Kernel</a><br><span class="relation-note">Both have an explicit, enterprise-oriented, contract-heavy temperament even though their substrates differ.</span></li></ul>
+      </section>
+      <section>
+        <h3>More To Explore</h3>
+        <h4>Shares Primary Substrate</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Shares Trust Model</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Shares Cognitive Style</h4>
+        <ul><li><a href="index.html#langgraph">LangGraph</a></li><li><a href="index.html#openai-agents-sdk">OpenAI Agents SDK</a></li><li><a href="index.html#semantic-kernel">Semantic Kernel</a></li><li><a href="index.html#cursor">Cursor</a></li></ul>
+        <h4>Contrasts With</h4>
+        <ul><li><a href="index.html#aider">Aider</a></li></ul>
+        
       </section>
     </article>
-<article class="card">
+<article class="card" id="semantic-kernel">
       <div class="metaphor-picture" title="spider">
         <svg viewBox="0 0 96 96" aria-hidden="true">
   <circle cx="48" cy="52" r="14" fill="#1f1d1a"/>
@@ -1027,28 +1186,28 @@
         <ul><li>plugin design</li><li>service connectors</li><li>kernel composition</li><li>cross-language integration</li></ul>
       </section>
       <section>
-        <h3>Primary Substrate</h3>
-        <ul><li>kernel</li><li>plugins</li><li>connectors</li><li>services</li></ul>
+        <h3><a class="section-link" href="browse/primary-substrates/index.html">Primary Substrate</a></h3>
+        <ul><li><a href="browse/primary-substrates/kernel.html">kernel</a></li><li><a href="browse/primary-substrates/plugins.html">plugins</a></li><li><a href="browse/primary-substrates/connectors.html">connectors</a></li><li><a href="browse/primary-substrates/services.html">services</a></li></ul>
       </section>
       <section>
-        <h3>Cognitive Style</h3>
-        <ul><li>composable</li><li>enterprise-oriented</li><li>explicit</li></ul>
+        <h3><a class="section-link" href="browse/cognitive-styles/index.html">Cognitive Style</a></h3>
+        <ul><li><a href="browse/cognitive-styles/composable.html">composable</a></li><li><a href="browse/cognitive-styles/enterprise-oriented.html">enterprise-oriented</a></li><li><a href="browse/cognitive-styles/explicit.html">explicit</a></li></ul>
       </section>
       <section>
-        <h3>Trust Model</h3>
-        <ul><li>kernel-mediated-capabilities</li><li>connector-abstraction</li><li>runtime-composition</li></ul>
+        <h3><a class="section-link" href="browse/trust-models/index.html">Trust Model</a></h3>
+        <ul><li><a href="browse/trust-models/kernel-mediated-capabilities.html">kernel-mediated-capabilities</a></li><li><a href="browse/trust-models/connector-abstraction.html">connector-abstraction</a></li><li><a href="browse/trust-models/runtime-composition.html">runtime-composition</a></li></ul>
       </section>
       <section>
-        <h3>Hidden Bet</h3>
-        <p>A shared kernel for capabilities is more durable than ad hoc agent composition.</p>
+        <h3><a class="section-link" href="browse/hidden-bets/index.html">Hidden Bet</a></h3>
+        <p><a href="browse/hidden-bets/a-shared-kernel-for-capabilities-is-more-durable-than-ad-hoc-agent-composition.html">A shared kernel for capabilities is more durable than ad hoc agent composition.</a></p>
       </section>
       <section>
         <h3>Playfulness</h3>
         <p>The elegant move is making the kernel itself the durable center of gravity, so agents are not floating abstractions but clients of a shared capability spine.</p>
       </section>
       <section>
-        <h3>Failure Modes</h3>
-        <ul><li>Connector sprawl</li><li>Plugin indirection</li><li>Middleware heaviness</li></ul>
+        <h3><a class="section-link" href="browse/failure-modes/index.html">Failure Modes</a></h3>
+        <ul><li><a href="browse/failure-modes/connector-sprawl.html">Connector sprawl</a></li><li><a href="browse/failure-modes/plugin-indirection.html">Plugin indirection</a></li><li><a href="browse/failure-modes/middleware-heaviness.html">Middleware heaviness</a></li></ul>
       </section>
       <section>
         <h3>What It Refuses</h3>
@@ -1059,8 +1218,8 @@
         <p>Its strength is giving the system a central programmable spine for capabilities. Its tradeoff is that this middleware-centric shape can feel more infrastructural than immediately agentic.</p>
       </section>
       <section>
-        <h3>Representative For</h3>
-        <ul><li>kernel-centric agent middleware</li><li>plugin-and-connector capability spine</li></ul>
+        <h3><a class="section-link" href="browse/representative-for/index.html">Representative For</a></h3>
+        <ul><li><a href="browse/representative-for/kernel-centric-agent-middleware.html">kernel-centric agent middleware</a></li><li><a href="browse/representative-for/plugin-and-connector-capability-spine.html">plugin-and-connector capability spine</a></li></ul>
       </section>
       
       <section>
@@ -1075,10 +1234,50 @@
       
       <section>
         <h3>Relationships</h3>
-        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/kernel-as-cognitive-spine.html">Kernel As Cognitive Spine</a><br><span class="relation-note">The kernel is the shared structural center through which services and plugins are coordinated.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/plugins-as-capabilities.html">Plugins As Capabilities</a><br><span class="relation-note">Semantic Kernel pushes capability outward into plugins and connectors instead of hardwiring every skill into one agent loop.</span></li><li><strong>different_complexity_center_than</strong> → Openai Agents Sdk<br><span class="relation-note">Semantic Kernel concentrates complexity into the kernel, plugins, and connectors, while the OpenAI Agents SDK emphasizes agents, tools, handoffs, and traces.</span></li><li><strong>contrasts_with</strong> → Aider<br><span class="relation-note">Semantic Kernel is infrastructural middleware for capability composition, while Aider stays close to the repository and concrete edit loop.</span></li><li><strong>shares_primary_substrate_with</strong> → Openai Agents Sdk<br><span class="relation-note">Both are capability-composition systems where routing and service surfaces matter more than repo closeness.</span></li></ul>
+        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/kernel-as-cognitive-spine.html">Kernel As Cognitive Spine</a><br><span class="relation-note">The kernel is the shared structural center through which services and plugins are coordinated.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/plugins-as-capabilities.html">Plugins As Capabilities</a><br><span class="relation-note">Semantic Kernel pushes capability outward into plugins and connectors instead of hardwiring every skill into one agent loop.</span></li><li><strong>different_complexity_center_than</strong> → <a href="index.html#openai-agents-sdk">OpenAI Agents SDK</a><br><span class="relation-note">Semantic Kernel concentrates complexity into the kernel, plugins, and connectors, while the OpenAI Agents SDK emphasizes agents, tools, handoffs, and traces.</span></li><li><strong>contrasts_with</strong> → <a href="index.html#aider">Aider</a><br><span class="relation-note">Semantic Kernel is infrastructural middleware for capability composition, while Aider stays close to the repository and concrete edit loop.</span></li><li><strong>shares_primary_substrate_with</strong> → <a href="index.html#openai-agents-sdk">OpenAI Agents SDK</a><br><span class="relation-note">Both are capability-composition systems where routing and service surfaces matter more than repo closeness.</span></li></ul>
+      </section>
+      <section>
+        <h3>More To Explore</h3>
+        <h4>Shares Primary Substrate</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Shares Trust Model</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Shares Cognitive Style</h4>
+        <ul><li><a href="index.html#llamaindex">LlamaIndex</a></li><li><a href="index.html#openai-agents-sdk">OpenAI Agents SDK</a></li><li><a href="index.html#pydantic-ai">PydanticAI</a></li><li><a href="index.html#claude-code">Claude Code</a></li></ul>
+        <h4>Contrasts With</h4>
+        <ul><li><a href="index.html#openai-agents-sdk">OpenAI Agents SDK</a></li><li><a href="index.html#aider">Aider</a></li></ul>
+        <h4>Tensions</h4><ul><li><a href="notes/explorations/tensions/minimal-core-vs-batteries-included.html">Minimal Core Vs Batteries Included</a></li></ul>
       </section>
     </article>
       </section>
+      
+      <footer class="more-stuff">
+        <h2>More Stuff</h2>
+        <p class="subtle">Generated views are the atlas surface. These notes carry synthesis, comparison, and review context.</p>
+        <div class="more-stuff-grid">
+          
+        <section class="more-stuff-group">
+          <h3>Index</h3>
+          <ul><li><a href="index.html">Back to index</a></li></ul>
+        </section>
+        <section class="more-stuff-group">
+          <h3>Explorations</h3>
+          <ul><li><a href="../notes/explorations/concepts/context-as-substrate.html">context-as-substrate</a></li><li><a href="../notes/explorations/concepts/teams-as-agency.html">teams-as-agency</a></li><li><a href="../notes/explorations/concepts/sandbox-as-agent-body.html">sandbox-as-agent-body</a></li><li><a href="../notes/explorations/tensions/closeness-vs-orchestration.html">closeness-vs-orchestration</a></li><li><a href="../notes/explorations/tensions/minimal-core-vs-batteries-included.html">minimal-core-vs-batteries-included</a></li><li><a href="../notes/explorations/historical/the-rise-of-terminal-coding-agents.html">the-rise-of-terminal-coding-agents</a></li></ul>
+        </section>
+        <section class="more-stuff-group">
+          <h3>Syntheses</h3>
+          <ul><li><a href="../notes/syntheses/001-first-patterns.html">001-first-patterns</a></li><li><a href="../notes/syntheses/002-complexity-centers.html">002-complexity-centers</a></li><li><a href="../notes/syntheses/003-human-role-and-permission-patterns.html">003-human-role-and-permission-patterns</a></li><li><a href="../notes/syntheses/004-primary-substrates.html">004-primary-substrates</a></li><li><a href="../notes/syntheses/005-trust-models.html">005-trust-models</a></li><li><a href="../notes/syntheses/006-failure-modes.html">006-failure-modes</a></li></ul>
+        </section>
+        <section class="more-stuff-group">
+          <h3>Comparisons</h3>
+          <ul><li><a href="../notes/comparisons/repo-vs-graph-agency.html">repo-vs-graph-agency</a></li><li><a href="../notes/comparisons/trust-through-closeness-vs-structure.html">trust-through-closeness-vs-structure</a></li><li><a href="../notes/comparisons/shell-vs-runtime-worldviews.html">shell-vs-runtime-worldviews</a></li><li><a href="../notes/comparisons/environment-close-vs-orchestration-close-vs-data-close.html">environment-close-vs-orchestration-close-vs-data-close</a></li></ul>
+        </section>
+        <section class="more-stuff-group">
+          <h3>Review Packets</h3>
+          <ul><li><a href="../notes/review-packets/001-stabilization-review.html">001-stabilization-review</a></li><li><a href="../notes/review-packets/002-emergence-review.html">002-emergence-review</a></li><li><a href="../notes/review-packets/README-for-serael.html">README-for-serael</a></li></ul>
+        </section>
+        </div>
+      </footer>
     </main>
   </body>
 </html>

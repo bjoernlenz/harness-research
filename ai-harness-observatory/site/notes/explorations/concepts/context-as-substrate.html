@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Context As Substrate · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .panel {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 0.98;
+      }
+      h2, h3, h4, h5, h6 {
+        margin: 24px 0 10px;
+        color: var(--accent);
+      }
+      p, ul, blockquote {
+        line-height: 1.7;
+      }
+      blockquote {
+        margin: 18px 0;
+        padding-left: 16px;
+        border-left: 3px solid var(--border);
+        color: var(--muted);
+      }
+      code {
+        padding: 1px 5px;
+        border-radius: 6px;
+        background: #efe2cf;
+        font-size: 0.95em;
+      }
+      .threads {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../../index.html">← Back to atlas</a>
+      <div class="panel">
+        <p class="eyebrow">Explorations / Concepts</p>
+        <h1>Context As Substrate</h1>
+<p>In this observatory, context is not just background information. In several coding harnesses it behaves more like the working medium that keeps agency coherent from turn to turn.</p>
+<p>Claude Code shows this clearly. The terminal, the current repository, MCP connections, and project configuration together form the space in which the agent can stay oriented. Cursor does something similar through IDE context, mode boundaries, and optional background environments. Pi keeps the same pattern in a leaner form: context files, extensions, and local terminal state do much of the coherence work that heavier runtimes push into orchestration layers.</p>
+<p>This matters because it explains a family resemblance across systems that otherwise look different. They are not primarily trying to build memory-heavy agents or graph-heavy agents. They are trying to preserve usefulness by keeping the agent close to the active working surface.</p>
+<p>What this makes easier to see:</p>
+<ul>
+<li>why repo-close and terminal-close systems often feel practical quickly</li>
+<li>why these harnesses invest in context loading, command surfaces, and configuration files</li>
+<li>why trust often comes from environmental closeness rather than explicit control-flow structure</li>
+</ul>
+<p>What it obscures:</p>
+<ul>
+<li>context can look coherent while still being shallow</li>
+<li>these systems can underdescribe long-running state once the work leaves the immediate environment</li>
+<li>“more context” can become a substitute for better architectural memory</li>
+</ul>
+<p>This suggests a useful distinction:</p>
+<blockquote>
+<p>In some harnesses, context is not support material around the agent. It is the material the agent is made of while it works.</p>
+</blockquote>
+        
+        <div class="threads">
+          <h2>Further Threads</h2>
+          <h3>Related Harnesses</h3>
+          <ul><li><a href="../../index.html#claude-code">Claude Code</a></li><li><a href="../../index.html#cursor">Cursor</a></li><li><a href="../../index.html#pi">Pi</a></li></ul>
+          <h3>Related Concepts</h3>
+          <ul><li><a href="../../concepts/context-files.html">Context Files</a></li><li><a href="../../concepts/terminal-as-agent-body.html">Terminal As Agent Body</a></li><li><a href="../../concepts/ide-as-agent-body.html">IDE As Agent Body</a></li></ul>
+          <h3>Tensions</h3>
+          <ul><li><a href="../../notes/explorations/tensions/closeness-vs-orchestration.html">Closeness Vs Orchestration</a></li></ul>
+          <h3>Historical Notes</h3>
+          <ul><li><a href="../../notes/explorations/historical/the-rise-of-terminal-coding-agents.html">The Rise Of Terminal Coding Agents</a></li></ul>
+          <h3>Comparisons</h3>
+          <ul><li><a href="../../notes/comparisons/shell-vs-runtime-worldviews.html">shell-vs-runtime-worldviews</a></li></ul>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

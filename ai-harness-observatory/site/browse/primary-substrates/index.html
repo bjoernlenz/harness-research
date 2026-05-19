@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Primary Substrates · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 920px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      h1 { margin: 10px 0 12px; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 0.98; }
+      p { line-height: 1.6; color: var(--muted); max-width: 60ch; }
+      .panel {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+      }
+      .browse-list { list-style: none; padding-left: 0; margin: 0; }
+      .browse-list li {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        gap: 18px;
+        padding: 12px 0;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+      .browse-list li:first-child { border-top: 0; padding-top: 0; }
+      a { color: var(--ink); }
+      .count {
+        color: var(--accent);
+        font-variant-numeric: tabular-nums;
+        white-space: nowrap;
+      }
+      .more-stuff {
+        margin-top: 30px;
+        padding: 22px;
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+      }
+      .more-stuff-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }
+      .more-stuff-group ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../../index.html">← Back to atlas</a>
+      <h1>Primary Substrates</h1>
+      <p>Generated from canonical YAML records and sorted by how many harnesses currently express each entry.</p>
+      <div class="panel">
+        <ul class="browse-list">
+          
+        <li>
+          <a href="repository.html">repository</a>
+          <span class="count">5</span>
+        </li>
+        <li>
+          <a href="tools.html">tools</a>
+          <span class="count">3</span>
+        </li>
+        <li>
+          <a href="extensions.html">extensions</a>
+          <span class="count">2</span>
+        </li>
+        <li>
+          <a href="terminal.html">terminal</a>
+          <span class="count">2</span>
+        </li>
+        <li>
+          <a href="agent-objects.html">agent-objects</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="agent-skills.html">agent-skills</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="chat.html">chat</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="checkpoints.html">checkpoints</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="connectors.html">connectors</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="context.html">context</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="context-files.html">context-files</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="conversation.html">conversation</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="data.html">data</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="diff.html">diff</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="events.html">events</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="git.html">git</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="graph.html">graph</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="handoffs.html">handoffs</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="ide-context.html">ide-context</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="indexes.html">indexes</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="kernel.html">kernel</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="modes.html">modes</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="permissions.html">permissions</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="plugins.html">plugins</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="remote-agent-environment.html">remote-agent-environment</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="sandbox.html">sandbox</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="schemas.html">schemas</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="services.html">services</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="state.html">state</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="teams.html">teams</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="tool-contracts.html">tool-contracts</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="traces.html">traces</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="transitions.html">transitions</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="typed-python-interfaces.html">typed-python-interfaces</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="validation.html">validation</a>
+          <span class="count">1</span>
+        </li>
+        <li>
+          <a href="workflows.html">workflows</a>
+          <span class="count">1</span>
+        </li>
+        </ul>
+      </div>
+      
+      <footer class="more-stuff">
+        <h2>More Stuff</h2>
+        <p class="subtle">Generated views are the atlas surface. These notes carry synthesis, comparison, and review context.</p>
+        <div class="more-stuff-grid">
+          
+        <section class="more-stuff-group">
+          <h3>Index</h3>
+          <ul><li><a href="../../index.html">Back to index</a></li></ul>
+        </section>
+        <section class="more-stuff-group">
+          <h3>Explorations</h3>
+          <ul><li><a href="../../../notes/explorations/concepts/context-as-substrate.html">context-as-substrate</a></li><li><a href="../../../notes/explorations/concepts/teams-as-agency.html">teams-as-agency</a></li><li><a href="../../../notes/explorations/concepts/sandbox-as-agent-body.html">sandbox-as-agent-body</a></li><li><a href="../../../notes/explorations/tensions/closeness-vs-orchestration.html">closeness-vs-orchestration</a></li><li><a href="../../../notes/explorations/tensions/minimal-core-vs-batteries-included.html">minimal-core-vs-batteries-included</a></li><li><a href="../../../notes/explorations/historical/the-rise-of-terminal-coding-agents.html">the-rise-of-terminal-coding-agents</a></li></ul>
+        </section>
+        <section class="more-stuff-group">
+          <h3>Syntheses</h3>
+          <ul><li><a href="../../../notes/syntheses/001-first-patterns.html">001-first-patterns</a></li><li><a href="../../../notes/syntheses/002-complexity-centers.html">002-complexity-centers</a></li><li><a href="../../../notes/syntheses/003-human-role-and-permission-patterns.html">003-human-role-and-permission-patterns</a></li><li><a href="../../../notes/syntheses/004-primary-substrates.html">004-primary-substrates</a></li><li><a href="../../../notes/syntheses/005-trust-models.html">005-trust-models</a></li><li><a href="../../../notes/syntheses/006-failure-modes.html">006-failure-modes</a></li></ul>
+        </section>
+        <section class="more-stuff-group">
+          <h3>Comparisons</h3>
+          <ul><li><a href="../../../notes/comparisons/repo-vs-graph-agency.html">repo-vs-graph-agency</a></li><li><a href="../../../notes/comparisons/trust-through-closeness-vs-structure.html">trust-through-closeness-vs-structure</a></li><li><a href="../../../notes/comparisons/shell-vs-runtime-worldviews.html">shell-vs-runtime-worldviews</a></li><li><a href="../../../notes/comparisons/environment-close-vs-orchestration-close-vs-data-close.html">environment-close-vs-orchestration-close-vs-data-close</a></li></ul>
+        </section>
+        <section class="more-stuff-group">
+          <h3>Review Packets</h3>
+          <ul><li><a href="../../../notes/review-packets/001-stabilization-review.html">001-stabilization-review</a></li><li><a href="../../../notes/review-packets/002-emergence-review.html">002-emergence-review</a></li><li><a href="../../../notes/review-packets/README-for-serael.html">README-for-serael</a></li></ul>
+        </section>
+        </div>
+      </footer>
+    </main>
+  </body>
+</html>

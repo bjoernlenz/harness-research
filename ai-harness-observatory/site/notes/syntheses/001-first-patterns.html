@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>001 First Patterns · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .panel {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 0.98;
+      }
+      h2, h3, h4, h5, h6 {
+        margin: 24px 0 10px;
+        color: var(--accent);
+      }
+      p, ul, blockquote {
+        line-height: 1.7;
+      }
+      blockquote {
+        margin: 18px 0;
+        padding-left: 16px;
+        border-left: 3px solid var(--border);
+        color: var(--muted);
+      }
+      code {
+        padding: 1px 5px;
+        border-radius: 6px;
+        background: #efe2cf;
+        font-size: 0.95em;
+      }
+      .threads {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../index.html">← Back to atlas</a>
+      <div class="panel">
+        <p class="eyebrow">Syntheses</p>
+        <h1>001 First Patterns</h1>
+<p>This synthesis is based on the current first-wave corpus of <strong>11 harnesses</strong> and <strong>44 concept records</strong>.</p>
+<p>The strongest early pattern is that the field already splits into several different answers to the question:</p>
+<blockquote>
+<p>What is the actual body or substrate of agency?</p>
+</blockquote>
+<h2>1. Three Major Families Are Already Visible</h2>
+<h3>1.1 Repo-close coding agents</h3>
+<p>Examples:</p>
+<ul>
+<li>Aider</li>
+<li>Claude Code</li>
+<li>Pi</li>
+<li>Cursor</li>
+<li>OpenHands</li>
+</ul>
+<p>These systems place agency close to the working codebase and the developer environment.</p>
+<p>Their substrates are things like:</p>
+<ul>
+<li>repository</li>
+<li>git</li>
+<li>terminal</li>
+<li>IDE context</li>
+<li>sandbox</li>
+<li>diff</li>
+</ul>
+<p>They tend to believe:</p>
+<ul>
+<li>agency should stay close to concrete work</li>
+<li>human collaboration is not a temporary crutch</li>
+<li>environment matters as much as prompting</li>
+<li>the codebase itself is part of cognition</li>
+</ul>
+<p>Their main differences are not whether they are “coding agents,” but <strong>where exactly they let complexity live</strong>:</p>
+<ul>
+<li>Aider: repo + diff + git</li>
+<li>Claude Code: terminal + permissions + composability</li>
+<li>Pi: minimal core + extensions</li>
+<li>Cursor: modes + remote background agents</li>
+<li>OpenHands: broad embodied tool surface + sandbox</li>
+</ul>
+<h3>1.2 Explicit orchestration frameworks</h3>
+<p>Examples:</p>
+<ul>
+<li>LangGraph</li>
+<li>OpenAI Agents SDK</li>
+<li>Semantic Kernel</li>
+<li>AutoGen</li>
+</ul>
+<p>These systems treat agent design as an orchestration problem.</p>
+<p>But they do not mean the same thing by orchestration:</p>
+<ul>
+<li>LangGraph: graph + state + checkpoints</li>
+<li>OpenAI Agents SDK: agents + handoffs + traces</li>
+<li>Semantic Kernel: kernel + plugins + connectors</li>
+<li>AutoGen: teams + conversations + layered runtime</li>
+</ul>
+<p>This is an important early insight:</p>
+<blockquote>
+<p>“Orchestration framework” is too coarse a category.</p>
+</blockquote>
+<p>Inside it, there are already distinct worldviews:</p>
+<ul>
+<li>graph orchestration</li>
+<li>routing orchestration</li>
+<li>middleware orchestration</li>
+<li>social / team orchestration</li>
+</ul>
+<h3>1.3 Data-centered agent systems</h3>
+<p>Example:</p>
+<ul>
+<li>LlamaIndex</li>
+</ul>
+<p>LlamaIndex is the clearest first-wave case where the main substrate is not repo, graph, or team, but <strong>data itself</strong>:</p>
+<ul>
+<li>indexes</li>
+<li>retrieval</li>
+<li>workflows</li>
+<li>knowledge surfaces</li>
+</ul>
+<p>This suggests that retrieval-heavy systems deserve their own lane rather than being treated as a minor variation of generic agent frameworks.</p>
+<h2>2. The Real Question Is Substrate</h2>
+<p>The newly added <code>primary_substrate</code> field already looks valuable.</p>
+<p>Across the corpus, agency is being externalized into very different materials:</p>
+<ul>
+<li>repository</li>
+<li>git</li>
+<li>diff</li>
+<li>terminal</li>
+<li>IDE context</li>
+<li>graph</li>
+<li>state</li>
+<li>handoffs</li>
+<li>traces</li>
+<li>kernel</li>
+<li>plugins</li>
+<li>data</li>
+<li>indexes</li>
+<li>workflows</li>
+</ul>
+<p>This looks more promising than feature comparison because it reveals what each project thinks the agent is <em>made of</em>.</p>
+<p>Working hypothesis:</p>
+<blockquote>
+<p>Primary substrate may become one of the strongest top-level organizing dimensions in the observatory.</p>
+</blockquote>
+<h2>3. Current Archetypal Tension</h2>
+<p>A recurring split is visible between:</p>
+<ul>
+<li><strong>agents as collaborators in a working environment</strong></li>
+<li><strong>agents as orchestrated runtime structures</strong></li>
+</ul>
+<p>The first group wants closeness:</p>
+<ul>
+<li>repo</li>
+<li>terminal</li>
+<li>IDE</li>
+<li>sandbox</li>
+</ul>
+<p>The second group wants legibility:</p>
+<ul>
+<li>graph</li>
+<li>handoff</li>
+<li>kernel</li>
+<li>team</li>
+</ul>
+<p>LlamaIndex introduces a third pole:</p>
+<ul>
+<li>data as substrate</li>
+</ul>
+<p>This gives the observatory an early triangle:</p>
+<ul>
+<li>environment-close agency</li>
+<li>orchestration-close agency</li>
+<li>data-close agency</li>
+</ul>
+<h2>4. What Feels Alive</h2>
+<p>Several design moves already feel like real invention rather than style:</p>
+<ul>
+<li>Aider: git / repo / diff as cognition</li>
+<li>LangGraph: visible loops and resumable graph state</li>
+<li>OpenAI Agents SDK: handoffs plus trace-first orchestration</li>
+<li>Pi: minimal core with extensibility as the main surface</li>
+<li>Cursor: mode-gated foreground agency plus remote background labor</li>
+<li>OpenHands: sandbox as an actual agent body</li>
+<li>Semantic Kernel: kernel as cognitive spine</li>
+<li>LlamaIndex: retrieval and agent workflows treated as one design surface</li>
+</ul>
+<h2>5. What The Current Corpus Still Undersamples</h2>
+<p>The current first wave is already strong for:</p>
+<ul>
+<li>coding agents</li>
+<li>orchestration runtimes</li>
+<li>tool-heavy developer harnesses</li>
+</ul>
+<p>It is still relatively weak on:</p>
+<ul>
+<li>evaluation harnesses</li>
+<li>memory-first systems</li>
+<li>local-first assistants outside coding</li>
+<li>workflow engines outside developer tooling</li>
+</ul>
+<h2>6. Provisional Taxonomy Recommendation</h2>
+<p>Before scaling much further, treat these as provisional top-level families:</p>
+<ul>
+<li>Repo / Terminal / IDE Companions</li>
+<li>Graph / Runtime Orchestrators</li>
+<li>Team / Multi-Agent Coordinators</li>
+<li>Middleware / Capability Spines</li>
+<li>Data / Retrieval-Centered Agent Systems</li>
+</ul>
+<p>These are better than flattening everything into “agent framework” or “coding agent.”</p>
+        
+      </div>
+    </main>
+  </body>
+</html>

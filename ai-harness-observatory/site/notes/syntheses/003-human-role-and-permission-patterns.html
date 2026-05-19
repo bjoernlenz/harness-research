@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>003 Human Role And Permission Patterns · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .panel {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 0.98;
+      }
+      h2, h3, h4, h5, h6 {
+        margin: 24px 0 10px;
+        color: var(--accent);
+      }
+      p, ul, blockquote {
+        line-height: 1.7;
+      }
+      blockquote {
+        margin: 18px 0;
+        padding-left: 16px;
+        border-left: 3px solid var(--border);
+        color: var(--muted);
+      }
+      code {
+        padding: 1px 5px;
+        border-radius: 6px;
+        background: #efe2cf;
+        font-size: 0.95em;
+      }
+      .threads {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../index.html">← Back to atlas</a>
+      <div class="panel">
+        <p class="eyebrow">Syntheses</p>
+        <h1>003 Human Role And Permission Patterns</h1>
+<p>This synthesis asks:</p>
+<blockquote>
+<p>Where is the human, really?</p>
+</blockquote>
+<p>The current corpus suggests a strong answer:</p>
+<blockquote>
+<p>The human is never gone. But different harness families place the human in radically different structural roles.</p>
+</blockquote>
+<p>This matters more than broad autonomy labels.</p>
+<h2>1. Four Human Roles Are Already Visible</h2>
+<h3>1.1 The collaborator</h3>
+<p>Examples:</p>
+<ul>
+<li>Aider</li>
+<li>Claude Code</li>
+</ul>
+<p>Here the human is inside the loop as an active working partner:</p>
+<ul>
+<li>steering prompts</li>
+<li>reviewing edits</li>
+<li>approving actions</li>
+<li>shaping specialization</li>
+</ul>
+<p>This family treats human involvement as part of the architecture’s strength, not as a temporary weakness.</p>
+<p>The human is close to the work surface:</p>
+<ul>
+<li>repo</li>
+<li>diff</li>
+<li>terminal</li>
+</ul>
+<p>This is the strongest current expression of <strong>agent-as-collaborator</strong>.</p>
+<h3>1.2 The operator</h3>
+<p>Examples:</p>
+<ul>
+<li>Pi</li>
+<li>Cursor</li>
+<li>OpenHands</li>
+</ul>
+<p>Here the human is less a co-author of every micro-step and more a selector, supervisor, or launcher of agentic work.</p>
+<p>Typical responsibilities:</p>
+<ul>
+<li>choose mode</li>
+<li>shape environment</li>
+<li>configure extensions</li>
+<li>decide when to escalate</li>
+<li>review remote or sandboxed results</li>
+</ul>
+<p>This family still keeps the human near the machine, but often one layer up from the immediate edit loop.</p>
+<h3>1.3 The orchestrator / designer</h3>
+<p>Examples:</p>
+<ul>
+<li>LangGraph</li>
+<li>OpenAI Agents SDK</li>
+<li>AutoGen</li>
+</ul>
+<p>Here the human is not primarily a task collaborator but a <strong>designer of runtime structure</strong>.</p>
+<p>Typical responsibilities:</p>
+<ul>
+<li>design graphs</li>
+<li>define handoffs</li>
+<li>choose teams</li>
+<li>decide termination conditions</li>
+<li>place guardrails</li>
+</ul>
+<p>In this family, the human’s intelligence enters the system mostly through architecture.</p>
+<h3>1.4 The integrator / runtime shaper</h3>
+<p>Examples:</p>
+<ul>
+<li>Semantic Kernel</li>
+<li>PydanticAI</li>
+<li>LlamaIndex</li>
+</ul>
+<p>Here the human acts more like:</p>
+<ul>
+<li>runtime designer</li>
+<li>data architect</li>
+<li>application engineer</li>
+<li>connector and schema composer</li>
+</ul>
+<p>This is the least chat-shaped role in the corpus.</p>
+<p>The human contributes by shaping:</p>
+<ul>
+<li>kernels</li>
+<li>plugins</li>
+<li>schemas</li>
+<li>retrieval systems</li>
+<li>workflows</li>
+</ul>
+<h2>2. Approval Is Not Uniform</h2>
+<p>The current corpus suggests at least three different approval patterns.</p>
+<h3>2.1 Embedded approval</h3>
+<p>Examples:</p>
+<ul>
+<li>Aider</li>
+<li>Claude Code</li>
+<li>LangGraph</li>
+</ul>
+<p>Approval is part of the local working loop.</p>
+<p>This often looks like:</p>
+<ul>
+<li>human review of edits</li>
+<li>permissions before risky commands</li>
+<li>approval checkpoints inside workflows</li>
+</ul>
+<p>This pattern makes trust explicit and local.</p>
+<h3>2.2 Configurational approval</h3>
+<p>Examples:</p>
+<ul>
+<li>Cursor</li>
+<li>OpenHands</li>
+<li>Pi</li>
+</ul>
+<p>Approval shifts upward into mode selection, environment design, and system setup.</p>
+<p>The human decides:</p>
+<ul>
+<li>what powers are enabled</li>
+<li>what environment the agent inhabits</li>
+<li>when to offload work remotely</li>
+</ul>
+<p>This is still supervision, but less line-by-line and more architectural in the immediate sense.</p>
+<h3>2.3 Architectural approval</h3>
+<p>Examples:</p>
+<ul>
+<li>OpenAI Agents SDK</li>
+<li>AutoGen</li>
+<li>Semantic Kernel</li>
+<li>PydanticAI</li>
+<li>LlamaIndex</li>
+</ul>
+<p>Approval is less visible as a repeated user action and more visible as design-time structure:</p>
+<ul>
+<li>guardrails</li>
+<li>schemas</li>
+<li>plugin boundaries</li>
+<li>team topology</li>
+<li>retrieval constraints</li>
+</ul>
+<p>This pattern makes trust a property of system design rather than only user intervention.</p>
+<h2>3. Two Different Trust Logics</h2>
+<p>The corpus currently shows two distinct ways of producing trust.</p>
+<h3>3.1 Trust through closeness</h3>
+<p>Examples:</p>
+<ul>
+<li>Aider</li>
+<li>Claude Code</li>
+<li>Pi</li>
+</ul>
+<p>The user trusts the system because it stays close to:</p>
+<ul>
+<li>the repo</li>
+<li>the terminal</li>
+<li>visible edits</li>
+<li>familiar tools</li>
+</ul>
+<p>This is intimacy-based trust.</p>
+<h3>3.2 Trust through structure</h3>
+<p>Examples:</p>
+<ul>
+<li>LangGraph</li>
+<li>PydanticAI</li>
+<li>OpenAI Agents SDK</li>
+<li>Semantic Kernel</li>
+</ul>
+<p>The user trusts the system because it has:</p>
+<ul>
+<li>explicit graphs</li>
+<li>types</li>
+<li>guardrails</li>
+<li>traces</li>
+<li>kernels</li>
+</ul>
+<p>This is structure-based trust.</p>
+<p>OpenHands and Cursor sit in a more unstable middle zone:</p>
+<ul>
+<li>they want practical embodiment</li>
+<li>but they also introduce broader action surfaces</li>
+<li>so they need supervision, setup, and boundaries to keep trust intact</li>
+</ul>
+<h2>4. The Human Is The Hidden Complexity Center</h2>
+<p>A useful correction emerges here:</p>
+<p>Many agent systems talk as if the human is either:</p>
+<ul>
+<li>supervising autonomy</li>
+<li>or slowly disappearing</li>
+</ul>
+<p>But in the current corpus, the deeper reality is:</p>
+<blockquote>
+<p>Human role is itself a major place where complexity accumulates.</p>
+</blockquote>
+<p>Different systems push complexity into different human burdens:</p>
+<ul>
+<li>Aider: review and steering burden</li>
+<li>Claude Code: permission and operator burden</li>
+<li>Cursor: mode and environment-selection burden</li>
+<li>OpenHands: environment-design burden</li>
+<li>LangGraph: workflow-design burden</li>
+<li>OpenAI Agents SDK: handoff and guardrail-design burden</li>
+<li>AutoGen: team-design burden</li>
+<li>PydanticAI: schema-design burden</li>
+<li>Semantic Kernel: connector and plugin-design burden</li>
+<li>LlamaIndex: retrieval and workflow-design burden</li>
+</ul>
+<p>This may become a major synthesis axis:</p>
+<blockquote>
+<p>What kind of human labor does this harness require in order to become reliable?</p>
+</blockquote>
+<h2>5. A More Precise Human Taxonomy</h2>
+<p>The observatory may want to standardize a small human-role taxonomy such as:</p>
+<ul>
+<li>collaborator</li>
+<li>approver</li>
+<li>operator</li>
+<li>supervisor</li>
+<li>mode-selector</li>
+<li>orchestrator</li>
+<li>runtime-designer</li>
+<li>environment-designer</li>
+<li>data-architect</li>
+<li>integrator</li>
+</ul>
+<p>This would likely be more useful than a single <code>human_role</code> free list over time, because it would allow comparison and visualization.</p>
+<h2>6. What Feels Most Alive In This Dimension</h2>
+<p>Several systems stand out strongly:</p>
+<ul>
+<li>Aider: collaboration without theatrical abstraction</li>
+<li>Claude Code: permissioned terminal intimacy</li>
+<li>Cursor: mode-gated supervision plus remote labor</li>
+<li>LangGraph: human as workflow architect</li>
+<li>OpenAI Agents SDK: human as handoff designer</li>
+<li>Semantic Kernel: human as capability integrator</li>
+<li>LlamaIndex: human as data-and-workflow architect</li>
+</ul>
+<p>These are not minor UI differences. They are different philosophical answers to:</p>
+<blockquote>
+<p>What is a human supposed to be doing when an AI system becomes useful?</p>
+</blockquote>
+<h2>7. Recommendation For The Next Taxonomy Pass</h2>
+<p>If the observatory continues scaling, the next schema refinement should probably add a more normalized human-role layer and a more explicit approval / trust field set, for example:</p>
+<ul>
+<li><code>human_role</code></li>
+<li><code>approval_pattern</code></li>
+<li><code>trust_model</code></li>
+<li><code>required_human_labor</code></li>
+</ul>
+<p>Because the current corpus suggests this dimension is not secondary.</p>
+<p>It is one of the main structural fault lines in the field.</p>
+        
+      </div>
+    </main>
+  </body>
+</html>

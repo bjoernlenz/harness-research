@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Minimal Core Vs Batteries Included · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .panel {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 0.98;
+      }
+      h2, h3, h4, h5, h6 {
+        margin: 24px 0 10px;
+        color: var(--accent);
+      }
+      p, ul, blockquote {
+        line-height: 1.7;
+      }
+      blockquote {
+        margin: 18px 0;
+        padding-left: 16px;
+        border-left: 3px solid var(--border);
+        color: var(--muted);
+      }
+      code {
+        padding: 1px 5px;
+        border-radius: 6px;
+        background: #efe2cf;
+        font-size: 0.95em;
+      }
+      .threads {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../../index.html">← Back to atlas</a>
+      <div class="panel">
+        <p class="eyebrow">Explorations / Tensions</p>
+        <h1>Minimal Core Vs Batteries Included</h1>
+<p>This tension asks where architectural mass should live.</p>
+<p>Pi is the cleanest minimal-core case in the corpus. It stays small and pushes behavior outward into extensions, packages, prompt templates, and skills. Claude Code is not as minimal, but it shares part of the same instinct: stay close to existing tools and keep composability high.</p>
+<p>OpenHands stands much closer to the batteries-included pole. Its value proposition is that the agent should arrive with a broad practical body already available. Semantic Kernel does this in a different register: not a coding body, but a capability spine of plugins, connectors, and services.</p>
+<p>What the minimal-core side sees clearly:</p>
+<ul>
+<li>small cores stay legible</li>
+<li>extensibility can preserve flexibility</li>
+<li>not every workflow should be baked into the runtime</li>
+</ul>
+<p>What the batteries-included side sees clearly:</p>
+<ul>
+<li>real work often needs embodied affordances immediately</li>
+<li>users do not always want to assemble power from many optional parts</li>
+<li>environment and capability breadth can be the feature</li>
+</ul>
+<p>What each side tends to miss:</p>
+<ul>
+<li>minimal cores can outsource too much burden to composition</li>
+<li>batteries-included systems can become heavy, sprawling, and harder to trust</li>
+</ul>
+<p>Why this matters:</p>
+<p>This tension is really about where a harness wants complexity to reside:</p>
+<ul>
+<li>inside the runtime</li>
+<li>in extensions and plugins</li>
+<li>in the environment</li>
+<li>in the user’s configuration work</li>
+</ul>
+<p>That makes it a genuine architectural polarity, not just a packaging preference.</p>
+        
+        <div class="threads">
+          <h2>Further Threads</h2>
+          <h3>Related Harnesses</h3>
+          <ul><li><a href="../../index.html#pi">Pi</a></li><li><a href="../../index.html#openhands">OpenHands</a></li><li><a href="../../index.html#claude-code">Claude Code</a></li><li><a href="../../index.html#semantic-kernel">Semantic Kernel</a></li></ul>
+          <h3>Related Concepts</h3>
+          <ul><li><a href="../../concepts/minimal-core-agent-design.html">Minimal-Core Agent Design</a></li><li><a href="../../concepts/extension-driven-runtime.html">Extension-Driven Runtime</a></li><li><a href="../../concepts/sandbox-as-agent-body.html">Sandbox As Agent Body</a></li><li><a href="../../concepts/plugins-as-capabilities.html">Plugins As Capabilities</a></li></ul>
+          <h3>Tensions</h3>
+          <p class="empty-state">None yet.</p>
+          <h3>Historical Notes</h3>
+          <ul><li><a href="../../notes/explorations/historical/the-rise-of-terminal-coding-agents.html">The Rise Of Terminal Coding Agents</a></li></ul>
+          <h3>Comparisons</h3>
+          <p class="empty-state">None yet.</p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
