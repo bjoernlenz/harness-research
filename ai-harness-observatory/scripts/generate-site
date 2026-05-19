@@ -92,6 +92,12 @@ MORE_STUFF = {
     ],
 }
 
+ENTRY_EXPLORATION_ALIASES = {
+    ("primary_substrate", "context"): ["context-as-substrate"],
+    ("primary_substrate", "teams"): ["teams-as-agency"],
+    ("primary_substrate", "sandbox"): ["sandbox-as-agent-body"],
+}
+
 
 def note_output_href(note_path: str) -> str:
     path = Path(note_path).relative_to("notes")
@@ -142,6 +148,10 @@ def exploration_kind_label(exploration: dict) -> str:
         "historical": "Historical Notes",
         "tension": "Tensions",
     }.get(kind, "Explorations")
+
+
+def note_link_label(note_path: str) -> str:
+    return load_markdown_note(note_path)["title"]
 
 
 def load_explorations() -> list[dict]:
@@ -284,6 +294,21 @@ def related_explorations_for_concept(concept_id: str, explorations: list[dict]) 
         meta = exploration.get("metadata", {})
         related_concepts = set(str(value) for value in meta.get("related_concepts", []))
         if concept_id in related_concepts:
+            matches.append(exploration)
+    return matches
+
+
+def related_explorations_for_browse_entry(
+    field_key: str, entry: dict, explorations: list[dict]
+) -> list[dict]:
+    wanted = {entry["slug"], slugify(entry["label"])}
+    wanted.update(ENTRY_EXPLORATION_ALIASES.get((field_key, entry["slug"]), []))
+    wanted.update(
+        ENTRY_EXPLORATION_ALIASES.get((field_key, slugify(entry["label"])), [])
+    )
+    matches = []
+    for exploration in explorations:
+        if Path(exploration["path"]).stem in wanted:
             matches.append(exploration)
     return matches
 
@@ -564,7 +589,7 @@ def render_more_stuff(index_href: str, repo_prefix: str) -> str:
     for heading, paths in MORE_STUFF.items():
         items = []
         for path in paths:
-            label = path.split("/")[-1].removesuffix(".md")
+            label = note_link_label(path)
             items.append(
                 f'<li><a href="{repo_prefix}{escape(note_output_href(path))}">{escape(label)}</a></li>'
             )
@@ -1641,7 +1666,7 @@ def render_browse_index_page(field_key: str, entries: list[dict]) -> str:
         </li>
             """.rstrip()
         )
-    more_stuff = render_more_stuff("../../index.html", "../../../")
+    more_stuff = render_more_stuff("../../index.html", "../../")
     return f"""<!doctype html>
 <html lang="en">
   <head>
@@ -1729,7 +1754,9 @@ def render_browse_index_page(field_key: str, entries: list[dict]) -> str:
 """
 
 
-def render_browse_detail_page(field_key: str, entry: dict) -> str:
+def render_browse_detail_page(
+    field_key: str, entry: dict, explorations: list[dict]
+) -> str:
     config = BROWSE_FIELDS[field_key]
     notes_html = ""
     if entry["notes"]:
@@ -1738,7 +1765,28 @@ def render_browse_detail_page(field_key: str, entry: dict) -> str:
       <ul>{''.join(f"<li>{escape(note)}</li>" for note in entry["notes"])}</ul>
         """.rstrip()
     harnesses_html = render_harness_links(entry["harnesses"], prefix="../../")
-    more_stuff = render_more_stuff("../../index.html", "../../../")
+    related_explorations = related_explorations_for_browse_entry(
+        field_key, entry, explorations
+    )
+    exploration_html = ""
+    if related_explorations:
+        items = []
+        for exploration in related_explorations:
+            paragraph = strip_first_heading(exploration["body"]).strip().split("\n\n", 1)[0]
+            summary = render_inline_markdown(paragraph.replace("\n", " "))
+            items.append(
+                f"""
+          <li>
+            <a href="../../{escape(exploration['output_href'])}">{escape(exploration['title'])}</a>
+            <div class="subtle">{summary}</div>
+          </li>
+                """.rstrip()
+            )
+        exploration_html = f"""
+        <h2>Further Threads</h2>
+        <ul>{''.join(items)}</ul>
+        """.rstrip()
+    more_stuff = render_more_stuff("../../index.html", "../../")
     return f"""<!doctype html>
 <html lang="en">
   <head>
@@ -1805,6 +1853,7 @@ def render_browse_detail_page(field_key: str, entry: dict) -> str:
         <h1>{escape(entry["label"])}</h1>
         <p>{len(entry["harnesses"])} harnesses currently express this entry.</p>
         {notes_html}
+        {exploration_html}
         <h2>Harnesses</h2>
         {harnesses_html}
         {more_stuff}
@@ -1851,7 +1900,8 @@ def main() -> int:
         )
         for entry in entries:
             (field_dir / f"{entry['slug']}.html").write_text(
-                render_browse_detail_page(field_key, entry), encoding="utf-8"
+                render_browse_detail_page(field_key, entry, explorations),
+                encoding="utf-8"
             )
     for section_paths in MORE_STUFF.values():
         for note_path in section_paths:
