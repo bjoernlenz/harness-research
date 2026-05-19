@@ -149,6 +149,7 @@ def exploration_kind_label(exploration: dict) -> str:
     kind = str(exploration.get("metadata", {}).get("kind", "")).strip()
     return {
         "concept": "Explorations",
+        "harness-story": "Harness Stories",
         "historical": "Historical Notes",
         "tension": "Tensions",
     }.get(kind, "Explorations")
@@ -360,6 +361,16 @@ def related_explorations_for_browse_entry(
         if Path(exploration["path"]).stem in wanted:
             matches.append(exploration)
     return matches
+
+
+def harness_story_for_harness(harness_id: str, explorations: list[dict]) -> dict | None:
+    for exploration in explorations:
+        meta = exploration.get("metadata", {})
+        kind = str(meta.get("kind", "")).strip()
+        related_harnesses = [str(value) for value in meta.get("related_harnesses", [])]
+        if kind == "harness-story" and related_harnesses == [harness_id]:
+            return exploration
+    return None
 
 
 def build_browse_catalog(records: list[dict]) -> dict[str, list[dict]]:
@@ -1661,6 +1672,17 @@ def render_harness_page(
 ) -> str:
     harness_id = str(record.get("id", ""))
     current_output_href = harness_output_href(harness_id)
+    story_note = harness_story_for_harness(harness_id, explorations)
+    story_html = ""
+    if story_note:
+        story_body = strip_first_heading(story_note["body"]).strip()
+        if story_body:
+            story_html = f"""
+      <section>
+        <h3>Human Story</h3>
+        {render_markdown_body(story_body)}
+      </section>
+            """.rstrip()
     card_html = render_card(
         current_output_href,
         record,
@@ -1672,6 +1694,13 @@ def render_harness_page(
         explorations,
         atlas_href=harness_atlas_href(current_output_href, harness_id),
     )
+    page_card_html = card_html
+    if story_html:
+        page_card_html = card_html.replace(
+            "<section>\n        <h3>Category</h3>",
+            f"{story_html}\n      <section>\n        <h3>Category</h3>",
+            1,
+        )
     return f"""<!doctype html>
 <html lang="en">
   <head>
@@ -1779,7 +1808,7 @@ def render_harness_page(
   <body>
     <main>
       <a class="back" href="{relative_site_href(current_output_href, index_output_href())}">← Back to atlas</a>
-      {card_html}
+      {page_card_html}
     </main>
   </body>
 </html>
@@ -2145,17 +2174,22 @@ def main() -> int:
                 render_browse_detail_page(field_key, entry, explorations),
                 encoding="utf-8"
             )
-    for section_paths in MORE_STUFF.values():
-        for note_path in section_paths:
-            output_path = NOTES_OUTPUT_DIR / Path(note_path).relative_to("notes")
-            output_path = output_path.with_suffix(".html")
-            output_path.parent.mkdir(parents=True, exist_ok=True)
-            output_path.write_text(
-                render_note_page(
-                    note_path, concepts, record_by_id, explorations, note_registry
-                ),
-                encoding="utf-8",
-            )
+    note_paths_to_render = {
+        note_path
+        for section_paths in MORE_STUFF.values()
+        for note_path in section_paths
+    }
+    note_paths_to_render.update(exploration["path"] for exploration in explorations)
+    for note_path in sorted(note_paths_to_render):
+        output_path = NOTES_OUTPUT_DIR / Path(note_path).relative_to("notes")
+        output_path = output_path.with_suffix(".html")
+        output_path.parent.mkdir(parents=True, exist_ok=True)
+        output_path.write_text(
+            render_note_page(
+                note_path, concepts, record_by_id, explorations, note_registry
+            ),
+            encoding="utf-8",
+        )
     print(f"Wrote {OUTPUT_PATH}")
     if MISSING_METAPHOR_PICTURES:
         missing = ", ".join(sorted(MISSING_METAPHOR_PICTURES))
