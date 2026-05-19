@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OpenHands · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .card {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .metaphor-picture {
+        width: 82px;
+        height: 82px;
+        margin: 0 0 14px;
+        display: grid;
+        place-items: center;
+        border-radius: 20px;
+        background:
+          radial-gradient(circle at top, rgba(200, 119, 69, 0.22), transparent 52%),
+          linear-gradient(180deg, #fff9ef 0%, #f2e5d1 100%);
+        border: 1px solid var(--border);
+      }
+      .metaphor-picture svg {
+        width: 64px;
+        height: 64px;
+        overflow: visible;
+      }
+      .card h2 {
+        margin: 0 0 12px;
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 0.98;
+      }
+      .card h3 {
+        margin: 16px 0 8px;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+      }
+      .card p, .card ul {
+        margin: 0;
+        line-height: 1.6;
+      }
+      .card ul { padding-left: 18px; }
+      .pill-list, .relationship-list {
+        list-style: none;
+        padding-left: 0;
+      }
+      .pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .pill {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #efe2cf;
+        color: var(--ink);
+        text-decoration: none;
+        border: 1px solid var(--border);
+        font-size: 0.95rem;
+      }
+      .section-link {
+        color: inherit;
+        text-decoration: none;
+      }
+      .section-link:hover { text-decoration: underline; }
+      .subtle, .relation-note, .empty-state { color: var(--muted); }
+      .relationship-list li {
+        padding: 10px 0;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+      .relationship-list li:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../index.html">← Back to atlas</a>
+      <article class="card" id="openhands">
+      <div class="metaphor-picture" title="octopus">
+        <svg viewBox="0 0 96 96" aria-hidden="true">
+  <path d="M48 18c16 0 26 12 26 26 0 10-5 18-12 22v12c0 3-4 4-6 1l-4-6-4 7c-2 3-6 2-6-1v-6l-5 7c-2 3-6 2-6-2V66c-7-4-11-12-11-22 0-14 12-26 28-26z" fill="#c87745" stroke="#1f1d1a" stroke-width="3"/>
+  <circle cx="39" cy="42" r="5" fill="#fffdf8"/>
+  <circle cx="57" cy="42" r="5" fill="#fffdf8"/>
+  <circle cx="39" cy="42" r="2" fill="#1f1d1a"/>
+  <circle cx="57" cy="42" r="2" fill="#1f1d1a"/>
+  <path d="M41 54c4 3 10 3 14 0" fill="none" stroke="#1f1d1a" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M24 70c4 6 8 8 12 8M72 70c-4 6-8 8-12 8" fill="none" stroke="#1f1d1a" stroke-width="3" stroke-linecap="round"/>
+</svg>
+      </div>
+      <h2>OpenHands</h2>
+      <p class="subtle"><a href="../index.html#openhands">View atlas card</a></p>
+      <section>
+        <h3>Category</h3>
+        <ul><li>coding-agent</li><li>agent-platform</li></ul>
+      </section>
+      <section>
+        <h3>Architectural Core</h3>
+        <ul><li>all-batteries-included coding agent</li><li>sandboxed execution environment</li><li>GUI, CLI, cloud, and headless entrypoints</li></ul>
+      </section>
+      <section>
+        <h3>Worldview</h3>
+        <p>A coding agent should have the same practical affordances as a human developer: code, shell, browser, APIs, repos, and a configurable sandbox to act inside.</p>
+      </section>
+      <section>
+        <h3>Complexity Focus</h3>
+        <ul><li>sandbox setup</li><li>repository integration</li><li>agent customization</li><li>tooling breadth</li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/primary-substrates/index.html">Primary Substrate</a></h3>
+        <ul><li><a href="../browse/primary-substrates/sandbox.html">sandbox</a></li><li><a href="../browse/primary-substrates/repository.html">repository</a></li><li><a href="../browse/primary-substrates/tools.html">tools</a></li><li><a href="../browse/primary-substrates/agent-skills.html">agent-skills</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/cognitive-styles/index.html">Cognitive Style</a></h3>
+        <ul><li><a href="../browse/cognitive-styles/sandboxed.html">sandboxed</a></li><li><a href="../browse/cognitive-styles/concrete.html">concrete</a></li><li><a href="../browse/cognitive-styles/composable.html">composable</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/trust-models/index.html">Trust Model</a></h3>
+        <ul><li><a href="../browse/trust-models/environment-control.html">environment-control</a></li><li><a href="../browse/trust-models/supervision.html">supervision</a></li><li><a href="../browse/trust-models/sandbox-boundaries.html">sandbox-boundaries</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/hidden-bets/index.html">Hidden Bet</a></h3>
+        <p><a href="../browse/hidden-bets/a-coding-agent-becomes-powerful-when-it-gets-a-full-practical-environment-not-just-a-better-prompt.html">A coding agent becomes powerful when it gets a full practical environment, not just a better prompt.</a></p>
+      </section>
+      <section>
+        <h3>Playfulness</h3>
+        <p>The sideways move is giving the agent a broad practical body and then letting users tune the environment around it rather than narrowing the task shape too early.</p>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/failure-modes/index.html">Failure Modes</a></h3>
+        <ul><li><a href="../browse/failure-modes/sandbox-complexity.html">Sandbox complexity</a></li><li><a href="../browse/failure-modes/tool-surface-overload.html">Tool-surface overload</a></li><li><a href="../browse/failure-modes/configuration-drift.html">Configuration drift</a></li></ul>
+      </section>
+      <section>
+        <h3>What It Refuses</h3>
+        <ul><li>A narrow single-interface agent body</li><li>Restricting coding agency to chat-only abstraction</li><li>Separating the agent from the practical tooling of development work</li></ul>
+      </section>
+      <section>
+        <h3>Core Tension</h3>
+        <p>Its strength is giving the agent a full practical body. Its tradeoff is that the richer the body becomes, the harder it is to keep behavior simple, predictable, and lightweight.</p>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/representative-for/index.html">Representative For</a></h3>
+        <ul><li><a href="../browse/representative-for/fully-embodied-coding-agent.html">fully embodied coding agent</a></li><li><a href="../browse/representative-for/sandbox-centered-agent-platform.html">sandbox-centered agent platform</a></li></ul>
+      </section>
+      
+      <section>
+        <h3>Animal or Transport</h3>
+        <p><strong>octopus</strong></p>
+        <p>It has many active limbs, works across a broad environment, and adapts by extending reach through tools and surroundings.</p>
+      </section>
+      <section>
+        <h3>Related Concepts</h3>
+        <ul class="pill-list"><li><a class="pill" href="../concepts/sandbox-as-agent-body.html">Sandbox As Agent Body</a></li><li><a class="pill" href="../concepts/sandboxed-agency.html">Sandboxed Agency</a></li><li><a class="pill" href="../concepts/microagents.html">Microagents</a></li><li><a class="pill" href="../concepts/developer-tool-embodiment.html">Developer Tool Embodiment</a></li><li><a class="pill" href="../concepts/mcp-as-tool-fabric.html">MCP As Tool Fabric</a></li></ul>
+      </section>
+      
+      <section>
+        <h3>Relationships</h3>
+        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="../concepts/sandbox-as-agent-body.html">Sandbox As Agent Body</a><br><span class="relation-note">The sandbox is part of the agent&#x27;s working body rather than just a passive guardrail.</span></li><li><strong>externalizes_through</strong> → <a href="../concepts/sandboxed-agency.html">Sandboxed Agency</a><br><span class="relation-note">OpenHands externalizes capability into a configurable sandboxed environment that becomes part of the agent body.</span></li><li><strong>surprisingly_like</strong> → <a href="../concepts/developer-tool-embodiment.html">Developer Tool Embodiment</a><br><span class="relation-note">OpenHands feels strongest when the agent inhabits the same practical surfaces a human developer would use.</span></li></ul>
+      </section>
+      <section>
+        <h3>More To Explore</h3>
+        <h4>Shares Primary Substrate</h4>
+        <ul><li><a href="aider.html">Aider</a></li><li><a href="claude-code.html">Claude Code</a></li><li><a href="cursor.html">Cursor</a></li><li><a href="llamaindex.html">LlamaIndex</a></li></ul>
+        <h4>Shares Trust Model</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Shares Cognitive Style</h4>
+        <ul><li><a href="cursor.html">Cursor</a></li><li><a href="aider.html">Aider</a></li><li><a href="claude-code.html">Claude Code</a></li><li><a href="llamaindex.html">LlamaIndex</a></li></ul>
+        <h4>Contrasts With</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Explorations</h4><ul><li><a href="../notes/explorations/concepts/sandbox-as-agent-body.html">Sandbox As Agent Body</a></li></ul><h4>Tensions</h4><ul><li><a href="../notes/explorations/tensions/minimal-core-vs-batteries-included.html">Minimal Core Vs Batteries Included</a></li></ul>
+      </section>
+    </article>
+    </main>
+  </body>
+</html>

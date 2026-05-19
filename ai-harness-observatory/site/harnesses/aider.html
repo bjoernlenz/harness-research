@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aider · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .card {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .metaphor-picture {
+        width: 82px;
+        height: 82px;
+        margin: 0 0 14px;
+        display: grid;
+        place-items: center;
+        border-radius: 20px;
+        background:
+          radial-gradient(circle at top, rgba(200, 119, 69, 0.22), transparent 52%),
+          linear-gradient(180deg, #fff9ef 0%, #f2e5d1 100%);
+        border: 1px solid var(--border);
+      }
+      .metaphor-picture svg {
+        width: 64px;
+        height: 64px;
+        overflow: visible;
+      }
+      .card h2 {
+        margin: 0 0 12px;
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 0.98;
+      }
+      .card h3 {
+        margin: 16px 0 8px;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+      }
+      .card p, .card ul {
+        margin: 0;
+        line-height: 1.6;
+      }
+      .card ul { padding-left: 18px; }
+      .pill-list, .relationship-list {
+        list-style: none;
+        padding-left: 0;
+      }
+      .pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .pill {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #efe2cf;
+        color: var(--ink);
+        text-decoration: none;
+        border: 1px solid var(--border);
+        font-size: 0.95rem;
+      }
+      .section-link {
+        color: inherit;
+        text-decoration: none;
+      }
+      .section-link:hover { text-decoration: underline; }
+      .subtle, .relation-note, .empty-state { color: var(--muted); }
+      .relationship-list li {
+        padding: 10px 0;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+      .relationship-list li:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../index.html">← Back to atlas</a>
+      <article class="card" id="aider">
+      <div class="metaphor-picture" title="sheepdog">
+        <svg viewBox="0 0 96 96" aria-hidden="true">
+  <circle cx="48" cy="48" r="42" fill="#f8efe1"/>
+  <circle cx="34" cy="35" r="12" fill="#6f4f34"/>
+  <circle cx="62" cy="35" r="12" fill="#6f4f34"/>
+  <circle cx="48" cy="50" r="24" fill="#ddc2a1"/>
+  <circle cx="39" cy="47" r="4" fill="#1f1d1a"/>
+  <circle cx="57" cy="47" r="4" fill="#1f1d1a"/>
+  <ellipse cx="48" cy="59" rx="10" ry="7" fill="#f8efe1"/>
+  <circle cx="48" cy="57" r="3.5" fill="#1f1d1a"/>
+  <path d="M41 65c4 4 10 4 14 0" fill="none" stroke="#1f1d1a" stroke-width="2.5" stroke-linecap="round"/>
+</svg>
+      </div>
+      <h2>Aider</h2>
+      <p class="subtle"><a href="../index.html#aider">View atlas card</a></p>
+      <section>
+        <h3>Category</h3>
+        <ul><li>coding-agent</li><li>repo-companion</li></ul>
+      </section>
+      <section>
+        <h3>Architectural Core</h3>
+        <ul><li>chat-driven code editing</li><li>repo-aware context management</li><li>git-centered workflow</li></ul>
+      </section>
+      <section>
+        <h3>Worldview</h3>
+        <p>A coding agent should live close to the repository and collaborate through concrete edits rather than abstract plans.</p>
+      </section>
+      <section>
+        <h3>Complexity Focus</h3>
+        <ul><li>context engineering</li><li>code diffing</li><li>repo state</li><li>human approval</li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/primary-substrates/index.html">Primary Substrate</a></h3>
+        <ul><li><a href="../browse/primary-substrates/repository.html">repository</a></li><li><a href="../browse/primary-substrates/git.html">git</a></li><li><a href="../browse/primary-substrates/chat.html">chat</a></li><li><a href="../browse/primary-substrates/diff.html">diff</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/cognitive-styles/index.html">Cognitive Style</a></h3>
+        <ul><li><a href="../browse/cognitive-styles/grounded.html">grounded</a></li><li><a href="../browse/cognitive-styles/collaborative.html">collaborative</a></li><li><a href="../browse/cognitive-styles/concrete.html">concrete</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/trust-models/index.html">Trust Model</a></h3>
+        <ul><li><a href="../browse/trust-models/repository-closeness.html">repository-closeness</a></li><li><a href="../browse/trust-models/diff-review.html">diff-review</a></li><li><a href="../browse/trust-models/human-approval.html">human-approval</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/hidden-bets/index.html">Hidden Bet</a></h3>
+        <p><a href="../browse/hidden-bets/repo-proximity-matters-more-than-orchestration-sophistication.html">Repo proximity matters more than orchestration sophistication.</a></p>
+      </section>
+      <section>
+        <h3>Playfulness</h3>
+        <p>The fun move is treating the repository itself as the agent&#x27;s working body and memory surface.</p>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/failure-modes/index.html">Failure Modes</a></h3>
+        <ul><li><a href="../browse/failure-modes/context-drift-in-large-repos.html">Context drift in large repos</a></li><li><a href="../browse/failure-modes/patch-misalignment.html">Patch misalignment</a></li><li><a href="../browse/failure-modes/repo-local-optimization-at-the-expense-of-broader-planning.html">Repo-local optimization at the expense of broader planning</a></li></ul>
+      </section>
+      <section>
+        <h3>What It Refuses</h3>
+        <ul><li>Elaborate agent theater</li><li>Heavy orchestration abstractions</li><li>Separation from the actual codebase</li></ul>
+      </section>
+      <section>
+        <h3>Core Tension</h3>
+        <p>Its strength is staying close to the repo. Its limitation is that repo-closeness can make broader autonomous planning feel secondary.</p>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/representative-for/index.html">Representative For</a></h3>
+        <ul><li><a href="../browse/representative-for/repo-close-coding-agent.html">repo-close coding agent</a></li><li><a href="../browse/representative-for/diff-mediated-collaboration.html">diff-mediated collaboration</a></li></ul>
+      </section>
+      
+      <section>
+        <h3>Animal or Transport</h3>
+        <p><strong>sheepdog</strong></p>
+        <p>It stays close to the working terrain, responds to guidance, and helps move concrete changes where they need to go.</p>
+      </section>
+      <section>
+        <h3>Related Concepts</h3>
+        <ul class="pill-list"><li><a class="pill" href="../concepts/git-as-cognition.html">Git As Cognition</a></li><li><a class="pill" href="../concepts/repository-as-memory.html">Repository As Memory</a></li><li><a class="pill" href="../concepts/human-in-the-loop.html">Human In The Loop</a></li><li><a class="pill" href="../concepts/coding-agents.html">Coding Agents</a></li><li><a class="pill" href="../concepts/diff-as-interface.html">Diff As Interface</a></li><li><a class="pill" href="../concepts/agent-as-collaborator.html">Agent As Collaborator</a></li></ul>
+      </section>
+      
+      <section>
+        <h3>Relationships</h3>
+        <ul class="relationship-list"><li><strong>contrasts_with</strong> → <a href="langgraph.html">LangGraph</a><br><span class="relation-note">Aider keeps agency close to the repository and human collaboration, while LangGraph externalizes agency into explicit graph control flow.</span></li><li><strong>playful_parallel_to</strong> → <a href="../concepts/git-as-cognition.html">Git As Cognition</a><br><span class="relation-note">Git becomes more than storage; it participates in the agent&#x27;s practical loop of understanding and change.</span></li><li><strong>trusts_through</strong> → <a href="../concepts/diff-as-interface.html">Diff As Interface</a><br><span class="relation-note">Aider earns trust by keeping change visible in concrete diffs that a human can inspect and negotiate.</span></li><li><strong>shares_hidden_bet_with</strong> → <a href="claude-code.html">Claude Code</a><br><span class="relation-note">Both assume close contact with the real working code surface matters more than abstract orchestration sophistication.</span></li></ul>
+      </section>
+      <section>
+        <h3>More To Explore</h3>
+        <h4>Shares Primary Substrate</h4>
+        <ul><li><a href="claude-code.html">Claude Code</a></li><li><a href="cursor.html">Cursor</a></li><li><a href="openhands.html">OpenHands</a></li><li><a href="pi.html">Pi</a></li></ul>
+        <h4>Shares Trust Model</h4>
+        <ul><li><a href="claude-code.html">Claude Code</a></li></ul>
+        <h4>Shares Cognitive Style</h4>
+        <ul><li><a href="claude-code.html">Claude Code</a></li><li><a href="cursor.html">Cursor</a></li><li><a href="openhands.html">OpenHands</a></li><li><a href="pi.html">Pi</a></li></ul>
+        <h4>Contrasts With</h4>
+        <ul><li><a href="langgraph.html">LangGraph</a></li></ul>
+        <h4>Historical Notes</h4><ul><li><a href="../notes/explorations/historical/the-rise-of-terminal-coding-agents.html">The Rise Of Terminal Coding Agents</a></li></ul><h4>Tensions</h4><ul><li><a href="../notes/explorations/tensions/closeness-vs-orchestration.html">Closeness Vs Orchestration</a></li></ul>
+      </section>
+    </article>
+    </main>
+  </body>
+</html>

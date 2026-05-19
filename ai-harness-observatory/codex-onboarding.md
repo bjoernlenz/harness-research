@@ -74,7 +74,7 @@ Current flow:
 2. `scripts/validate-data` checks required structure
 3. `scripts/generate-site` reads YAML and produces `site/`
 4. `scripts/check-site-links` validates generated internal links inside `site/`
-5. `site/index.html`, `site/browse/*.html`, and `site/concepts/*.html` are the main current exploration surfaces
+5. `site/index.html`, `site/browse/*.html`, `site/concepts/*.html`, and `site/harnesses/*.html` are the main current exploration surfaces
 
 Target flow:
 
@@ -113,7 +113,7 @@ Decide and implement one of:
 
 Do not keep large duplicated descriptive bodies in both places indefinitely.
 
-### 2. Expand generated browse layers
+### 2. Deepen generated surfaces
 
 These are now generated from YAML and reachable from the atlas:
 
@@ -126,11 +126,11 @@ These are now generated from YAML and reachable from the atlas:
 
 Current next step:
 
-Make the same exploration feel available at the harness level, not only at the field level. Likely next moves are:
+The harness level now has generated detail pages. Likely next moves are:
 
-- harness detail pages
 - stronger relationship browse surfaces
 - deeper cross-links from concepts and comparisons back into the atlas
+- reduce reliance on duplicated harness Markdown now that harness pages exist
 
 ### 3. Prefer generated indexes over prose duplication
 
@@ -160,5 +160,5 @@ One concept, many links.
 The clean next implementation pass is:
 
 1. reduce or remove duplicated harness Markdown once HTML browse surfaces are sufficient
-2. add harness detail pages or another per-harness generated surface
-3. make relationship, concept, and comparison navigation denser from the site itself
+2. make relationship, concept, and comparison navigation denser from the site itself
+3. keep link checking in the loop with `./scripts/check-site-links`

@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>PydanticAI · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .card {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .metaphor-picture {
+        width: 82px;
+        height: 82px;
+        margin: 0 0 14px;
+        display: grid;
+        place-items: center;
+        border-radius: 20px;
+        background:
+          radial-gradient(circle at top, rgba(200, 119, 69, 0.22), transparent 52%),
+          linear-gradient(180deg, #fff9ef 0%, #f2e5d1 100%);
+        border: 1px solid var(--border);
+      }
+      .metaphor-picture svg {
+        width: 64px;
+        height: 64px;
+        overflow: visible;
+      }
+      .card h2 {
+        margin: 0 0 12px;
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 0.98;
+      }
+      .card h3 {
+        margin: 16px 0 8px;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+      }
+      .card p, .card ul {
+        margin: 0;
+        line-height: 1.6;
+      }
+      .card ul { padding-left: 18px; }
+      .pill-list, .relationship-list {
+        list-style: none;
+        padding-left: 0;
+      }
+      .pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .pill {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #efe2cf;
+        color: var(--ink);
+        text-decoration: none;
+        border: 1px solid var(--border);
+        font-size: 0.95rem;
+      }
+      .section-link {
+        color: inherit;
+        text-decoration: none;
+      }
+      .section-link:hover { text-decoration: underline; }
+      .subtle, .relation-note, .empty-state { color: var(--muted); }
+      .relationship-list li {
+        padding: 10px 0;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+      .relationship-list li:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../index.html">← Back to atlas</a>
+      <article class="card" id="pydantic-ai">
+      <div class="metaphor-picture" title="tram">
+        <svg viewBox="0 0 96 96" aria-hidden="true">
+  <rect x="18" y="22" width="60" height="42" rx="8" fill="#f0b25d" stroke="#1f1d1a" stroke-width="4"/>
+  <path d="M32 16h32l-8 6H40z" fill="#1f1d1a"/>
+  <rect x="27" y="31" width="14" height="12" rx="2" fill="#fffdf8"/>
+  <rect x="45" y="31" width="14" height="12" rx="2" fill="#fffdf8"/>
+  <rect x="63" y="31" width="6" height="12" rx="2" fill="#fffdf8"/>
+  <circle cx="34" cy="71" r="5" fill="#1f1d1a"/>
+  <circle cx="62" cy="71" r="5" fill="#1f1d1a"/>
+  <path d="M28 78h40" fill="none" stroke="#1f1d1a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M20 84h56" fill="none" stroke="#8b8177" stroke-width="2" stroke-linecap="round"/>
+  <path d="M20 88h56" fill="none" stroke="#8b8177" stroke-width="2" stroke-linecap="round"/>
+</svg>
+      </div>
+      <h2>PydanticAI</h2>
+      <p class="subtle"><a href="../index.html#pydantic-ai">View atlas card</a></p>
+      <section>
+        <h3>Category</h3>
+        <ul><li>agent-framework</li><li>typed-runtime</li></ul>
+      </section>
+      <section>
+        <h3>Architectural Core</h3>
+        <ul><li>typed agent runtime</li><li>model and tool abstractions</li><li>validation-centered workflows</li></ul>
+      </section>
+      <section>
+        <h3>Worldview</h3>
+        <p>Reliable agent systems come from strong typing, validated I/O, and explicit contracts around model behavior.</p>
+      </section>
+      <section>
+        <h3>Complexity Focus</h3>
+        <ul><li>schemas</li><li>type boundaries</li><li>tool contracts</li><li>retries and validation</li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/primary-substrates/index.html">Primary Substrate</a></h3>
+        <ul><li><a href="../browse/primary-substrates/typed-python-interfaces.html">typed-python-interfaces</a></li><li><a href="../browse/primary-substrates/schemas.html">schemas</a></li><li><a href="../browse/primary-substrates/validation.html">validation</a></li><li><a href="../browse/primary-substrates/tool-contracts.html">tool-contracts</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/cognitive-styles/index.html">Cognitive Style</a></h3>
+        <ul><li><a href="../browse/cognitive-styles/explicit.html">explicit</a></li><li><a href="../browse/cognitive-styles/inspectable.html">inspectable</a></li><li><a href="../browse/cognitive-styles/enterprise-oriented.html">enterprise-oriented</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/trust-models/index.html">Trust Model</a></h3>
+        <ul><li><a href="../browse/trust-models/schema-validation.html">schema-validation</a></li><li><a href="../browse/trust-models/typed-interfaces.html">typed-interfaces</a></li><li><a href="../browse/trust-models/explicit-tool-contracts.html">explicit-tool-contracts</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/hidden-bets/index.html">Hidden Bet</a></h3>
+        <p><a href="../browse/hidden-bets/strong-types-and-validation-matter-more-than-fuzzy-autonomy.html">Strong types and validation matter more than fuzzy autonomy.</a></p>
+      </section>
+      <section>
+        <h3>Playfulness</h3>
+        <p>The clever move is treating schemas and validation as first-class rails around stochastic model behavior.</p>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/failure-modes/index.html">Failure Modes</a></h3>
+        <ul><li><a href="../browse/failure-modes/schema-rigidity.html">Schema rigidity</a></li><li><a href="../browse/failure-modes/validation-churn.html">Validation churn</a></li><li><a href="../browse/failure-modes/type-layer-complexity-overshadowing-task-flow.html">Type-layer complexity overshadowing task flow</a></li></ul>
+      </section>
+      <section>
+        <h3>What It Refuses</h3>
+        <ul><li>Loose untyped interaction boundaries</li><li>Treating validation as optional polish</li><li>Purely fuzzy agent design</li></ul>
+      </section>
+      <section>
+        <h3>Core Tension</h3>
+        <p>The type discipline that makes the runtime legible and safe can also shift creative flexibility into schema work and validation design.</p>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/representative-for/index.html">Representative For</a></h3>
+        <ul><li><a href="../browse/representative-for/type-first-agent-runtime.html">type-first agent runtime</a></li><li><a href="../browse/representative-for/validation-centered-orchestration.html">validation-centered orchestration</a></li></ul>
+      </section>
+      
+      <section>
+        <h3>Animal or Transport</h3>
+        <p><strong>tram</strong></p>
+        <p>It moves reliably along clearly defined rails, with structure doing much of the safety work.</p>
+      </section>
+      <section>
+        <h3>Related Concepts</h3>
+        <ul class="pill-list"><li><a class="pill" href="../concepts/typed-prompts.html">Typed Prompts</a></li><li><a class="pill" href="../concepts/validation-rails.html">Validation Rails</a></li><li><a class="pill" href="../concepts/tool-contracts.html">Tool Contracts</a></li><li><a class="pill" href="../concepts/structured-output.html">Structured Output</a></li></ul>
+      </section>
+      
+      <section>
+        <h3>Relationships</h3>
+        <ul class="relationship-list"><li><strong>different_complexity_center_than</strong> → <a href="aider.html">Aider</a><br><span class="relation-note">PydanticAI pushes burden into schemas and validation contracts; Aider pushes it into repo context and editing flow.</span></li><li><strong>embodies_concept</strong> → <a href="../concepts/validation-rails.html">Validation Rails</a><br><span class="relation-note">Validation and explicit structure are central rails around otherwise stochastic model behavior.</span></li><li><strong>trusts_through</strong> → <a href="../concepts/validation-rails.html">Validation Rails</a><br><span class="relation-note">PydanticAI asks to be trusted through typed boundaries, validation, and explicit contracts.</span></li><li><strong>shares_cognitive_style_with</strong> → <a href="semantic-kernel.html">Semantic Kernel</a><br><span class="relation-note">Both have an explicit, enterprise-oriented, contract-heavy temperament even though their substrates differ.</span></li></ul>
+      </section>
+      <section>
+        <h3>More To Explore</h3>
+        <h4>Shares Primary Substrate</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Shares Trust Model</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Shares Cognitive Style</h4>
+        <ul><li><a href="langgraph.html">LangGraph</a></li><li><a href="openai-agents-sdk.html">OpenAI Agents SDK</a></li><li><a href="semantic-kernel.html">Semantic Kernel</a></li><li><a href="cursor.html">Cursor</a></li></ul>
+        <h4>Contrasts With</h4>
+        <ul><li><a href="aider.html">Aider</a></li></ul>
+        
+      </section>
+    </article>
+    </main>
+  </body>
+</html>

@@ -19,6 +19,7 @@ RELATIONSHIPS_PATH = ROOT / "data" / "relationships.yaml"
 OUTPUT_PATH = ROOT / "site" / "index.html"
 CONCEPT_OUTPUT_DIR = ROOT / "site" / "concepts"
 BROWSE_OUTPUT_DIR = ROOT / "site" / "browse"
+HARNESS_OUTPUT_DIR = ROOT / "site" / "harnesses"
 NOTES_OUTPUT_DIR = ROOT / "site" / "notes"
 MISSING_METAPHOR_PICTURES: set[str] = set()
 SUBSTRATE_CLUSTERS = {
@@ -240,11 +241,19 @@ def concept_output_href(concept_id: str) -> str:
     return f"concepts/{concept_id}.html"
 
 
+def harness_output_href(harness_id: str) -> str:
+    return f"harnesses/{harness_id}.html"
+
+
 def harness_anchor(record: dict) -> str:
     return escape(str(record.get("id", "")))
 
 
 def harness_site_href(from_output_href: str, harness_id: str) -> str:
+    return relative_site_href(from_output_href, harness_output_href(harness_id))
+
+
+def harness_atlas_href(from_output_href: str, harness_id: str) -> str:
     return f"{relative_site_href(from_output_href, index_output_href())}#{quote(harness_id)}"
 
 
@@ -609,11 +618,16 @@ def metaphor_label(metaphor: dict) -> str:
     return ""
 
 
-def render_section_heading(label: str, field_key: str | None = None) -> str:
+def render_section_heading(
+    label: str, field_key: str | None = None, current_output_href: str | None = None
+) -> str:
     if field_key is None:
         return f"<h3>{escape(label)}</h3>"
+    href = browse_index_output_href(field_key)
+    if current_output_href is not None:
+        href = relative_site_href(current_output_href, href)
     return (
-        f'<h3><a class="section-link" href="{browse_index_output_href(field_key)}">'
+        f'<h3><a class="section-link" href="{href}">'
         f"{escape(label)}</a></h3>"
     )
 
@@ -958,6 +972,8 @@ def render_card(
     catalog: dict[str, list[dict]],
     record_by_id: dict[str, dict],
     explorations: list[dict],
+    title_href: str | None = None,
+    atlas_href: str | None = None,
 ) -> str:
     harness_id = str(record.get("id", ""))
     name = escape(str(record.get("name", "Unknown")))
@@ -1038,12 +1054,18 @@ def render_card(
       </section>
         """.rstrip()
 
+    title_html = f'<h2><a class="section-link" href="{title_href}">{name}</a></h2>' if title_href else f"<h2>{name}</h2>"
+    atlas_link_html = (
+        f'<p class="subtle"><a href="{atlas_href}">View atlas card</a></p>' if atlas_href else ""
+    )
+
     return f"""
     <article class="card" id="{escape(harness_id)}">
       <div class="metaphor-picture" title="{metaphor_name}">
         {metaphor_picture}
       </div>
-      <h2>{name}</h2>
+      {title_html}
+      {atlas_link_html}
       <section>
         {render_section_heading("Category")}
         {category}
@@ -1061,19 +1083,19 @@ def render_card(
         {complexity_focus}
       </section>
       <section>
-        {render_section_heading("Primary Substrate", "primary_substrate")}
+        {render_section_heading("Primary Substrate", "primary_substrate", current_output_href)}
         {primary_substrate}
       </section>
       <section>
-        {render_section_heading("Cognitive Style", "cognitive_style")}
+        {render_section_heading("Cognitive Style", "cognitive_style", current_output_href)}
         {cognitive_style}
       </section>
       <section>
-        {render_section_heading("Trust Model", "trust_model")}
+        {render_section_heading("Trust Model", "trust_model", current_output_href)}
         {trust_model}
       </section>
       <section>
-        {render_section_heading("Hidden Bet", "hidden_bet")}
+        {render_section_heading("Hidden Bet", "hidden_bet", current_output_href)}
         <p><a href="{hidden_bet_href}">{hidden_bet_summary}</a></p>
       </section>
       <section>
@@ -1081,7 +1103,7 @@ def render_card(
         <p>{playfulness}</p>
       </section>
       <section>
-        {render_section_heading("Failure Modes", "failure_modes")}
+        {render_section_heading("Failure Modes", "failure_modes", current_output_href)}
         {failure_modes}
       </section>
       <section>
@@ -1093,7 +1115,7 @@ def render_card(
         <p>{core_tension}</p>
       </section>
       <section>
-        {render_section_heading("Representative For", "representative_for")}
+        {render_section_heading("Representative For", "representative_for", current_output_href)}
         {representative_for}
       </section>
       {metaphor_html}
@@ -1146,6 +1168,7 @@ def render_page(
             catalog,
             record_by_id,
             explorations,
+            title_href=harness_site_href(index_output_href(), str(record.get("id", ""))),
         )
         for record in records
     )
@@ -1623,6 +1646,142 @@ def render_concept_page(
 """
 
 
+def render_harness_page(
+    record: dict,
+    records: list[dict],
+    concepts: dict[str, dict],
+    relationships: list[dict],
+    catalog: dict[str, list[dict]],
+    record_by_id: dict[str, dict],
+    explorations: list[dict],
+) -> str:
+    harness_id = str(record.get("id", ""))
+    current_output_href = harness_output_href(harness_id)
+    card_html = render_card(
+        current_output_href,
+        record,
+        records,
+        concepts,
+        relationships,
+        catalog,
+        record_by_id,
+        explorations,
+        atlas_href=harness_atlas_href(current_output_href, harness_id),
+    )
+    return f"""<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{escape(str(record.get("name", "Unknown")))} · AI Harness Observatory</title>
+    <style>
+      :root {{
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }}
+      * {{ box-sizing: border-box; }}
+      body {{
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }}
+      main {{ max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }}
+      .back {{ color: var(--accent); text-decoration: none; }}
+      .card {{
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }}
+      .metaphor-picture {{
+        width: 82px;
+        height: 82px;
+        margin: 0 0 14px;
+        display: grid;
+        place-items: center;
+        border-radius: 20px;
+        background:
+          radial-gradient(circle at top, rgba(200, 119, 69, 0.22), transparent 52%),
+          linear-gradient(180deg, #fff9ef 0%, #f2e5d1 100%);
+        border: 1px solid var(--border);
+      }}
+      .metaphor-picture svg {{
+        width: 64px;
+        height: 64px;
+        overflow: visible;
+      }}
+      .card h2 {{
+        margin: 0 0 12px;
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 0.98;
+      }}
+      .card h3 {{
+        margin: 16px 0 8px;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+      }}
+      .card p, .card ul {{
+        margin: 0;
+        line-height: 1.6;
+      }}
+      .card ul {{ padding-left: 18px; }}
+      .pill-list, .relationship-list {{
+        list-style: none;
+        padding-left: 0;
+      }}
+      .pill-list {{
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }}
+      .pill {{
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #efe2cf;
+        color: var(--ink);
+        text-decoration: none;
+        border: 1px solid var(--border);
+        font-size: 0.95rem;
+      }}
+      .section-link {{
+        color: inherit;
+        text-decoration: none;
+      }}
+      .section-link:hover {{ text-decoration: underline; }}
+      .subtle, .relation-note, .empty-state {{ color: var(--muted); }}
+      .relationship-list li {{
+        padding: 10px 0;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }}
+      .relationship-list li:first-child {{
+        border-top: 0;
+        padding-top: 0;
+      }}
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="{relative_site_href(current_output_href, index_output_href())}">← Back to atlas</a>
+      {card_html}
+    </main>
+  </body>
+</html>
+"""
+
+
 def render_browse_hub(catalog: dict[str, list[dict]]) -> str:
     current_output_href = "browse/index.html"
     cards = []
@@ -1948,11 +2107,27 @@ def main() -> int:
         encoding="utf-8",
     )
     CONCEPT_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    HARNESS_OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     for concept_id, concept in concepts.items():
         concept_path = CONCEPT_OUTPUT_DIR / f"{concept_id}.html"
         concept_path.write_text(
             render_concept_page(
                 concept, concepts, relationships, record_by_id, explorations
+            ),
+            encoding="utf-8",
+        )
+    for record in records:
+        harness_id = str(record.get("id", ""))
+        harness_path = HARNESS_OUTPUT_DIR / f"{harness_id}.html"
+        harness_path.write_text(
+            render_harness_page(
+                record,
+                records,
+                concepts,
+                relationships,
+                catalog,
+                record_by_id,
+                explorations,
             ),
             encoding="utf-8",
         )

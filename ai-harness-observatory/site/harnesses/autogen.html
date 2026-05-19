@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AutoGen · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .card {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .metaphor-picture {
+        width: 82px;
+        height: 82px;
+        margin: 0 0 14px;
+        display: grid;
+        place-items: center;
+        border-radius: 20px;
+        background:
+          radial-gradient(circle at top, rgba(200, 119, 69, 0.22), transparent 52%),
+          linear-gradient(180deg, #fff9ef 0%, #f2e5d1 100%);
+        border: 1px solid var(--border);
+      }
+      .metaphor-picture svg {
+        width: 64px;
+        height: 64px;
+        overflow: visible;
+      }
+      .card h2 {
+        margin: 0 0 12px;
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 0.98;
+      }
+      .card h3 {
+        margin: 16px 0 8px;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+      }
+      .card p, .card ul {
+        margin: 0;
+        line-height: 1.6;
+      }
+      .card ul { padding-left: 18px; }
+      .pill-list, .relationship-list {
+        list-style: none;
+        padding-left: 0;
+      }
+      .pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .pill {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #efe2cf;
+        color: var(--ink);
+        text-decoration: none;
+        border: 1px solid var(--border);
+        font-size: 0.95rem;
+      }
+      .section-link {
+        color: inherit;
+        text-decoration: none;
+      }
+      .section-link:hover { text-decoration: underline; }
+      .subtle, .relation-note, .empty-state { color: var(--muted); }
+      .relationship-list li {
+        padding: 10px 0;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+      .relationship-list li:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../index.html">← Back to atlas</a>
+      <article class="card" id="autogen">
+      <div class="metaphor-picture" title="flock-of-starlings">
+        <svg viewBox="0 0 96 96" aria-hidden="true">
+  <path d="M18 36c6-5 12-6 18-2M29 32c5-6 11-8 17-5M43 30c7-5 13-5 18 0M57 33c6-5 12-5 17 0" fill="none" stroke="#1f1d1a" stroke-width="3" stroke-linecap="round"/>
+  <path d="M22 52c5-4 10-4 15 0M35 58c6-5 12-5 18-1M51 55c5-4 10-4 15 0M65 49c5-4 9-4 13-1" fill="none" stroke="#4d5a67" stroke-width="3" stroke-linecap="round"/>
+  <path d="M26 70c6-5 12-5 18 0M43 72c7-5 13-5 19 0M61 69c5-4 10-4 14 0" fill="none" stroke="#c87745" stroke-width="3" stroke-linecap="round"/>
+</svg>
+      </div>
+      <h2>AutoGen</h2>
+      <p class="subtle"><a href="../index.html#autogen">View atlas card</a></p>
+      <section>
+        <h3>Category</h3>
+        <ul><li>agent-framework</li><li>multi-agent-system</li></ul>
+      </section>
+      <section>
+        <h3>Architectural Core</h3>
+        <ul><li>conversational agents and teams</li><li>event-driven multi-agent core</li><li>extensions for runtimes, tools, and models</li></ul>
+      </section>
+      <section>
+        <h3>Worldview</h3>
+        <p>Useful agent systems emerge from coordinated agents, teams, and event-driven runtimes rather than from one monolithic assistant.</p>
+      </section>
+      <section>
+        <h3>Complexity Focus</h3>
+        <ul><li>team topology</li><li>message routing</li><li>termination conditions</li><li>extensions and runtimes</li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/primary-substrates/index.html">Primary Substrate</a></h3>
+        <ul><li><a href="../browse/primary-substrates/conversation.html">conversation</a></li><li><a href="../browse/primary-substrates/teams.html">teams</a></li><li><a href="../browse/primary-substrates/events.html">events</a></li><li><a href="../browse/primary-substrates/extensions.html">extensions</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/cognitive-styles/index.html">Cognitive Style</a></h3>
+        <ul><li><a href="../browse/cognitive-styles/social.html">social</a></li><li><a href="../browse/cognitive-styles/role-distributed.html">role-distributed</a></li><li><a href="../browse/cognitive-styles/conversational.html">conversational</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/trust-models/index.html">Trust Model</a></h3>
+        <ul><li><a href="../browse/trust-models/team-structure.html">team-structure</a></li><li><a href="../browse/trust-models/explicit-termination.html">explicit-termination</a></li><li><a href="../browse/trust-models/runtime-layering.html">runtime-layering</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/hidden-bets/index.html">Hidden Bet</a></h3>
+        <p><a href="../browse/hidden-bets/coordinated-teams-outperform-a-single-monolithic-agent.html">Coordinated teams outperform a single monolithic agent.</a></p>
+      </section>
+      <section>
+        <h3>Playfulness</h3>
+        <p>The fun move is how unapologetically social the architecture is: teams, group chats, swarms, and orchestrators become practical runtime elements.</p>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/failure-modes/index.html">Failure Modes</a></h3>
+        <ul><li><a href="../browse/failure-modes/agent-team-sprawl.html">Agent-team sprawl</a></li><li><a href="../browse/failure-modes/message-loop-confusion.html">Message-loop confusion</a></li><li><a href="../browse/failure-modes/termination-ambiguity.html">Termination ambiguity</a></li></ul>
+      </section>
+      <section>
+        <h3>What It Refuses</h3>
+        <ul><li>A single-agent-only worldview</li><li>One-layer orchestration models</li><li>Keeping coordination implicit</li></ul>
+      </section>
+      <section>
+        <h3>Core Tension</h3>
+        <p>Its expressive power comes from team coordination and layered runtimes, but those same layers can make the system feel intricate before it feels stable.</p>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/representative-for/index.html">Representative For</a></h3>
+        <ul><li><a href="../browse/representative-for/team-based-agent-framework.html">team-based agent framework</a></li><li><a href="../browse/representative-for/multi-agent-coordination-runtime.html">multi-agent coordination runtime</a></li></ul>
+      </section>
+      
+      <section>
+        <h3>Animal or Transport</h3>
+        <p><strong>flock-of-starlings</strong></p>
+        <p>Its intelligence comes from many moving participants coordinating patterns rather than from a single heavy vehicle.</p>
+      </section>
+      <section>
+        <h3>Related Concepts</h3>
+        <ul class="pill-list"><li><a class="pill" href="../concepts/multi-agent-theater.html">Multi-Agent Theater</a></li><li><a class="pill" href="../concepts/team-conversation.html">Team Conversation</a></li><li><a class="pill" href="../concepts/event-driven-agency.html">Event-Driven Agency</a></li><li><a class="pill" href="../concepts/termination-conditions.html">Termination Conditions</a></li></ul>
+      </section>
+      
+      <section>
+        <h3>Relationships</h3>
+        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="../concepts/multi-agent-theater.html">Multi-Agent Theater</a><br><span class="relation-note">Teams, swarms, and group chats are explicit runtime patterns rather than loose metaphor.</span></li><li><strong>externalizes_through</strong> → <a href="../concepts/agent-team.html">Agent Team</a><br><span class="relation-note">AutoGen moves cognition outward into teams and coordinated agent roles rather than keeping it inside one actor.</span></li><li><strong>shares_cognitive_style_with</strong> → <a href="openai-agents-sdk.html">OpenAI Agents SDK</a><br><span class="relation-note">Both favor explicit orchestration and composable runtime structure, even though AutoGen is more social in shape.</span></li><li><strong>different_complexity_center_than</strong> → <a href="openai-agents-sdk.html">OpenAI Agents SDK</a><br><span class="relation-note">AutoGen pushes harder into team coordination and runtime layering, while the OpenAI Agents SDK concentrates on agents, tools, handoffs, and traces.</span></li></ul>
+      </section>
+      <section>
+        <h3>More To Explore</h3>
+        <h4>Shares Primary Substrate</h4>
+        <ul><li><a href="pi.html">Pi</a></li></ul>
+        <h4>Shares Trust Model</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Shares Cognitive Style</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Contrasts With</h4>
+        <ul><li><a href="openai-agents-sdk.html">OpenAI Agents SDK</a></li></ul>
+        <h4>Explorations</h4><ul><li><a href="../notes/explorations/concepts/teams-as-agency.html">Teams As Agency</a></li></ul><h4>Tensions</h4><ul><li><a href="../notes/explorations/tensions/closeness-vs-orchestration.html">Closeness Vs Orchestration</a></li></ul>
+      </section>
+    </article>
+    </main>
+  </body>
+</html>

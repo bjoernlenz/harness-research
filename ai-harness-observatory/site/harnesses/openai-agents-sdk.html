@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OpenAI Agents SDK · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .card {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .metaphor-picture {
+        width: 82px;
+        height: 82px;
+        margin: 0 0 14px;
+        display: grid;
+        place-items: center;
+        border-radius: 20px;
+        background:
+          radial-gradient(circle at top, rgba(200, 119, 69, 0.22), transparent 52%),
+          linear-gradient(180deg, #fff9ef 0%, #f2e5d1 100%);
+        border: 1px solid var(--border);
+      }
+      .metaphor-picture svg {
+        width: 64px;
+        height: 64px;
+        overflow: visible;
+      }
+      .card h2 {
+        margin: 0 0 12px;
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 0.98;
+      }
+      .card h3 {
+        margin: 16px 0 8px;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+      }
+      .card p, .card ul {
+        margin: 0;
+        line-height: 1.6;
+      }
+      .card ul { padding-left: 18px; }
+      .pill-list, .relationship-list {
+        list-style: none;
+        padding-left: 0;
+      }
+      .pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .pill {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #efe2cf;
+        color: var(--ink);
+        text-decoration: none;
+        border: 1px solid var(--border);
+        font-size: 0.95rem;
+      }
+      .section-link {
+        color: inherit;
+        text-decoration: none;
+      }
+      .section-link:hover { text-decoration: underline; }
+      .subtle, .relation-note, .empty-state { color: var(--muted); }
+      .relationship-list li {
+        padding: 10px 0;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+      .relationship-list li:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../index.html">← Back to atlas</a>
+      <article class="card" id="openai-agents-sdk">
+      <div class="metaphor-picture" title="airport-hub">
+        <svg viewBox="0 0 96 96" aria-hidden="true">
+  <circle cx="48" cy="48" r="8" fill="#c87745"/>
+  <path d="M48 14v20M48 62v20M14 48h20M62 48h20" fill="none" stroke="#1f1d1a" stroke-width="4" stroke-linecap="round"/>
+  <path d="M27 27l14 14M55 55l14 14M69 27L55 41M41 55L27 69" fill="none" stroke="#1f1d1a" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="48" cy="48" r="30" fill="none" stroke="#d8cbb8" stroke-width="4"/>
+</svg>
+      </div>
+      <h2>OpenAI Agents SDK</h2>
+      <p class="subtle"><a href="../index.html#openai-agents-sdk">View atlas card</a></p>
+      <section>
+        <h3>Category</h3>
+        <ul><li>agent-framework</li><li>typed-runtime</li></ul>
+      </section>
+      <section>
+        <h3>Architectural Core</h3>
+        <ul><li>agent objects with built-in tools</li><li>handoffs between specialized agents</li><li>tracing and observability</li></ul>
+      </section>
+      <section>
+        <h3>Worldview</h3>
+        <p>Agentic applications should be built from configurable agents, tools, handoffs, and traces rather than from opaque prompt loops.</p>
+      </section>
+      <section>
+        <h3>Complexity Focus</h3>
+        <ul><li>tool integration</li><li>handoff design</li><li>guardrails</li><li>tracing</li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/primary-substrates/index.html">Primary Substrate</a></h3>
+        <ul><li><a href="../browse/primary-substrates/agent-objects.html">agent-objects</a></li><li><a href="../browse/primary-substrates/tools.html">tools</a></li><li><a href="../browse/primary-substrates/handoffs.html">handoffs</a></li><li><a href="../browse/primary-substrates/traces.html">traces</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/cognitive-styles/index.html">Cognitive Style</a></h3>
+        <ul><li><a href="../browse/cognitive-styles/explicit.html">explicit</a></li><li><a href="../browse/cognitive-styles/composable.html">composable</a></li><li><a href="../browse/cognitive-styles/inspectable.html">inspectable</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/trust-models/index.html">Trust Model</a></h3>
+        <ul><li><a href="../browse/trust-models/explicit-handoffs.html">explicit-handoffs</a></li><li><a href="../browse/trust-models/trace-visibility.html">trace-visibility</a></li><li><a href="../browse/trust-models/guardrails.html">guardrails</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/hidden-bets/index.html">Hidden Bet</a></h3>
+        <p><a href="../browse/hidden-bets/tracing-and-handoffs-make-multi-agent-systems-operationally-manageable.html">Tracing and handoffs make multi-agent systems operationally manageable.</a></p>
+      </section>
+      <section>
+        <h3>Playfulness</h3>
+        <p>The lively move is making agent handoffs explicit and traceable instead of treating multi-agent behavior as mystical emergence.</p>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/failure-modes/index.html">Failure Modes</a></h3>
+        <ul><li><a href="../browse/failure-modes/handoff-mismatch.html">Handoff mismatch</a></li><li><a href="../browse/failure-modes/tool-routing-confusion.html">Tool-routing confusion</a></li><li><a href="../browse/failure-modes/guardrail-gaps.html">Guardrail gaps</a></li></ul>
+      </section>
+      <section>
+        <h3>What It Refuses</h3>
+        <ul><li>Single giant undifferentiated agent prompts</li><li>Unobservable multi-agent behavior</li><li>Treating orchestration as hidden magic</li></ul>
+      </section>
+      <section>
+        <h3>Core Tension</h3>
+        <p>Its strength is modular orchestration with explicit traces and handoffs. Its tradeoff is that the modularity can move complexity into system design and coordination boundaries.</p>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/representative-for/index.html">Representative For</a></h3>
+        <ul><li><a href="../browse/representative-for/handoff-centric-agent-runtime.html">handoff-centric agent runtime</a></li><li><a href="../browse/representative-for/trace-first-orchestration-sdk.html">trace-first orchestration SDK</a></li></ul>
+      </section>
+      
+      <section>
+        <h3>Animal or Transport</h3>
+        <p><strong>airport-hub</strong></p>
+        <p>It coordinates departures, arrivals, transfers, and routing between specialized actors while keeping movement visible.</p>
+      </section>
+      <section>
+        <h3>Related Concepts</h3>
+        <ul class="pill-list"><li><a class="pill" href="../concepts/handoffs.html">Handoffs</a></li><li><a class="pill" href="../concepts/guardrails.html">Guardrails</a></li><li><a class="pill" href="../concepts/traces-as-residue.html">Traces As Residue</a></li><li><a class="pill" href="../concepts/tool-augmented-agents.html">Tool-Augmented Agents</a></li></ul>
+      </section>
+      
+      <section>
+        <h3>Relationships</h3>
+        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="../concepts/handoffs.html">Handoffs</a><br><span class="relation-note">The SDK makes transfers between specialized agents an explicit orchestration primitive.</span></li><li><strong>embodies_concept</strong> → <a href="../concepts/traces-as-residue.html">Traces As Residue</a><br><span class="relation-note">Execution traces are part of the architecture&#x27;s visible residue and observability story.</span></li><li><strong>trusts_through</strong> → <a href="../concepts/traces-as-residue.html">Traces As Residue</a><br><span class="relation-note">The SDK makes behavior trustworthy by leaving a visible trace of routing, tools, and handoffs.</span></li><li><strong>externalizes_through</strong> → <a href="../concepts/tool-routing.html">Tool Routing</a><br><span class="relation-note">The SDK externalizes capability into tools, handoffs, and routing primitives rather than relying on one monolithic agent loop.</span></li></ul>
+      </section>
+      <section>
+        <h3>More To Explore</h3>
+        <h4>Shares Primary Substrate</h4>
+        <ul><li><a href="llamaindex.html">LlamaIndex</a></li><li><a href="openhands.html">OpenHands</a></li></ul>
+        <h4>Shares Trust Model</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Shares Cognitive Style</h4>
+        <ul><li><a href="langgraph.html">LangGraph</a></li><li><a href="llamaindex.html">LlamaIndex</a></li><li><a href="pydantic-ai.html">PydanticAI</a></li><li><a href="semantic-kernel.html">Semantic Kernel</a></li></ul>
+        <h4>Contrasts With</h4>
+        <p class="empty-state">None yet.</p>
+        <h4>Explorations</h4><ul><li><a href="../notes/explorations/concepts/teams-as-agency.html">Teams As Agency</a></li></ul><h4>Tensions</h4><ul><li><a href="../notes/explorations/tensions/closeness-vs-orchestration.html">Closeness Vs Orchestration</a></li></ul>
+      </section>
+    </article>
+    </main>
+  </body>
+</html>

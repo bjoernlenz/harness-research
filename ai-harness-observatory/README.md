@@ -38,6 +38,7 @@ Current target direction:
 
 - [site/index.html](./site/index.html)
 - [site/browse/index.html](./site/browse/index.html)
+- [site/harnesses](./site/harnesses)
 - [notes/syntheses](./notes/syntheses)
 - [notes/comparisons](./notes/comparisons)
 - [notes/review-packets](./notes/review-packets)
@@ -56,8 +57,7 @@ These are the current tasks before further expansion:
 
 1. Remove duplicated content between harness YAML and harness Markdown so YAML clearly leads.
 2. Decide whether harness Markdown remains as a thin human wrapper or is retired in favor of generated HTML views.
-3. Add harness detail pages or another direct per-harness browse surface so exploration does not rely only on long cards on the index.
-4. Make concept, comparison, and relationship navigation complete enough that no important field is stranded outside the atlas.
-5. Add more generated browse surfaces where repeated reading pressure appears, instead of solving it with prose duplication.
-6. Keep strengthening comparative links so the atlas feels argumentative, not merely catalog-like.
-7. Keep adding comparative links only after the one-source-of-truth direction is explicit in code and docs.
+3. Make concept, comparison, and relationship navigation complete enough that no important field is stranded outside the atlas.
+4. Add more generated browse surfaces where repeated reading pressure appears, instead of solving it with prose duplication.
+5. Keep strengthening comparative links so the atlas feels argumentative, not merely catalog-like.
+6. Keep adding comparative links only after the one-source-of-truth direction is explicit in code and docs.
