@@ -42,6 +42,14 @@ Current target direction:
 - [notes/comparisons](./notes/comparisons)
 - [notes/review-packets](./notes/review-packets)
 
+## Verification
+
+Useful local checks:
+
+- `./scripts/validate-data`
+- `./scripts/generate-site`
+- `./scripts/check-site-links`
+
 ## Open Tasks
 
 These are the current tasks before further expansion:

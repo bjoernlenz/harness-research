@@ -73,7 +73,8 @@ Current flow:
 1. canonical data lives in `data/`
 2. `scripts/validate-data` checks required structure
 3. `scripts/generate-site` reads YAML and produces `site/`
-4. `site/index.html`, `site/browse/*.html`, and `site/concepts/*.html` are the main current exploration surfaces
+4. `scripts/check-site-links` validates generated internal links inside `site/`
+5. `site/index.html`, `site/browse/*.html`, and `site/concepts/*.html` are the main current exploration surfaces
 
 Target flow:
 
@@ -149,6 +150,7 @@ One concept, many links.
 - [README.md](./README.md)
 - [project-charter.md](./project-charter.md)
 - [scripts/generate-site](./scripts/generate-site)
+- [scripts/check-site-links](./scripts/check-site-links)
 - [data/harnesses/_template.yaml](./data/harnesses/_template.yaml)
 - [data/relationships.yaml](./data/relationships.yaml)
 - [notes/review-packets/002-emergence-review.md](./notes/review-packets/002-emergence-review.md)

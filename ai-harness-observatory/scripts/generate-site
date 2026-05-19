@@ -1151,7 +1151,7 @@ def render_page(
     )
     substrate_clusters = render_substrate_clusters(records)
     browse_nav = render_browse_nav()
-    more_stuff = render_more_stuff("index.html", "../")
+    more_stuff = render_more_stuff("index.html", "")
     return f"""<!doctype html>
 <html lang="en">
   <head>
