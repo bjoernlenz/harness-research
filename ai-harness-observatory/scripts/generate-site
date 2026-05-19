@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import re
 from html import escape
 from pathlib import Path
@@ -152,6 +153,12 @@ def exploration_kind_label(exploration: dict) -> str:
 
 def note_link_label(note_path: str) -> str:
     return load_markdown_note(note_path)["title"]
+
+
+def relative_site_href(from_output_href: str, to_output_href: str) -> str:
+    from_dir = ROOT / "site" / Path(from_output_href).parent
+    to_path = ROOT / "site" / Path(to_output_href)
+    return os.path.relpath(to_path, from_dir).replace(os.sep, "/")
 
 
 def load_explorations() -> list[dict]:
@@ -717,7 +724,8 @@ def render_note_page(
     title = note["title"]
     body_html = render_markdown_body(note["body"])
     section = note["section"].replace("/", " / ").replace("-", " ").title()
-    depth = len(Path(note["output_href"]).parts) - 1
+    note_output = note["output_href"]
+    depth = len(Path(note_output).parts) - 1
     site_root_prefix = "../" * (depth - 1)
     back_href = site_root_prefix + "index.html"
     metadata = note.get("metadata", {})
@@ -745,7 +753,7 @@ def render_note_page(
         tension_links = [
             (
                 exploration_lookup[key]["title"],
-                f"{site_root_prefix}{exploration_lookup[key]['output_href']}",
+                relative_site_href(note_output, exploration_lookup[key]["output_href"]),
             )
             for key in metadata.get("related_tensions", [])
             if key in exploration_lookup
@@ -753,7 +761,7 @@ def render_note_page(
         history_links = [
             (
                 exploration_lookup[key]["title"],
-                f"{site_root_prefix}{exploration_lookup[key]['output_href']}",
+                relative_site_href(note_output, exploration_lookup[key]["output_href"]),
             )
             for key in metadata.get("related_histories", [])
             if key in exploration_lookup
@@ -764,7 +772,9 @@ def render_note_page(
         comparison_links = [
             (
                 key,
-                f"{site_root_prefix}{note_output_href(comparison_lookup[key])}",
+                relative_site_href(
+                    note_output, note_output_href(comparison_lookup[key])
+                ),
             )
             for key in metadata.get("related_comparisons", [])
             if key in comparison_lookup
