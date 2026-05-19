@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Graph Orchestration · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .panel {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 0.98;
+      }
+      h2, h3, h4, h5, h6 {
+        margin: 24px 0 10px;
+        color: var(--accent);
+      }
+      p, ul, blockquote {
+        line-height: 1.7;
+      }
+      blockquote {
+        margin: 18px 0;
+        padding-left: 16px;
+        border-left: 3px solid var(--border);
+        color: var(--muted);
+      }
+      code {
+        padding: 1px 5px;
+        border-radius: 6px;
+        background: #efe2cf;
+        font-size: 0.95em;
+      }
+      .threads {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../../../index.html">← Back to atlas</a>
+      <div class="panel">
+        <p class="eyebrow">Explorations / Concepts</p>
+        <h1>Graph Orchestration</h1>
+<p>Graph orchestration appears when people stop trusting a flowing conversational loop to carry serious work by itself. Instead of hoping the agent will remain coherent, they turn agency into a visible structure: nodes, transitions, checkpoints, resumable state. It is a move from mood to machinery.</p>
+<p>LangGraph makes that move emotionally legible. It comes from the pain of opaque agents that can be impressive in demos but slippery in production. The graph says: if this system matters, then its path through work should be inspectable, resumable, and shaped in advance.</p>
+<p>There is a human story underneath that formality. Graphs are rarely born from aesthetic preference alone. They usually appear when teams have already felt the cost of agents wandering, looping, forgetting, or becoming impossible to debug. The graph is a response to anxiety. It is a way of putting handles on agency.</p>
+<p>What this makes easier to see is why graph systems feel operationally serious. They preserve state, clarify transitions, and make intervention points explicit. What they can obscure is the cost of overdescribing work. Sometimes the cure becomes its own complexity burden, and the graph starts encoding bureaucracy as much as intelligence.</p>
+        
+        <div class="threads">
+          <h2>Further Threads</h2>
+          <h3>Related Harnesses</h3>
+          <ul><li><a href="../../../harnesses/langgraph.html">LangGraph</a></li></ul>
+          <h3>Related Concepts</h3>
+          <ul><li><a href="../../../concepts/explicit-state.html">Explicit State</a></li><li><a href="../../../concepts/durable-execution.html">Durable Execution</a></li><li><a href="../../../concepts/memory-as-residue.html">Memory As Residue</a></li></ul>
+          <h3>Tensions</h3>
+          <ul><li><a href="../tensions/closeness-vs-orchestration.html">Closeness Vs Orchestration</a></li></ul>
+          <h3>Historical Notes</h3>
+          <p class="empty-state">None yet.</p>
+          <h3>Comparisons</h3>
+          <ul><li><a href="../../comparisons/repo-vs-graph-agency.html">Repo vs Graph Agency</a></li><li><a href="../../comparisons/shell-vs-runtime-worldviews.html">Shell vs Runtime Worldviews</a></li></ul>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

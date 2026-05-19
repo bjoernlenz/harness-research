@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Repository As Memory · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .panel {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 0.98;
+      }
+      h2, h3, h4, h5, h6 {
+        margin: 24px 0 10px;
+        color: var(--accent);
+      }
+      p, ul, blockquote {
+        line-height: 1.7;
+      }
+      blockquote {
+        margin: 18px 0;
+        padding-left: 16px;
+        border-left: 3px solid var(--border);
+        color: var(--muted);
+      }
+      code {
+        padding: 1px 5px;
+        border-radius: 6px;
+        background: #efe2cf;
+        font-size: 0.95em;
+      }
+      .threads {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../../../index.html">← Back to atlas</a>
+      <div class="panel">
+        <p class="eyebrow">Explorations / Concepts</p>
+        <h1>Repository As Memory</h1>
+<p>In this observatory, repository-as-memory means the codebase is not merely the object being edited. It is the place where continuity lives. File layout, naming choices, recent edits, tests, and diffs together hold enough local memory that the harness does not need a separate grand memory architecture to stay useful.</p>
+<p>That helps explain a shared emotional tone across Aider, Claude Code, and parts of Cursor. These systems feel less like they are trying to build a synthetic mind from scratch and more like they are trying to enter an existing workshop without rearranging it. The repository is already where the human remembers how the project works, so the harness tries to remember there too.</p>
+<p>The appeal is practical and psychological at the same time. Practical, because the memory surface is already real and inspectable. Psychological, because it lowers the alienness of the agent. Instead of saying “trust my hidden state,” the harness says “look at the repo with me.”</p>
+<p>What this reveals is why repo-close systems often gain trust faster than more abstract runtimes. What it obscures is the cost of locality. A repository remembers code extremely well, but it does not naturally remember broader intent, cross-project continuity, or long-running strategic reasoning unless those things are deliberately written back into the repo.</p>
+        
+        <div class="threads">
+          <h2>Further Threads</h2>
+          <h3>Related Harnesses</h3>
+          <ul><li><a href="../../../harnesses/aider.html">Aider</a></li><li><a href="../../../harnesses/claude-code.html">Claude Code</a></li><li><a href="../../../harnesses/cursor.html">Cursor</a></li></ul>
+          <h3>Related Concepts</h3>
+          <ul><li><a href="../../../concepts/git-as-cognition.html">Git As Cognition</a></li><li><a href="../../../concepts/diff-as-interface.html">Diff As Interface</a></li><li><a href="../../../concepts/human-in-the-loop.html">Human In The Loop</a></li></ul>
+          <h3>Tensions</h3>
+          <ul><li><a href="../tensions/closeness-vs-orchestration.html">Closeness Vs Orchestration</a></li></ul>
+          <h3>Historical Notes</h3>
+          <ul><li><a href="../historical/the-rise-of-terminal-coding-agents.html">The Rise Of Terminal Coding Agents</a></li></ul>
+          <h3>Comparisons</h3>
+          <ul><li><a href="../../comparisons/environment-close-vs-orchestration-close-vs-data-close.html">Environment-Close vs Orchestration-Close vs Data-Close</a></li><li><a href="../../comparisons/trust-through-closeness-vs-structure.html">Trust Through Closeness vs Structure</a></li></ul>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

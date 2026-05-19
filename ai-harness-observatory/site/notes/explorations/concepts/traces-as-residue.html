@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Traces As Residue · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .panel {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 0.98;
+      }
+      h2, h3, h4, h5, h6 {
+        margin: 24px 0 10px;
+        color: var(--accent);
+      }
+      p, ul, blockquote {
+        line-height: 1.7;
+      }
+      blockquote {
+        margin: 18px 0;
+        padding-left: 16px;
+        border-left: 3px solid var(--border);
+        color: var(--muted);
+      }
+      code {
+        padding: 1px 5px;
+        border-radius: 6px;
+        background: #efe2cf;
+        font-size: 0.95em;
+      }
+      .threads {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../../../index.html">← Back to atlas</a>
+      <div class="panel">
+        <p class="eyebrow">Explorations / Concepts</p>
+        <h1>Traces As Residue</h1>
+<p>Traces-as-residue names a shift in what logs are for. In older software, traces are mainly there for debugging after the fact. In newer agent systems, the trace begins to function more like a memory surface of the system&#x27;s path through action, tool calls, and delegation.</p>
+<p>The OpenAI Agents SDK makes this especially visible by treating tracing as part of the operational fabric, not merely an optional extra. That matters because multi-step, multi-tool, and multi-agent systems quickly become hard to trust if their inner path disappears the moment a response is returned.</p>
+<p>The human need underneath this is simple: people want to know not only what happened, but how it happened. In agent architecture that desire becomes structural. A trace can calm suspicion, support handoff, and preserve lessons from an execution path that would otherwise evaporate.</p>
+<p>What this reveals is that observability is turning into a cognitive concern, not just an ops concern. What it obscures is that residue is not the same as understanding. A dense trace can still leave the real logic of the system hard to read unless the harness knows how to make that residue navigable.</p>
+        
+        <div class="threads">
+          <h2>Further Threads</h2>
+          <h3>Related Harnesses</h3>
+          <ul><li><a href="../../../harnesses/openai-agents-sdk.html">OpenAI Agents SDK</a></li></ul>
+          <h3>Related Concepts</h3>
+          <ul><li><a href="../../../concepts/handoffs.html">Handoffs</a></li><li><a href="../../../concepts/memory-as-residue.html">Memory As Residue</a></li><li><a href="../../../concepts/explicit-state.html">Explicit State</a></li></ul>
+          <h3>Tensions</h3>
+          <ul><li><a href="../tensions/closeness-vs-orchestration.html">Closeness Vs Orchestration</a></li></ul>
+          <h3>Historical Notes</h3>
+          <p class="empty-state">None yet.</p>
+          <h3>Comparisons</h3>
+          <ul><li><a href="../../comparisons/shell-vs-runtime-worldviews.html">Shell vs Runtime Worldviews</a></li></ul>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

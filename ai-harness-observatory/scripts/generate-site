@@ -373,6 +373,17 @@ def harness_story_for_harness(harness_id: str, explorations: list[dict]) -> dict
     return None
 
 
+def concept_exploration_for_concept(concept_id: str, explorations: list[dict]) -> dict | None:
+    for exploration in explorations:
+        meta = exploration.get("metadata", {})
+        kind = str(meta.get("kind", "")).strip()
+        if kind != "concept":
+            continue
+        if str(exploration.get("id", "")).strip() == concept_id:
+            return exploration
+    return None
+
+
 def build_browse_catalog(records: list[dict]) -> dict[str, list[dict]]:
     catalog: dict[str, list[dict]] = {}
     for field_key, config in BROWSE_FIELDS.items():
@@ -1466,6 +1477,7 @@ def render_concept_page(
     summary = escape(str(concept.get("summary", "")))
     note_path = NOTES_DIR / "concepts" / f"{concept_id}.md"
     concept_note_html = ""
+    concept_exploration_html = ""
     concept_links: list[str] = []
     if note_path.exists():
         note = load_markdown_note(str(note_path.relative_to(ROOT)))
@@ -1473,6 +1485,11 @@ def render_concept_page(
         note_body = strip_first_heading(note["body"]).strip()
         if note_body:
             concept_note_html = render_markdown_body(note_body)
+    concept_exploration = concept_exploration_for_concept(concept_id, explorations)
+    if concept_exploration:
+        exploration_body = strip_first_heading(concept_exploration["body"]).strip()
+        if exploration_body:
+            concept_exploration_html = render_markdown_body(exploration_body)
     related_records = [
         record_by_id[harness_id]
         for harness_id in concept.get("related_harnesses", [])
@@ -1643,6 +1660,7 @@ def render_concept_page(
         <h1>{name}</h1>
         <p>{summary}</p>
         {'<h2>Concept Note</h2>' + concept_note_html if concept_note_html else ''}
+        {'<h2>Human Deepening</h2>' + concept_exploration_html if concept_exploration_html else ''}
 
         <h2>Related Harnesses</h2>
         {related_harnesses}
