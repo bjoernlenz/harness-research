@@ -30,10 +30,20 @@ primary_substrate:
   - context
   - permissions
 
+cognitive_style:
+  - grounded
+  - composable
+  - collaborative
+
 trust_model:
   - permissioned-agency
   - terminal-transparency
   - human-approval
+
+hidden_bet:
+  summary: "Terminal composability plus permission boundaries create trustworthy coding agency."
+  notes:
+    - "The system assumes close cooperation with existing tools beats building a sealed agent world."
 
 worldview:
   short: "Coding agency should live directly in the terminal, compose with existing developer tools, and ask for permission when actions cross risk boundaries."

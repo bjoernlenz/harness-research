@@ -30,10 +30,20 @@ primary_substrate:
   - modes
   - remote-agent-environment
 
+cognitive_style:
+  - concrete
+  - inspectable
+  - sandboxed
+
 trust_model:
   - mode-boundaries
   - review-before-merge
   - environment-separation
+
+hidden_bet:
+  summary: "Different coding tasks want different agent modes, and heavier work belongs in background environments."
+  notes:
+    - "The architecture assumes one fixed agent stance is less useful than mode-shaped capability surfaces."
 
 worldview:
   short: "Coding agency should adapt its capabilities to the task through explicit modes, while allowing heavier asynchronous work to move into a remote agent environment."

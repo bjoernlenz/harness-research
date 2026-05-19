@@ -30,10 +30,20 @@ primary_substrate:
   - validation
   - tool-contracts
 
+cognitive_style:
+  - explicit
+  - inspectable
+  - enterprise-oriented
+
 trust_model:
   - schema-validation
   - typed-interfaces
   - explicit-tool-contracts
+
+hidden_bet:
+  summary: "Strong types and validation matter more than fuzzy autonomy."
+  notes:
+    - "The architecture assumes reliability comes from contract discipline around model behavior."
 
 worldview:
   short: "Reliable agent systems come from strong typing, validated I/O, and explicit contracts around model behavior."

@@ -25,6 +25,12 @@ Git stops being just version control and becomes part of memory, planning, verif
 - [[diff-as-interface]]
 - [[memory-as-residue]]
 
+## Gravity
+
+- Strength: high
+- Appears in: Aider
+- Why it matters: it captures a genuinely distinctive invention in repo-close coding agents rather than a generic implementation detail.
+
 ## Open Questions
 
 - Which other coding harnesses use git structurally rather than incidentally?

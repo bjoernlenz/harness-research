@@ -32,10 +32,20 @@ primary_substrate:
   - connectors
   - services
 
+cognitive_style:
+  - composable
+  - enterprise-oriented
+  - explicit
+
 trust_model:
   - kernel-mediated-capabilities
   - connector-abstraction
   - runtime-composition
+
+hidden_bet:
+  summary: "A shared kernel for capabilities is more durable than ad hoc agent composition."
+  notes:
+    - "The architecture assumes middleware structure is the real long-term center of reliability."
 
 worldview:
   short: "AI applications become manageable when models, plugins, and services are routed through a shared kernel that standardizes how capabilities are composed."

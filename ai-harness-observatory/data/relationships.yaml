@@ -23,6 +23,10 @@ relationships:
     relation: trusts_through
     to: diff-as-interface
     note: "Aider earns trust by keeping change visible in concrete diffs that a human can inspect and negotiate."
+  - from: aider
+    relation: shares_hidden_bet_with
+    to: claude-code
+    note: "Both assume close contact with the real working code surface matters more than abstract orchestration sophistication."
   - from: pi
     relation: embodies_concept
     to: extension-driven-runtime
@@ -31,6 +35,10 @@ relationships:
     relation: externalizes_through
     to: extension-driven-runtime
     note: "Pi pushes capability outward into extensions and packages rather than loading more behavior into the core."
+  - from: pi
+    relation: opposes_hidden_bet_of
+    to: openhands
+    note: "Pi bets on a minimal extensible core, while OpenHands bets that a broad embodied tool surface is what creates useful power."
   - from: pydantic-ai
     relation: embodies_concept
     to: validation-rails
@@ -39,6 +47,10 @@ relationships:
     relation: trusts_through
     to: validation-rails
     note: "PydanticAI asks to be trusted through typed boundaries, validation, and explicit contracts."
+  - from: pydantic-ai
+    relation: shares_cognitive_style_with
+    to: semantic-kernel
+    note: "Both have an explicit, enterprise-oriented, contract-heavy temperament even though their substrates differ."
   - from: openai-agents-sdk
     relation: embodies_concept
     to: handoffs
@@ -59,6 +71,10 @@ relationships:
     relation: externalizes_through
     to: agent-team
     note: "AutoGen moves cognition outward into teams and coordinated agent roles rather than keeping it inside one actor."
+  - from: autogen
+    relation: shares_cognitive_style_with
+    to: openai-agents-sdk
+    note: "Both favor explicit orchestration and composable runtime structure, even though AutoGen is more social in shape."
   - from: autogen
     relation: different_complexity_center_than
     to: openai-agents-sdk
@@ -87,6 +103,10 @@ relationships:
     relation: trusts_through
     to: permissioned-agency
     note: "Claude Code builds trust by making risky actions conditional on visible permission boundaries."
+  - from: claude-code
+    relation: shares_primary_substrate_with
+    to: pi
+    note: "Both are terminal-close systems that treat the shell and local repo as important working terrain."
   - from: cursor
     relation: embodies_concept
     to: mode-gated-agency
@@ -103,6 +123,10 @@ relationships:
     relation: different_complexity_center_than
     to: claude-code
     note: "Cursor pushes more complexity into mode design and remote-agent environment setup, while Claude Code leans harder on terminal composability and permissioned local workflows."
+  - from: cursor
+    relation: competes_for_same_use_case_as
+    to: claude-code
+    note: "Both target day-to-day coding agency for working developers, but offer different bodies and trust surfaces."
   - from: semantic-kernel
     relation: embodies_concept
     to: kernel-as-cognitive-spine
@@ -151,3 +175,11 @@ relationships:
     relation: externalizes_through
     to: tool-routing
     note: "The SDK externalizes capability into tools, handoffs, and routing primitives rather than relying on one monolithic agent loop."
+  - from: langgraph
+    relation: contrasts_cognitive_style_with
+    to: aider
+    note: "LangGraph is explicit, stateful, and architected; Aider is grounded, collaborative, and concrete."
+  - from: semantic-kernel
+    relation: shares_primary_substrate_with
+    to: openai-agents-sdk
+    note: "Both are capability-composition systems where routing and service surfaces matter more than repo closeness."

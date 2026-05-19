@@ -20,6 +20,14 @@ Where the project places most of its design attention.
 
 - What material does this harness actually think with?
 
+## Cognitive Style
+
+- What is the temperament of this harness?
+
+## Hidden Bet
+
+- What deeper wager is this architecture making?
+
 ## Trust Model
 
 - How does this system become trustworthy?

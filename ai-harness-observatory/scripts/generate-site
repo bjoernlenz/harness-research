@@ -15,6 +15,16 @@ RELATIONSHIPS_PATH = ROOT / "data" / "relationships.yaml"
 OUTPUT_PATH = ROOT / "site" / "index.html"
 CONCEPT_OUTPUT_DIR = ROOT / "site" / "concepts"
 MISSING_METAPHOR_PICTURES: set[str] = set()
+SUBSTRATE_CLUSTERS = {
+    "Repo / Git / Diff": {"repository", "git", "diff"},
+    "Terminal / Shell": {"terminal", "context-files", "permissions", "context"},
+    "IDE / Remote Environment": {"ide-context", "modes", "remote-agent-environment"},
+    "Graph / State / Checkpoints": {"graph", "state", "checkpoints", "transitions"},
+    "Agents / Handoffs / Traces": {"agent-objects", "handoffs", "traces"},
+    "Kernel / Plugins / Connectors": {"kernel", "plugins", "connectors", "services"},
+    "Data / Indexes / Workflows": {"data", "indexes", "workflows"},
+    "Sandbox / Tools": {"sandbox", "agent-skills"},
+}
 
 
 def load_records() -> list[dict]:
@@ -272,6 +282,7 @@ def render_card(record: dict, concepts: dict[str, dict], relationships: list[dic
     architectural_core = render_list(record.get("architectural_core", []))
     complexity_focus = render_list(record.get("complexity_focus", []))
     primary_substrate = render_list(record.get("primary_substrate", []))
+    cognitive_style = render_list(record.get("cognitive_style", []))
     trust_model = render_list(record.get("trust_model", []))
     failure_modes = render_list(record.get("failure_modes", []))
     representative_for = render_list(record.get("representative_for", []))
@@ -283,6 +294,8 @@ def render_card(record: dict, concepts: dict[str, dict], relationships: list[dic
     metaphor_picture = render_metaphor_picture(metaphor_label(metaphor))
     what_it_refuses = render_list(record.get("what_it_refuses", []))
     core_tension = escape(str(record.get("core_tension", "")))
+    hidden_bet = record.get("hidden_bet", {})
+    hidden_bet_summary = escape(str(hidden_bet.get("summary", "")))
     relationships_html = render_relationships(harness_id, relationships, concepts)
     metaphor_html = ""
     if metaphor_name:
@@ -321,8 +334,16 @@ def render_card(record: dict, concepts: dict[str, dict], relationships: list[dic
         {primary_substrate}
       </section>
       <section>
+        <h3>Cognitive Style</h3>
+        {cognitive_style}
+      </section>
+      <section>
         <h3>Trust Model</h3>
         {trust_model}
+      </section>
+      <section>
+        <h3>Hidden Bet</h3>
+        <p>{hidden_bet_summary}</p>
       </section>
       <section>
         <h3>Playfulness</h3>
@@ -356,6 +377,7 @@ def render_card(record: dict, concepts: dict[str, dict], relationships: list[dic
 
 def render_page(records: list[dict], concepts: dict[str, dict], relationships: list[dict]) -> str:
     cards = "\n".join(render_card(record, concepts, relationships) for record in records)
+    substrate_clusters = render_substrate_clusters(records)
     return f"""<!doctype html>
 <html lang="en">
   <head>
@@ -415,6 +437,26 @@ def render_page(records: list[dict], concepts: dict[str, dict], relationships: l
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
         gap: 18px;
+      }}
+
+      .cluster-grid {{
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 14px;
+        margin: 0 0 34px;
+      }}
+
+      .cluster {{
+        padding: 16px;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: rgba(255, 253, 248, 0.84);
+      }}
+
+      .cluster h2 {{
+        margin: 0 0 8px;
+        font-size: 1rem;
+        color: var(--accent);
       }}
 
       .card {{
@@ -494,6 +536,10 @@ def render_page(records: list[dict], concepts: dict[str, dict], relationships: l
         background: #e6d2b4;
       }}
 
+      .subtle {{
+        color: var(--muted);
+      }}
+
       .relationship-list li {{
         padding: 10px 0;
         border-top: 1px solid rgba(216, 203, 184, 0.7);
@@ -519,6 +565,12 @@ def render_page(records: list[dict], concepts: dict[str, dict], relationships: l
           each sampled harness.
         </p>
       </header>
+      <section>
+        <h2 class="subtle">Primary Substrate Clusters</h2>
+        <div class="cluster-grid">
+          {substrate_clusters}
+        </div>
+      </section>
       <section class="grid">
         {cards}
       </section>
@@ -526,6 +578,25 @@ def render_page(records: list[dict], concepts: dict[str, dict], relationships: l
   </body>
 </html>
 """
+
+
+def render_substrate_clusters(records: list[dict]) -> str:
+    clusters: dict[str, list[str]] = {name: [] for name in SUBSTRATE_CLUSTERS}
+    for record in records:
+        name = escape(str(record.get("name", "Unknown")))
+        substrates = set(record.get("primary_substrate", []))
+        for cluster_name, members in SUBSTRATE_CLUSTERS.items():
+            if substrates & members:
+                clusters[cluster_name].append(name)
+    parts = []
+    for cluster_name, names in clusters.items():
+        if not names:
+            continue
+        names_html = "".join(f"<li>{name}</li>" for name in names)
+        parts.append(
+            f'<article class="cluster"><h2>{escape(cluster_name)}</h2><ul>{names_html}</ul></article>'
+        )
+    return "".join(parts)
 
 
 def render_concept_page(concept: dict, relationships: list[dict]) -> str:

@@ -27,6 +27,12 @@ The codebase itself acts as the durable memory surface. Files, layout, and recen
 - [[diff-as-interface]]
 - [[human-in-the-loop]]
 
+## Gravity
+
+- Strength: high
+- Appears in: Aider, Claude Code, Cursor
+- Why it matters: it reveals that several coding agents treat the repo itself as the most durable cognitive surface.
+
 ## Open Questions
 
 - At what repo size does repository-as-memory start to fail as a stable cognitive surface?

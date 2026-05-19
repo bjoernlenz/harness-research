@@ -59,6 +59,26 @@
         gap: 18px;
       }
 
+      .cluster-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 14px;
+        margin: 0 0 34px;
+      }
+
+      .cluster {
+        padding: 16px;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: rgba(255, 253, 248, 0.84);
+      }
+
+      .cluster h2 {
+        margin: 0 0 8px;
+        font-size: 1rem;
+        color: var(--accent);
+      }
+
       .card {
         padding: 20px;
         border: 1px solid var(--border);
@@ -136,6 +156,10 @@
         background: #e6d2b4;
       }
 
+      .subtle {
+        color: var(--muted);
+      }
+
       .relationship-list li {
         padding: 10px 0;
         border-top: 1px solid rgba(216, 203, 184, 0.7);
@@ -161,6 +185,12 @@
           each sampled harness.
         </p>
       </header>
+      <section>
+        <h2 class="subtle">Primary Substrate Clusters</h2>
+        <div class="cluster-grid">
+          <article class="cluster"><h2>Repo / Git / Diff</h2><ul><li>Aider</li><li>Claude Code</li><li>Cursor</li><li>OpenHands</li><li>Pi</li></ul></article><article class="cluster"><h2>Terminal / Shell</h2><ul><li>Claude Code</li><li>Pi</li></ul></article><article class="cluster"><h2>IDE / Remote Environment</h2><ul><li>Cursor</li></ul></article><article class="cluster"><h2>Graph / State / Checkpoints</h2><ul><li>LangGraph</li></ul></article><article class="cluster"><h2>Agents / Handoffs / Traces</h2><ul><li>OpenAI Agents SDK</li></ul></article><article class="cluster"><h2>Kernel / Plugins / Connectors</h2><ul><li>Semantic Kernel</li></ul></article><article class="cluster"><h2>Data / Indexes / Workflows</h2><ul><li>LlamaIndex</li></ul></article><article class="cluster"><h2>Sandbox / Tools</h2><ul><li>OpenHands</li></ul></article>
+        </div>
+      </section>
       <section class="grid">
         <article class="card">
       <div class="metaphor-picture" title="sheepdog">
@@ -198,8 +228,16 @@
         <ul><li>repository</li><li>git</li><li>chat</li><li>diff</li></ul>
       </section>
       <section>
+        <h3>Cognitive Style</h3>
+        <ul><li>grounded</li><li>collaborative</li><li>concrete</li></ul>
+      </section>
+      <section>
         <h3>Trust Model</h3>
         <ul><li>repository-closeness</li><li>diff-review</li><li>human-approval</li></ul>
+      </section>
+      <section>
+        <h3>Hidden Bet</h3>
+        <p>Repo proximity matters more than orchestration sophistication.</p>
       </section>
       <section>
         <h3>Playfulness</h3>
@@ -234,7 +272,7 @@
       
       <section>
         <h3>Relationships</h3>
-        <ul class="relationship-list"><li><strong>contrasts_with</strong> → Langgraph<br><span class="relation-note">Aider keeps agency close to the repository and human collaboration, while LangGraph externalizes agency into explicit graph control flow.</span></li><li><strong>playful_parallel_to</strong> → <a href="concepts/git-as-cognition.html">Git As Cognition</a><br><span class="relation-note">Git becomes more than storage; it participates in the agent&#x27;s practical loop of understanding and change.</span></li><li><strong>trusts_through</strong> → <a href="concepts/diff-as-interface.html">Diff As Interface</a><br><span class="relation-note">Aider earns trust by keeping change visible in concrete diffs that a human can inspect and negotiate.</span></li></ul>
+        <ul class="relationship-list"><li><strong>contrasts_with</strong> → Langgraph<br><span class="relation-note">Aider keeps agency close to the repository and human collaboration, while LangGraph externalizes agency into explicit graph control flow.</span></li><li><strong>playful_parallel_to</strong> → <a href="concepts/git-as-cognition.html">Git As Cognition</a><br><span class="relation-note">Git becomes more than storage; it participates in the agent&#x27;s practical loop of understanding and change.</span></li><li><strong>trusts_through</strong> → <a href="concepts/diff-as-interface.html">Diff As Interface</a><br><span class="relation-note">Aider earns trust by keeping change visible in concrete diffs that a human can inspect and negotiate.</span></li><li><strong>shares_hidden_bet_with</strong> → Claude Code<br><span class="relation-note">Both assume close contact with the real working code surface matters more than abstract orchestration sophistication.</span></li></ul>
       </section>
     </article>
 <article class="card">
@@ -267,8 +305,16 @@
         <ul><li>conversation</li><li>teams</li><li>events</li><li>extensions</li></ul>
       </section>
       <section>
+        <h3>Cognitive Style</h3>
+        <ul><li>social</li><li>role-distributed</li><li>conversational</li></ul>
+      </section>
+      <section>
         <h3>Trust Model</h3>
         <ul><li>team-structure</li><li>explicit-termination</li><li>runtime-layering</li></ul>
+      </section>
+      <section>
+        <h3>Hidden Bet</h3>
+        <p>Coordinated teams outperform a single monolithic agent.</p>
       </section>
       <section>
         <h3>Playfulness</h3>
@@ -303,7 +349,7 @@
       
       <section>
         <h3>Relationships</h3>
-        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/multi-agent-theater.html">Multi-Agent Theater</a><br><span class="relation-note">Teams, swarms, and group chats are explicit runtime patterns rather than loose metaphor.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/agent-team.html">Agent Team</a><br><span class="relation-note">AutoGen moves cognition outward into teams and coordinated agent roles rather than keeping it inside one actor.</span></li><li><strong>different_complexity_center_than</strong> → Openai Agents Sdk<br><span class="relation-note">AutoGen pushes harder into team coordination and runtime layering, while the OpenAI Agents SDK concentrates on agents, tools, handoffs, and traces.</span></li></ul>
+        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/multi-agent-theater.html">Multi-Agent Theater</a><br><span class="relation-note">Teams, swarms, and group chats are explicit runtime patterns rather than loose metaphor.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/agent-team.html">Agent Team</a><br><span class="relation-note">AutoGen moves cognition outward into teams and coordinated agent roles rather than keeping it inside one actor.</span></li><li><strong>shares_cognitive_style_with</strong> → Openai Agents Sdk<br><span class="relation-note">Both favor explicit orchestration and composable runtime structure, even though AutoGen is more social in shape.</span></li><li><strong>different_complexity_center_than</strong> → Openai Agents Sdk<br><span class="relation-note">AutoGen pushes harder into team coordination and runtime layering, while the OpenAI Agents SDK concentrates on agents, tools, handoffs, and traces.</span></li></ul>
       </section>
     </article>
 <article class="card">
@@ -343,8 +389,16 @@
         <ul><li>terminal</li><li>repository</li><li>context</li><li>permissions</li></ul>
       </section>
       <section>
+        <h3>Cognitive Style</h3>
+        <ul><li>grounded</li><li>composable</li><li>collaborative</li></ul>
+      </section>
+      <section>
         <h3>Trust Model</h3>
         <ul><li>permissioned-agency</li><li>terminal-transparency</li><li>human-approval</li></ul>
+      </section>
+      <section>
+        <h3>Hidden Bet</h3>
+        <p>Terminal composability plus permission boundaries create trustworthy coding agency.</p>
       </section>
       <section>
         <h3>Playfulness</h3>
@@ -379,7 +433,7 @@
       
       <section>
         <h3>Relationships</h3>
-        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/unix-composability.html">Unix Composability</a><br><span class="relation-note">The tool is built to cooperate with shell workflows instead of replacing them.</span></li><li><strong>embodies_concept</strong> → <a href="concepts/permissioned-agency.html">Permissioned Agency</a><br><span class="relation-note">Permission requests are part of the architecture&#x27;s trust model, not an accidental UI add-on.</span></li><li><strong>trusts_through</strong> → <a href="concepts/permissioned-agency.html">Permissioned Agency</a><br><span class="relation-note">Claude Code builds trust by making risky actions conditional on visible permission boundaries.</span></li></ul>
+        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/unix-composability.html">Unix Composability</a><br><span class="relation-note">The tool is built to cooperate with shell workflows instead of replacing them.</span></li><li><strong>embodies_concept</strong> → <a href="concepts/permissioned-agency.html">Permissioned Agency</a><br><span class="relation-note">Permission requests are part of the architecture&#x27;s trust model, not an accidental UI add-on.</span></li><li><strong>trusts_through</strong> → <a href="concepts/permissioned-agency.html">Permissioned Agency</a><br><span class="relation-note">Claude Code builds trust by making risky actions conditional on visible permission boundaries.</span></li><li><strong>shares_primary_substrate_with</strong> → Pi<br><span class="relation-note">Both are terminal-close systems that treat the shell and local repo as important working terrain.</span></li></ul>
       </section>
     </article>
 <article class="card">
@@ -414,8 +468,16 @@
         <ul><li>ide-context</li><li>repository</li><li>modes</li><li>remote-agent-environment</li></ul>
       </section>
       <section>
+        <h3>Cognitive Style</h3>
+        <ul><li>concrete</li><li>inspectable</li><li>sandboxed</li></ul>
+      </section>
+      <section>
         <h3>Trust Model</h3>
         <ul><li>mode-boundaries</li><li>review-before-merge</li><li>environment-separation</li></ul>
+      </section>
+      <section>
+        <h3>Hidden Bet</h3>
+        <p>Different coding tasks want different agent modes, and heavier work belongs in background environments.</p>
       </section>
       <section>
         <h3>Playfulness</h3>
@@ -450,7 +512,7 @@
       
       <section>
         <h3>Relationships</h3>
-        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/mode-gated-agency.html">Mode-Gated Agency</a><br><span class="relation-note">Ask, Agent, Manual, and Custom modes make capability boundaries a visible part of the workflow.</span></li><li><strong>embodies_concept</strong> → <a href="concepts/background-agents.html">Background Agents</a><br><span class="relation-note">Cursor can offload coding work into remote asynchronous agents that continue outside the immediate foreground session.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/background-agents.html">Background Agents</a><br><span class="relation-note">Cursor externalizes heavier work into remote agents rather than forcing everything through one foreground session.</span></li><li><strong>different_complexity_center_than</strong> → Claude Code<br><span class="relation-note">Cursor pushes more complexity into mode design and remote-agent environment setup, while Claude Code leans harder on terminal composability and permissioned local workflows.</span></li></ul>
+        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/mode-gated-agency.html">Mode-Gated Agency</a><br><span class="relation-note">Ask, Agent, Manual, and Custom modes make capability boundaries a visible part of the workflow.</span></li><li><strong>embodies_concept</strong> → <a href="concepts/background-agents.html">Background Agents</a><br><span class="relation-note">Cursor can offload coding work into remote asynchronous agents that continue outside the immediate foreground session.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/background-agents.html">Background Agents</a><br><span class="relation-note">Cursor externalizes heavier work into remote agents rather than forcing everything through one foreground session.</span></li><li><strong>different_complexity_center_than</strong> → Claude Code<br><span class="relation-note">Cursor pushes more complexity into mode design and remote-agent environment setup, while Claude Code leans harder on terminal composability and permissioned local workflows.</span></li><li><strong>competes_for_same_use_case_as</strong> → Claude Code<br><span class="relation-note">Both target day-to-day coding agency for working developers, but offer different bodies and trust surfaces.</span></li></ul>
       </section>
     </article>
 <article class="card">
@@ -483,8 +545,16 @@
         <ul><li>graph</li><li>state</li><li>checkpoints</li><li>transitions</li></ul>
       </section>
       <section>
+        <h3>Cognitive Style</h3>
+        <ul><li>explicit</li><li>stateful</li><li>inspectable</li></ul>
+      </section>
+      <section>
         <h3>Trust Model</h3>
         <ul><li>explicit-control-flow</li><li>inspectable-state</li><li>checkpointed-execution</li></ul>
+      </section>
+      <section>
+        <h3>Hidden Bet</h3>
+        <p>Explicit state graphs outperform opaque autonomous loops.</p>
       </section>
       <section>
         <h3>Playfulness</h3>
@@ -519,7 +589,7 @@
       
       <section>
         <h3>Relationships</h3>
-        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/graph-orchestration.html">Graph Orchestration</a><br><span class="relation-note">Its runtime is explicitly organized around graph transitions and stateful control flow.</span></li><li><strong>trusts_through</strong> → <a href="concepts/explicit-state.html">Explicit State</a><br><span class="relation-note">LangGraph asks to be trusted through explicit state, visible transitions, and checkpointed control flow.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/explicit-state.html">Explicit State</a><br><span class="relation-note">LangGraph externalizes agent memory and control into state and transition structure rather than keeping them latent in prompts.</span></li></ul>
+        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/graph-orchestration.html">Graph Orchestration</a><br><span class="relation-note">Its runtime is explicitly organized around graph transitions and stateful control flow.</span></li><li><strong>trusts_through</strong> → <a href="concepts/explicit-state.html">Explicit State</a><br><span class="relation-note">LangGraph asks to be trusted through explicit state, visible transitions, and checkpointed control flow.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/explicit-state.html">Explicit State</a><br><span class="relation-note">LangGraph externalizes agent memory and control into state and transition structure rather than keeping them latent in prompts.</span></li><li><strong>contrasts_cognitive_style_with</strong> → Aider<br><span class="relation-note">LangGraph is explicit, stateful, and architected; Aider is grounded, collaborative, and concrete.</span></li></ul>
       </section>
     </article>
 <article class="card">
@@ -557,8 +627,16 @@
         <ul><li>data</li><li>indexes</li><li>workflows</li><li>tools</li></ul>
       </section>
       <section>
+        <h3>Cognitive Style</h3>
+        <ul><li>data-grounded</li><li>composable</li><li>explicit</li></ul>
+      </section>
+      <section>
         <h3>Trust Model</h3>
         <ul><li>data-grounding</li><li>retrieval-relevance</li><li>workflow-structure</li></ul>
+      </section>
+      <section>
+        <h3>Hidden Bet</h3>
+        <p>Data grounding is the true center of useful agency.</p>
       </section>
       <section>
         <h3>Playfulness</h3>
@@ -627,8 +705,16 @@
         <ul><li>agent-objects</li><li>tools</li><li>handoffs</li><li>traces</li></ul>
       </section>
       <section>
+        <h3>Cognitive Style</h3>
+        <ul><li>explicit</li><li>composable</li><li>inspectable</li></ul>
+      </section>
+      <section>
         <h3>Trust Model</h3>
         <ul><li>explicit-handoffs</li><li>trace-visibility</li><li>guardrails</li></ul>
+      </section>
+      <section>
+        <h3>Hidden Bet</h3>
+        <p>Tracing and handoffs make multi-agent systems operationally manageable.</p>
       </section>
       <section>
         <h3>Playfulness</h3>
@@ -700,8 +786,16 @@
         <ul><li>sandbox</li><li>repository</li><li>tools</li><li>agent-skills</li></ul>
       </section>
       <section>
+        <h3>Cognitive Style</h3>
+        <ul><li>sandboxed</li><li>concrete</li><li>composable</li></ul>
+      </section>
+      <section>
         <h3>Trust Model</h3>
         <ul><li>environment-control</li><li>supervision</li><li>sandbox-boundaries</li></ul>
+      </section>
+      <section>
+        <h3>Hidden Bet</h3>
+        <p>A coding agent becomes powerful when it gets a full practical environment, not just a better prompt.</p>
       </section>
       <section>
         <h3>Playfulness</h3>
@@ -772,8 +866,16 @@
         <ul><li>terminal</li><li>repository</li><li>extensions</li><li>context-files</li></ul>
       </section>
       <section>
+        <h3>Cognitive Style</h3>
+        <ul><li>restrained</li><li>grounded</li><li>composable</li></ul>
+      </section>
+      <section>
         <h3>Trust Model</h3>
         <ul><li>minimal-core-transparency</li><li>local-context</li><li>extension-choice</li></ul>
+      </section>
+      <section>
+        <h3>Hidden Bet</h3>
+        <p>A small extensible core outcompetes giant integrated runtimes.</p>
       </section>
       <section>
         <h3>Playfulness</h3>
@@ -808,7 +910,7 @@
       
       <section>
         <h3>Relationships</h3>
-        <ul class="relationship-list"><li><strong>contrasts_with</strong> → Langgraph<br><span class="relation-note">Pi favors a minimal terminal core with extensions, while LangGraph invests directly in explicit orchestration structure.</span></li><li><strong>embodies_concept</strong> → <a href="concepts/extension-driven-runtime.html">Extension-Driven Runtime</a><br><span class="relation-note">Pi keeps the core narrow and treats packages and extensions as the main place where power accumulates.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/extension-driven-runtime.html">Extension-Driven Runtime</a><br><span class="relation-note">Pi pushes capability outward into extensions and packages rather than loading more behavior into the core.</span></li></ul>
+        <ul class="relationship-list"><li><strong>contrasts_with</strong> → Langgraph<br><span class="relation-note">Pi favors a minimal terminal core with extensions, while LangGraph invests directly in explicit orchestration structure.</span></li><li><strong>embodies_concept</strong> → <a href="concepts/extension-driven-runtime.html">Extension-Driven Runtime</a><br><span class="relation-note">Pi keeps the core narrow and treats packages and extensions as the main place where power accumulates.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/extension-driven-runtime.html">Extension-Driven Runtime</a><br><span class="relation-note">Pi pushes capability outward into extensions and packages rather than loading more behavior into the core.</span></li><li><strong>opposes_hidden_bet_of</strong> → Openhands<br><span class="relation-note">Pi bets on a minimal extensible core, while OpenHands bets that a broad embodied tool surface is what creates useful power.</span></li></ul>
       </section>
     </article>
 <article class="card">
@@ -848,8 +950,16 @@
         <ul><li>typed-python-interfaces</li><li>schemas</li><li>validation</li><li>tool-contracts</li></ul>
       </section>
       <section>
+        <h3>Cognitive Style</h3>
+        <ul><li>explicit</li><li>inspectable</li><li>enterprise-oriented</li></ul>
+      </section>
+      <section>
         <h3>Trust Model</h3>
         <ul><li>schema-validation</li><li>typed-interfaces</li><li>explicit-tool-contracts</li></ul>
+      </section>
+      <section>
+        <h3>Hidden Bet</h3>
+        <p>Strong types and validation matter more than fuzzy autonomy.</p>
       </section>
       <section>
         <h3>Playfulness</h3>
@@ -884,7 +994,7 @@
       
       <section>
         <h3>Relationships</h3>
-        <ul class="relationship-list"><li><strong>different_complexity_center_than</strong> → Aider<br><span class="relation-note">PydanticAI pushes burden into schemas and validation contracts; Aider pushes it into repo context and editing flow.</span></li><li><strong>embodies_concept</strong> → <a href="concepts/validation-rails.html">Validation Rails</a><br><span class="relation-note">Validation and explicit structure are central rails around otherwise stochastic model behavior.</span></li><li><strong>trusts_through</strong> → <a href="concepts/validation-rails.html">Validation Rails</a><br><span class="relation-note">PydanticAI asks to be trusted through typed boundaries, validation, and explicit contracts.</span></li></ul>
+        <ul class="relationship-list"><li><strong>different_complexity_center_than</strong> → Aider<br><span class="relation-note">PydanticAI pushes burden into schemas and validation contracts; Aider pushes it into repo context and editing flow.</span></li><li><strong>embodies_concept</strong> → <a href="concepts/validation-rails.html">Validation Rails</a><br><span class="relation-note">Validation and explicit structure are central rails around otherwise stochastic model behavior.</span></li><li><strong>trusts_through</strong> → <a href="concepts/validation-rails.html">Validation Rails</a><br><span class="relation-note">PydanticAI asks to be trusted through typed boundaries, validation, and explicit contracts.</span></li><li><strong>shares_cognitive_style_with</strong> → Semantic Kernel<br><span class="relation-note">Both have an explicit, enterprise-oriented, contract-heavy temperament even though their substrates differ.</span></li></ul>
       </section>
     </article>
 <article class="card">
@@ -921,8 +1031,16 @@
         <ul><li>kernel</li><li>plugins</li><li>connectors</li><li>services</li></ul>
       </section>
       <section>
+        <h3>Cognitive Style</h3>
+        <ul><li>composable</li><li>enterprise-oriented</li><li>explicit</li></ul>
+      </section>
+      <section>
         <h3>Trust Model</h3>
         <ul><li>kernel-mediated-capabilities</li><li>connector-abstraction</li><li>runtime-composition</li></ul>
+      </section>
+      <section>
+        <h3>Hidden Bet</h3>
+        <p>A shared kernel for capabilities is more durable than ad hoc agent composition.</p>
       </section>
       <section>
         <h3>Playfulness</h3>
@@ -957,7 +1075,7 @@
       
       <section>
         <h3>Relationships</h3>
-        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/kernel-as-cognitive-spine.html">Kernel As Cognitive Spine</a><br><span class="relation-note">The kernel is the shared structural center through which services and plugins are coordinated.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/plugins-as-capabilities.html">Plugins As Capabilities</a><br><span class="relation-note">Semantic Kernel pushes capability outward into plugins and connectors instead of hardwiring every skill into one agent loop.</span></li><li><strong>different_complexity_center_than</strong> → Openai Agents Sdk<br><span class="relation-note">Semantic Kernel concentrates complexity into the kernel, plugins, and connectors, while the OpenAI Agents SDK emphasizes agents, tools, handoffs, and traces.</span></li><li><strong>contrasts_with</strong> → Aider<br><span class="relation-note">Semantic Kernel is infrastructural middleware for capability composition, while Aider stays close to the repository and concrete edit loop.</span></li></ul>
+        <ul class="relationship-list"><li><strong>embodies_concept</strong> → <a href="concepts/kernel-as-cognitive-spine.html">Kernel As Cognitive Spine</a><br><span class="relation-note">The kernel is the shared structural center through which services and plugins are coordinated.</span></li><li><strong>externalizes_through</strong> → <a href="concepts/plugins-as-capabilities.html">Plugins As Capabilities</a><br><span class="relation-note">Semantic Kernel pushes capability outward into plugins and connectors instead of hardwiring every skill into one agent loop.</span></li><li><strong>different_complexity_center_than</strong> → Openai Agents Sdk<br><span class="relation-note">Semantic Kernel concentrates complexity into the kernel, plugins, and connectors, while the OpenAI Agents SDK emphasizes agents, tools, handoffs, and traces.</span></li><li><strong>contrasts_with</strong> → Aider<br><span class="relation-note">Semantic Kernel is infrastructural middleware for capability composition, while Aider stays close to the repository and concrete edit loop.</span></li><li><strong>shares_primary_substrate_with</strong> → Openai Agents Sdk<br><span class="relation-note">Both are capability-composition systems where routing and service surfaces matter more than repo closeness.</span></li></ul>
       </section>
     </article>
       </section>

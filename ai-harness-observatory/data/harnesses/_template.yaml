@@ -25,9 +25,19 @@ primary_substrate:
   - chat
   - state
 
+cognitive_style:
+  - grounded
+  - explicit
+  - inspectable
+
 trust_model:
   - visible-edits
   - human-review
+
+hidden_bet:
+  summary: "Visible structure matters more than opaque autonomy."
+  notes:
+    - "The architecture assumes inspectability creates more durable usefulness than hidden loops."
 
 worldview:
   short: "Agents are structured workflows with explicit state and tool boundaries."

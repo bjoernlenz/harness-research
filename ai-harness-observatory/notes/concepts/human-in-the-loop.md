@@ -29,6 +29,12 @@ Human approval, supervision, or collaboration is treated as a first-class runtim
 - [[agent-as-collaborator]]
 - [[repository-as-memory]]
 
+## Gravity
+
+- Strength: high
+- Appears in: Aider, LangGraph, Claude Code, Cursor, OpenHands
+- Why it matters: it cuts across multiple families and exposes that human labor is still a structural component of reliability.
+
 ## Open Questions
 
 - Which approval patterns scale without exhausting the human operator?

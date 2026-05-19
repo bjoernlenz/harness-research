@@ -31,10 +31,20 @@ primary_substrate:
   - tools
   - agent-skills
 
+cognitive_style:
+  - sandboxed
+  - concrete
+  - composable
+
 trust_model:
   - environment-control
   - supervision
   - sandbox-boundaries
+
+hidden_bet:
+  summary: "A coding agent becomes powerful when it gets a full practical environment, not just a better prompt."
+  notes:
+    - "The architecture assumes embodied tooling matters more than minimal abstraction."
 
 worldview:
   short: "A coding agent should have the same practical affordances as a human developer: code, shell, browser, APIs, repos, and a configurable sandbox to act inside."

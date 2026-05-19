@@ -25,6 +25,12 @@ Agency is represented through explicit nodes, edges, transitions, and stateful p
 - [[human-in-the-loop]]
 - [[memory-as-residue]]
 
+## Gravity
+
+- Strength: high
+- Appears in: LangGraph
+- Why it matters: it anchors one of the clearest non-repo answers to what agency should be made of.
+
 ## Open Questions
 
 - How often do graph runtimes remain elegant once production workflows become large?

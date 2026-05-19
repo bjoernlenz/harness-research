@@ -31,10 +31,20 @@ primary_substrate:
   - workflows
   - tools
 
+cognitive_style:
+  - data-grounded
+  - composable
+  - explicit
+
 trust_model:
   - data-grounding
   - retrieval-relevance
   - workflow-structure
+
+hidden_bet:
+  summary: "Data grounding is the true center of useful agency."
+  notes:
+    - "The architecture assumes retrieval and knowledge structure matter more than generic agent theater."
 
 worldview:
   short: "Agent systems become powerful when they are built directly over data, retrieval pipelines, and event-driven workflows rather than only over generic tool loops."

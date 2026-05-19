@@ -30,10 +30,20 @@ primary_substrate:
   - chat
   - diff
 
+cognitive_style:
+  - grounded
+  - collaborative
+  - concrete
+
 trust_model:
   - repository-closeness
   - diff-review
   - human-approval
+
+hidden_bet:
+  summary: "Repo proximity matters more than orchestration sophistication."
+  notes:
+    - "Useful coding agency comes from staying close to files, diffs, git, and human review."
 
 worldview:
   short: "A coding agent should live close to the repository and collaborate through concrete edits rather than abstract plans."

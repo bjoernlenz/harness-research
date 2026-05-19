@@ -31,10 +31,20 @@ primary_substrate:
   - checkpoints
   - transitions
 
+cognitive_style:
+  - explicit
+  - stateful
+  - inspectable
+
 trust_model:
   - explicit-control-flow
   - inspectable-state
   - checkpointed-execution
+
+hidden_bet:
+  summary: "Explicit state graphs outperform opaque autonomous loops."
+  notes:
+    - "The architecture assumes reliability comes from visible control flow and durable state."
 
 worldview:
   short: "Agents are stateful graphs whose control flow should be explicit, durable, and inspectable."

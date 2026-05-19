@@ -30,10 +30,20 @@ primary_substrate:
   - extensions
   - context-files
 
+cognitive_style:
+  - restrained
+  - grounded
+  - composable
+
 trust_model:
   - minimal-core-transparency
   - local-context
   - extension-choice
+
+hidden_bet:
+  summary: "A small extensible core outcompetes giant integrated runtimes."
+  notes:
+    - "The architecture assumes restraint plus extensions beats loading every workflow into the base harness."
 
 worldview:
   short: "A coding agent should stay small at the core and push workflow-specific behavior into extensions, skills, prompts, and packages."

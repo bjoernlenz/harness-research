@@ -31,10 +31,20 @@ primary_substrate:
   - handoffs
   - traces
 
+cognitive_style:
+  - explicit
+  - composable
+  - inspectable
+
 trust_model:
   - explicit-handoffs
   - trace-visibility
   - guardrails
+
+hidden_bet:
+  summary: "Tracing and handoffs make multi-agent systems operationally manageable."
+  notes:
+    - "The architecture assumes explicit routing plus visible traces are what make agents practical at scale."
 
 worldview:
   short: "Agentic applications should be built from configurable agents, tools, handoffs, and traces rather than from opaque prompt loops."
