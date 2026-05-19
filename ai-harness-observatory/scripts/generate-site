@@ -232,19 +232,27 @@ def slug_to_label(value: str) -> str:
     return value.replace("-", " ").title()
 
 
-def concept_href(concept_id: str) -> str:
-    return f"concepts/{escape(concept_id)}.html"
+def index_output_href() -> str:
+    return "index.html"
+
+
+def concept_output_href(concept_id: str) -> str:
+    return f"concepts/{concept_id}.html"
 
 
 def harness_anchor(record: dict) -> str:
     return escape(str(record.get("id", "")))
 
 
-def harness_href(record: dict) -> str:
-    return f"index.html#{harness_anchor(record)}"
+def harness_site_href(from_output_href: str, harness_id: str) -> str:
+    return f"{relative_site_href(from_output_href, index_output_href())}#{quote(harness_id)}"
 
 
-def browse_index_href(field_key: str) -> str:
+def concept_site_href(from_output_href: str, concept_id: str) -> str:
+    return relative_site_href(from_output_href, concept_output_href(concept_id))
+
+
+def browse_index_output_href(field_key: str) -> str:
     return f"browse/{BROWSE_FIELDS[field_key]['slug']}/index.html"
 
 
@@ -253,13 +261,13 @@ def slugify(value: str) -> str:
     return slug or "item"
 
 
-def render_harness_links(records: list[dict], prefix: str = "") -> str:
+def render_harness_links(records: list[dict], current_output_href: str) -> str:
     if not records:
         return "<p class=\"empty-state\">None yet.</p>"
     items = []
     for record in records:
         name = escape(str(record.get("name", "Unknown")))
-        href = f"{prefix}index.html#{quote(str(record.get('id', '')))}"
+        href = harness_site_href(current_output_href, str(record.get("id", "")))
         items.append(f'<li><a href="{href}">{name}</a></li>')
     return f"<ul>{''.join(items)}</ul>"
 
@@ -396,21 +404,25 @@ def build_browse_catalog(records: list[dict]) -> dict[str, list[dict]]:
     return catalog
 
 
-def browse_detail_href(field_key: str, label: str, catalog: dict[str, list[dict]]) -> str:
+def browse_detail_output_href(
+    field_key: str, label: str, catalog: dict[str, list[dict]]
+) -> str:
     for entry in catalog[field_key]:
         if entry["label"] == label:
             return f"browse/{BROWSE_FIELDS[field_key]['slug']}/{entry['slug']}.html"
-    return browse_index_href(field_key)
+    return browse_index_output_href(field_key)
 
 
-def render_concept_links(values: list[str], concepts: dict[str, dict]) -> str:
+def render_concept_links(
+    values: list[str], concepts: dict[str, dict], current_output_href: str
+) -> str:
     items = []
     for value in values:
         concept_id = str(value)
         concept = concepts.get(concept_id, {})
         label = escape(str(concept.get("name", slug_to_label(concept_id))))
         items.append(
-            f'<li><a class="pill" href="{concept_href(concept_id)}">{label}</a></li>'
+            f'<li><a class="pill" href="{concept_site_href(current_output_href, concept_id)}">{label}</a></li>'
         )
     return f"<ul class=\"pill-list\">{''.join(items)}</ul>"
 
@@ -421,12 +433,14 @@ def render_list(values: list[str]) -> str:
 
 
 def render_browseable_list(
-    values: list[str], field_key: str, catalog: dict[str, list[dict]]
+    values: list[str], field_key: str, catalog: dict[str, list[dict]], current_output_href: str
 ) -> str:
     items = []
     for value in values:
         label = str(value)
-        href = browse_detail_href(field_key, label, catalog)
+        href = relative_site_href(
+            current_output_href, browse_detail_output_href(field_key, label, catalog)
+        )
         items.append(f'<li><a href="{href}">{escape(label)}</a></li>')
     return f"<ul>{''.join(items)}</ul>"
 
@@ -599,7 +613,7 @@ def render_section_heading(label: str, field_key: str | None = None) -> str:
     if field_key is None:
         return f"<h3>{escape(label)}</h3>"
     return (
-        f'<h3><a class="section-link" href="{browse_index_href(field_key)}">'
+        f'<h3><a class="section-link" href="{browse_index_output_href(field_key)}">'
         f"{escape(label)}</a></h3>"
     )
 
@@ -747,16 +761,14 @@ def render_note_page(
     body_html = render_markdown_body(note["body"])
     section = note["section"].replace("/", " / ").replace("-", " ").title()
     note_output = note["output_href"]
-    depth = len(Path(note_output).parts) - 1
-    site_root_prefix = "../" * (depth - 1)
-    back_href = site_root_prefix + "index.html"
+    back_href = relative_site_href(note_output, index_output_href())
     metadata = note.get("metadata", {})
     threads_html = ""
     if str(metadata.get("kind", "")).strip():
         harness_links = [
             (
                 str(record_by_id[h_id].get("name", slug_to_label(h_id))),
-                f"{site_root_prefix}index.html#{quote(h_id)}",
+                harness_site_href(note_output, h_id),
             )
             for h_id in metadata.get("related_harnesses", [])
             if h_id in record_by_id
@@ -764,7 +776,7 @@ def render_note_page(
         concept_links = [
             (
                 str(concepts[c_id].get("name", slug_to_label(c_id))),
-                f"{site_root_prefix}{concept_href(c_id)}",
+                concept_site_href(note_output, c_id),
             )
             for c_id in metadata.get("related_concepts", [])
             if c_id in concepts
@@ -902,6 +914,7 @@ def render_note_page(
 
 
 def render_relationships(
+    current_output_href: str,
     harness_id: str,
     relationships: list[dict],
     concepts: dict[str, dict],
@@ -916,10 +929,10 @@ def render_relationships(
         target_concept = concepts.get(target)
         if target_concept:
             target_label = escape(str(target_concept.get("name", slug_to_label(target))))
-            target_html = f'<a href="{concept_href(target)}">{target_label}</a>'
+            target_html = f'<a href="{concept_site_href(current_output_href, target)}">{target_label}</a>'
         elif target in record_by_id:
             target_label = escape(str(record_by_id[target].get("name", slug_to_label(target))))
-            target_html = f'<a href="index.html#{quote(target)}">{target_label}</a>'
+            target_html = f'<a href="{harness_site_href(current_output_href, target)}">{target_label}</a>'
         else:
             target_html = escape(slug_to_label(target))
         note = escape(str(relation.get("note", "")))
@@ -937,6 +950,7 @@ def render_relationships(
 
 
 def render_card(
+    current_output_href: str,
     record: dict,
     records: list[dict],
     concepts: dict[str, dict],
@@ -952,21 +966,21 @@ def render_card(
     architectural_core = render_list(record.get("architectural_core", []))
     complexity_focus = render_list(record.get("complexity_focus", []))
     primary_substrate = render_browseable_list(
-        record.get("primary_substrate", []), "primary_substrate", catalog
+        record.get("primary_substrate", []), "primary_substrate", catalog, current_output_href
     )
     cognitive_style = render_browseable_list(
-        record.get("cognitive_style", []), "cognitive_style", catalog
+        record.get("cognitive_style", []), "cognitive_style", catalog, current_output_href
     )
     trust_model = render_browseable_list(
-        record.get("trust_model", []), "trust_model", catalog
+        record.get("trust_model", []), "trust_model", catalog, current_output_href
     )
     failure_modes = render_browseable_list(
-        record.get("failure_modes", []), "failure_modes", catalog
+        record.get("failure_modes", []), "failure_modes", catalog, current_output_href
     )
     representative_for = render_browseable_list(
-        record.get("representative_for", []), "representative_for", catalog
+        record.get("representative_for", []), "representative_for", catalog, current_output_href
     )
-    related_concepts = render_concept_links(record.get("related_concepts", []), concepts)
+    related_concepts = render_concept_links(record.get("related_concepts", []), concepts, current_output_href)
     playfulness = escape(str(record.get("playfulness", {}).get("summary", "")))
     metaphor = record.get("metaphor", {})
     metaphor_name = escape(metaphor_label(metaphor))
@@ -976,20 +990,20 @@ def render_card(
     core_tension = escape(str(record.get("core_tension", "")))
     hidden_bet = record.get("hidden_bet", {})
     hidden_bet_summary = escape(str(hidden_bet.get("summary", "")))
-    hidden_bet_href = browse_detail_href(
+    hidden_bet_href = relative_site_href(current_output_href, browse_detail_output_href(
         "hidden_bet", str(hidden_bet.get("summary", "")), catalog
-    )
+    ))
     relationships_html = render_relationships(
-        harness_id, relationships, concepts, record_by_id
+        current_output_href, harness_id, relationships, concepts, record_by_id
     )
     shared_substrate = render_harness_links(
-        top_related_harnesses(record, records, "primary_substrate"), prefix=""
+        top_related_harnesses(record, records, "primary_substrate"), current_output_href
     )
     shared_trust = render_harness_links(
-        top_related_harnesses(record, records, "trust_model"), prefix=""
+        top_related_harnesses(record, records, "trust_model"), current_output_href
     )
     shared_style = render_harness_links(
-        top_related_harnesses(record, records, "cognitive_style"), prefix=""
+        top_related_harnesses(record, records, "cognitive_style"), current_output_href
     )
     contrast_items = []
     for relation in explicit_harness_relations(harness_id, relationships, record_by_id):
@@ -1005,14 +1019,14 @@ def render_card(
         target_record = record_by_id.get(target)
         if target_record:
             contrast_items.append(
-                (str(target_record.get("name", slug_to_label(target))), f"index.html#{quote(target)}")
+                (str(target_record.get("name", slug_to_label(target))), harness_site_href(current_output_href, target))
             )
     related_explorations = related_explorations_for_harness(record, explorations)
     grouped_explorations: dict[str, list[tuple[str, str]]] = {}
     for exploration in related_explorations:
         group = exploration_kind_label(exploration)
         grouped_explorations.setdefault(group, []).append(
-            (exploration["title"], exploration["output_href"])
+            (exploration["title"], relative_site_href(current_output_href, exploration["output_href"]))
         )
     metaphor_html = ""
     if metaphor_name:
@@ -1108,7 +1122,7 @@ def render_browse_nav() -> str:
     items = []
     for field_key, config in BROWSE_FIELDS.items():
         items.append(
-            f'<li><a class="pill" href="{browse_index_href(field_key)}">{escape(config["label"])}</a></li>'
+            f'<li><a class="pill" href="{browse_index_output_href(field_key)}">{escape(config["label"])}</a></li>'
         )
     items.append('<li><a class="pill" href="browse/index.html">Browse Hub</a></li>')
     return f"<ul class=\"pill-list\">{''.join(items)}</ul>"
@@ -1124,6 +1138,7 @@ def render_page(
 ) -> str:
     cards = "\n".join(
         render_card(
+            index_output_href(),
             record,
             records,
             concepts,
@@ -1383,7 +1398,7 @@ def render_substrate_clusters(records: list[dict]) -> str:
     clusters: dict[str, list[str]] = {name: [] for name in SUBSTRATE_CLUSTERS}
     for record in records:
         name = escape(str(record.get("name", "Unknown")))
-        href = harness_href(record)
+        href = harness_site_href(index_output_href(), str(record.get("id", "")))
         substrates = set(record.get("primary_substrate", []))
         for cluster_name, members in SUBSTRATE_CLUSTERS.items():
             if substrates & members:
@@ -1394,7 +1409,7 @@ def render_substrate_clusters(records: list[dict]) -> str:
             continue
         names_html = "".join(f"<li>{name}</li>" for name in names)
         parts.append(
-            f'<article class="cluster"><h2><a class="section-link" href="{browse_index_href("primary_substrate")}">{escape(cluster_name)}</a></h2><ul>{names_html}</ul></article>'
+            f'<article class="cluster"><h2><a class="section-link" href="{browse_index_output_href("primary_substrate")}">{escape(cluster_name)}</a></h2><ul>{names_html}</ul></article>'
         )
     return "".join(parts)
 
@@ -1423,7 +1438,8 @@ def render_concept_page(
         for harness_id in concept.get("related_harnesses", [])
         if harness_id in record_by_id
     ]
-    related_harnesses = render_harness_links(related_records, prefix="../")
+    current_output_href = concept_output_href(concept_id)
+    related_harnesses = render_harness_links(related_records, current_output_href)
     inbound = []
     for relation in relationships:
         if str(relation.get("to", "")) != concept_id:
@@ -1431,7 +1447,7 @@ def render_concept_page(
         source_id = str(relation.get("from", ""))
         if source_id in record_by_id:
             source_name = escape(str(record_by_id[source_id].get("name", slug_to_label(source_id))))
-            source = f'<a href="../index.html#{quote(source_id)}">{source_name}</a>'
+            source = f'<a href="{harness_site_href(current_output_href, source_id)}">{source_name}</a>'
         else:
             source = escape(slug_to_label(source_id))
         relation_name = escape(str(relation.get("relation", "")))
@@ -1451,14 +1467,20 @@ def render_concept_page(
             continue
         seen_related.add(linked)
         linked_concepts.append(
-            (str(concepts[linked].get("name", slug_to_label(linked))), concept_href(linked))
+            (
+                str(concepts[linked].get("name", slug_to_label(linked))),
+                concept_site_href(concept_output_href(concept_id), linked),
+            )
         )
     exploration_matches = related_explorations_for_concept(concept_id, explorations)
     grouped_explorations: dict[str, list[tuple[str, str]]] = {}
     for exploration in exploration_matches:
         group = exploration_kind_label(exploration)
         grouped_explorations.setdefault(group, []).append(
-            (exploration["title"], f"../{exploration['output_href']}")
+            (
+                exploration["title"],
+                relative_site_href(concept_output_href(concept_id), exploration["output_href"]),
+            )
         )
     more_stuff = render_more_stuff("../index.html", "../../")
     return f"""<!doctype html>
@@ -1794,7 +1816,8 @@ def render_browse_detail_page(
       <h2>Why This Matters</h2>
       <ul>{''.join(f"<li>{escape(note)}</li>" for note in entry["notes"])}</ul>
         """.rstrip()
-    harnesses_html = render_harness_links(entry["harnesses"], prefix="../../")
+    current_output_href = f"browse/{BROWSE_FIELDS[field_key]['slug']}/{entry['slug']}.html"
+    harnesses_html = render_harness_links(entry["harnesses"], current_output_href)
     related_explorations = related_explorations_for_browse_entry(
         field_key, entry, explorations
     )
