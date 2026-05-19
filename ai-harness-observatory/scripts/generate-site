@@ -164,6 +164,10 @@ def relative_site_href(from_output_href: str, to_output_href: str) -> str:
     return os.path.relpath(to_path, from_dir).replace(os.sep, "/")
 
 
+def note_site_href(from_output_href: str, note_path: str) -> str:
+    return relative_site_href(from_output_href, note_output_href(note_path))
+
+
 def render_named_links(links: list[tuple[str, str]]) -> str:
     if not links:
         return '<p class="empty-state">None linked yet.</p>'
@@ -632,13 +636,13 @@ def render_section_heading(
     )
 
 
-def render_more_stuff(index_href: str, repo_prefix: str) -> str:
+def render_more_stuff(current_output_href: str) -> str:
     sections = []
     sections.append(
         f"""
         <section class="more-stuff-group">
           <h3>Index</h3>
-          <ul><li><a href="{escape(index_href)}">Back to index</a></li></ul>
+          <ul><li><a href="{escape(relative_site_href(current_output_href, index_output_href()))}">Back to index</a></li></ul>
         </section>
         """.rstrip()
     )
@@ -647,7 +651,7 @@ def render_more_stuff(index_href: str, repo_prefix: str) -> str:
         for path in paths:
             label = note_link_label(path)
             items.append(
-                f'<li><a href="{repo_prefix}{escape(note_output_href(path))}">{escape(label)}</a></li>'
+                f'<li><a href="{escape(note_site_href(current_output_href, path))}">{escape(label)}</a></li>'
             )
         sections.append(
             f"""
@@ -1140,13 +1144,15 @@ def render_card(
     """.strip()
 
 
-def render_browse_nav() -> str:
+def render_browse_nav(current_output_href: str) -> str:
     items = []
     for field_key, config in BROWSE_FIELDS.items():
         items.append(
-            f'<li><a class="pill" href="{browse_index_output_href(field_key)}">{escape(config["label"])}</a></li>'
+            f'<li><a class="pill" href="{relative_site_href(current_output_href, browse_index_output_href(field_key))}">{escape(config["label"])}</a></li>'
         )
-    items.append('<li><a class="pill" href="browse/index.html">Browse Hub</a></li>')
+    items.append(
+        f'<li><a class="pill" href="{relative_site_href(current_output_href, "browse/index.html")}">Browse Hub</a></li>'
+    )
     return f"<ul class=\"pill-list\">{''.join(items)}</ul>"
 
 
@@ -1173,8 +1179,8 @@ def render_page(
         for record in records
     )
     substrate_clusters = render_substrate_clusters(records)
-    browse_nav = render_browse_nav()
-    more_stuff = render_more_stuff("index.html", "")
+    browse_nav = render_browse_nav(index_output_href())
+    more_stuff = render_more_stuff(index_output_href())
     return f"""<!doctype html>
 <html lang="en">
   <head>
@@ -1505,9 +1511,7 @@ def render_concept_page(
                 relative_site_href(concept_output_href(concept_id), exploration["output_href"]),
             )
         )
-    more_stuff = render_more_stuff(
-        relative_site_href(current_output_href, index_output_href()), "../"
-    )
+    more_stuff = render_more_stuff(current_output_href)
     return f"""<!doctype html>
 <html lang="en">
   <head>
@@ -1797,9 +1801,7 @@ def render_browse_hub(catalog: dict[str, list[dict]]) -> str:
       </article>
             """.rstrip()
         )
-    more_stuff = render_more_stuff(
-        relative_site_href(current_output_href, index_output_href()), "../"
-    )
+    more_stuff = render_more_stuff(current_output_href)
     return f"""<!doctype html>
 <html lang="en">
   <head>
@@ -1888,9 +1890,7 @@ def render_browse_index_page(field_key: str, entries: list[dict]) -> str:
         </li>
             """.rstrip()
         )
-    more_stuff = render_more_stuff(
-        relative_site_href(current_output_href, index_output_href()), "../../"
-    )
+    more_stuff = render_more_stuff(current_output_href)
     return f"""<!doctype html>
 <html lang="en">
   <head>
@@ -2011,9 +2011,7 @@ def render_browse_detail_page(
         <h2>Further Threads</h2>
         <ul>{''.join(items)}</ul>
         """.rstrip()
-    more_stuff = render_more_stuff(
-        relative_site_href(current_output_href, index_output_href()), "../../"
-    )
+    more_stuff = render_more_stuff(current_output_href)
     return f"""<!doctype html>
 <html lang="en">
   <head>
