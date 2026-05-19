@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Why Graph Orchestration Emerged · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .panel {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 0.98;
+      }
+      h2, h3, h4, h5, h6 {
+        margin: 24px 0 10px;
+        color: var(--accent);
+      }
+      p, ul, blockquote {
+        line-height: 1.7;
+      }
+      blockquote {
+        margin: 18px 0;
+        padding-left: 16px;
+        border-left: 3px solid var(--border);
+        color: var(--muted);
+      }
+      code {
+        padding: 1px 5px;
+        border-radius: 6px;
+        background: #efe2cf;
+        font-size: 0.95em;
+      }
+      .threads {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../../../index.html">← Back to atlas</a>
+      <div class="panel">
+        <p class="eyebrow">Explorations / Historical</p>
+        <h1>Why Graph Orchestration Emerged</h1>
+<p>This note is partly source-grounded and partly interpretive.</p>
+<p>The source-grounded part is straightforward: several current harnesses emphasize explicit state, traces, handoffs, resumability, and durable execution. LangGraph says this most directly through graph structure and checkpoints. OpenAI Agents SDK frames coordination through runs, handoffs, and traces. AutoGen makes multi-agent conversation and orchestration explicit rather than hiding it behind a single agent persona.</p>
+<p>The historical reading this suggests is that graph-like orchestration emerged as a response to disappointment with agent fluidity.</p>
+<p>Earlier agent excitement often assumed that if a model was strong enough, a relatively loose loop could carry a task from beginning to end. But production reality kept introducing harder demands:</p>
+<ul>
+<li>long-running work</li>
+<li>resumability</li>
+<li>intervention points</li>
+<li>failure recovery</li>
+<li>legible control flow</li>
+<li>coordination across multiple tools or roles</li>
+</ul>
+<p>That pressure makes graphs feel less like an abstract preference and more like a recovery move. The graph, the state machine, the trace tree, and the handoff structure all answer the same complaint:</p>
+<blockquote>
+<p>impressive agents are not enough if no one can see where they are, what they are doing, or how to restart them safely.</p>
+</blockquote>
+<p>What this made newly possible:</p>
+<ul>
+<li>agency that can be paused and resumed rather than only re-prompted</li>
+<li>systems where intervention is an architectural feature instead of a panic response</li>
+<li>more durable multi-step and multi-role execution</li>
+</ul>
+<p>What ecosystem shift it reflects:</p>
+<ul>
+<li>a move from “agent performance” to “agent operability”</li>
+<li>a move from model cleverness toward runtime legibility</li>
+<li>a willingness to trade spontaneity for control in production settings</li>
+</ul>
+<p>This does not mean graph orchestration is the final answer. It means a meaningful part of the field learned that autonomy without structure becomes expensive faster than expected.</p>
+        
+        <div class="threads">
+          <h2>Further Threads</h2>
+          <h3>Related Harnesses</h3>
+          <ul><li><a href="../../../harnesses/langgraph.html">LangGraph</a></li><li><a href="../../../harnesses/openai-agents-sdk.html">OpenAI Agents SDK</a></li><li><a href="../../../harnesses/autogen.html">AutoGen</a></li></ul>
+          <h3>Related Concepts</h3>
+          <ul><li><a href="../../../concepts/graph-orchestration.html">Graph Orchestration</a></li><li><a href="../../../concepts/explicit-state.html">Explicit State</a></li><li><a href="../../../concepts/durable-execution.html">Durable Execution</a></li><li><a href="../../../concepts/traces-as-residue.html">Traces As Residue</a></li></ul>
+          <h3>Tensions</h3>
+          <ul><li><a href="../tensions/closeness-vs-orchestration.html">Closeness Vs Orchestration</a></li></ul>
+          <h3>Historical Notes</h3>
+          <p class="empty-state">None yet.</p>
+          <h3>Comparisons</h3>
+          <ul><li><a href="../../comparisons/repo-vs-graph-agency.html">Repo vs Graph Agency</a></li><li><a href="../../comparisons/shell-vs-runtime-worldviews.html">Shell vs Runtime Worldviews</a></li></ul>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

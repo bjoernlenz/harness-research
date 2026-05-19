@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Why Agent Teams Became Popular · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .panel {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 0.98;
+      }
+      h2, h3, h4, h5, h6 {
+        margin: 24px 0 10px;
+        color: var(--accent);
+      }
+      p, ul, blockquote {
+        line-height: 1.7;
+      }
+      blockquote {
+        margin: 18px 0;
+        padding-left: 16px;
+        border-left: 3px solid var(--border);
+        color: var(--muted);
+      }
+      code {
+        padding: 1px 5px;
+        border-radius: 6px;
+        background: #efe2cf;
+        font-size: 0.95em;
+      }
+      .threads {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../../../index.html">← Back to atlas</a>
+      <div class="panel">
+        <p class="eyebrow">Explorations / Historical</p>
+        <h1>Why Agent Teams Became Popular</h1>
+<p>This note is partly source-grounded and partly interpretive.</p>
+<p>The source-grounded part is easy to see: AutoGen explicitly frames coordinated agents and conversations as a programming model, OpenAI Agents SDK introduces handoffs between agents as a first-class pattern, and Semantic Kernel also makes room for capability composition that can resemble distributed roles even when described in more enterprise language.</p>
+<p>The historical reading this suggests is that agent teams became popular when a single-agent story started feeling too magical and too narrow at the same time.</p>
+<p>Too magical, because a lone “general agent” often hides internal complexity behind one personality. Too narrow, because real work tends to separate concerns: planning, retrieval, execution, review, domain specialization, and tool use do not always sit comfortably inside one undifferentiated loop.</p>
+<p>The team metaphor solves both problems at once. It makes specialization legible, and it gives builders a language for decomposition that feels more human than pure workflow diagrams. Instead of one mysterious agent doing everything, the system can present a cast with roles, handoffs, and boundaries.</p>
+<p>What this made newly possible:</p>
+<ul>
+<li>more explicit decomposition of complex work</li>
+<li>specialized roles without pretending every agent is equally capable</li>
+<li>a more operational story for coordination, supervision, and traceability</li>
+</ul>
+<p>What ecosystem shift it reflects:</p>
+<ul>
+<li>a move from “one great agent” toward “systems of cooperating agents”</li>
+<li>a convergence between software architecture patterns and social metaphors</li>
+<li>a field searching for ways to scale agency without pretending cognition is monolithic</li>
+</ul>
+<p>This does not mean agent teams are always the right answer. Sometimes they become theater and move complexity around without reducing it. But their rise does suggest a broad recognition:</p>
+<blockquote>
+<p>once agent work becomes complex enough, decomposition stops looking optional.</p>
+</blockquote>
+        
+        <div class="threads">
+          <h2>Further Threads</h2>
+          <h3>Related Harnesses</h3>
+          <ul><li><a href="../../../harnesses/autogen.html">AutoGen</a></li><li><a href="../../../harnesses/openai-agents-sdk.html">OpenAI Agents SDK</a></li><li><a href="../../../harnesses/semantic-kernel.html">Semantic Kernel</a></li></ul>
+          <h3>Related Concepts</h3>
+          <ul><li><a href="../../../concepts/agent-team.html">Agent Team</a></li><li><a href="../../../concepts/team-conversation.html">Team Conversation</a></li><li><a href="../../../concepts/handoffs.html">Handoffs</a></li><li><a href="../../../concepts/traces-as-residue.html">Traces As Residue</a></li><li><a href="../../../concepts/multi-agent-theater.html">Multi-Agent Theater</a></li></ul>
+          <h3>Tensions</h3>
+          <ul><li><a href="../tensions/closeness-vs-orchestration.html">Closeness Vs Orchestration</a></li><li><a href="../tensions/autonomy-vs-permission.html">Autonomy Vs Permission</a></li></ul>
+          <h3>Historical Notes</h3>
+          <p class="empty-state">None yet.</p>
+          <h3>Comparisons</h3>
+          <ul><li><a href="../../comparisons/environment-close-vs-orchestration-close-vs-data-close.html">Environment-Close vs Orchestration-Close vs Data-Close</a></li></ul>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
