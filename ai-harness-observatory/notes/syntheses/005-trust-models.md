@@ -1,3 +1,7 @@
+---
+id: 005-trust-models
+kind: synthesis
+---
 # 005 Trust Models
 
 Trust is already emerging as a comparative dimension, even before it is fully normalized.

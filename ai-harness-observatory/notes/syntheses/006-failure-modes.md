@@ -1,3 +1,7 @@
+---
+id: 006-failure-modes
+kind: synthesis
+---
 # 006 Failure Modes
 
 Failure modes are already revealing where each harness pays its real architectural cost.

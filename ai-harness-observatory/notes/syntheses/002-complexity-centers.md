@@ -1,3 +1,7 @@
+---
+id: 002-complexity-centers
+kind: synthesis
+---
 # 002 Complexity Centers
 
 This synthesis focuses on one question from the charter:

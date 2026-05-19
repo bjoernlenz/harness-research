@@ -1,3 +1,7 @@
+---
+id: repo-vs-graph-agency
+kind: comparison
+---
 # Repo vs Graph Agency
 
 ## Essence

@@ -1,4 +1,5 @@
 ---
+id: minimal-core-vs-batteries-included
 title: Minimal Core Vs Batteries Included
 kind: tension
 related_harnesses:

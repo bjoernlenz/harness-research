@@ -1,3 +1,7 @@
+---
+id: shell-vs-runtime-worldviews
+kind: comparison
+---
 # Shell vs Runtime Worldviews
 
 ## Essence

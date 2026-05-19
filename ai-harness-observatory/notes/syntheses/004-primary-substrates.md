@@ -1,3 +1,7 @@
+---
+id: 004-primary-substrates
+kind: synthesis
+---
 # 004 Primary Substrates
 
 The current corpus suggests that `primary_substrate` is becoming one of the strongest organizing dimensions in the observatory.

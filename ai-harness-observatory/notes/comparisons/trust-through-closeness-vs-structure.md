@@ -1,3 +1,7 @@
+---
+id: trust-through-closeness-vs-structure
+kind: comparison
+---
 # Trust Through Closeness vs Structure
 
 ## Essence

@@ -1,4 +1,5 @@
 ---
+id: context-as-substrate
 title: Context As Substrate
 kind: concept
 related_harnesses:

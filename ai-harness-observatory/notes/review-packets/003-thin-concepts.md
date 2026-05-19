@@ -1,3 +1,7 @@
+---
+id: 003-thin-concepts
+kind: review-packet
+---
 # 003 Thin Concepts Review
 
 This packet inventories currently thin concept notes rather than merging them immediately.

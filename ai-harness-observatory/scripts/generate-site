@@ -123,7 +123,9 @@ def load_markdown_note(note_path: str) -> dict:
     title = str(metadata.get("title", "")).strip() or source_path.stem
     if first_heading:
         title = first_heading.group(1).strip()
+    note_id = str(metadata.get("id", "")).strip() or source_path.stem
     return {
+        "id": note_id,
         "path": note_path,
         "source_path": source_path,
         "output_href": note_output_href(note_path),
@@ -161,6 +163,16 @@ def relative_site_href(from_output_href: str, to_output_href: str) -> str:
     return os.path.relpath(to_path, from_dir).replace(os.sep, "/")
 
 
+def render_named_links(links: list[tuple[str, str]]) -> str:
+    if not links:
+        return '<p class="empty-state">None linked yet.</p>'
+    items = "".join(
+        f'<li><a href="{escape(href)}">{escape(label)}</a></li>'
+        for label, href in links
+    )
+    return f"<ul>{items}</ul>"
+
+
 def load_explorations() -> list[dict]:
     explorations = []
     exploration_root = NOTES_DIR / "explorations"
@@ -174,6 +186,15 @@ def load_explorations() -> list[dict]:
         note["concept_links"] = extract_wikilinks(note["body"])
         explorations.append(note)
     return explorations
+
+
+def load_note_registry(explorations: list[dict]) -> dict[str, dict]:
+    registry: dict[str, dict] = {note["id"]: note for note in explorations}
+    for paths in MORE_STUFF.values():
+        for note_path in paths:
+            note = load_markdown_note(note_path)
+            registry.setdefault(note["id"], note)
+    return registry
 
 
 def load_records() -> list[dict]:
@@ -719,6 +740,7 @@ def render_note_page(
     concepts: dict[str, dict],
     record_by_id: dict[str, dict],
     explorations: list[dict],
+    note_registry: dict[str, dict],
 ) -> str:
     note = load_markdown_note(note_path)
     title = note["title"]
@@ -747,9 +769,7 @@ def render_note_page(
             for c_id in metadata.get("related_concepts", [])
             if c_id in concepts
         ]
-        exploration_lookup = {
-            Path(exploration["path"]).stem: exploration for exploration in explorations
-        }
+        exploration_lookup = {exploration["id"]: exploration for exploration in explorations}
         tension_links = [
             (
                 exploration_lookup[key]["title"],
@@ -767,14 +787,14 @@ def render_note_page(
             if key in exploration_lookup
         ]
         comparison_lookup = {
-            Path(path).stem: path for path in MORE_STUFF.get("Comparisons", [])
+            note_id: note
+            for note_id, note in note_registry.items()
+            if str(note.get("metadata", {}).get("kind", "")).strip() == "comparison"
         }
         comparison_links = [
             (
-                key,
-                relative_site_href(
-                    note_output, note_output_href(comparison_lookup[key])
-                ),
+                comparison_lookup[key]["title"],
+                relative_site_href(note_output, comparison_lookup[key]["output_href"]),
             )
             for key in metadata.get("related_comparisons", [])
             if key in comparison_lookup
@@ -1881,6 +1901,7 @@ def main() -> int:
     concepts = load_concepts()
     relationships = load_relationships()
     explorations = load_explorations()
+    note_registry = load_note_registry(explorations)
     catalog = build_browse_catalog(records)
     OUTPUT_PATH.write_text(
         render_page(
@@ -1919,7 +1940,9 @@ def main() -> int:
             output_path = output_path.with_suffix(".html")
             output_path.parent.mkdir(parents=True, exist_ok=True)
             output_path.write_text(
-                render_note_page(note_path, concepts, record_by_id, explorations),
+                render_note_page(
+                    note_path, concepts, record_by_id, explorations, note_registry
+                ),
                 encoding="utf-8",
             )
     print(f"Wrote {OUTPUT_PATH}")

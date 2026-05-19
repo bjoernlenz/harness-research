@@ -1,3 +1,7 @@
+---
+id: 003-human-role-and-permission-patterns
+kind: synthesis
+---
 # 003 Human Role And Permission Patterns
 
 This synthesis asks:

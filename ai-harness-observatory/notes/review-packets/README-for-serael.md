@@ -1,3 +1,8 @@
+---
+id: readme-for-serael
+kind: review-packet
+title: README for Serael
+---
 # README for Serael
 
 ## What Changed

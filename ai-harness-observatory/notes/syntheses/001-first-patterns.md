@@ -1,3 +1,7 @@
+---
+id: 001-first-patterns
+kind: synthesis
+---
 # 001 First Patterns
 
 This synthesis is based on the current first-wave corpus of **11 harnesses** and **44 concept records**.

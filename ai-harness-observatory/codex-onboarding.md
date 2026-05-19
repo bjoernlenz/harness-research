@@ -27,6 +27,7 @@ More specifically:
 - `data/harnesses/*.yaml` is the canonical harness record layer
 - `data/concepts/*.yaml` and `data/relationships.yaml` are the canonical graph layer
 - `scripts/generate-site` is the generator that turns canonical data into browser-visible exploration
+- note-to-note navigation should use stable note ids from Markdown frontmatter, not filename guessing
 
 Important consequence:
 
@@ -54,6 +55,14 @@ Markdown should remain strongest where it adds real value:
 - comparisons
 - review packets
 - concept notes with gravity and tensions
+
+When a Markdown note is intended to participate in generated cross-linking, give it stable frontmatter:
+
+- `id`
+- `kind`
+
+Use ids for cross-note references.
+Do not build note links by hand from path prefixes if the generator can resolve them from typed metadata.
 
 Markdown should not be the long-term home of duplicated harness facts if those facts already exist in YAML.
 

@@ -1,4 +1,5 @@
 ---
+id: teams-as-agency
 title: Teams As Agency
 kind: concept
 related_harnesses:

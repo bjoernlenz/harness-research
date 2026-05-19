@@ -1,3 +1,7 @@
+---
+id: environment-close-vs-orchestration-close-vs-data-close
+kind: comparison
+---
 # Environment-Close vs Orchestration-Close vs Data-Close
 
 ## Essence

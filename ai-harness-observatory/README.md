@@ -26,6 +26,7 @@ Current target direction:
 - YAML is the source of truth
 - HTML is the primary exploration surface
 - anything not reachable by clicks from `site/index.html` should be treated as not yet surfaced
+- generated note-to-note navigation should resolve through stable note ids, not ad-hoc path building
 - Markdown should stop duplicating YAML and instead become:
   - synthesis
   - comparison

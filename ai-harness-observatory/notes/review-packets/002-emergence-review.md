@@ -1,3 +1,7 @@
+---
+id: 002-emergence-review
+kind: review-packet
+---
 # 002 Emergence Review
 
 ## Strongest New Patterns

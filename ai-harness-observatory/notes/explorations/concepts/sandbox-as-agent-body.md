@@ -1,4 +1,5 @@
 ---
+id: sandbox-as-agent-body
 title: Sandbox As Agent Body
 kind: concept
 related_harnesses:

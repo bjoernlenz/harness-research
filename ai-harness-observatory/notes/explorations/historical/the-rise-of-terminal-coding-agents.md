@@ -1,4 +1,5 @@
 ---
+id: the-rise-of-terminal-coding-agents
 title: The Rise Of Terminal Coding Agents
 kind: historical
 related_harnesses:
