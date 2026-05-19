@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Embodies Concept · Relationships</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .panel {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+      }
+      h1 { margin: 10px 0 12px; font-size: clamp(2rem, 5vw, 3.2rem); line-height: 0.98; }
+      p, ul { line-height: 1.6; }
+      .relationship-list {
+        list-style: none;
+        padding-left: 0;
+      }
+      .relationship-list li {
+        padding: 12px 0;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+      .relationship-list li:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+      .relation-note { color: var(--muted); }
+      .more-stuff {
+        margin-top: 22px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+      .more-stuff-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 16px;
+      }
+      .more-stuff-group ul {
+        margin: 0;
+        padding-left: 18px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="index.html">← Back to relationships</a>
+      <div class="panel">
+        <h1>Embodies Concept</h1>
+        <p>14 current edges use this relationship type.</p>
+        <ul class="relationship-list"><li><strong><a href="../../harnesses/langgraph.html">LangGraph</a></strong> → <a href="../../concepts/graph-orchestration.html">Graph Orchestration</a><br><span class="relation-note">Its runtime is explicitly organized around graph transitions and stateful control flow.</span></li><li><strong><a href="../../harnesses/pi.html">Pi</a></strong> → <a href="../../concepts/extension-driven-runtime.html">Extension-Driven Runtime</a><br><span class="relation-note">Pi keeps the core narrow and treats packages and extensions as the main place where power accumulates.</span></li><li><strong><a href="../../harnesses/pydantic-ai.html">PydanticAI</a></strong> → <a href="../../concepts/validation-rails.html">Validation Rails</a><br><span class="relation-note">Validation and explicit structure are central rails around otherwise stochastic model behavior.</span></li><li><strong><a href="../../harnesses/openai-agents-sdk.html">OpenAI Agents SDK</a></strong> → <a href="../../concepts/handoffs.html">Handoffs</a><br><span class="relation-note">The SDK makes transfers between specialized agents an explicit orchestration primitive.</span></li><li><strong><a href="../../harnesses/openai-agents-sdk.html">OpenAI Agents SDK</a></strong> → <a href="../../concepts/traces-as-residue.html">Traces As Residue</a><br><span class="relation-note">Execution traces are part of the architecture&#x27;s visible residue and observability story.</span></li><li><strong><a href="../../harnesses/autogen.html">AutoGen</a></strong> → <a href="../../concepts/multi-agent-theater.html">Multi-Agent Theater</a><br><span class="relation-note">Teams, swarms, and group chats are explicit runtime patterns rather than loose metaphor.</span></li><li><strong><a href="../../harnesses/openhands.html">OpenHands</a></strong> → <a href="../../concepts/sandbox-as-agent-body.html">Sandbox As Agent Body</a><br><span class="relation-note">The sandbox is part of the agent&#x27;s working body rather than just a passive guardrail.</span></li><li><strong><a href="../../harnesses/claude-code.html">Claude Code</a></strong> → <a href="../../concepts/unix-composability.html">Unix Composability</a><br><span class="relation-note">The tool is built to cooperate with shell workflows instead of replacing them.</span></li><li><strong><a href="../../harnesses/claude-code.html">Claude Code</a></strong> → <a href="../../concepts/permissioned-agency.html">Permissioned Agency</a><br><span class="relation-note">Permission requests are part of the architecture&#x27;s trust model, not an accidental UI add-on.</span></li><li><strong><a href="../../harnesses/cursor.html">Cursor</a></strong> → <a href="../../concepts/mode-gated-agency.html">Mode-Gated Agency</a><br><span class="relation-note">Ask, Agent, Manual, and Custom modes make capability boundaries a visible part of the workflow.</span></li><li><strong><a href="../../harnesses/cursor.html">Cursor</a></strong> → <a href="../../concepts/background-agents.html">Background Agents</a><br><span class="relation-note">Cursor can offload coding work into remote asynchronous agents that continue outside the immediate foreground session.</span></li><li><strong><a href="../../harnesses/semantic-kernel.html">Semantic Kernel</a></strong> → <a href="../../concepts/kernel-as-cognitive-spine.html">Kernel As Cognitive Spine</a><br><span class="relation-note">The kernel is the shared structural center through which services and plugins are coordinated.</span></li><li><strong><a href="../../harnesses/llamaindex.html">LlamaIndex</a></strong> → <a href="../../concepts/data-as-cognitive-substrate.html">Data As Cognitive Substrate</a><br><span class="relation-note">LlamaIndex treats indexes, retrieval, and data connectors as the real terrain over which agent behavior operates.</span></li><li><strong><a href="../../harnesses/llamaindex.html">LlamaIndex</a></strong> → <a href="../../concepts/agentic-rag.html">Agentic RAG</a><br><span class="relation-note">The framework explicitly ties agents and workflows to retrieval over knowledge sources.</span></li></ul>
+        
+      <footer class="more-stuff">
+        <h2>More Stuff</h2>
+        <p class="subtle">Generated views are the atlas surface. These notes carry synthesis, comparison, and review context.</p>
+        <div class="more-stuff-grid">
+          
+        <section class="more-stuff-group">
+          <h3>Index</h3>
+          <ul><li><a href="../../index.html">Back to index</a></li></ul>
+        </section>
+        <section class="more-stuff-group">
+          <h3>Explorations</h3>
+          <ul><li><a href="../../notes/explorations/concepts/context-as-substrate.html">Context As Substrate</a></li><li><a href="../../notes/explorations/concepts/teams-as-agency.html">Teams As Agency</a></li><li><a href="../../notes/explorations/concepts/sandbox-as-agent-body.html">Sandbox As Agent Body</a></li><li><a href="../../notes/explorations/tensions/closeness-vs-orchestration.html">Closeness Vs Orchestration</a></li><li><a href="../../notes/explorations/tensions/minimal-core-vs-batteries-included.html">Minimal Core Vs Batteries Included</a></li><li><a href="../../notes/explorations/historical/the-rise-of-terminal-coding-agents.html">The Rise Of Terminal Coding Agents</a></li></ul>
+        </section>
+        <section class="more-stuff-group">
+          <h3>Syntheses</h3>
+          <ul><li><a href="../../notes/syntheses/001-first-patterns.html">001 First Patterns</a></li><li><a href="../../notes/syntheses/002-complexity-centers.html">002 Complexity Centers</a></li><li><a href="../../notes/syntheses/003-human-role-and-permission-patterns.html">003 Human Role And Permission Patterns</a></li><li><a href="../../notes/syntheses/004-primary-substrates.html">004 Primary Substrates</a></li><li><a href="../../notes/syntheses/005-trust-models.html">005 Trust Models</a></li><li><a href="../../notes/syntheses/006-failure-modes.html">006 Failure Modes</a></li></ul>
+        </section>
+        <section class="more-stuff-group">
+          <h3>Comparisons</h3>
+          <ul><li><a href="../../notes/comparisons/repo-vs-graph-agency.html">Repo vs Graph Agency</a></li><li><a href="../../notes/comparisons/trust-through-closeness-vs-structure.html">Trust Through Closeness vs Structure</a></li><li><a href="../../notes/comparisons/shell-vs-runtime-worldviews.html">Shell vs Runtime Worldviews</a></li><li><a href="../../notes/comparisons/environment-close-vs-orchestration-close-vs-data-close.html">Environment-Close vs Orchestration-Close vs Data-Close</a></li></ul>
+        </section>
+        <section class="more-stuff-group">
+          <h3>Review Packets</h3>
+          <ul><li><a href="../../notes/review-packets/001-stabilization-review.html">001 Stabilization Review</a></li><li><a href="../../notes/review-packets/002-emergence-review.html">002 Emergence Review</a></li><li><a href="../../notes/review-packets/004-exploration-layer-review.html">004 Exploration Layer Review</a></li><li><a href="../../notes/review-packets/README-for-serael.html">README for Serael</a></li></ul>
+        </section>
+        </div>
+      </footer>
+      </div>
+    </main>
+  </body>
+</html>
