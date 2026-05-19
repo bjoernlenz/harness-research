@@ -16,6 +16,7 @@ Start with these files:
 - [project-charter.md](./project-charter.md)
 - [codex-onboarding.md](./codex-onboarding.md)
 - [notes/review-packets/002-emergence-review.md](./notes/review-packets/002-emergence-review.md)
+- [notes/review-packets/004-exploration-layer-review.md](./notes/review-packets/004-exploration-layer-review.md)
 
 ## Current Operating Decision
 
@@ -32,7 +33,7 @@ Current target direction:
   - comparison
   - concept gravity
   - review packets
-  - temporary human notes only where they add real value
+  - exploration notes only where they add real human value
 
 ## Current Review Surfaces
 
@@ -57,7 +58,8 @@ These are the current tasks before further expansion:
 
 1. Remove duplicated content between harness YAML and harness Markdown so YAML clearly leads.
 2. Decide whether harness Markdown remains as a thin human wrapper or is retired in favor of generated HTML views.
-3. Make concept, comparison, and relationship navigation complete enough that no important field is stranded outside the atlas.
-4. Add more generated browse surfaces where repeated reading pressure appears, instead of solving it with prose duplication.
-5. Keep strengthening comparative links so the atlas feels argumentative, not merely catalog-like.
-6. Keep adding comparative links only after the one-source-of-truth direction is explicit in code and docs.
+3. Selectively deepen only the concept clusters that still feel cold, instead of expanding every node equally.
+4. Make concept, comparison, relationship, and exploration navigation complete enough that no important field is stranded outside the atlas.
+5. Add more generated browse surfaces where repeated reading pressure appears, instead of solving it with prose duplication.
+6. Keep strengthening comparative links so the atlas feels argumentative, not merely catalog-like.
+7. Keep adding comparative links only after the one-source-of-truth direction is explicit in code and docs.

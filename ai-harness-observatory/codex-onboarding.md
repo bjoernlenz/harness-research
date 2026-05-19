@@ -55,6 +55,7 @@ Markdown should remain strongest where it adds real value:
 - comparisons
 - review packets
 - concept notes with gravity and tensions
+- exploration notes that deepen selected harnesses, concepts, tensions, and histories
 
 When a Markdown note is intended to participate in generated cross-linking, give it stable frontmatter:
 
@@ -63,6 +64,13 @@ When a Markdown note is intended to participate in generated cross-linking, give
 
 Use ids for cross-note references.
 Do not build note links by hand from path prefixes if the generator can resolve them from typed metadata.
+
+Exploration-linking rule:
+
+- direct `related_harnesses` should drive harness-level tensions and histories
+- concept overlap should mainly surface concept explorations
+
+This keeps harness pages from accumulating weak indirect links.
 
 Markdown should not be the long-term home of duplicated harness facts if those facts already exist in YAML.
 
@@ -75,6 +83,7 @@ Current flow:
 3. `scripts/generate-site` reads YAML and produces `site/`
 4. `scripts/check-site-links` validates generated internal links inside `site/`
 5. `site/index.html`, `site/browse/*.html`, `site/concepts/*.html`, and `site/harnesses/*.html` are the main current exploration surfaces
+6. selected exploration notes also render inline on harness and concept pages where they materially deepen understanding
 
 Target flow:
 
@@ -142,6 +151,7 @@ When a field becomes important enough to browse repeatedly, add a generated HTML
 - concept notes collect shared meaning
 - comparison notes express tensions
 - synthesis notes describe emergent patterns
+- exploration notes add story and explanation where a thin node or page would otherwise stay cold
 
 One concept, many links.
 
@@ -154,11 +164,13 @@ One concept, many links.
 - [data/harnesses/_template.yaml](./data/harnesses/_template.yaml)
 - [data/relationships.yaml](./data/relationships.yaml)
 - [notes/review-packets/002-emergence-review.md](./notes/review-packets/002-emergence-review.md)
+- [notes/review-packets/004-exploration-layer-review.md](./notes/review-packets/004-exploration-layer-review.md)
 
 ## Immediate Suggested Follow-Up
 
 The clean next implementation pass is:
 
 1. reduce or remove duplicated harness Markdown once HTML browse surfaces are sufficient
-2. make relationship, concept, and comparison navigation denser from the site itself
-3. keep link checking in the loop with `./scripts/check-site-links`
+2. selectively deepen only the concept clusters that still feel cold
+3. make relationship, concept, and comparison navigation denser from the site itself
+4. keep link checking in the loop with `./scripts/check-site-links`

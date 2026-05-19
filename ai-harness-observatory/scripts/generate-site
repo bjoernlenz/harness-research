@@ -90,6 +90,7 @@ MORE_STUFF = {
     "Review Packets": [
         "notes/review-packets/001-stabilization-review.md",
         "notes/review-packets/002-emergence-review.md",
+        "notes/review-packets/004-exploration-layer-review.md",
         "notes/review-packets/README-for-serael.md",
     ],
 }
@@ -331,9 +332,13 @@ def related_explorations_for_harness(record: dict, explorations: list[dict]) -> 
     matches = []
     for exploration in explorations:
         meta = exploration.get("metadata", {})
+        kind = str(meta.get("kind", "")).strip()
         related_harnesses = set(str(value) for value in meta.get("related_harnesses", []))
         related_concepts = set(str(value) for value in meta.get("related_concepts", []))
-        if harness_id in related_harnesses or concept_ids & related_concepts:
+        if harness_id in related_harnesses:
+            matches.append(exploration)
+            continue
+        if kind == "concept" and concept_ids & related_concepts:
             matches.append(exploration)
     return matches
 
