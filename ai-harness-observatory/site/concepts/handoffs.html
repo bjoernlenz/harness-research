@@ -118,7 +118,10 @@
         <h1>Handoffs</h1>
         <p>Control is explicitly transferred between specialized agents rather than remaining inside one undifferentiated loop.</p>
         <h2>Concept Note</h2><p>Control moves explicitly between specialized agents. This makes coordination visible, but it also forces system designers to decide where boundaries actually belong.</p>
-        
+        <h2>Human Deepening</h2><p>Handoffs matter because they turn a vague idea of multi-agent cooperation into a visible architectural event. Instead of one agent somehow doing everything, the system has to say: now control moves, and it moves for a reason.</p>
+<p>The OpenAI Agents SDK makes this explicit enough that handoffs start to feel like a design language rather than an implementation detail. AutoGen pressures the same space through agent conversation and role distribution. In both cases, the important shift is not just specialization. It is boundary declaration.</p>
+<p>That boundary declaration has a human story underneath it. Builders reach for handoffs when monolithic agency starts feeling too magical to trust or too muddy to debug. A handoff says where responsibility changes shape. It gives the architecture a place to admit that different kinds of work may need different agents, tools, or control logics.</p>
+<p>What this makes easier to see is why handoffs are attractive in multi-agent runtimes: they improve decomposition, traceability, and governability. What they can obscure is that every handoff also becomes a new point of fragility. If the boundary is wrong, the system gets more structure without getting more clarity.</p>
 
         <h2>Related Harnesses</h2>
         <ul><li><a href="../harnesses/openai-agents-sdk.html">OpenAI Agents SDK</a></li></ul>

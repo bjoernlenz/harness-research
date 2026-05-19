@@ -43,20 +43,6 @@ This packet inventories currently thin concept notes rather than merging them im
 - Referenced by: `aider`
 - Likely status: acceptable thin node; concept is sharp even if note is brief
 
-### `handoffs`
-
-- Current note status: 3-line summary note
-- Lives in: OpenAI Agents SDK coordination cluster
-- Referenced by: `openai-agents-sdk`
-- Likely status: candidate for later deepening if multi-agent routing expands
-
-### `kernel-as-cognitive-spine`
-
-- Current note status: 3-line summary note
-- Lives in: Semantic Kernel middleware cluster
-- Referenced by: `semantic-kernel`
-- Likely status: candidate for one exploration note if kernel-centered systems broaden
-
 ### `microagents`
 
 - Current note status: 3-line summary note
