@@ -13,10 +13,13 @@ This repo studies agent frameworks, coding agents, workflow runtimes, memory sur
 
 Start with these files:
 
+- [../process.md](../process.md)
 - [project-charter.md](./project-charter.md)
 - [codex-onboarding.md](./codex-onboarding.md)
 - [notes/review-packets/002-emergence-review.md](./notes/review-packets/002-emergence-review.md)
 - [notes/review-packets/004-exploration-layer-review.md](./notes/review-packets/004-exploration-layer-review.md)
+
+`../process.md` is the reusable big-picture explanation of the method behind this repo. The files below are the observatory-specific operating surfaces.
 
 ## Current Operating Decision
 

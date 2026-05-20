@@ -2,6 +2,8 @@
 
 This document is for implementation work inside the observatory repo.
 
+For the broader process explanation behind this repo, read [../process.md](../process.md) first. This onboarding file is narrower: it explains how the current observatory is wired and maintained.
+
 ## Repo Intent
 
 The observatory is no longer just collecting harnesses.
