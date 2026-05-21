@@ -661,6 +661,18 @@ def render_metaphor_picture(label: str) -> str:
   <path d="M38 69c6 3 14 3 20 0" fill="none" stroke="#1f1d1a" stroke-width="2.5" stroke-linecap="round"/>
 </svg>
 """.strip()
+    if key == "container ship":
+        return """
+<svg viewBox="0 0 96 96" aria-hidden="true">
+  <path d="M16 58h56l10 12H28c-5 0-9-2-12-6z" fill="#4d5a67" stroke="#1f1d1a" stroke-width="3" stroke-linejoin="round"/>
+  <rect x="28" y="34" width="14" height="10" fill="#c87745" stroke="#1f1d1a" stroke-width="2"/>
+  <rect x="42" y="34" width="14" height="10" fill="#f0b25d" stroke="#1f1d1a" stroke-width="2"/>
+  <rect x="56" y="34" width="12" height="10" fill="#75a8b8" stroke="#1f1d1a" stroke-width="2"/>
+  <rect x="34" y="24" width="10" height="8" fill="#fffdf8" stroke="#1f1d1a" stroke-width="2"/>
+  <rect x="46" y="24" width="10" height="8" fill="#fffdf8" stroke="#1f1d1a" stroke-width="2"/>
+  <path d="M18 78c10-3 18-3 28 0 10 3 18 3 28 0 4-1 8-2 12-2" fill="none" stroke="#8bb7c6" stroke-width="3" stroke-linecap="round"/>
+</svg>
+""".strip()
     if label.strip():
         MISSING_METAPHOR_PICTURES.add(label.strip())
     return """

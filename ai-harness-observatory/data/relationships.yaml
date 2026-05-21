@@ -183,3 +183,31 @@ relationships:
     relation: shares_primary_substrate_with
     to: openai-agents-sdk
     note: "Both are capability-composition systems where routing and service surfaces matter more than repo closeness."
+  - from: archon
+    relation: embodies_concept
+    to: process-as-code
+    note: "Archon turns development process into versioned YAML workflows that live beside the code rather than inside operator habit."
+  - from: archon
+    relation: embodies_concept
+    to: human-in-the-loop
+    note: "Approval nodes make human review a structural phase of the workflow rather than an optional afterthought."
+  - from: archon
+    relation: externalizes_through
+    to: process-as-code
+    note: "Archon externalizes workflow intelligence into repo-visible definitions instead of leaving it latent in prompts or team memory."
+  - from: archon
+    relation: trusts_through
+    to: validation-rails
+    note: "The system asks to be trusted through explicit workflow stages, validation nodes, and deterministic gates around AI execution."
+  - from: archon
+    relation: shares_hidden_bet_with
+    to: langgraph
+    note: "Both assume reliability comes from visible structure rather than opaque autonomous loops, even though Archon uses YAML workflows where LangGraph uses explicit state graphs."
+  - from: archon
+    relation: different_complexity_center_than
+    to: claude-code
+    note: "Archon pushes complexity into workflow design, gates, and run isolation, while Claude Code keeps more intelligence in a terminal-close collaboration loop."
+  - from: archon
+    relation: contrasts_with
+    to: aider
+    note: "Archon makes the coding process itself explicit and repeatable, while Aider stays closer to conversational collaboration inside the live repo."

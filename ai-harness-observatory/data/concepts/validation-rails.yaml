@@ -4,3 +4,4 @@ kind: concept
 summary: "Schemas and validation logic act as safety rails around stochastic model behavior."
 related_harnesses:
   - pydantic-ai
+  - archon

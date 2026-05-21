@@ -5,3 +5,4 @@ summary: "Human approval, supervision, or collaboration is treated as a first-cl
 related_harnesses:
   - langgraph
   - aider
+  - archon

@@ -1,0 +1,6 @@
+id: process-as-code
+name: Process As Code
+kind: concept
+summary: "The development process itself is stored as a versioned artifact so AI behavior is shaped by explicit reusable workflow definition."
+related_harnesses:
+  - archon

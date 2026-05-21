@@ -1,0 +1,132 @@
+id: archon
+name: Archon
+category:
+  - coding-harness
+  - workflow-engine
+primary_language:
+  - typescript
+origin:
+  organization: coleam00
+  repo: https://github.com/coleam00/archon
+  docs: https://archon.diy/
+status:
+  maturity: production
+  activity: active
+
+architectural_core:
+  - YAML-defined coding workflows
+  - deterministic orchestration with AI and non-AI nodes
+  - git worktree isolation for parallel runs
+
+complexity_focus:
+  - workflow authoring
+  - validation gates
+  - worktree and artifact management
+  - multi-surface orchestration
+
+primary_substrate:
+  - workflows
+  - git
+  - repository
+  - validation
+
+cognitive_style:
+  - explicit
+  - inspectable
+  - composable
+
+trust_model:
+  - explicit-control-flow
+  - human-approval
+  - environment-separation
+
+hidden_bet:
+  summary: "AI coding becomes reliable when the development process itself is made explicit, versioned, and repeatable."
+  notes:
+    - "The architecture assumes the human should own the workflow and gates while the model fills in local intelligence."
+    - "Deterministic process matters more than leaving execution style up to the model in each run."
+
+worldview:
+  short: "Coding agents become trustworthy when they run inside versioned workflows with explicit phases, validation gates, and isolated worktrees."
+  notes:
+    - "Archon defines workflows as YAML files in `.archon/workflows/` and treats them as durable project artifacts."
+    - "The official framing compares Archon to Dockerfiles for infrastructure and GitHub Actions for CI/CD, but for AI coding workflows."
+    - "AI is allowed to contribute intelligence inside the steps, but the sequence, approval points, and validation checks are owned by the workflow."
+
+memory_model:
+  type:
+    - workflow-artifacts
+    - repository-state
+    - run-history
+  notes:
+    - "Its durable residue lives more in workflow files, run logs, artifacts, and git-isolated workspaces than in a deep semantic memory layer."
+
+human_role:
+  - process-designer
+  - approver
+  - operator
+
+tool_model:
+  - AI assistants
+  - bash scripts
+  - git operations
+  - platform adapters
+
+autonomy_level: medium
+determinism_level: hybrid
+
+playfulness:
+  summary: "The lively move is treating a coding process like a versioned artifact: the workflow itself becomes part of the codebase."
+  surprising_moves:
+    - "The same workflow can run from CLI, web, Slack, Telegram, Discord, or GitHub without changing the underlying definition."
+    - "Git worktrees turn parallel AI coding runs into isolated operational lanes instead of one shared working directory."
+
+strengths:
+  - "Strong repeatability"
+  - "Clear approval and validation story"
+  - "Portable process capture across projects and interfaces"
+
+risks_or_limits:
+  - "Encoding process up front can feel heavy."
+  - "Rigid workflows can underfit exploratory or ambiguous work."
+
+failure_modes:
+  - "Workflow complexity overwhelming insight"
+  - "Validation churn"
+  - "Patch misalignment"
+
+representative_for:
+  - "process-as-code coding harness"
+  - "deterministic AI workflow engine"
+
+related_concepts:
+  - process-as-code
+  - durable-execution
+  - human-in-the-loop
+  - validation-rails
+
+metaphor:
+  animal: null
+  transport: container ship
+  rationale: "It moves repeatable cargo across defined stages and ports, keeping the route stable even when the contents vary."
+
+what_it_refuses:
+  - "AI coding as an improvised one-shot chat act"
+  - "Keeping process knowledge trapped inside the model"
+  - "Letting parallel runs collide in one working directory"
+
+core_tension: "Its strength is turning best practice into repeatable machinery. Its tradeoff is that the more process you encode, the easier it is to trade adaptability for procedural weight."
+
+relationships:
+  similar_to:
+    - langgraph
+    - openai-agents-sdk
+  contrasts_with:
+    - claude-code
+    - aider
+  influenced_by: []
+  influences: []
+
+source_quality:
+  confidence: medium
+  last_reviewed: "2026-05-21"

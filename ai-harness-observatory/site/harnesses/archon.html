@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Archon · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .card {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .metaphor-picture {
+        width: 82px;
+        height: 82px;
+        margin: 0 0 14px;
+        display: grid;
+        place-items: center;
+        border-radius: 20px;
+        background:
+          radial-gradient(circle at top, rgba(200, 119, 69, 0.22), transparent 52%),
+          linear-gradient(180deg, #fff9ef 0%, #f2e5d1 100%);
+        border: 1px solid var(--border);
+      }
+      .metaphor-picture svg {
+        width: 64px;
+        height: 64px;
+        overflow: visible;
+      }
+      .card h2 {
+        margin: 0 0 12px;
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 0.98;
+      }
+      .card h3 {
+        margin: 16px 0 8px;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+      }
+      .card p, .card ul {
+        margin: 0;
+        line-height: 1.6;
+      }
+      .card ul { padding-left: 18px; }
+      .pill-list, .relationship-list {
+        list-style: none;
+        padding-left: 0;
+      }
+      .pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .pill {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #efe2cf;
+        color: var(--ink);
+        text-decoration: none;
+        border: 1px solid var(--border);
+        font-size: 0.95rem;
+      }
+      .section-link {
+        color: inherit;
+        text-decoration: none;
+      }
+      .section-link:hover { text-decoration: underline; }
+      .subtle, .relation-note, .empty-state { color: var(--muted); }
+      .relationship-list li {
+        padding: 10px 0;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+      .relationship-list li:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../index.html">← Back to atlas</a>
+      <article class="card" id="archon">
+      <div class="metaphor-picture" title="container ship">
+        <svg viewBox="0 0 96 96" aria-hidden="true">
+  <path d="M16 58h56l10 12H28c-5 0-9-2-12-6z" fill="#4d5a67" stroke="#1f1d1a" stroke-width="3" stroke-linejoin="round"/>
+  <rect x="28" y="34" width="14" height="10" fill="#c87745" stroke="#1f1d1a" stroke-width="2"/>
+  <rect x="42" y="34" width="14" height="10" fill="#f0b25d" stroke="#1f1d1a" stroke-width="2"/>
+  <rect x="56" y="34" width="12" height="10" fill="#75a8b8" stroke="#1f1d1a" stroke-width="2"/>
+  <rect x="34" y="24" width="10" height="8" fill="#fffdf8" stroke="#1f1d1a" stroke-width="2"/>
+  <rect x="46" y="24" width="10" height="8" fill="#fffdf8" stroke="#1f1d1a" stroke-width="2"/>
+  <path d="M18 78c10-3 18-3 28 0 10 3 18 3 28 0 4-1 8-2 12-2" fill="none" stroke="#8bb7c6" stroke-width="3" stroke-linecap="round"/>
+</svg>
+      </div>
+      <h2>Archon</h2>
+      <p class="subtle"><a href="../index.html#archon">View atlas card</a></p>
+      
+      <section>
+        <h3>Human Story</h3>
+        <p>Archon comes from a very specific irritation: not that coding models are weak, but that they are inconsistent. Its public framing keeps returning to the same wound. Ask an AI assistant to fix a bug and the process changes with the model&#x27;s mood. Sometimes it plans, sometimes it edits immediately, sometimes it validates, sometimes it skips the boring but essential steps. The emotional origin is not fascination with automation for its own sake. It is impatience with unreliable craft.</p>
+<p>That explains why Archon talks about workflows with almost infrastructural seriousness. The project compares itself to Dockerfiles and GitHub Actions because it wants development process to stop living inside prompt folklore and start living in versioned artifacts. A workflow is not just a convenience here. It is a claim that teams should own their coding process explicitly instead of re-negotiating it with the model on every run.</p>
+<p>There is also something humane in the way Archon handles trust. It does not only add AI loops. It adds approval nodes, validation nodes, and isolated git worktrees. That combination says something clear about the people it is built for: they want leverage, but they do not want parallel AI work smashing into the same working tree or silently skipping review rituals they care about.</p>
+<p>So the deeper story is that Archon exists for builders who no longer want &quot;smart enough&quot; coding agents by themselves. They want a harness that can preserve local standards, transport them between interfaces, and make best practice repeatable. It is less a fantasy of autonomous software labor than an attempt to turn team process into durable operational structure.</p>
+<h2>Sources</h2>
+<ul>
+<li>https://github.com/coleam00/archon</li>
+<li>https://archon.diy/</li>
+<li>https://archon.diy/getting-started/concepts/</li>
+<li>https://archon.diy/book/what-is-archon/</li>
+</ul>
+      </section>
+      <section>
+        <h3>Category</h3>
+        <ul><li>coding-harness</li><li>workflow-engine</li></ul>
+      </section>
+      <section>
+        <h3>Architectural Core</h3>
+        <ul><li>YAML-defined coding workflows</li><li>deterministic orchestration with AI and non-AI nodes</li><li>git worktree isolation for parallel runs</li></ul>
+      </section>
+      <section>
+        <h3>Worldview</h3>
+        <p>Coding agents become trustworthy when they run inside versioned workflows with explicit phases, validation gates, and isolated worktrees.</p>
+      </section>
+      <section>
+        <h3>Complexity Focus</h3>
+        <ul><li>workflow authoring</li><li>validation gates</li><li>worktree and artifact management</li><li>multi-surface orchestration</li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/primary-substrates/index.html">Primary Substrate</a></h3>
+        <ul><li><a href="../browse/primary-substrates/workflows.html">workflows</a></li><li><a href="../browse/primary-substrates/git.html">git</a></li><li><a href="../browse/primary-substrates/repository.html">repository</a></li><li><a href="../browse/primary-substrates/validation.html">validation</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/cognitive-styles/index.html">Cognitive Style</a></h3>
+        <ul><li><a href="../browse/cognitive-styles/explicit.html">explicit</a></li><li><a href="../browse/cognitive-styles/inspectable.html">inspectable</a></li><li><a href="../browse/cognitive-styles/composable.html">composable</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/trust-models/index.html">Trust Model</a></h3>
+        <ul><li><a href="../browse/trust-models/explicit-control-flow.html">explicit-control-flow</a></li><li><a href="../browse/trust-models/human-approval.html">human-approval</a></li><li><a href="../browse/trust-models/environment-separation.html">environment-separation</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/hidden-bets/index.html">Hidden Bet</a></h3>
+        <p><a href="../browse/hidden-bets/ai-coding-becomes-reliable-when-the-development-process-itself-is-made-explicit-versioned-and-repeatable.html">AI coding becomes reliable when the development process itself is made explicit, versioned, and repeatable.</a></p>
+      </section>
+      <section>
+        <h3>Playfulness</h3>
+        <p>The lively move is treating a coding process like a versioned artifact: the workflow itself becomes part of the codebase.</p>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/failure-modes/index.html">Failure Modes</a></h3>
+        <ul><li><a href="../browse/failure-modes/workflow-complexity-overwhelming-insight.html">Workflow complexity overwhelming insight</a></li><li><a href="../browse/failure-modes/validation-churn.html">Validation churn</a></li><li><a href="../browse/failure-modes/patch-misalignment.html">Patch misalignment</a></li></ul>
+      </section>
+      <section>
+        <h3>What It Refuses</h3>
+        <ul><li>AI coding as an improvised one-shot chat act</li><li>Keeping process knowledge trapped inside the model</li><li>Letting parallel runs collide in one working directory</li></ul>
+      </section>
+      <section>
+        <h3>Core Tension</h3>
+        <p>Its strength is turning best practice into repeatable machinery. Its tradeoff is that the more process you encode, the easier it is to trade adaptability for procedural weight.</p>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/representative-for/index.html">Representative For</a></h3>
+        <ul><li><a href="../browse/representative-for/process-as-code-coding-harness.html">process-as-code coding harness</a></li><li><a href="../browse/representative-for/deterministic-ai-workflow-engine.html">deterministic AI workflow engine</a></li></ul>
+      </section>
+      
+      <section>
+        <h3>Animal or Transport</h3>
+        <p><strong>container ship</strong></p>
+        <p>It moves repeatable cargo across defined stages and ports, keeping the route stable even when the contents vary.</p>
+      </section>
+      <section>
+        <h3>Related Concepts</h3>
+        <ul class="pill-list"><li><a class="pill" href="../concepts/process-as-code.html">Process As Code</a></li><li><a class="pill" href="../concepts/durable-execution.html">Durable Execution</a></li><li><a class="pill" href="../concepts/human-in-the-loop.html">Human In The Loop</a></li><li><a class="pill" href="../concepts/validation-rails.html">Validation Rails</a></li></ul>
+      </section>
+      
+      <section>
+        <h3>Relationships</h3>
+        <ul class="relationship-list"><li><strong><a href="../browse/relationships/embodies-concept.html">Embodies Concept</a></strong> → <a href="../concepts/process-as-code.html">Process As Code</a><br><span class="relation-note">Archon turns development process into versioned YAML workflows that live beside the code rather than inside operator habit.</span></li><li><strong><a href="../browse/relationships/embodies-concept.html">Embodies Concept</a></strong> → <a href="../concepts/human-in-the-loop.html">Human In The Loop</a><br><span class="relation-note">Approval nodes make human review a structural phase of the workflow rather than an optional afterthought.</span></li><li><strong><a href="../browse/relationships/externalizes-through.html">Externalizes Through</a></strong> → <a href="../concepts/process-as-code.html">Process As Code</a><br><span class="relation-note">Archon externalizes workflow intelligence into repo-visible definitions instead of leaving it latent in prompts or team memory.</span></li><li><strong><a href="../browse/relationships/trusts-through.html">Trusts Through</a></strong> → <a href="../concepts/validation-rails.html">Validation Rails</a><br><span class="relation-note">The system asks to be trusted through explicit workflow stages, validation nodes, and deterministic gates around AI execution.</span></li><li><strong><a href="../browse/relationships/shares-hidden-bet-with.html">Shares Hidden Bet With</a></strong> → <a href="langgraph.html">LangGraph</a><br><span class="relation-note">Both assume reliability comes from visible structure rather than opaque autonomous loops, even though Archon uses YAML workflows where LangGraph uses explicit state graphs.</span></li><li><strong><a href="../browse/relationships/different-complexity-center-than.html">Different Complexity Center Than</a></strong> → <a href="claude-code.html">Claude Code</a><br><span class="relation-note">Archon pushes complexity into workflow design, gates, and run isolation, while Claude Code keeps more intelligence in a terminal-close collaboration loop.</span></li><li><strong><a href="../browse/relationships/contrasts-with.html">Contrasts With</a></strong> → <a href="aider.html">Aider</a><br><span class="relation-note">Archon makes the coding process itself explicit and repeatable, while Aider stays closer to conversational collaboration inside the live repo.</span></li></ul>
+      </section>
+      <section>
+        <h3>More To Explore</h3>
+        <h4>Shares Primary Substrate</h4>
+        <ul><li><a href="aider.html">Aider</a></li><li><a href="claude-code.html">Claude Code</a></li><li><a href="cursor.html">Cursor</a></li><li><a href="llamaindex.html">LlamaIndex</a></li></ul>
+        <h4>Shares Trust Model</h4>
+        <ul><li><a href="aider.html">Aider</a></li><li><a href="claude-code.html">Claude Code</a></li><li><a href="cursor.html">Cursor</a></li><li><a href="langgraph.html">LangGraph</a></li></ul>
+        <h4>Shares Cognitive Style</h4>
+        <ul><li><a href="openai-agents-sdk.html">OpenAI Agents SDK</a></li><li><a href="langgraph.html">LangGraph</a></li><li><a href="llamaindex.html">LlamaIndex</a></li><li><a href="pydantic-ai.html">PydanticAI</a></li></ul>
+        <h4>Contrasts With</h4>
+        <ul><li><a href="claude-code.html">Claude Code</a></li><li><a href="aider.html">Aider</a></li></ul>
+        <h4>Explorations</h4><ul><li><a href="../notes/explorations/concepts/graph-orchestration.html">Graph Orchestration</a></li><li><a href="../notes/explorations/concepts/permissioned-agency.html">Permissioned Agency</a></li><li><a href="../notes/explorations/concepts/repository-as-memory.html">Repository As Memory</a></li></ul><h4>Harness Stories</h4><ul><li><a href="../notes/explorations/harnesses/archon.html">Archon Human Story</a></li></ul>
+      </section>
+    </article>
+    </main>
+  </body>
+</html>
