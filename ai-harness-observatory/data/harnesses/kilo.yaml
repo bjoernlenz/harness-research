@@ -1,0 +1,143 @@
+id: kilo
+name: Kilo Code
+category:
+  - coding-agent
+  - ide-harness
+  - terminal-harness
+primary_language:
+  - typescript
+origin:
+  organization: Kilo Code, Inc.
+  repo: https://github.com/Kilo-Org/kilocode
+  docs: https://kilo.ai/docs
+status:
+  maturity: production
+  activity: active
+
+architectural_core:
+  - open-source coding agent
+  - multi-surface IDE, CLI, and cloud operation
+  - model gateway with bring-your-own-key support
+  - hosted long-running agents through KiloClaw
+
+complexity_focus:
+  - model routing and cost control
+  - IDE and CLI session continuity
+  - cloud agent handoff
+  - open-source prompt and context visibility
+
+primary_substrate:
+  - ide-context
+  - terminal
+  - remote-agent-environment
+  - services
+
+cognitive_style:
+  - collaborative
+  - composable
+  - inspectable
+
+trust_model:
+  - minimal-core-transparency
+  - connector-abstraction
+  - runtime-composition
+
+hidden_bet:
+  summary: "Open source portability plus model choice beats a sealed single-provider coding agent."
+  notes:
+    - "Kilo assumes developers want one agentic coding surface that can move across IDE, CLI, cloud, and model providers."
+    - "The pricing and gateway story makes model access part of the trust model rather than a hidden implementation detail."
+
+worldview:
+  short: "Coding agents should be open, portable across developer surfaces, and economically transparent about model choice."
+  notes:
+    - "Kilo's public framing emphasizes one open-source agent across VS Code, JetBrains, CLI, cloud agents, and Slack-adjacent workflows."
+    - "Its model gateway and bring-your-own-key support make provider plurality a core architectural feature."
+
+memory_model:
+  type:
+    - session-history
+    - repository-context
+    - hosted-agent-continuity
+  notes:
+    - "The visible architecture emphasizes session continuity and handoff across local and hosted surfaces more than a separate semantic memory store."
+
+human_role:
+  - collaborator
+  - model-selector
+  - operator
+  - reviewer
+
+tool_model:
+  - IDE extension
+  - CLI
+  - cloud agents
+  - Kilo Gateway
+  - MCP
+  - chat platform integrations
+
+autonomy_level: medium
+determinism_level: hybrid
+
+playfulness:
+  summary: "The sharp move is turning model choice, local work, and hosted agents into one portable coding surface."
+  surprising_moves:
+    - "Model routing and pricing are treated as first-class product architecture."
+    - "The same brand stretches from editor assistant to CLI agent to hosted OpenClaw-style infrastructure."
+
+strengths:
+  - "Open-source implementation"
+  - "Broad model access with gateway and BYOK options"
+  - "Works across IDE, CLI, and cloud surfaces"
+  - "Clear migration story from other coding tools"
+
+risks_or_limits:
+  - "The breadth of surfaces can make the product boundary harder to reason about."
+  - "Gateway-centered value depends on trust in routing, billing, and provider availability."
+  - "Hosted long-running agents introduce a larger operational trust surface than local-only coding tools."
+
+failure_modes:
+  - "Tool surface overload"
+  - "Connector sprawl"
+  - "Trust gaps between foreground and background work"
+
+representative_for:
+  - "portable open-source coding agent"
+  - "model-gateway coding harness"
+
+related_concepts:
+  - coding-agents
+  - ide-as-agent-body
+  - terminal-as-agent-body
+  - background-agents
+  - connector-abstraction
+  - mcp-as-tool-fabric
+  - extension-driven-runtime
+
+metaphor:
+  animal: null
+  transport: "multi-port dock"
+  rationale: "It concentrates many working surfaces and model providers into one hub, so the interesting metaphor is a dock that lets the same work plug into different environments."
+
+what_it_refuses:
+  - "Single-provider model lock-in"
+  - "A closed implementation that hides prompt and context behavior"
+  - "Forcing coding agency into only one editor or only one terminal"
+
+core_tension: "Its strength is portability across tools, models, and execution surfaces. Its tradeoff is that every added surface increases the burden of coherence, trust, and operational clarity."
+
+relationships:
+  similar_to:
+    - claude-code
+    - cursor
+    - aider
+  contrasts_with:
+    - langgraph
+  influenced_by:
+    - cline
+    - roo-code
+  influences: []
+
+source_quality:
+  confidence: medium
+  last_reviewed: "2026-07-02"

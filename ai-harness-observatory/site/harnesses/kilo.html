@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kilo Code · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .card {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .metaphor-picture {
+        width: 82px;
+        height: 82px;
+        margin: 0 0 14px;
+        display: grid;
+        place-items: center;
+        border-radius: 20px;
+        background:
+          radial-gradient(circle at top, rgba(200, 119, 69, 0.22), transparent 52%),
+          linear-gradient(180deg, #fff9ef 0%, #f2e5d1 100%);
+        border: 1px solid var(--border);
+      }
+      .metaphor-picture svg {
+        width: 64px;
+        height: 64px;
+        overflow: visible;
+      }
+      .card h2 {
+        margin: 0 0 12px;
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 0.98;
+      }
+      .card h3 {
+        margin: 16px 0 8px;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+      }
+      .card p, .card ul {
+        margin: 0;
+        line-height: 1.6;
+      }
+      .card ul { padding-left: 18px; }
+      .pill-list, .relationship-list {
+        list-style: none;
+        padding-left: 0;
+      }
+      .pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .pill {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #efe2cf;
+        color: var(--ink);
+        text-decoration: none;
+        border: 1px solid var(--border);
+        font-size: 0.95rem;
+      }
+      .section-link {
+        color: inherit;
+        text-decoration: none;
+      }
+      .section-link:hover { text-decoration: underline; }
+      .subtle, .relation-note, .empty-state { color: var(--muted); }
+      .relationship-list li {
+        padding: 10px 0;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+      .relationship-list li:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../index.html">← Back to atlas</a>
+      <article class="card" id="kilo">
+      <div class="metaphor-picture" title="multi-port dock">
+        <svg viewBox="0 0 96 96" aria-hidden="true">
+  <circle cx="48" cy="48" r="32" fill="#f0e2cc" stroke="#1f1d1a" stroke-width="4"/>
+  <path d="M34 57c8-6 20-6 28 0" fill="none" stroke="#c87745" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="39" cy="39" r="4" fill="#1f1d1a"/>
+  <circle cx="57" cy="39" r="4" fill="#1f1d1a"/>
+</svg>
+      </div>
+      <h2>Kilo Code</h2>
+      <p class="subtle"><a href="../index.html#kilo">View atlas card</a></p>
+      
+      <section>
+        <h3>Why This Exists</h3>
+        <p><a href="../notes/briefs/kilo.html">Read the A4 brief for Kilo Code</a></p>
+      </section>
+      
+      <section>
+        <h3>Human Story</h3>
+        <p>Kilo Code feels like a response to the moment when coding agents stopped being one product category. The same developer might now want an IDE assistant, a terminal agent, a remote worker, a code reviewer, a Slack-connected agent, and a model gateway. Kilo&#x27;s human story is that these should not feel like unrelated bets.</p>
+<p>The emotional center is control. Not only control over whether an agent edits code, but control over where it lives and which model powers it. The open-source framing matters because it gives the product a different trust posture from sealed coding assistants. The model gateway matters because cost and provider choice are no longer hidden behind the assistant&#x27;s personality.</p>
+<p>There is also an expansion story. Kilo Code begins as a practical coding agent, but its public surface stretches toward hosted OpenClaw agents, cloud execution, team controls, and automation. That makes it less minimal than a repo-close CLI tool and less centrally orchestrated than a graph runtime. It wants to be a portable developer work surface.</p>
+<p>So the human story is not simply &quot;another AI coding agent.&quot; It is a bet that developers will adopt agentic work more readily when the agent is inspectable, economically legible, and able to follow them from local editor to terminal to hosted background work.</p>
+<h2>Sources</h2>
+<ul>
+<li>https://kilo.ai/</li>
+<li>https://kilo.ai/docs</li>
+<li>https://github.com/Kilo-Org/kilocode</li>
+</ul>
+      </section>
+      <section>
+        <h3>Category</h3>
+        <ul><li>coding-agent</li><li>ide-harness</li><li>terminal-harness</li></ul>
+      </section>
+      <section>
+        <h3>Architectural Core</h3>
+        <ul><li>open-source coding agent</li><li>multi-surface IDE, CLI, and cloud operation</li><li>model gateway with bring-your-own-key support</li><li>hosted long-running agents through KiloClaw</li></ul>
+      </section>
+      <section>
+        <h3>Worldview</h3>
+        <p>Coding agents should be open, portable across developer surfaces, and economically transparent about model choice.</p>
+      </section>
+      <section>
+        <h3>Complexity Focus</h3>
+        <ul><li>model routing and cost control</li><li>IDE and CLI session continuity</li><li>cloud agent handoff</li><li>open-source prompt and context visibility</li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/primary-substrates/index.html">Primary Substrate</a></h3>
+        <ul><li><a href="../browse/primary-substrates/ide-context.html">ide-context</a></li><li><a href="../browse/primary-substrates/terminal.html">terminal</a></li><li><a href="../browse/primary-substrates/remote-agent-environment.html">remote-agent-environment</a></li><li><a href="../browse/primary-substrates/services.html">services</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/cognitive-styles/index.html">Cognitive Style</a></h3>
+        <ul><li><a href="../browse/cognitive-styles/collaborative.html">collaborative</a></li><li><a href="../browse/cognitive-styles/composable.html">composable</a></li><li><a href="../browse/cognitive-styles/inspectable.html">inspectable</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/trust-models/index.html">Trust Model</a></h3>
+        <ul><li><a href="../browse/trust-models/minimal-core-transparency.html">minimal-core-transparency</a></li><li><a href="../browse/trust-models/connector-abstraction.html">connector-abstraction</a></li><li><a href="../browse/trust-models/runtime-composition.html">runtime-composition</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/hidden-bets/index.html">Hidden Bet</a></h3>
+        <p><a href="../browse/hidden-bets/open-source-portability-plus-model-choice-beats-a-sealed-single-provider-coding-agent.html">Open source portability plus model choice beats a sealed single-provider coding agent.</a></p>
+      </section>
+      <section>
+        <h3>Playfulness</h3>
+        <p>The sharp move is turning model choice, local work, and hosted agents into one portable coding surface.</p>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/failure-modes/index.html">Failure Modes</a></h3>
+        <ul><li><a href="../browse/failure-modes/tool-surface-overload-2.html">Tool surface overload</a></li><li><a href="../browse/failure-modes/connector-sprawl.html">Connector sprawl</a></li><li><a href="../browse/failure-modes/trust-gaps-between-foreground-and-background-work.html">Trust gaps between foreground and background work</a></li></ul>
+      </section>
+      <section>
+        <h3>What It Refuses</h3>
+        <ul><li>Single-provider model lock-in</li><li>A closed implementation that hides prompt and context behavior</li><li>Forcing coding agency into only one editor or only one terminal</li></ul>
+      </section>
+      <section>
+        <h3>Core Tension</h3>
+        <p>Its strength is portability across tools, models, and execution surfaces. Its tradeoff is that every added surface increases the burden of coherence, trust, and operational clarity.</p>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/representative-for/index.html">Representative For</a></h3>
+        <ul><li><a href="../browse/representative-for/portable-open-source-coding-agent.html">portable open-source coding agent</a></li><li><a href="../browse/representative-for/model-gateway-coding-harness.html">model-gateway coding harness</a></li></ul>
+      </section>
+      
+      <section>
+        <h3>Animal or Transport</h3>
+        <p><strong>multi-port dock</strong></p>
+        <p>It concentrates many working surfaces and model providers into one hub, so the interesting metaphor is a dock that lets the same work plug into different environments.</p>
+      </section>
+      <section>
+        <h3>Related Concepts</h3>
+        <ul class="pill-list"><li><a class="pill" href="../concepts/coding-agents.html">Coding Agents</a></li><li><a class="pill" href="../concepts/ide-as-agent-body.html">IDE As Agent Body</a></li><li><a class="pill" href="../concepts/terminal-as-agent-body.html">Terminal As Agent Body</a></li><li><a class="pill" href="../concepts/background-agents.html">Background Agents</a></li><li><a class="pill" href="../concepts/connector-abstraction.html">Connector Abstraction</a></li><li><a class="pill" href="../concepts/mcp-as-tool-fabric.html">MCP As Tool Fabric</a></li><li><a class="pill" href="../concepts/extension-driven-runtime.html">Extension-Driven Runtime</a></li></ul>
+      </section>
+      
+      <section>
+        <h3>Relationships</h3>
+        <ul class="relationship-list"><li><strong><a href="../browse/relationships/embodies-concept.html">Embodies Concept</a></strong> → <a href="../concepts/ide-as-agent-body.html">IDE As Agent Body</a><br><span class="relation-note">Kilo makes the IDE one of the main bodies for coding agency while also keeping CLI and cloud surfaces in reach.</span></li><li><strong><a href="../browse/relationships/embodies-concept.html">Embodies Concept</a></strong> → <a href="../concepts/connector-abstraction.html">Connector Abstraction</a><br><span class="relation-note">Its gateway, BYOK story, MCP support, and platform integrations make provider and tool connection a first-class layer.</span></li><li><strong><a href="../browse/relationships/externalizes-through.html">Externalizes Through</a></strong> → <a href="../concepts/mcp-as-tool-fabric.html">MCP As Tool Fabric</a><br><span class="relation-note">Kilo grows outward through MCP and integration surfaces rather than limiting the agent to built-in tools.</span></li><li><strong><a href="../browse/relationships/shares-hidden-bet-with.html">Shares Hidden Bet With</a></strong> → <a href="claude-code.html">Claude Code</a><br><span class="relation-note">Both assume strong coding agency can stay close to existing developer workflows, though Kilo adds a stronger cross-surface and model-gateway story.</span></li><li><strong><a href="../browse/relationships/competes-for-same-use-case-as.html">Competes For Same Use Case As</a></strong> → <a href="cursor.html">Cursor</a><br><span class="relation-note">Both aim to be the daily coding agent environment, but Kilo leans harder on open source, model plurality, and multiple surfaces.</span></li><li><strong><a href="../browse/relationships/different-complexity-center-than.html">Different Complexity Center Than</a></strong> → <a href="aider.html">Aider</a><br><span class="relation-note">Aider concentrates complexity around repo-local chat, diffs, and git, while Kilo concentrates more around portability across IDE, CLI, cloud, and model providers.</span></li></ul>
+      </section>
+      <section>
+        <h3>More To Explore</h3>
+        <h4>Shares Primary Substrate</h4>
+        <ul><li><a href="cursor.html">Cursor</a></li><li><a href="claude-code.html">Claude Code</a></li><li><a href="hermes.html">Hermes Agent</a></li><li><a href="pi.html">Pi</a></li></ul>
+        <h4>Shares Trust Model</h4>
+        <ul><li><a href="semantic-kernel.html">Semantic Kernel</a></li><li><a href="hermes.html">Hermes Agent</a></li><li><a href="pi.html">Pi</a></li></ul>
+        <h4>Shares Cognitive Style</h4>
+        <ul><li><a href="archon.html">Archon</a></li><li><a href="claude-code.html">Claude Code</a></li><li><a href="openai-agents-sdk.html">OpenAI Agents SDK</a></li><li><a href="aider.html">Aider</a></li></ul>
+        <h4>Contrasts With</h4>
+        <ul><li><a href="cursor.html">Cursor</a></li><li><a href="aider.html">Aider</a></li></ul>
+        <h4>Explorations</h4><ul><li><a href="../notes/explorations/concepts/context-as-substrate.html">Context As Substrate</a></li><li><a href="../notes/explorations/concepts/kernel-as-cognitive-spine.html">Kernel As Cognitive Spine</a></li><li><a href="../notes/explorations/concepts/permissioned-agency.html">Permissioned Agency</a></li></ul><h4>Harness Stories</h4><ul><li><a href="../notes/explorations/harnesses/kilo.html">Kilo Code Human Story</a></li></ul><h4>Why This Exists</h4><ul><li><a href="../notes/briefs/kilo.html">Kilo Code - Why This Exists</a></li></ul>
+      </section>
+    </article>
+    </main>
+  </body>
+</html>

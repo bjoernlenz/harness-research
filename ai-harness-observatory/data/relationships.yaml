@@ -211,3 +211,27 @@ relationships:
     relation: contrasts_with
     to: aider
     note: "Archon makes the coding process itself explicit and repeatable, while Aider stays closer to conversational collaboration inside the live repo."
+  - from: kilo
+    relation: embodies_concept
+    to: ide-as-agent-body
+    note: "Kilo makes the IDE one of the main bodies for coding agency while also keeping CLI and cloud surfaces in reach."
+  - from: kilo
+    relation: embodies_concept
+    to: connector-abstraction
+    note: "Its gateway, BYOK story, MCP support, and platform integrations make provider and tool connection a first-class layer."
+  - from: kilo
+    relation: externalizes_through
+    to: mcp-as-tool-fabric
+    note: "Kilo grows outward through MCP and integration surfaces rather than limiting the agent to built-in tools."
+  - from: kilo
+    relation: shares_hidden_bet_with
+    to: claude-code
+    note: "Both assume strong coding agency can stay close to existing developer workflows, though Kilo adds a stronger cross-surface and model-gateway story."
+  - from: kilo
+    relation: competes_for_same_use_case_as
+    to: cursor
+    note: "Both aim to be the daily coding agent environment, but Kilo leans harder on open source, model plurality, and multiple surfaces."
+  - from: kilo
+    relation: different_complexity_center_than
+    to: aider
+    note: "Aider concentrates complexity around repo-local chat, diffs, and git, while Kilo concentrates more around portability across IDE, CLI, cloud, and model providers."
