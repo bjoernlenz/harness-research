@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pi - Why This Exists · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .panel {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 0.98;
+      }
+      h2, h3, h4, h5, h6 {
+        margin: 24px 0 10px;
+        color: var(--accent);
+      }
+      p, ul, blockquote {
+        line-height: 1.7;
+      }
+      blockquote {
+        margin: 18px 0;
+        padding-left: 16px;
+        border-left: 3px solid var(--border);
+        color: var(--muted);
+      }
+      code {
+        padding: 1px 5px;
+        border-radius: 6px;
+        background: #efe2cf;
+        font-size: 0.95em;
+      }
+      .threads {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../../index.html">← Back to atlas</a>
+      <div class="panel">
+        <p class="eyebrow">Briefs</p>
+        <h1>Pi - Why This Exists</h1>
+<h2>The Short Version</h2>
+<p>Pi exists because some builders think agent harnesses have become too eager to solve everything in the core. The docs emphasize a minimal terminal coding harness with extension points, packages, and configurable context. The architectural argument is that a small extensible core is more durable than a bloated integrated runtime.</p>
+<h2>Plain Vanilla</h2>
+<p>The plain-vanilla alternative is the batteries-included harness that ships many capabilities, many abstractions, and a growing theory of what the user should need. Convenience is high at first, but so is baseline complexity. The user inherits the whole worldview even when they only need part of it.</p>
+<h2>The Pain It Responds To</h2>
+<p>The pain is not missing features. It is structural heaviness. When a harness grows, users have to understand more of its assumptions before they can trust it or extend it. Pi appears to respond to the frustration of tools that are powerful but no longer easy to hold in one’s head.</p>
+<h2>The Architectural Argument</h2>
+<p>The docs emphasize extensions, packages, prompts, and context files because Pi is arguing that the core should stay thin and legible. The implicit bet seems to be that complexity should be optional and composable, not baked into the base harness before the user has earned the need for it.</p>
+<h2>What It Makes Possible</h2>
+<p>Pi makes it easier to keep terminal-native coding agency lightweight, understandable, and customizable. It gives users a path to grow capability without accepting a monolithic runtime up front. It also protects a clear seam between base behavior and ecosystem-specific add-ons.</p>
+<h2>What Would Be Missing Without It</h2>
+<p>Without this pattern, the ecosystem would skew further toward heavier integrated harnesses. We would lose a disciplined argument for restraint: that not every missing feature belongs in the core, and that extensibility itself can be the main design surface.</p>
+<h2>Similar To</h2>
+<ul>
+<li>Aider shares Pi&#x27;s preference for staying close to concrete coding work instead of centering orchestration abstractions.</li>
+<li>Claude Code also stays terminal-close and composable, though it bakes in a stronger permissions and tooling story than Pi does.</li>
+</ul>
+<h2>Very Different From</h2>
+<ul>
+<li>OpenHands treats broad embodied capability as the center of value, while Pi treats smallness at the core as a value to protect.</li>
+<li>LangGraph accepts more explicit workflow structure because it sees orchestration as the hard part; Pi sees core restraint as the hard-won discipline.</li>
+</ul>
+<h2>Opposes / Corrects</h2>
+<p>Pi pushes against the assumption that a modern agent harness should ship every major capability by default. The correction is that a harness can become more durable by refusing to become a giant integrated agent OS.</p>
+<h2>Core Tradeoff</h2>
+<p>Pi gains elegance and legibility through restraint, but it pushes meaningful complexity outward into extension selection, package composition, and capability discovery.</p>
+<h2>The One-Sentence Memory Hook</h2>
+<blockquote>
+<p>Pi protects the idea that small-core agency is a feature, not a temporary lack.</p>
+</blockquote>
+<h2>Sources</h2>
+<ul>
+<li>https://pi.dev/docs/latest</li>
+<li>https://github.com/earendil-works/pi</li>
+</ul>
+        
+        <div class="threads">
+          <h2>Further Threads</h2>
+          <h3>Related Harnesses</h3>
+          <ul><li><a href="../../harnesses/pi.html">Pi</a></li></ul>
+          <h3>Related Concepts</h3>
+          <ul><li><a href="../../concepts/minimal-core-agent-design.html">Minimal-Core Agent Design</a></li><li><a href="../../concepts/extension-driven-runtime.html">Extension-Driven Runtime</a></li><li><a href="../../concepts/context-files.html">Context Files</a></li></ul>
+          <h3>Tensions</h3>
+          <p class="empty-state">None yet.</p>
+          <h3>Historical Notes</h3>
+          <p class="empty-state">None yet.</p>
+          <h3>Comparisons</h3>
+          <p class="empty-state">None yet.</p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

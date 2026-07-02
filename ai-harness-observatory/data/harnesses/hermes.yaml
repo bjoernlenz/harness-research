@@ -1,0 +1,133 @@
+id: hermes
+name: Hermes Agent
+category:
+  - agent-platform
+  - multi-surface-agent
+primary_language:
+  - python
+  - typescript
+origin:
+  organization: Nous Research
+  repo: https://github.com/NousResearch/hermes-agent
+  docs: https://hermes-agent.nousresearch.com/docs
+status:
+  maturity: production
+  activity: active
+
+architectural_core:
+  - self-improving long-lived agent
+  - persistent memory and agent-authored skills
+  - multi-platform messaging gateway with isolated delegation
+
+complexity_focus:
+  - memory and skill curation
+  - multi-platform session routing
+  - sandbox backend selection
+  - provider and tool composition
+
+primary_substrate:
+  - conversation
+  - terminal
+  - sandbox
+  - agent-skills
+
+cognitive_style:
+  - stateful
+  - composable
+  - sandboxed
+
+trust_model:
+  - sandbox-boundaries
+  - human-approval
+  - runtime-composition
+
+hidden_bet:
+  summary: "Long-lived agency becomes useful when memory and procedural learning compound across sessions."
+  notes:
+    - "The architecture assumes durable memory, self-authored skills, and delegated workstreams matter more than keeping the agent stateless and disposable."
+
+worldview:
+  short: "An agent should live beyond one chat, learn from experience, travel across user surfaces, and keep gaining capability as memory, skills, and delegated routines accumulate."
+  notes:
+    - "The official docs explicitly frame Hermes as a self-improving AI agent with persistent memory, agent-created skills, and long-lived sessions."
+    - "The platform treats CLI, messaging gateways, plugins, MCP, and multiple backends as one continuous working body rather than separate products."
+
+memory_model:
+  type:
+    - session-history
+    - durable-memory-files
+    - skill-catalog
+  notes:
+    - "Memory is not only conversational recall; it is also persistent files, session search, agent-authored skills, and optional external memory providers."
+
+human_role:
+  - operator
+  - supervisor
+  - environment-designer
+
+tool_model:
+  - shell commands
+  - browser
+  - MCP
+  - plugins
+  - subagents
+
+autonomy_level: high
+determinism_level: hybrid
+
+playfulness:
+  summary: "The striking move is treating the agent like a long-lived worker that can remember, author its own skills, and keep operating across chat surfaces instead of resetting to a fresh persona each session."
+  surprising_moves:
+    - "The learning loop is first-class: memory nudges, skill creation, and background curation are part of the normal architecture."
+    - "One agent identity can persist across terminal, messaging platforms, cron jobs, subagents, and multiple sandbox backends."
+
+strengths:
+  - "Strong long-lived memory story"
+  - "Wide deployment and interaction surface"
+  - "Practical delegation and sandbox flexibility"
+
+risks_or_limits:
+  - "A persistent agent can accumulate operational and conceptual sprawl."
+  - "Many backends, platforms, and learning surfaces increase configuration and safety complexity."
+
+failure_modes:
+  - "Configuration drift"
+  - "Sandbox complexity"
+  - "Tool-surface overload"
+
+representative_for:
+  - "self-improving agent platform"
+  - "messaging-native autonomous agent"
+
+related_concepts:
+  - memory-as-residue
+  - sandboxed-agency
+  - mcp-as-tool-fabric
+  - context-files
+
+metaphor:
+  animal: null
+  transport: roving workshop van
+  rationale: "It carries tools, memory, and working habits with it, can set up in many environments, and becomes more useful the longer it stays in motion."
+
+what_it_refuses:
+  - "A stateless chat-only assistant"
+  - "Tying the agent to one interface or one machine"
+  - "Keeping learned procedures trapped inside a single session"
+
+core_tension: "Its strength is letting agency persist, learn, and spread across surfaces. Its tradeoff is that long-lived capability brings memory sprawl, platform complexity, and a wider trust surface to manage."
+
+relationships:
+  similar_to:
+    - openhands
+    - cursor
+    - claude-code
+  contrasts_with:
+    - pydantic-ai
+    - pi
+  influenced_by: []
+  influences: []
+
+source_quality:
+  confidence: medium
+  last_reviewed: "2026-06-11"

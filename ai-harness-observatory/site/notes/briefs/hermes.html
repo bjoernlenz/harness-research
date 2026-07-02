@@ -1,0 +1,135 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hermes Agent - Why This Exists · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .panel {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 0.98;
+      }
+      h2, h3, h4, h5, h6 {
+        margin: 24px 0 10px;
+        color: var(--accent);
+      }
+      p, ul, blockquote {
+        line-height: 1.7;
+      }
+      blockquote {
+        margin: 18px 0;
+        padding-left: 16px;
+        border-left: 3px solid var(--border);
+        color: var(--muted);
+      }
+      code {
+        padding: 1px 5px;
+        border-radius: 6px;
+        background: #efe2cf;
+        font-size: 0.95em;
+      }
+      .threads {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../../index.html">← Back to atlas</a>
+      <div class="panel">
+        <p class="eyebrow">Briefs</p>
+        <h1>Hermes Agent - Why This Exists</h1>
+<h2>The Short Version</h2>
+<p>Hermes exists because some builders think agents stay too disposable. The docs emphasize persistent memory, agent-created skills, long-lived sessions, isolated delegation, and many user surfaces. The architectural argument is that agency becomes more useful when it compounds over time instead of resetting to a fresh chatbot on every run.</p>
+<h2>Plain Vanilla</h2>
+<p>The plain-vanilla alternative is the session-bound assistant. You open a chat, give it context, maybe attach a few files, maybe let it call tools, and then the session ends. If the system learns anything, the learning is usually informal and human-carried. Procedures stay in prompts. Memory stays fragile. Switching surfaces often means starting over.</p>
+<h2>The Pain It Responds To</h2>
+<p>That setup becomes annoying once you want continuity. The same instructions have to be repeated. Useful solutions are rediscovered instead of retained. The agent may be smart in the moment but shallow across time. Hermes appears to respond to this pain by treating memory, skills, and session continuity as architectural infrastructure rather than optional add-ons.</p>
+<h2>The Architectural Argument</h2>
+<p>The docs emphasize memory, skills, delegation, cron, and multiple backends because Hermes is making a long-lived agency argument. The hidden bet seems to be that an agent becomes more valuable when it can accumulate residue, turn experience into reusable procedure, and keep operating across contexts without losing itself each time.</p>
+<h2>What It Makes Possible</h2>
+<p>Hermes makes it easier to build a continuing agent presence rather than a sequence of isolated chats. It supports cross-session recall, agent-authored skills, multi-platform access, subagents, scheduled work, and multiple sandbox backends. It also makes it easier to think of the agent as an operational worker that can keep going while the human steps away.</p>
+<h2>What Would Be Missing Without It</h2>
+<p>Without this pattern, the ecosystem would have fewer strong examples of compounding agency. We would still have assistants with tools and memory plugins, but less evidence that memory, procedural learning, and multi-surface continuity can be the central substrate of the harness.</p>
+<h2>Similar To</h2>
+<ul>
+<li>OpenHands shares Hermes&#x27; belief that the agent needs a broad practical body rather than a narrow chat shell.</li>
+<li>Cursor also lets agency move beyond one immediate session, especially through background work and environment separation.</li>
+<li>Claude Code overlaps in subagents, MCP, and context files, but stays much closer to terminal-native coding collaboration than to a roaming multi-platform agent identity.</li>
+</ul>
+<h2>Very Different From</h2>
+<ul>
+<li>PydanticAI seeks reliability through typed contracts and validation rails, while Hermes seeks usefulness through persistence, memory, and practical continuity.</li>
+<li>Pi deliberately keeps the core lean and pushes capability outward, whereas Hermes accepts a richer always-on platform shape in order to preserve long-lived agency.</li>
+</ul>
+<h2>Opposes / Corrects</h2>
+<p>Hermes pushes against the assumption that agents should be mostly stateless chat wrappers with occasional tools. The inferred correction is that durable memory and procedural learning are not embellishments. They are what let an agent become more than a fresh inference endpoint each time.</p>
+<h2>Core Tradeoff</h2>
+<p>Hermes gains continuity and compounding capability by being long-lived, multi-surface, and memory-rich, but that same breadth increases platform complexity, memory sprawl, and the safety burden around a persistent agent identity.</p>
+<h2>The One-Sentence Memory Hook</h2>
+<blockquote>
+<p>Hermes argues that agency becomes real when the agent can keep learning after the chat would normally have ended.</p>
+</blockquote>
+<h2>Sources</h2>
+<ul>
+<li>https://hermes-agent.nousresearch.com/</li>
+<li>https://hermes-agent.nousresearch.com/docs</li>
+<li>https://hermes-agent.nousresearch.com/docs/llms.txt</li>
+<li>https://github.com/NousResearch/hermes-agent</li>
+</ul>
+        
+        <div class="threads">
+          <h2>Further Threads</h2>
+          <h3>Related Harnesses</h3>
+          <ul><li><a href="../../harnesses/hermes.html">Hermes Agent</a></li></ul>
+          <h3>Related Concepts</h3>
+          <ul><li><a href="../../concepts/memory-as-residue.html">Memory As Residue</a></li><li><a href="../../concepts/sandboxed-agency.html">Sandboxed Agency</a></li><li><a href="../../concepts/mcp-as-tool-fabric.html">MCP As Tool Fabric</a></li><li><a href="../../concepts/context-files.html">Context Files</a></li></ul>
+          <h3>Tensions</h3>
+          <p class="empty-state">None yet.</p>
+          <h3>Historical Notes</h3>
+          <p class="empty-state">None yet.</p>
+          <h3>Comparisons</h3>
+          <p class="empty-state">None yet.</p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

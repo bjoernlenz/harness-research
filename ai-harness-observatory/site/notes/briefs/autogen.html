@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>AutoGen - Why This Exists · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .panel {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 0.98;
+      }
+      h2, h3, h4, h5, h6 {
+        margin: 24px 0 10px;
+        color: var(--accent);
+      }
+      p, ul, blockquote {
+        line-height: 1.7;
+      }
+      blockquote {
+        margin: 18px 0;
+        padding-left: 16px;
+        border-left: 3px solid var(--border);
+        color: var(--muted);
+      }
+      code {
+        padding: 1px 5px;
+        border-radius: 6px;
+        background: #efe2cf;
+        font-size: 0.95em;
+      }
+      .threads {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../../index.html">← Back to atlas</a>
+      <div class="panel">
+        <p class="eyebrow">Briefs</p>
+        <h1>AutoGen - Why This Exists</h1>
+<h2>The Short Version</h2>
+<p>AutoGen exists because some tasks seem better expressed as coordinated roles than as one monolithic assistant. The docs emphasize agents, teams, message flow, runtimes, and termination conditions. The architectural argument is that structured cooperation can be a more useful abstraction than a single giant prompt.</p>
+<h2>Plain Vanilla</h2>
+<p>Plain vanilla is the single-agent setup: one assistant receives the task, calls tools, maybe reflects, maybe retries. When the task gets broader, the same prompt has to carry planning, execution, critique, and coordination all at once. The result can be muddled and hard to steer.</p>
+<h2>The Pain It Responds To</h2>
+<p>The pain is overload and implicit coordination. Without role structure, systems either become giant prompts or bespoke control code. AutoGen appears to respond to the intuition that some cognitive labor should be distributed: one role writes, another critiques, another routes, another supervises.</p>
+<h2>The Architectural Argument</h2>
+<p>The docs emphasize AgentChat, teams, Core, and event-driven infrastructure because AutoGen is making a social argument about agency. The hidden bet is that useful capability can emerge from structured multi-agent interaction rather than from a single assistant trying to contain every role internally.</p>
+<h2>What It Makes Possible</h2>
+<p>AutoGen makes it easier to prototype and operationalize team-shaped agent systems. It gives developers explicit topologies, message-based coordination, and clearer termination machinery. It also turns multi-agent experimentation into something engineers can reproduce instead of improvising each time.</p>
+<h2>What Would Be Missing Without It</h2>
+<p>Without this pattern, the ecosystem would have fewer strong arguments for team-based agency. We would still have orchestration frameworks, but less evidence that conversation and role distribution can be the central substrate rather than an incidental flourish.</p>
+<h2>Similar To</h2>
+<ul>
+<li>OpenAI Agents SDK also treats specialization and coordination as first-class, though it frames that through handoffs more than ongoing team conversation.</li>
+<li>LangGraph shares the desire for explicit orchestration, but it centers state transitions rather than socialized agent roles.</li>
+</ul>
+<h2>Very Different From</h2>
+<ul>
+<li>Aider is built around close collaboration with a human in the repo, not around teams of agents coordinating with each other.</li>
+<li>PydanticAI focuses on typed boundaries and validation, whereas AutoGen centers agent society and message flow.</li>
+</ul>
+<h2>Opposes / Corrects</h2>
+<p>AutoGen pushes against the assumption that scaling agency means making one assistant larger and cleverer. The correction is that some forms of complexity are better handled by distributing roles and making coordination explicit.</p>
+<h2>Core Tradeoff</h2>
+<p>AutoGen gains expressive coordination through teams and layered runtimes, but it risks agent-team sprawl, message-loop confusion, and more intricate stopping conditions.</p>
+<h2>The One-Sentence Memory Hook</h2>
+<blockquote>
+<p>AutoGen argues that some agent systems become clearer when intelligence is organized as a team, not a soloist.</p>
+</blockquote>
+<h2>Sources</h2>
+<ul>
+<li>https://microsoft.github.io/autogen/stable/</li>
+<li>https://github.com/microsoft/autogen</li>
+<li>https://www.microsoft.com/en-us/research/project/autogen/</li>
+</ul>
+        
+        <div class="threads">
+          <h2>Further Threads</h2>
+          <h3>Related Harnesses</h3>
+          <ul><li><a href="../../harnesses/autogen.html">AutoGen</a></li></ul>
+          <h3>Related Concepts</h3>
+          <ul><li><a href="../../concepts/agent-team.html">Agent Team</a></li><li><a href="../../concepts/team-conversation.html">Team Conversation</a></li><li><a href="../../concepts/termination-conditions.html">Termination Conditions</a></li></ul>
+          <h3>Tensions</h3>
+          <p class="empty-state">None yet.</p>
+          <h3>Historical Notes</h3>
+          <p class="empty-state">None yet.</p>
+          <h3>Comparisons</h3>
+          <p class="empty-state">None yet.</p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

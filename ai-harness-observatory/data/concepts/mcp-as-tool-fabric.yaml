@@ -5,3 +5,4 @@ summary: "MCP becomes connective tissue that lets the agent bind external tools 
 related_harnesses:
   - openhands
   - claude-code
+  - hermes

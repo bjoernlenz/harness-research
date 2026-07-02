@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Aider - Why This Exists · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .panel {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 0.98;
+      }
+      h2, h3, h4, h5, h6 {
+        margin: 24px 0 10px;
+        color: var(--accent);
+      }
+      p, ul, blockquote {
+        line-height: 1.7;
+      }
+      blockquote {
+        margin: 18px 0;
+        padding-left: 16px;
+        border-left: 3px solid var(--border);
+        color: var(--muted);
+      }
+      code {
+        padding: 1px 5px;
+        border-radius: 6px;
+        background: #efe2cf;
+        font-size: 0.95em;
+      }
+      .threads {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../../index.html">← Back to atlas</a>
+      <div class="panel">
+        <p class="eyebrow">Briefs</p>
+        <h1>Aider - Why This Exists</h1>
+<h2>The Short Version</h2>
+<p>Aider exists because many developers did not want AI coding help to require a new operating model. The docs emphasize terminal pair programming on an existing codebase, with git and diffs remaining central. The architectural argument is that useful coding agency can stay close to the repository instead of disappearing into a higher-level orchestration layer.</p>
+<h2>Plain Vanilla</h2>
+<p>Without Aider, the plain-vanilla workflow is usually one of three things: one-shot prompting in a web chat, copy-pasting files into a model, or using a generic assistant that can talk about the repo but is not structurally tied to the repo. Edits become suggestions in prose. Memory is whatever remains in the chat. Review is manual reconstruction.</p>
+<h2>The Pain It Responds To</h2>
+<p>That workflow gets old quickly. Context drifts. Large files have to be recopied. The model can describe changes without landing them cleanly. The human has to keep translating between discussion and actual diffs. This appears to be the pain Aider responds to: coding assistance that sounds intelligent but stays operationally detached from the codebase.</p>
+<h2>The Architectural Argument</h2>
+<p>The architecture suggests that useful coding agency should stay close to files, diffs, commits, and the working tree. Aider is implicitly arguing that the repository is not just an output target. It is the cognitive surface. The protected value is grounded collaboration: the conversation matters because it lands as inspectable edits.</p>
+<h2>What It Makes Possible</h2>
+<p>Aider makes it easier to move from request to concrete patch without leaving the terminal or inventing a separate orchestration runtime. It keeps review legible because changes remain diff-shaped. It also makes AI assistance easier to trust incrementally, since the human can use familiar git habits to inspect, undo, or accept the work.</p>
+<h2>What Would Be Missing Without It</h2>
+<p>Without this pattern, the ecosystem would lose a strong argument for repo-close coding agency. We would still have coding assistants, but we would have less evidence that a lot of practical value comes from staying near the working tree instead of building a more abstract agent theater around it.</p>
+<h2>Similar To</h2>
+<ul>
+<li>Claude Code shares the belief that coding agency becomes credible when it lives in the terminal and works through familiar developer tools.</li>
+<li>Pi shares Aider&#x27;s resistance to heavy agent infrastructure, even though Pi pushes further toward a minimal extensible core.</li>
+</ul>
+<h2>Very Different From</h2>
+<ul>
+<li>LangGraph solves reliability through explicit graph state and checkpoints rather than through repository closeness and diff review.</li>
+<li>LlamaIndex treats data grounding as the main substrate, whereas Aider treats the repo itself as the main working memory and scene of action.</li>
+</ul>
+<h2>Opposes / Corrects</h2>
+<p>Aider pushes against the assumption that better coding agency mainly comes from more orchestration abstraction. The implicit correction is that many coding tasks improve more from staying close to actual files and patches than from inventing richer control flow.</p>
+<h2>Core Tradeoff</h2>
+<p>Aider gains groundedness by staying close to the repo, but it gives up some of the explicit long-running orchestration structure that graph or multi-agent runtimes make central.</p>
+<h2>The One-Sentence Memory Hook</h2>
+<blockquote>
+<p>Aider protects the idea that useful coding agency may come less from orchestration theater and more from staying close to the repo.</p>
+</blockquote>
+<h2>Sources</h2>
+<ul>
+<li>https://aider.chat/</li>
+<li>https://github.com/Aider-AI/aider</li>
+</ul>
+        
+        <div class="threads">
+          <h2>Further Threads</h2>
+          <h3>Related Harnesses</h3>
+          <ul><li><a href="../../harnesses/aider.html">Aider</a></li></ul>
+          <h3>Related Concepts</h3>
+          <ul><li><a href="../../concepts/git-as-cognition.html">Git As Cognition</a></li><li><a href="../../concepts/repository-as-memory.html">Repository As Memory</a></li><li><a href="../../concepts/diff-as-interface.html">Diff As Interface</a></li></ul>
+          <h3>Tensions</h3>
+          <p class="empty-state">None yet.</p>
+          <h3>Historical Notes</h3>
+          <p class="empty-state">None yet.</p>
+          <h3>Comparisons</h3>
+          <p class="empty-state">None yet.</p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

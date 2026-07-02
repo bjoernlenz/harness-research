@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Archon - Why This Exists · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .panel {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 0.98;
+      }
+      h2, h3, h4, h5, h6 {
+        margin: 24px 0 10px;
+        color: var(--accent);
+      }
+      p, ul, blockquote {
+        line-height: 1.7;
+      }
+      blockquote {
+        margin: 18px 0;
+        padding-left: 16px;
+        border-left: 3px solid var(--border);
+        color: var(--muted);
+      }
+      code {
+        padding: 1px 5px;
+        border-radius: 6px;
+        background: #efe2cf;
+        font-size: 0.95em;
+      }
+      .threads {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../../index.html">← Back to atlas</a>
+      <div class="panel">
+        <p class="eyebrow">Briefs</p>
+        <h1>Archon - Why This Exists</h1>
+<h2>The Short Version</h2>
+<p>Archon exists because some teams think the real problem with AI coding is not raw model capability but inconsistent process. The docs emphasize YAML-defined workflows, validation gates, approvals, and isolated worktrees. The architectural argument is that AI coding becomes trustworthy when the process itself is explicit, versioned, and repeatable.</p>
+<h2>Plain Vanilla</h2>
+<p>Plain vanilla is improvised AI coding: ask for a change, hope the model plans well, hope it validates, hope it asks for review at the right moment. Each run negotiates the process again. Standards live in habit, prompt wording, or the human operator&#x27;s vigilance.</p>
+<h2>The Pain It Responds To</h2>
+<p>The pain is process drift. Good practices are remembered unevenly. Validation is skipped under pressure. Parallel runs step on each other. Teams cannot easily transport their preferred working method from one surface or session to another. Archon appears to respond to the desire to stop renegotiating process with the model every time.</p>
+<h2>The Architectural Argument</h2>
+<p>The docs emphasize workflows as versioned artifacts because the architecture suggests a strong inversion: the human should own the process, while the model supplies local intelligence within the steps. The hidden bet is that deterministic scaffolding matters more than leaving execution style implicit in each run.</p>
+<h2>What It Makes Possible</h2>
+<p>Archon makes it easier to preserve review rituals, validation stages, and task sequencing across runs and interfaces. It supports repeatability, isolated execution through worktrees, and clearer team standards. It also turns workflow knowledge into something the repo can carry.</p>
+<h2>What Would Be Missing Without It</h2>
+<p>Without this pattern, the ecosystem would lose a strong process-as-code answer to AI coding unreliability. We would still have powerful coding agents, but less evidence that versioned workflows themselves can be the trust surface.</p>
+<h2>Similar To</h2>
+<ul>
+<li>LangGraph shares the belief that control flow should be explicit rather than hidden, though Archon frames it as versioned workflow artifacts more than generic state graphs.</li>
+<li>OpenAI Agents SDK also tries to make orchestration legible, but Archon is more opinionated about approvals, validation nodes, and process ownership.</li>
+</ul>
+<h2>Very Different From</h2>
+<ul>
+<li>Aider keeps the center of gravity on repo-close collaboration and diffs rather than on predefined workflow stages.</li>
+<li>Claude Code trusts terminal composability and permissions more than explicit versioned workflow machinery.</li>
+</ul>
+<h2>Opposes / Corrects</h2>
+<p>Archon pushes against the assumption that AI coding should mostly be an improvised chat loop that occasionally calls tools. The correction is that process knowledge should live in artifacts the team can inspect, version, and reuse.</p>
+<h2>Core Tradeoff</h2>
+<p>Archon gains repeatability and process control by encoding workflow structure, but it risks procedural heaviness and can underfit exploratory work that resists fixed stages.</p>
+<h2>The One-Sentence Memory Hook</h2>
+<blockquote>
+<p>Archon argues that reliable AI coding comes from versioning the process, not just improving the model.</p>
+</blockquote>
+<h2>Sources</h2>
+<ul>
+<li>https://archon.diy/</li>
+<li>https://archon.diy/book/what-is-archon/</li>
+<li>https://github.com/coleam00/archon</li>
+</ul>
+        
+        <div class="threads">
+          <h2>Further Threads</h2>
+          <h3>Related Harnesses</h3>
+          <ul><li><a href="../../harnesses/archon.html">Archon</a></li></ul>
+          <h3>Related Concepts</h3>
+          <ul><li><a href="../../concepts/process-as-code.html">Process As Code</a></li><li><a href="../../concepts/validation-rails.html">Validation Rails</a></li><li><a href="../../concepts/durable-execution.html">Durable Execution</a></li></ul>
+          <h3>Tensions</h3>
+          <p class="empty-state">None yet.</p>
+          <h3>Historical Notes</h3>
+          <p class="empty-state">None yet.</p>
+          <h3>Comparisons</h3>
+          <p class="empty-state">None yet.</p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

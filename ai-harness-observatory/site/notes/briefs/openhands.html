@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OpenHands - Why This Exists · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .panel {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 0.98;
+      }
+      h2, h3, h4, h5, h6 {
+        margin: 24px 0 10px;
+        color: var(--accent);
+      }
+      p, ul, blockquote {
+        line-height: 1.7;
+      }
+      blockquote {
+        margin: 18px 0;
+        padding-left: 16px;
+        border-left: 3px solid var(--border);
+        color: var(--muted);
+      }
+      code {
+        padding: 1px 5px;
+        border-radius: 6px;
+        background: #efe2cf;
+        font-size: 0.95em;
+      }
+      .threads {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../../index.html">← Back to atlas</a>
+      <div class="panel">
+        <p class="eyebrow">Briefs</p>
+        <h1>OpenHands - Why This Exists</h1>
+<h2>The Short Version</h2>
+<p>OpenHands exists because thinner coding assistants can fail simply by lacking a practical body. The docs emphasize agents that can work through code, shell, browser, APIs, and multiple product surfaces. The architectural argument is that coding agency becomes meaningfully stronger when the agent has a broader environment to act inside.</p>
+<h2>Plain Vanilla</h2>
+<p>Plain vanilla is a coding assistant that mostly chats, maybe edits a file, and depends on the human to perform the rest of the workflow. Tool use is narrow. Environment setup is manual. Browser actions, commands, repo manipulation, and external systems are either missing or loosely connected.</p>
+<h2>The Pain It Responds To</h2>
+<p>That thinner setup breaks down when the job is not just &quot;suggest a patch&quot; but &quot;do the work a developer would do.&quot; The pain is practical incompleteness: the assistant knows what should happen but lacks the embodied affordances to do it. OpenHands appears to respond to that frustration by widening the agent body rather than narrowing the task.</p>
+<h2>The Architectural Argument</h2>
+<p>The docs emphasize CLI, GUI, cloud, SDK, skills, and MCP because the architecture is making a maximalist claim: capability comes from environment, not only from reasoning. The implicit bet seems to be that agent power depends heavily on the practical surfaces it can inhabit and the tools it can reach.</p>
+<h2>What It Makes Possible</h2>
+<p>OpenHands makes broader software work easier to delegate. It supports richer end-to-end tasks, more customization, and more continuity between local and hosted operation. It also makes it easier to treat the repo as one part of a larger working environment instead of the whole scene.</p>
+<h2>What Would Be Missing Without It</h2>
+<p>Without this pattern, the ecosystem would lose a strong example of sandbox-centered coding agency. We would have many assistants that can discuss code, but fewer that defend the idea that an agent needs a fuller developer body to be meaningfully capable.</p>
+<h2>Similar To</h2>
+<ul>
+<li>Cursor also expands the agent body beyond a narrow chat loop, especially through background agents and broader IDE action surfaces.</li>
+<li>Claude Code shares the belief that coding agency should act through real tools, though it stays closer to terminal composability and permission boundaries than to a broad product/platform shape.</li>
+</ul>
+<h2>Very Different From</h2>
+<ul>
+<li>PydanticAI focuses on typed boundaries and validation rather than giving the agent a rich embodied environment.</li>
+<li>Pi deliberately keeps the core small, while OpenHands accepts more system breadth as the cost of practical power.</li>
+</ul>
+<h2>Opposes / Corrects</h2>
+<p>OpenHands pushes against the assumption that coding assistants mainly need better prompting or better patch generation. The inferred correction is that many failures are actually failures of embodiment: the agent cannot act like a useful worker because it lacks the right body.</p>
+<h2>Core Tradeoff</h2>
+<p>OpenHands gains breadth and practical reach by giving the agent a fuller environment, but that same breadth increases system heaviness, safety complexity, and customization overhead.</p>
+<h2>The One-Sentence Memory Hook</h2>
+<blockquote>
+<p>OpenHands argues that coding agency gets serious when the agent has a real body, not just a better prompt.</p>
+</blockquote>
+<h2>Sources</h2>
+<ul>
+<li>https://docs.openhands.dev/overview/introduction</li>
+<li>https://docs.openhands.dev/usage/about</li>
+<li>https://github.com/OpenHands/OpenHands</li>
+</ul>
+        
+        <div class="threads">
+          <h2>Further Threads</h2>
+          <h3>Related Harnesses</h3>
+          <ul><li><a href="../../harnesses/openhands.html">OpenHands</a></li></ul>
+          <h3>Related Concepts</h3>
+          <ul><li><a href="../../concepts/sandbox-as-agent-body.html">Sandbox As Agent Body</a></li><li><a href="../../concepts/sandboxed-agency.html">Sandboxed Agency</a></li><li><a href="../../concepts/developer-tool-embodiment.html">Developer Tool Embodiment</a></li></ul>
+          <h3>Tensions</h3>
+          <p class="empty-state">None yet.</p>
+          <h3>Historical Notes</h3>
+          <p class="empty-state">None yet.</p>
+          <h3>Comparisons</h3>
+          <p class="empty-state">None yet.</p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

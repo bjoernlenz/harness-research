@@ -4,3 +4,4 @@ kind: concept
 summary: "Project-local files inject stable instructions and environment-specific context into the harness."
 related_harnesses:
   - pi
+  - hermes

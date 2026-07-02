@@ -2,11 +2,21 @@
 
 This note is intentionally thin.
 
+## Brief
+
+- `notes/briefs/<id>.md`
+
+## Main Record
+
 Canonical structured record:
 - `data/harnesses/<id>.yaml`
 
+## Atlas Page
+
 Primary generated view:
 - `site/harnesses/<id>.html`
+
+## Human Story
 
 Human-deepening note:
 - `notes/explorations/harnesses/<id>.md`

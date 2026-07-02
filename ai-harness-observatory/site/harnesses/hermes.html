@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Hermes Agent · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .card {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .metaphor-picture {
+        width: 82px;
+        height: 82px;
+        margin: 0 0 14px;
+        display: grid;
+        place-items: center;
+        border-radius: 20px;
+        background:
+          radial-gradient(circle at top, rgba(200, 119, 69, 0.22), transparent 52%),
+          linear-gradient(180deg, #fff9ef 0%, #f2e5d1 100%);
+        border: 1px solid var(--border);
+      }
+      .metaphor-picture svg {
+        width: 64px;
+        height: 64px;
+        overflow: visible;
+      }
+      .card h2 {
+        margin: 0 0 12px;
+        font-size: clamp(2rem, 5vw, 3rem);
+        line-height: 0.98;
+      }
+      .card h3 {
+        margin: 16px 0 8px;
+        font-size: 0.82rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--accent);
+      }
+      .card p, .card ul {
+        margin: 0;
+        line-height: 1.6;
+      }
+      .card ul { padding-left: 18px; }
+      .pill-list, .relationship-list {
+        list-style: none;
+        padding-left: 0;
+      }
+      .pill-list {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .pill {
+        display: inline-block;
+        padding: 6px 10px;
+        border-radius: 999px;
+        background: #efe2cf;
+        color: var(--ink);
+        text-decoration: none;
+        border: 1px solid var(--border);
+        font-size: 0.95rem;
+      }
+      .section-link {
+        color: inherit;
+        text-decoration: none;
+      }
+      .section-link:hover { text-decoration: underline; }
+      .subtle, .relation-note, .empty-state { color: var(--muted); }
+      .relationship-list li {
+        padding: 10px 0;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+      .relationship-list li:first-child {
+        border-top: 0;
+        padding-top: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../index.html">← Back to atlas</a>
+      <article class="card" id="hermes">
+      <div class="metaphor-picture" title="roving workshop van">
+        <svg viewBox="0 0 96 96" aria-hidden="true">
+  <path d="M14 56h44V30h14l10 12h4v24H14z" fill="#c87745" stroke="#1f1d1a" stroke-width="3" stroke-linejoin="round"/>
+  <rect x="22" y="36" width="14" height="10" rx="2" fill="#fffdf8"/>
+  <rect x="40" y="36" width="10" height="10" rx="2" fill="#fffdf8"/>
+  <rect x="62" y="34" width="10" height="8" rx="2" fill="#fffdf8"/>
+  <path d="M58 30l9 12h15" fill="none" stroke="#1f1d1a" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="30" cy="68" r="8" fill="#1f1d1a"/>
+  <circle cx="68" cy="68" r="8" fill="#1f1d1a"/>
+  <circle cx="30" cy="68" r="3" fill="#fffdf8"/>
+  <circle cx="68" cy="68" r="3" fill="#fffdf8"/>
+  <path d="M24 24h8M28 20v8M74 18l6 4-6 4" fill="none" stroke="#4d5a67" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M18 80c8-2 16-2 24 0 8 2 16 2 24 0 8-2 16-2 24 0" fill="none" stroke="#8bb7c6" stroke-width="3" stroke-linecap="round"/>
+</svg>
+      </div>
+      <h2>Hermes Agent</h2>
+      <p class="subtle"><a href="../index.html#hermes">View atlas card</a></p>
+      
+      <section>
+        <h3>Why This Exists</h3>
+        <p><a href="../notes/briefs/hermes.html">Read the A4 brief for Hermes Agent</a></p>
+      </section>
+      
+      <section>
+        <h3>Human Story</h3>
+        <p>Hermes feels like it comes from impatience with disposable agents. Its public voice keeps repeating the same provocation: stop treating the agent like a one-session chatbot that forgets everything the moment the window closes. Let it remember. Let it write skills from experience. Let it live somewhere more durable than a tab.</p>
+<p>That gives Hermes a different emotional shape from most coding harnesses in the observatory. It is not mainly trying to make code edits feel close to the repo. It is not mainly trying to make orchestration look explicit and elegant. It is trying to make the agent feel continuous. The same worker can meet you in the terminal, keep running through a gateway, answer on Telegram, spawn child agents, and come back with more memory than it had yesterday.</p>
+<p>There is also a strong bodily story here. Hermes does not want one home. It wants many surfaces: CLI, messaging platforms, browser tools, plugins, MCP servers, multiple backends, cron, API mode. That could read as mere feature spread, but the deeper architectural claim seems to be that a useful agent should travel with its memory and habits instead of being trapped inside one interface.</p>
+<p>So the human story is not just &quot;more tools.&quot; It is a wager that agency becomes more real when it persists long enough to accumulate residue and procedures of its own. Hermes exists for people who want an agent that behaves less like a session and more like a continuing operational presence.</p>
+<h2>Sources</h2>
+<ul>
+<li>https://hermes-agent.nousresearch.com/</li>
+<li>https://hermes-agent.nousresearch.com/docs</li>
+<li>https://hermes-agent.nousresearch.com/docs/llms.txt</li>
+<li>https://github.com/NousResearch/hermes-agent</li>
+</ul>
+      </section>
+      <section>
+        <h3>Category</h3>
+        <ul><li>agent-platform</li><li>multi-surface-agent</li></ul>
+      </section>
+      <section>
+        <h3>Architectural Core</h3>
+        <ul><li>self-improving long-lived agent</li><li>persistent memory and agent-authored skills</li><li>multi-platform messaging gateway with isolated delegation</li></ul>
+      </section>
+      <section>
+        <h3>Worldview</h3>
+        <p>An agent should live beyond one chat, learn from experience, travel across user surfaces, and keep gaining capability as memory, skills, and delegated routines accumulate.</p>
+      </section>
+      <section>
+        <h3>Complexity Focus</h3>
+        <ul><li>memory and skill curation</li><li>multi-platform session routing</li><li>sandbox backend selection</li><li>provider and tool composition</li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/primary-substrates/index.html">Primary Substrate</a></h3>
+        <ul><li><a href="../browse/primary-substrates/conversation.html">conversation</a></li><li><a href="../browse/primary-substrates/terminal.html">terminal</a></li><li><a href="../browse/primary-substrates/sandbox.html">sandbox</a></li><li><a href="../browse/primary-substrates/agent-skills.html">agent-skills</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/cognitive-styles/index.html">Cognitive Style</a></h3>
+        <ul><li><a href="../browse/cognitive-styles/stateful.html">stateful</a></li><li><a href="../browse/cognitive-styles/composable.html">composable</a></li><li><a href="../browse/cognitive-styles/sandboxed.html">sandboxed</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/trust-models/index.html">Trust Model</a></h3>
+        <ul><li><a href="../browse/trust-models/sandbox-boundaries.html">sandbox-boundaries</a></li><li><a href="../browse/trust-models/human-approval.html">human-approval</a></li><li><a href="../browse/trust-models/runtime-composition.html">runtime-composition</a></li></ul>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/hidden-bets/index.html">Hidden Bet</a></h3>
+        <p><a href="../browse/hidden-bets/long-lived-agency-becomes-useful-when-memory-and-procedural-learning-compound-across-sessions.html">Long-lived agency becomes useful when memory and procedural learning compound across sessions.</a></p>
+      </section>
+      <section>
+        <h3>Playfulness</h3>
+        <p>The striking move is treating the agent like a long-lived worker that can remember, author its own skills, and keep operating across chat surfaces instead of resetting to a fresh persona each session.</p>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/failure-modes/index.html">Failure Modes</a></h3>
+        <ul><li><a href="../browse/failure-modes/configuration-drift.html">Configuration drift</a></li><li><a href="../browse/failure-modes/sandbox-complexity.html">Sandbox complexity</a></li><li><a href="../browse/failure-modes/tool-surface-overload.html">Tool-surface overload</a></li></ul>
+      </section>
+      <section>
+        <h3>What It Refuses</h3>
+        <ul><li>A stateless chat-only assistant</li><li>Tying the agent to one interface or one machine</li><li>Keeping learned procedures trapped inside a single session</li></ul>
+      </section>
+      <section>
+        <h3>Core Tension</h3>
+        <p>Its strength is letting agency persist, learn, and spread across surfaces. Its tradeoff is that long-lived capability brings memory sprawl, platform complexity, and a wider trust surface to manage.</p>
+      </section>
+      <section>
+        <h3><a class="section-link" href="../browse/representative-for/index.html">Representative For</a></h3>
+        <ul><li><a href="../browse/representative-for/self-improving-agent-platform.html">self-improving agent platform</a></li><li><a href="../browse/representative-for/messaging-native-autonomous-agent.html">messaging-native autonomous agent</a></li></ul>
+      </section>
+      
+      <section>
+        <h3>Animal or Transport</h3>
+        <p><strong>roving workshop van</strong></p>
+        <p>It carries tools, memory, and working habits with it, can set up in many environments, and becomes more useful the longer it stays in motion.</p>
+      </section>
+      <section>
+        <h3>Related Concepts</h3>
+        <ul class="pill-list"><li><a class="pill" href="../concepts/memory-as-residue.html">Memory As Residue</a></li><li><a class="pill" href="../concepts/sandboxed-agency.html">Sandboxed Agency</a></li><li><a class="pill" href="../concepts/mcp-as-tool-fabric.html">MCP As Tool Fabric</a></li><li><a class="pill" href="../concepts/context-files.html">Context Files</a></li></ul>
+      </section>
+      
+      <section>
+        <h3>Relationships</h3>
+        <ul class="relationship-list"><li><strong><a href="../browse/relationships/embodies-concept.html">Embodies Concept</a></strong> → <a href="../concepts/memory-as-residue.html">Memory As Residue</a><br><span class="relation-note">Hermes treats durable files, session history, agent-authored skills, and optional memory providers as accumulated residue rather than ephemeral chat context.</span></li><li><strong><a href="../browse/relationships/embodies-concept.html">Embodies Concept</a></strong> → <a href="../concepts/sandboxed-agency.html">Sandboxed Agency</a><br><span class="relation-note">Its multiple terminal backends and isolated execution surfaces make the bounded runtime part of the agent&#x27;s practical body.</span></li><li><strong><a href="../browse/relationships/externalizes-through.html">Externalizes Through</a></strong> → <a href="../concepts/mcp-as-tool-fabric.html">MCP As Tool Fabric</a><br><span class="relation-note">Hermes grows outward by binding external MCP servers into its wider working body instead of limiting itself to one native tool surface.</span></li><li><strong><a href="../browse/relationships/shares-hidden-bet-with.html">Shares Hidden Bet With</a></strong> → <a href="openhands.html">OpenHands</a><br><span class="relation-note">Both assume useful agency comes from giving the agent a richer practical body, though Hermes adds a stronger long-lived memory and learning story.</span></li><li><strong><a href="../browse/relationships/different-complexity-center-than.html">Different Complexity Center Than</a></strong> → <a href="claude-code.html">Claude Code</a><br><span class="relation-note">Hermes pushes complexity harder into persistent memory, skill curation, gateways, and backend choice, while Claude Code concentrates more on terminal composability and permissioned local workflows.</span></li><li><strong><a href="../browse/relationships/competes-for-same-use-case-as.html">Competes For Same Use Case As</a></strong> → <a href="openhands.html">OpenHands</a><br><span class="relation-note">Both target users who want a capable autonomous worker rather than a thin assistant, but Hermes frames that worker as a longer-lived multi-surface agent.</span></li></ul>
+      </section>
+      <section>
+        <h3>More To Explore</h3>
+        <h4>Shares Primary Substrate</h4>
+        <ul><li><a href="openhands.html">OpenHands</a></li><li><a href="autogen.html">AutoGen</a></li><li><a href="claude-code.html">Claude Code</a></li><li><a href="kilo.html">Kilo Code</a></li></ul>
+        <h4>Shares Trust Model</h4>
+        <ul><li><a href="aider.html">Aider</a></li><li><a href="archon.html">Archon</a></li><li><a href="claude-code.html">Claude Code</a></li><li><a href="kilo.html">Kilo Code</a></li></ul>
+        <h4>Shares Cognitive Style</h4>
+        <ul><li><a href="openhands.html">OpenHands</a></li><li><a href="archon.html">Archon</a></li><li><a href="claude-code.html">Claude Code</a></li><li><a href="cursor.html">Cursor</a></li></ul>
+        <h4>Contrasts With</h4>
+        <ul><li><a href="claude-code.html">Claude Code</a></li><li><a href="openhands.html">OpenHands</a></li></ul>
+        <h4>Explorations</h4><ul><li><a href="../notes/explorations/concepts/context-as-substrate.html">Context As Substrate</a></li><li><a href="../notes/explorations/concepts/data-as-cognitive-substrate.html">Data As Cognitive Substrate</a></li><li><a href="../notes/explorations/concepts/git-as-cognition.html">Git As Cognition</a></li><li><a href="../notes/explorations/concepts/graph-orchestration.html">Graph Orchestration</a></li><li><a href="../notes/explorations/concepts/permissioned-agency.html">Permissioned Agency</a></li><li><a href="../notes/explorations/concepts/sandbox-as-agent-body.html">Sandbox As Agent Body</a></li><li><a href="../notes/explorations/concepts/traces-as-residue.html">Traces As Residue</a></li></ul><h4>Harness Stories</h4><ul><li><a href="../notes/explorations/harnesses/hermes.html">Hermes Agent Human Story</a></li></ul><h4>Why This Exists</h4><ul><li><a href="../notes/briefs/hermes.html">Hermes Agent - Why This Exists</a></li></ul>
+      </section>
+    </article>
+    </main>
+  </body>
+</html>

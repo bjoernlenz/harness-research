@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>OpenAI Agents SDK - Why This Exists · AI Harness Observatory</title>
+    <style>
+      :root {
+        color-scheme: light;
+        --bg: #f5f1e8;
+        --panel: #fffdf8;
+        --ink: #1f1d1a;
+        --muted: #6b655d;
+        --accent: #a24d2c;
+        --border: #d8cbb8;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        color: var(--ink);
+        background:
+          radial-gradient(circle at top left, rgba(162, 77, 44, 0.14), transparent 28%),
+          linear-gradient(180deg, #f7f3eb 0%, var(--bg) 100%);
+      }
+      main { max-width: 860px; margin: 0 auto; padding: 48px 20px 64px; }
+      .back { color: var(--accent); text-decoration: none; }
+      .panel {
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        background: color-mix(in srgb, var(--panel) 92%, white 8%);
+        box-shadow: 0 10px 30px rgba(44, 31, 18, 0.06);
+      }
+      .eyebrow {
+        margin: 0 0 8px;
+        color: var(--accent);
+        font-size: 0.88rem;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+      h1 {
+        margin: 0 0 18px;
+        font-size: clamp(2rem, 5vw, 3.2rem);
+        line-height: 0.98;
+      }
+      h2, h3, h4, h5, h6 {
+        margin: 24px 0 10px;
+        color: var(--accent);
+      }
+      p, ul, blockquote {
+        line-height: 1.7;
+      }
+      blockquote {
+        margin: 18px 0;
+        padding-left: 16px;
+        border-left: 3px solid var(--border);
+        color: var(--muted);
+      }
+      code {
+        padding: 1px 5px;
+        border-radius: 6px;
+        background: #efe2cf;
+        font-size: 0.95em;
+      }
+      .threads {
+        margin-top: 28px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(216, 203, 184, 0.7);
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <a class="back" href="../../index.html">← Back to atlas</a>
+      <div class="panel">
+        <p class="eyebrow">Briefs</p>
+        <h1>OpenAI Agents SDK - Why This Exists</h1>
+<h2>The Short Version</h2>
+<p>OpenAI Agents SDK exists because once people build real agentic applications, they need more than a prompt loop with tools. The docs emphasize agents, handoffs, guardrails, and tracing. The architectural argument is that multi-step agency becomes manageable when routing and residue are explicit.</p>
+<h2>Plain Vanilla</h2>
+<p>Plain vanilla is the custom agent wrapper most teams build first: one model call loop, some tool plumbing, maybe some branching, and a lot of implicit assumptions. It works until the system gets bigger. Then debugging, specialization, and coordination become hard because the orchestration logic lives in ad hoc code and half-hidden conventions.</p>
+<h2>The Pain It Responds To</h2>
+<p>The pain is operational messiness. When a system spans multiple capabilities or specialized agents, it becomes important to know who acted, why a handoff happened, what tools ran, and where things went wrong. This appears to be the practical wound the SDK addresses.</p>
+<h2>The Architectural Argument</h2>
+<p>The docs emphasize handoffs and tracing because the architecture is arguing that agent systems need explicit routing and visible residue. The implicit bet seems to be that orchestration becomes trustworthy when it is inspectable enough to reconstruct, supervise, and refine.</p>
+<h2>What It Makes Possible</h2>
+<p>The SDK makes it easier to build specialized-agent systems without treating specialization as mystical emergence. It offers a cleaner path from one-agent applications to orchestrated systems, while keeping traces available for debugging and evaluation. It also gives teams named primitives instead of forcing them to reinvent the same patterns.</p>
+<h2>What Would Be Missing Without It</h2>
+<p>Without this pattern, the ecosystem would lose a clear handoff-centric runtime vocabulary. We would still have agents and tools, but less disciplined language for operationalizing multi-agent behavior in a way engineers can inspect.</p>
+<h2>Similar To</h2>
+<ul>
+<li>AutoGen shares the belief that capability can be distributed across more than one agent, though AutoGen frames that more socially through teams and conversations.</li>
+<li>Semantic Kernel also treats orchestration primitives and runtime structure seriously, though it centers a shared capability spine rather than handoffs and traces.</li>
+</ul>
+<h2>Very Different From</h2>
+<ul>
+<li>Aider derives trust from repository closeness and concrete diffs rather than from orchestration traces.</li>
+<li>Pi keeps the core smaller and less orchestration-heavy, while the Agents SDK explicitly invests in coordination primitives.</li>
+</ul>
+<h2>Opposes / Corrects</h2>
+<p>The SDK pushes against the assumption that agent orchestration can remain hidden in application glue code. The correction is that once routing matters, handoffs and traces need to become first-class.</p>
+<h2>Core Tradeoff</h2>
+<p>OpenAI Agents SDK gains operational legibility through explicit handoffs and traces, but it shifts complexity into system design, tool boundaries, and coordination decisions.</p>
+<h2>The One-Sentence Memory Hook</h2>
+<blockquote>
+<p>OpenAI Agents SDK argues that agency becomes ship-worthy when handoffs are deliberate and traces are visible.</p>
+</blockquote>
+<h2>Sources</h2>
+<ul>
+<li>https://developers.openai.com/api/docs/guides/agents</li>
+<li>https://developers.openai.com/api/docs/guides/tools</li>
+</ul>
+        
+        <div class="threads">
+          <h2>Further Threads</h2>
+          <h3>Related Harnesses</h3>
+          <ul><li><a href="../../harnesses/openai-agents-sdk.html">OpenAI Agents SDK</a></li></ul>
+          <h3>Related Concepts</h3>
+          <ul><li><a href="../../concepts/handoffs.html">Handoffs</a></li><li><a href="../../concepts/traces-as-residue.html">Traces As Residue</a></li><li><a href="../../concepts/tool-augmented-agents.html">Tool-Augmented Agents</a></li></ul>
+          <h3>Tensions</h3>
+          <p class="empty-state">None yet.</p>
+          <h3>Historical Notes</h3>
+          <p class="empty-state">None yet.</p>
+          <h3>Comparisons</h3>
+          <p class="empty-state">None yet.</p>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

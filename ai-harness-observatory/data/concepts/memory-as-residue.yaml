@@ -6,3 +6,4 @@ related_harnesses:
   - aider
   - openai-agents-sdk
   - langgraph
+  - hermes

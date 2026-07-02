@@ -211,6 +211,30 @@ relationships:
     relation: contrasts_with
     to: aider
     note: "Archon makes the coding process itself explicit and repeatable, while Aider stays closer to conversational collaboration inside the live repo."
+  - from: hermes
+    relation: embodies_concept
+    to: memory-as-residue
+    note: "Hermes treats durable files, session history, agent-authored skills, and optional memory providers as accumulated residue rather than ephemeral chat context."
+  - from: hermes
+    relation: embodies_concept
+    to: sandboxed-agency
+    note: "Its multiple terminal backends and isolated execution surfaces make the bounded runtime part of the agent's practical body."
+  - from: hermes
+    relation: externalizes_through
+    to: mcp-as-tool-fabric
+    note: "Hermes grows outward by binding external MCP servers into its wider working body instead of limiting itself to one native tool surface."
+  - from: hermes
+    relation: shares_hidden_bet_with
+    to: openhands
+    note: "Both assume useful agency comes from giving the agent a richer practical body, though Hermes adds a stronger long-lived memory and learning story."
+  - from: hermes
+    relation: different_complexity_center_than
+    to: claude-code
+    note: "Hermes pushes complexity harder into persistent memory, skill curation, gateways, and backend choice, while Claude Code concentrates more on terminal composability and permissioned local workflows."
+  - from: hermes
+    relation: competes_for_same_use_case_as
+    to: openhands
+    note: "Both target users who want a capable autonomous worker rather than a thin assistant, but Hermes frames that worker as a longer-lived multi-surface agent."
   - from: kilo
     relation: embodies_concept
     to: ide-as-agent-body

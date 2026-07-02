@@ -15,6 +15,7 @@ ROOT = Path(__file__).resolve().parent.parent
 HARNESS_DIR = ROOT / "data" / "harnesses"
 CONCEPT_DIR = ROOT / "data" / "concepts"
 NOTES_DIR = ROOT / "notes"
+BRIEFS_DIR = NOTES_DIR / "briefs"
 RELATIONSHIPS_PATH = ROOT / "data" / "relationships.yaml"
 OUTPUT_PATH = ROOT / "site" / "index.html"
 CONCEPT_OUTPUT_DIR = ROOT / "site" / "concepts"
@@ -150,6 +151,7 @@ def extract_wikilinks(markdown_text: str) -> list[str]:
 def exploration_kind_label(exploration: dict) -> str:
     kind = str(exploration.get("metadata", {}).get("kind", "")).strip()
     return {
+        "brief": "Why This Exists",
         "concept": "Explorations",
         "harness-story": "Harness Stories",
         "historical": "Historical Notes",
@@ -183,16 +185,16 @@ def render_named_links(links: list[tuple[str, str]]) -> str:
 
 def load_explorations() -> list[dict]:
     explorations = []
-    exploration_root = NOTES_DIR / "explorations"
-    if not exploration_root.exists():
-        return explorations
-    for path in sorted(exploration_root.rglob("*.md")):
-        relative = path.relative_to(ROOT)
-        if ".gitkeep" in relative.parts:
+    for note_root in (NOTES_DIR / "explorations", BRIEFS_DIR):
+        if not note_root.exists():
             continue
-        note = load_markdown_note(str(relative))
-        note["concept_links"] = extract_wikilinks(note["body"])
-        explorations.append(note)
+        for path in sorted(note_root.rglob("*.md")):
+            relative = path.relative_to(ROOT)
+            if ".gitkeep" in relative.parts:
+                continue
+            note = load_markdown_note(str(relative))
+            note["concept_links"] = extract_wikilinks(note["body"])
+            explorations.append(note)
     return explorations
 
 
@@ -387,6 +389,16 @@ def harness_story_for_harness(harness_id: str, explorations: list[dict]) -> dict
         kind = str(meta.get("kind", "")).strip()
         related_harnesses = [str(value) for value in meta.get("related_harnesses", [])]
         if kind == "harness-story" and related_harnesses == [harness_id]:
+            return exploration
+    return None
+
+
+def harness_brief_for_harness(harness_id: str, explorations: list[dict]) -> dict | None:
+    for exploration in explorations:
+        meta = exploration.get("metadata", {})
+        kind = str(meta.get("kind", "")).strip()
+        related_harnesses = [str(value) for value in meta.get("related_harnesses", [])]
+        if kind == "brief" and related_harnesses == [harness_id]:
             return exploration
     return None
 
@@ -671,6 +683,22 @@ def render_metaphor_picture(label: str) -> str:
   <rect x="34" y="24" width="10" height="8" fill="#fffdf8" stroke="#1f1d1a" stroke-width="2"/>
   <rect x="46" y="24" width="10" height="8" fill="#fffdf8" stroke="#1f1d1a" stroke-width="2"/>
   <path d="M18 78c10-3 18-3 28 0 10 3 18 3 28 0 4-1 8-2 12-2" fill="none" stroke="#8bb7c6" stroke-width="3" stroke-linecap="round"/>
+</svg>
+""".strip()
+    if key == "roving workshop van":
+        return """
+<svg viewBox="0 0 96 96" aria-hidden="true">
+  <path d="M14 56h44V30h14l10 12h4v24H14z" fill="#c87745" stroke="#1f1d1a" stroke-width="3" stroke-linejoin="round"/>
+  <rect x="22" y="36" width="14" height="10" rx="2" fill="#fffdf8"/>
+  <rect x="40" y="36" width="10" height="10" rx="2" fill="#fffdf8"/>
+  <rect x="62" y="34" width="10" height="8" rx="2" fill="#fffdf8"/>
+  <path d="M58 30l9 12h15" fill="none" stroke="#1f1d1a" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="30" cy="68" r="8" fill="#1f1d1a"/>
+  <circle cx="68" cy="68" r="8" fill="#1f1d1a"/>
+  <circle cx="30" cy="68" r="3" fill="#fffdf8"/>
+  <circle cx="68" cy="68" r="3" fill="#fffdf8"/>
+  <path d="M24 24h8M28 20v8M74 18l6 4-6 4" fill="none" stroke="#4d5a67" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M18 80c8-2 16-2 24 0 8 2 16 2 24 0 8-2 16-2 24 0" fill="none" stroke="#8bb7c6" stroke-width="3" stroke-linecap="round"/>
 </svg>
 """.strip()
     if label.strip():
@@ -1796,7 +1824,17 @@ def render_harness_page(
 ) -> str:
     harness_id = str(record.get("id", ""))
     current_output_href = harness_output_href(harness_id)
+    brief_note = harness_brief_for_harness(harness_id, explorations)
     story_note = harness_story_for_harness(harness_id, explorations)
+    brief_html = ""
+    if brief_note:
+        brief_href = relative_site_href(current_output_href, brief_note["output_href"])
+        brief_html = f"""
+      <section>
+        <h3>Why This Exists</h3>
+        <p><a href="{brief_href}">Read the A4 brief for {escape(str(record.get("name", "this harness")))}</a></p>
+      </section>
+        """.rstrip()
     story_html = ""
     if story_note:
         story_body = strip_first_heading(story_note["body"]).strip()
@@ -1819,8 +1857,14 @@ def render_harness_page(
         atlas_href=harness_atlas_href(current_output_href, harness_id),
     )
     page_card_html = card_html
+    if brief_html:
+        page_card_html = page_card_html.replace(
+            "<section>\n        <h3>Category</h3>",
+            f"{brief_html}\n      <section>\n        <h3>Category</h3>",
+            1,
+        )
     if story_html:
-        page_card_html = card_html.replace(
+        page_card_html = page_card_html.replace(
             "<section>\n        <h3>Category</h3>",
             f"{story_html}\n      <section>\n        <h3>Category</h3>",
             1,
