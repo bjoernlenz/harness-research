@@ -30,6 +30,10 @@ primary_substrate:
   - context
   - permissions
 
+ai_driver:
+  - first-party Claude Code runtime
+  - Anthropic hosted model service
+
 cognitive_style:
   - grounded
   - composable
@@ -50,6 +54,7 @@ worldview:
   notes:
     - "Anthropic’s docs explicitly frame Claude Code as agentic coding that lives in the terminal."
     - "The overview and security docs emphasize composability, scriptability, MCP, and explicit permissions for actions like editing files and running commands."
+    - "Claude Code is both the user-facing harness and the driver layer: its CLI, IDE, desktop, web, and automation surfaces connect to Anthropic's Claude service while exposing local tools, MCP, git, sessions, skills, hooks, and permission controls."
 
 memory_model:
   type:

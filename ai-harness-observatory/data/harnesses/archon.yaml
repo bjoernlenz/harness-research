@@ -30,6 +30,10 @@ primary_substrate:
   - repository
   - validation
 
+ai_driver:
+  - Claude Code delegated runtime
+  - workflow-owned orchestration
+
 cognitive_style:
   - explicit
   - inspectable
@@ -52,6 +56,7 @@ worldview:
     - "Archon defines workflows as YAML files in `.archon/workflows/` and treats them as durable project artifacts."
     - "The official framing compares Archon to Dockerfiles for infrastructure and GitHub Actions for CI/CD, but for AI coding workflows."
     - "AI is allowed to contribute intelligence inside the steps, but the sequence, approval points, and validation checks are owned by the workflow."
+    - "Current Archon setup depends on Claude Code: the quick install path requires a separate `claude` binary, configured through `CLAUDE_BIN_PATH` or `assistants.claude.claudeBinaryPath`. Archon therefore acts as a deterministic workflow and multi-surface layer around Claude Code rather than replacing Claude Code's own agent runtime."
 
 memory_model:
   type:

@@ -30,6 +30,10 @@ primary_substrate:
   - modes
   - remote-agent-environment
 
+ai_driver:
+  - IDE-hosted coding agent runtime
+  - remote background agent runtime
+
 cognitive_style:
   - concrete
   - inspectable
@@ -50,6 +54,7 @@ worldview:
   notes:
     - "The official docs split the interaction into Agent, Ask, Manual, and Custom modes with different tool surfaces."
     - "Background agents extend the system into isolated remote machines that can clone repos, run commands, and push branches asynchronously."
+    - "Its driver is product-owned rather than a visible open framework: foreground work runs through the IDE agent surface, while heavier jobs can move into Cursor's remote background-agent environment."
 
 memory_model:
   type:

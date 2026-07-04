@@ -30,6 +30,10 @@ primary_substrate:
   - validation
   - tool-contracts
 
+ai_driver:
+  - typed model-adapter runtime
+  - validation-owned agent loop
+
 cognitive_style:
   - explicit
   - inspectable
@@ -50,6 +54,7 @@ worldview:
   notes:
     - "Structured data is treated as the stabilizing core of the runtime."
     - "Type systems are part of the orchestration strategy, not just developer ergonomics."
+    - "Its driver is a typed Python runtime over many model providers: the agent loop, tools, dependencies, output schemas, retries, and validation boundaries are the core machinery around provider calls."
 
 memory_model:
   type:

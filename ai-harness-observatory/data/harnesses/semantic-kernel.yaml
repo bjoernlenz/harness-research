@@ -32,6 +32,10 @@ primary_substrate:
   - connectors
   - services
 
+ai_driver:
+  - kernel-mediated model connector runtime
+  - plugin-owned capability runtime
+
 cognitive_style:
   - composable
   - enterprise-oriented
@@ -52,6 +56,7 @@ worldview:
   notes:
     - "Microsoft’s docs present the kernel as the center that holds services and plugins necessary to run agents."
     - "The framework feels closer to a programmable middleware layer than to a single visible agent loop."
+    - "Its driver is the kernel: model connectors, plugins, functions, filters, and service wiring mediate between model requests and application capabilities."
 
 memory_model:
   type:

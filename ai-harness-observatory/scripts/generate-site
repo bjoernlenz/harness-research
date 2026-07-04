@@ -44,6 +44,11 @@ BROWSE_FIELDS = {
         "slug": "primary-substrates",
         "kind": "list",
     },
+    "ai_driver": {
+        "label": "AI Drivers",
+        "slug": "ai-drivers",
+        "kind": "list",
+    },
     "trust_model": {
         "label": "Trust Models",
         "slug": "trust-models",
@@ -88,6 +93,9 @@ MORE_STUFF = {
         "notes/comparisons/trust-through-closeness-vs-structure.md",
         "notes/comparisons/shell-vs-runtime-worldviews.md",
         "notes/comparisons/environment-close-vs-orchestration-close-vs-data-close.md",
+    ],
+    "Perspectives": [
+        "notes/explorations/perspectives/ai-driver.md",
     ],
     "Review Packets": [
         "notes/review-packets/001-stabilization-review.md",
@@ -372,6 +380,8 @@ def related_explorations_for_browse_entry(
     field_key: str, entry: dict, explorations: list[dict]
 ) -> list[dict]:
     wanted = {entry["slug"], slugify(entry["label"])}
+    if field_key == "ai_driver":
+        wanted.add("ai-driver")
     wanted.update(ENTRY_EXPLORATION_ALIASES.get((field_key, entry["slug"]), []))
     wanted.update(
         ENTRY_EXPLORATION_ALIASES.get((field_key, slugify(entry["label"])), [])
@@ -1105,6 +1115,9 @@ def render_card(
     representative_for = render_browseable_list(
         record.get("representative_for", []), "representative_for", catalog, current_output_href
     )
+    ai_driver = render_browseable_list(
+        record.get("ai_driver", []), "ai_driver", catalog, current_output_href
+    )
     related_concepts = render_concept_links(record.get("related_concepts", []), concepts, current_output_href)
     playfulness = escape(str(record.get("playfulness", {}).get("summary", "")))
     metaphor = record.get("metaphor", {})
@@ -1194,6 +1207,10 @@ def render_card(
       <section>
         {render_section_heading("Primary Substrate", "primary_substrate", current_output_href)}
         {primary_substrate}
+      </section>
+      <section>
+        {render_section_heading("AI Driver", "ai_driver", current_output_href)}
+        {ai_driver}
       </section>
       <section>
         {render_section_heading("Cognitive Style", "cognitive_style", current_output_href)}

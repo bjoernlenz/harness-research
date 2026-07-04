@@ -31,6 +31,11 @@ primary_substrate:
   - workflows
   - tools
 
+ai_driver:
+  - data-grounded agent runtime
+  - LLM and retrieval adapters
+  - event-driven workflow runtime
+
 cognitive_style:
   - data-grounded
   - composable
@@ -51,6 +56,7 @@ worldview:
   notes:
     - "The official docs frame LlamaIndex as a framework for building agents over your data with agents and workflows."
     - "Workflows are explicitly event-driven and are described as a way to combine RAG data sources and multiple agents."
+    - "Its driver shape is data-first: LLM adapters, retrieval components, indexes, tools, and event-driven workflows together decide what the model can see and do."
 
 memory_model:
   type:

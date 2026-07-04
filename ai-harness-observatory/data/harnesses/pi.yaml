@@ -30,6 +30,10 @@ primary_substrate:
   - extensions
   - context-files
 
+ai_driver:
+  - direct multi-provider LLM API
+  - in-process agent loop
+
 cognitive_style:
   - restrained
   - grounded
@@ -50,6 +54,7 @@ worldview:
   notes:
     - "The official docs explicitly frame Pi as a minimal terminal coding harness."
     - "The design favors a lean core with customization layered in through extensions rather than a batteries-included agent OS."
+    - "Its `@earendil-works/pi-ai` package is described upstream as a unified multi-provider LLM API, while `@earendil-works/pi-agent-core` owns tool calling and state management. In this lens, Pi drives AI by calling model providers through its own library stack, not by delegating to Claude Code."
 
 memory_model:
   type:

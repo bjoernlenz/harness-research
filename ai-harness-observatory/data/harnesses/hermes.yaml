@@ -31,6 +31,10 @@ primary_substrate:
   - sandbox
   - agent-skills
 
+ai_driver:
+  - provider-pluggable agent runtime
+  - persistent self-improving runtime
+
 cognitive_style:
   - stateful
   - composable
@@ -51,6 +55,7 @@ worldview:
   notes:
     - "The official docs explicitly frame Hermes as a self-improving AI agent with persistent memory, agent-created skills, and long-lived sessions."
     - "The platform treats CLI, messaging gateways, plugins, MCP, and multiple backends as one continuous working body rather than separate products."
+    - "Its AI driver is a provider-pluggable runtime: Hermes can work through Nous Portal, OpenRouter, OpenAI, or compatible endpoints, while the long-lived agent loop owns memory, skills, tool gateway access, and sandbox/backend choice."
 
 memory_model:
   type:

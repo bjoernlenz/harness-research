@@ -30,6 +30,10 @@ primary_substrate:
   - events
   - extensions
 
+ai_driver:
+  - model-client extension runtime
+  - event-driven multi-agent runtime
+
 cognitive_style:
   - social
   - role-distributed
@@ -50,6 +54,7 @@ worldview:
   notes:
     - "The stable docs split the world into AgentChat, Core, Extensions, and Studio."
     - "Conversation and team structure remain central even as the framework offers deeper event-driven machinery underneath."
+    - "In the AI-driver lens, AutoGen owns the multi-agent conversation and event runtime, while model access comes through extension-provided chat completion clients and related service adapters."
 
 memory_model:
   type:

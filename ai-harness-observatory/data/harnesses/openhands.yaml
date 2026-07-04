@@ -31,6 +31,10 @@ primary_substrate:
   - tools
   - agent-skills
 
+ai_driver:
+  - provider-backed agent runtime
+  - sandbox-mediated execution
+
 cognitive_style:
   - sandboxed
   - concrete
@@ -51,6 +55,7 @@ worldview:
   notes:
     - "The docs emphasize that OpenHands can modify code, run commands, browse the web, call APIs, and work across GUI, CLI, and headless modes."
     - "Customization surfaces such as MCP, microagents, setup scripts, and custom sandboxes are treated as part of the normal workflow."
+    - "Its driver is not another coding CLI such as Claude Code. OpenHands supplies the agent runtime and sandbox body itself, then connects that runtime to configured model providers."
 
 memory_model:
   type:

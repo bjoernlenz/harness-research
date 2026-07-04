@@ -32,6 +32,11 @@ primary_substrate:
   - remote-agent-environment
   - services
 
+ai_driver:
+  - model-gateway mediated runtime
+  - multi-surface coding agent runtime
+  - hosted long-running agent runtime
+
 cognitive_style:
   - collaborative
   - composable
@@ -53,6 +58,7 @@ worldview:
   notes:
     - "Kilo's public framing emphasizes one open-source agent across VS Code, JetBrains, CLI, cloud agents, and Slack-adjacent workflows."
     - "Its model gateway and bring-your-own-key support make provider plurality a core architectural feature."
+    - "The AI driver is split across surfaces: local IDE/CLI sessions share an open coding-agent runtime, Kilo Gateway mediates access to many models, and KiloClaw provides a hosted long-running agent layer."
 
 memory_model:
   type:

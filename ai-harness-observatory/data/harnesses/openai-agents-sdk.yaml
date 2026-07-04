@@ -31,6 +31,11 @@ primary_substrate:
   - handoffs
   - traces
 
+ai_driver:
+  - agent-object runtime
+  - OpenAI tool and model service integration
+  - trace-backed orchestration runtime
+
 cognitive_style:
   - explicit
   - composable
@@ -51,6 +56,7 @@ worldview:
   notes:
     - "The official docs emphasize specialized agents, tool use, and keeping a full trace of what happened."
     - "The SDK treats orchestration as code-level composition instead of a hidden runtime."
+    - "In the driver lens, the SDK owns agent definitions, runs, handoffs, guardrails, state, and traces, while integrating directly with OpenAI model and tool services."
 
 memory_model:
   type:

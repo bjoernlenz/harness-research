@@ -31,6 +31,10 @@ primary_substrate:
   - checkpoints
   - transitions
 
+ai_driver:
+  - graph-owned orchestration runtime
+  - external model and tool adapters
+
 cognitive_style:
   - explicit
   - stateful
@@ -51,6 +55,7 @@ worldview:
   notes:
     - "Reliability comes from making transitions visible instead of burying them in prompts."
     - "State and checkpoints matter as much as model calls."
+    - "LangGraph's AI driver is the compiled graph runtime: model calls are ordinary nodes or LangChain-integrated components, while state, persistence, transitions, interrupts, and durable execution belong to the graph."
 
 memory_model:
   type:
